@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expeditions — Sam The Man</title>
+<meta name="description" content="A decade of expeditions across five continents. Mont Blanc, Aconcagua, Kilimanjaro, Japan by bike, Fuji and Yotei by ski.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Lato:wght@300;400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #002395;
+    --navy-dim: #001570;
+    --navy-light: rgba(0,35,149,0.08);
+    --cream: #F5F0E8;
+    --sand: #EDE6D8;
+    --sand-raised: #E3D9C8;
+    --ink: #1C1828;
+    --stone: #68687A;
+    --stone-dim: #A2A2B0;
+    --forest: #2E6B5E;
+
+    --display: 'Playfair Display', Georgia, serif;
+    --body: 'Lato', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+
+    --edge: 6vw;
+    --max: 1180px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; object-fit: cover; }
+  :focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--edge); }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem var(--edge);
+    background: rgba(245,240,232,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(28,24,40,0.10);
+  }
+  .nav-logo { font-family: var(--display); font-weight: 800; font-size: 1.1rem; color: var(--ink); }
+  .nav-logo span { color: var(--navy); }
+  .nav-links { display: flex; gap: 2rem; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .nav-links a { color: var(--stone); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+  .nav-cta { border: 1px solid rgba(28,24,40,0.22); padding: 0.5rem 1.2rem; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); transition: border-color 0.2s, color 0.2s; }
+  .nav-cta:hover { border-color: var(--navy); color: var(--navy); }
+  .nav-mobile-toggle { display: none; }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .nav-mobile-toggle { display: block; font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; border: 1px solid var(--stone-dim); background: none; color: var(--ink); padding: 0.5rem 0.9rem; cursor: pointer; }
+    body.nav-open .nav-links { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: var(--cream); padding: 1.5rem var(--edge); gap: 1.4rem; border-bottom: 1px solid rgba(28,24,40,0.10); }
+  }
+
+  /* ===== PAGE HERO ===== */
+  .page-hero { padding: 10rem var(--edge) 5rem; max-width: var(--max); margin: 0 auto; }
+  .page-hero-title {
+    font-family: var(--display); font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800; line-height: 1.02; color: var(--ink); margin: 1rem 0 1.2rem;
+  }
+  .page-hero-title em { font-style: italic; color: var(--navy); }
+  .page-hero p { font-size: 1.1rem; color: var(--stone); max-width: 520px; font-weight: 300; line-height: 1.75; }
+
+  /* ===== FILTER BAR ===== */
+  .filter-bar {
+    background: var(--sand);
+    border-top: 1px solid rgba(28,24,40,0.08);
+    border-bottom: 1px solid rgba(28,24,40,0.08);
+    padding: 0 var(--edge);
+    position: sticky; top: 60px; z-index: 50;
+  }
+  .filter-tabs { max-width: var(--max); margin: 0 auto; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+  .filter-tabs::-webkit-scrollbar { display: none; }
+  .filter-tab {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--stone); padding: 1rem 1.4rem; border-bottom: 2px solid transparent;
+    white-space: nowrap; cursor: pointer; background: none; border-top: none; border-left: none; border-right: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .filter-tab:hover { color: var(--ink); }
+  .filter-tab.active { color: var(--navy); border-bottom-color: var(--navy); }
+
+  /* ===== EXPEDITION SECTIONS ===== */
+  .expedition { padding: 6rem 0; border-bottom: 1px solid rgba(28,24,40,0.08); }
+  .expedition:nth-child(even) { background: var(--sand); }
+
+  .expedition-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .expedition:nth-child(odd) .expedition-layout { direction: rtl; }
+  .expedition:nth-child(odd) .expedition-layout > * { direction: ltr; }
+
+  .expedition-photo { position: relative; }
+  .photo-placeholder {
+    width: 100%; aspect-ratio: 4/3;
+    background: var(--sand-raised); border: 1px dashed var(--stone-dim);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    color: var(--stone-dim); font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.04em; overflow: hidden;
+  }
+  .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+  .expedition-badge {
+    position: absolute; bottom: 1.2rem; right: 1.2rem;
+    background: var(--navy); color: #F5F0E8;
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.4rem 0.8rem;
+  }
+  .expedition-badge--attempt {
+    background: transparent; border: 1px solid var(--navy); color: var(--navy);
+  }
+
+  .expedition-date { font-family: var(--mono); font-size: 0.75rem; color: var(--navy); letter-spacing: 0.1em; display: block; margin-bottom: 0.8rem; }
+
+  .expedition-title {
+    font-family: var(--display); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 0.8rem;
+  }
+  .expedition-title em { font-style: italic; color: var(--navy); }
+
+  .expedition-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+  .chip {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--stone); background: var(--sand); border: 1px solid rgba(28,24,40,0.12); padding: 0.3rem 0.7rem;
+  }
+  .expedition:nth-child(even) .chip { background: var(--sand-raised); }
+
+  .expedition-body { color: var(--stone); font-weight: 300; line-height: 1.8; font-size: 1.02rem; }
+  .expedition-body p { margin-bottom: 1rem; }
+  .expedition-body p:last-child { margin-bottom: 0; }
+
+  .expedition-stat-row { display: flex; gap: 2rem; margin-top: 2rem; padding-top: 1.8rem; border-top: 1px solid rgba(28,24,40,0.10); }
+  .exp-stat-val { font-family: var(--display); font-size: 1.4rem; font-weight: 700; color: var(--navy); display: block; line-height: 1; margin-bottom: 0.3rem; }
+  .exp-stat-lbl { font-family: var(--mono); font-size: 0.68rem; color: var(--stone); letter-spacing: 0.04em; }
+
+  @media (max-width: 900px) {
+    .expedition-layout { grid-template-columns: 1fr; gap: 2.5rem; direction: ltr; }
+    .expedition:nth-child(odd) .expedition-layout { direction: ltr; }
+  }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* BTN */
+  .btn-primary {
+    font-family: var(--mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em;
+    background: var(--navy); color: #F5F0E8; padding: 0.9rem 1.8rem; display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #001570; transform: translateY(-2px); }
+
+  /* Footer */
+  .footer-bar {
+    border-top: 1px solid rgba(28,24,40,0.10); padding: 1.8rem var(--edge);
+    display: flex; justify-content: space-between; font-family: var(--mono);
+    font-size: 0.72rem; color: var(--stone-dim); flex-wrap: wrap; gap: 0.8rem;
+  }
+  .back-link { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone); transition: color 0.2s; }
+  .back-link:hover { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Sam<span>The</span>Man</a>
+  <div class="nav-links">
+    <a href="expeditions.html" class="active">Expeditions</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="index.html#disciplines">Disciplines</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#partners">For Partners</a>
+  </div>
+  <a href="index.html#contact" class="nav-cta">Get in touch</a>
+  <button class="nav-mobile-toggle" id="navToggle">Menu</button>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">The full log</span>
+  <h1 class="page-hero-title">Twelve years,<br><em>one adventure</em><br>at a time.</h1>
+  <p>Every expedition since 2013, in the order they happened. Some summited, some didn't. All of them worth doing.</p>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-tabs">
+    <button class="filter-tab active" data-filter="all">All</button>
+    <button class="filter-tab" data-filter="climbing">Climbing</button>
+    <button class="filter-tab" data-filter="cycling">Cycling</button>
+    <button class="filter-tab" data-filter="skiing">Skiing</button>
+    <button class="filter-tab" data-filter="trekking">Trekking</button>
+    <button class="filter-tab" data-filter="other">Other</button>
+  </div>
+</div>
+
+<!-- 1 -->
+<section class="expedition" id="camino" data-category="trekking">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo"><div class="photo-placeholder"><span>Photo placeholder</span></div></div>
+      <div class="expedition-content">
+        <span class="expedition-date">June — July 2013</span>
+        <h2 class="expedition-title">Camino de<br>Santiago</h2>
+        <div class="expedition-chips">
+          <span class="chip">France to Spain</span><span class="chip">~1,600 km</span><span class="chip">On foot</span>
+        </div>
+        <div class="expedition-body">
+          <p>The first one. No real plan, just a decision to walk across a country and a half. I started in Le Puy-en-Velay and didn't stop until Santiago de Compostela.</p>
+          <p>It wasn't really about hiking. It was about committing to something that takes weeks, not just an afternoon. Everything since traces back to this.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">~60</span><span class="exp-stat-lbl">Days on foot</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">1,600 km</span><span class="exp-stat-lbl">Total distance</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="expedition" id="vietnam" data-category="cycling">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo"><div class="photo-placeholder"><span>Photo placeholder</span></div></div>
+      <div class="expedition-content">
+        <span class="expedition-date">August 2013</span>
+        <h2 class="expedition-title">Vietnam,<br>South to <em>North</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Honda Win 110cc</span><span class="chip">40 days</span><span class="chip">Full country, twice</span>
+        </div>
+        <div class="expedition-body">
+          <p>Bought a 20-year-old motorbike for the trip and sold it for almost the same price 40 days later. South to north, then back again.</p>
+          <p>The best mechanical education I've ever had. Breakdowns, roadside repairs, strangers who helped. The machine earned its keep.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">40</span><span class="exp-stat-lbl">Days on the road</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">2×</span><span class="exp-stat-lbl">Length of the country</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="expedition" id="ohenro" data-category="trekking">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo"><div class="photo-placeholder"><span>Photo placeholder</span></div></div>
+      <div class="expedition-content">
+        <span class="expedition-date">June 2014</span>
+        <h2 class="expedition-title">O'Henro<br><em>Pilgrimage</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Shikoku, Japan</span><span class="chip">88 Buddhist temples</span><span class="chip">3 weeks on foot</span>
+        </div>
+        <div class="expedition-body">
+          <p>Three weeks walking temple to temple around the island of Shikoku. The O'Henro pilgrimage visits 88 temples. You don't complete it in three weeks — but you understand what it asks of you.</p>
+          <p>My first time properly living in Japan, before I actually moved there. The country got under my skin and never left.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">3 weeks</span><span class="exp-stat-lbl">On foot</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">88</span><span class="exp-stat-lbl">Temples on the route</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="expedition" id="mont-blanc" data-category="climbing">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo">
+        <div class="photo-placeholder"><span>Photo placeholder</span></div>
+        <span class="expedition-badge">Summit</span>
+      </div>
+      <div class="expedition-content">
+        <span class="expedition-date">September 2015</span>
+        <h2 class="expedition-title">Mont Blanc<br><em>4,808m</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Chamonix, France</span><span class="chip">4,808m</span><span class="chip">First high-altitude summit</span>
+        </div>
+        <div class="expedition-body">
+          <p>The trip that turned hiking into mountaineering. Standing on the highest point in Western Europe changes the way you see a map.</p>
+          <p>That's where the next decade of objectives started. Every summit since has felt like a consequence of this one.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">4,808m</span><span class="exp-stat-lbl">Summit altitude</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">#1</span><span class="exp-stat-lbl">Western Europe highest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="expedition" id="paragliding" data-category="other">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo">
+        <div class="photo-placeholder"><span>Photo placeholder</span></div>
+        <span class="expedition-badge">License</span>
+      </div>
+      <div class="expedition-content">
+        <span class="expedition-date">October 2016</span>
+        <h2 class="expedition-title">Paragliding<br><em>License</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Another way through mountains</span><span class="chip">This time, above them</span>
+        </div>
+        <div class="expedition-body">
+          <p>Got my paragliding license. Learning to read thermals, launch in crosswinds, and land exactly where you intend to. The sky feels very different once you've had to study it seriously.</p>
+          <p>Still fly when the conditions line up. There's nothing like a mountain that you've also soared above.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="expedition" id="kitesurf" data-category="other">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo"><div class="photo-placeholder"><span>Photo placeholder</span></div></div>
+      <div class="expedition-content">
+        <span class="expedition-date">2017</span>
+        <h2 class="expedition-title">Learned to<br><em>Kitesurf</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Sea level for once</span><span class="chip">Wind, water, patience</span>
+        </div>
+        <div class="expedition-body">
+          <p>Took longer than expected to get the kite overhead without it dragging me across the beach. Then one day it clicked.</p>
+          <p>Still one of the most purely joyful things I do. When the wind is right, there's nothing better.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="expedition" id="gr20" data-category="trekking">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo"><div class="photo-placeholder"><span>Photo placeholder</span></div></div>
+      <div class="expedition-content">
+        <span class="expedition-date">June 2021</span>
+        <h2 class="expedition-title">GR20,<br><em>Corsica</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">~180 km</span><span class="chip">Europe's toughest trail</span><span class="chip">Corsica, France</span>
+        </div>
+        <div class="expedition-body">
+          <p>Ridgelines, scree, via ferrata sections, and weather that changes its mind hourly. Widely regarded as the hardest long-distance trail in Europe.</p>
+          <p>A proper test of legs and patience. The kind of route that earns its reputation every single day.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">~180 km</span><span class="exp-stat-lbl">Total distance</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">~15</span><span class="exp-stat-lbl">Days on trail</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="expedition" id="jura" data-category="skiing">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo"><div class="photo-placeholder"><span>Photo placeholder</span></div></div>
+      <div class="expedition-content">
+        <span class="expedition-date">February 2022</span>
+        <h2 class="expedition-title">Traversée du Jura<br><em>Ski de Fond</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">France / Switzerland</span><span class="chip">~270 km</span><span class="chip">Cross-country skis</span>
+        </div>
+        <div class="expedition-body">
+          <p>The Jura mountains, end to end, on cross-country skis. February cold, long days, everything on your back. Different muscles than alpine skiing, different kind of hard than altitude.</p>
+          <p>Exactly what I needed after a couple of quiet years. A long, slow, honest effort through a beautiful winter landscape.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">~270 km</span><span class="exp-stat-lbl">Total distance</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">~10</span><span class="exp-stat-lbl">Days on snow</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="expedition" id="daisetsuzan" data-category="trekking">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo"><div class="photo-placeholder"><span>Photo placeholder</span></div></div>
+      <div class="expedition-content">
+        <span class="expedition-date">August 2023</span>
+        <h2 class="expedition-title">Daisetsuzan<br><em>Traverse</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Hokkaido, Japan</span><span class="chip">7 days</span><span class="chip">Fully self-sufficient</span>
+        </div>
+        <div class="expedition-body">
+          <p>Hokkaido's largest national park, end to end. Seven days carrying everything needed, no resupply, through Japan's wildest backcountry.</p>
+          <p>Two friends, full autonomy, and more elevation change than you'd expect. The kind of trip you talk about for years after.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">7</span><span class="exp-stat-lbl">Days in the field</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">0</span><span class="exp-stat-lbl">Resupply stops</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="expedition" id="aconcagua" data-category="climbing">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo">
+        <div class="photo-placeholder"><span>Photo placeholder</span></div>
+        <span class="expedition-badge expedition-badge--attempt">Attempted</span>
+      </div>
+      <div class="expedition-content">
+        <span class="expedition-date">January 2025</span>
+        <h2 class="expedition-title">Aconcagua<br><em>6,500m</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Argentina</span><span class="chip">18-day expedition</span><span class="chip">~400m below summit</span>
+        </div>
+        <div class="expedition-body">
+          <p>The highest peak outside Asia. Eighteen days of expedition life: acclimatization rotations, camp moves, big weather windows, bigger wind.</p>
+          <p>The discipline to stop within sight of the top when the mountain says no. One of the better decisions I've made up there. The summit will wait.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">6,500m</span><span class="exp-stat-lbl">Highest point reached</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">18</span><span class="exp-stat-lbl">Days in the field</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="expedition" id="matterhorn" data-category="climbing">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo">
+        <div class="photo-placeholder"><span>Photo placeholder</span></div>
+        <span class="expedition-badge expedition-badge--attempt">Attempted</span>
+      </div>
+      <div class="expedition-content">
+        <span class="expedition-date">August 2025</span>
+        <h2 class="expedition-title">Matterhorn<br><em>Attempted</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Zermatt, Switzerland</span><span class="chip">Turned back</span><span class="chip">Weather &amp; conditions</span>
+        </div>
+        <div class="expedition-body">
+          <p>Underestimated what the route demanded. The conditions turned and we came down. No heroics, no pushes into bad weather.</p>
+          <p>The mountain will still be there. This one goes back on the list.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="expedition" id="kilimanjaro" data-category="climbing">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo">
+        <div class="photo-placeholder"><span>Photo placeholder</span></div>
+        <span class="expedition-badge">Summit</span>
+      </div>
+      <div class="expedition-content">
+        <span class="expedition-date">January 2026</span>
+        <h2 class="expedition-title">Kilimanjaro<br><em>5,895m</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Tanzania</span><span class="chip">5,895m</span><span class="chip">Africa's highest</span>
+        </div>
+        <div class="expedition-body">
+          <p>By altitude, one of the most serious climbs on this list. The altitude effects are real and the cold at the summit is unforgiving.</p>
+          <p>Clean summit to open the year. Africa's highest point, done the right way.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">5,895m</span><span class="exp-stat-lbl">Summit altitude</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">#1</span><span class="exp-stat-lbl">Africa's highest peak</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="expedition" id="serengeti" data-category="trekking">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo"><div class="photo-placeholder"><span>Photo placeholder</span></div></div>
+      <div class="expedition-content">
+        <span class="expedition-date">January 2026</span>
+        <h2 class="expedition-title">Serengeti &amp;<br><em>Ngorongoro</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Tanzania</span><span class="chip">Multi-park circuit</span>
+        </div>
+        <div class="expedition-body">
+          <p>Not every adventure needs a summit. This was a different kind of expedition: reading a landscape instead of climbing it.</p>
+          <p>The Serengeti teaches you to slow down and look at everything differently.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="expedition" id="yotei" data-category="skiing">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo">
+        <div class="photo-placeholder"><span>Photo placeholder</span></div>
+        <span class="expedition-badge">Summit</span>
+      </div>
+      <div class="expedition-content">
+        <span class="expedition-date">February 2026</span>
+        <h2 class="expedition-title">Mt. Yotei<br><em>Summit &amp; Ski</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Hokkaido, Japan</span><span class="chip">1,898m</span><span class="chip">Backcountry ski descent</span>
+        </div>
+        <div class="expedition-body">
+          <p>Hokkaido's Mt. Fuji of the north. A beautiful, solitary volcano that earns every step on the way up.</p>
+          <p>Climbed on foot, then skied all the way back down. The descent is long, steep, and deeply satisfying.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">1,898m</span><span class="exp-stat-lbl">Summit altitude</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">~1,800m</span><span class="exp-stat-lbl">Vertical ski descent</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="expedition" id="japan-bike" data-category="cycling">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo"><div class="photo-placeholder"><span>Photo placeholder</span></div></div>
+      <div class="expedition-content">
+        <span class="expedition-date">Early May 2026</span>
+        <h2 class="expedition-title">Japan by<br><em>Bike</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Kagoshima to Tokyo</span><span class="chip">~1,500 km</span><span class="chip">Self-supported</span>
+        </div>
+        <div class="expedition-body">
+          <p>South to north, under pedal power. The full length of Japan, every kind of terrain and weather the country had to offer.</p>
+          <p>Rolling through rural Japan, coastal roads, mountain passes, and busy cities. The bike is the best way to actually feel a country.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">~1,500 km</span><span class="exp-stat-lbl">Total distance</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">0</span><span class="exp-stat-lbl">Support crew</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="expedition" id="fuji" data-category="skiing">
+  <div class="wrap">
+    <div class="expedition-layout reveal">
+      <div class="expedition-photo">
+        <div class="photo-placeholder"><span>Photo placeholder</span></div>
+        <span class="expedition-badge">Summit</span>
+      </div>
+      <div class="expedition-content">
+        <span class="expedition-date">May 2026</span>
+        <h2 class="expedition-title">Mt. Fuji<br><em>Summit &amp; Ski</em></h2>
+        <div class="expedition-chips">
+          <span class="chip">Japan</span><span class="chip">3,776m</span><span class="chip">Late-season ski descent</span>
+        </div>
+        <div class="expedition-body">
+          <p>Japan's most iconic summit. There is nothing like standing on top of Fuji with skis on your back, looking down the line you're about to ski.</p>
+          <p>Skied from top to bottom. Closing a big winter of backcountry touring on the highest line in Japan.</p>
+        </div>
+        <div class="expedition-stat-row">
+          <div class="exp-stat"><span class="exp-stat-val">3,776m</span><span class="exp-stat-lbl">Summit altitude</span></div>
+          <div class="exp-stat"><span class="exp-stat-val">#1</span><span class="exp-stat-lbl">Japan's highest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bar">
+    <a href="index.html" class="back-link">← Back to home</a>
+    <span>© 2026 Sam The Man</span>
+    <a href="timeline.html" class="back-link">View as timeline →</a>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  if (navToggle) navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
+
+  const tabs = document.querySelectorAll('.filter-tab');
+  const expeditions = document.querySelectorAll('.expedition');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      expeditions.forEach(exp => {
+        exp.style.display = (filter === 'all' || exp.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((items) => {
+    items.forEach(item => { if (item.isIntersecting) { item.target.classList.add('is-visible'); io.unobserve(item.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" fill="none">
+  <!-- Mountain mark -->
+  <g transform="translate(0, 2)">
+    <path d="M4 62 L22 24 L34 40 L48 8 L72 62 Z" fill="#001A82" opacity="0.06"/>
+    <polyline points="4,62 22,24 34,40 48,8 72,62" stroke="#001A82" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+    <polyline points="40,22 48,8 56,22" stroke="#001A82" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" fill="none" opacity="0.38"/>
+    <line x1="48" y1="2" x2="48" y2="0" stroke="#001A82" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+    <circle cx="48" cy="0" r="1.8" fill="#001A82" opacity="0.4"/>
+  </g>
+  <!-- Vertical rule -->
+  <line x1="90" y1="10" x2="90" y2="62" stroke="#001A82" stroke-width="0.8" opacity="0.2"/>
+  <!-- SAM -->
+  <text x="102" y="54" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700" fill="#1C1828" letter-spacing="-0.01em">SAM</text>
+  <!-- Rule -->
+  <line x1="102" y1="60" x2="318" y2="60" stroke="#001A82" stroke-width="0.7" opacity="0.28"/>
+  <!-- THE MAN -->
+  <text x="103" y="72" font-family="'Courier New', Courier, monospace" font-size="10.5" font-weight="400" fill="#001A82" letter-spacing="0.34em">THE MAN</text>
+</svg>
