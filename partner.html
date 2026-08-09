@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Every expedition Sam has run since 2013, listed as it happened with dates, disciplines and outcomes.">
+<meta name="description" content="Sponsorship, gear testing and collaborations with Sam — audience figures, what each partnership includes and how to start one.">
 <meta name="theme-color" content="#04070c">
-<title>Expeditions — Sam 🌋 Wild Adventures</title>
+<title>Sam 🌋 Wild Adventures — sponsorship, gear and collaborations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;500;600;700&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -67,6 +67,7 @@ h1,h2,h3{font-family:var(--title);font-weight:var(--titleW);
 h1{font-size:3.5rem;font-size:var(--h1)}
 h2{font-size:2.75rem;font-size:var(--h2);max-width:19ch}
 p{max-width:68ch;text-wrap:pretty}
+.hl{color:var(--blue)}
 
 .ic{width:1.05em;height:1.05em;flex:none;fill:none;stroke:currentColor;
   stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.16em}
@@ -75,6 +76,10 @@ p{max-width:68ch;text-wrap:pretty}
 .sec{box-shadow:inset 0 1px 0 var(--line);
   padding-top:3.5rem;padding-bottom:3.5rem;
   padding-top:clamp(3.5rem,8vw,6rem);padding-bottom:clamp(3.5rem,8vw,6rem)}
+.sec--tall{padding-top:4.5rem;padding-bottom:4.5rem;
+  padding-top:clamp(4.5rem,11vw,8.5rem);padding-bottom:clamp(4.5rem,11vw,8.5rem)}
+.lede{color:var(--muted);max-width:56ch;margin-top:1.25rem}
+.hgroup{margin-bottom:clamp(2.5rem,5vw,4rem)}
 
 .grain{position:fixed;inset:0;z-index:400;pointer-events:none;opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -87,6 +92,7 @@ p{max-width:68ch;text-wrap:pretty}
   @keyframes progress{to{transform:scaleX(1)}}}
 @supports (animation-timeline:view()){
   @media(prefers-reduced-motion:no-preference){
+    .rise{animation:rise linear both;animation-timeline:view();animation-range:entry 6% cover 24%}
     @keyframes rise{from{opacity:0;transform:translateY(1.5rem)}to{opacity:1;transform:none}}}}
 
 /* ══════════ nav ══════════ */
@@ -149,38 +155,48 @@ p{max-width:68ch;text-wrap:pretty}
 @media(prefers-reduced-motion:no-preference){.btn--solid:hover::after{animation:sheen .7s cubic-bezier(.22,1,.36,1)}}
 @keyframes sheen{to{translate:100% 0}}
 
-/* ══════════ timeline ══════════ */
-.filterbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  flex-wrap:wrap;padding:.9rem 1rem;margin-bottom:.25rem;background:var(--bg2)}
-.filterbar span{display:inline-flex;align-items:center;gap:.5rem}
-.filterbar b{font-weight:600;color:var(--blue)}
-.filterbar button{display:inline-flex;align-items:center;gap:.45rem;
-  background:transparent;border:1px solid var(--line2);color:var(--ink);
-  font-family:var(--body);font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;
-  padding:.6rem 1rem;cursor:pointer;min-height:2.5rem}
-.filterbar button:hover{border-color:var(--blue);color:var(--blue)}
+/* ══════════ bento ══════════ */
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  box-shadow:inset 0 1px 0 var(--line),inset 1px 0 0 var(--line)}
+.cell{background:var(--bg);padding:1.4rem;padding:clamp(1.4rem,2.6vw,2rem);
+  box-shadow:inset -1px 0 0 var(--line),inset 0 -1px 0 var(--line);
+  display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem;
+  min-height:9.5rem;transition:background var(--durSlow) var(--ease)}
+.cell:hover{background:var(--bg2)}
+.cell--lead{grid-column:span 2;grid-row:span 2;min-height:18rem}
+.cell--wide{grid-column:span 2}
+.cell__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  line-height:1;font-size:2.5rem;font-size:clamp(2.2rem,4vw,3.1rem)}
+.cell--lead .cell__n{font-size:4.25rem;font-size:clamp(3.4rem,7.5vw,5.75rem);color:var(--blueDeep)}
+.cell__n small{font-family:var(--body);font-size:1rem;font-weight:400;
+  letter-spacing:0;color:var(--muted);margin-left:.4rem}
+/* the label is a readable line now, not a micro-caption */
+.cell__k{display:flex;align-items:flex-start;gap:.5rem;
+  font-size:var(--fsLead);line-height:1.4;color:var(--ink);opacity:.92;max-width:24ch}
+.cell__k .ic{color:var(--blue);opacity:.8;margin-top:.22em}
+.cell--lead .cell__k{font-size:var(--fsLead);max-width:20ch}
+.iglink{display:inline-flex;align-items:center;gap:.35rem;color:var(--blue);text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb,var(--blue) 45%,transparent)}
+.iglink:hover{border-bottom-color:var(--blue)}
 
-.row{position:relative;display:grid;grid-template-columns:7.5rem minmax(0,1fr) 11rem 8.5rem;
-  gap:clamp(1rem,2.5vw,1.75rem);align-items:baseline;
-  padding:1.5rem 1rem;box-shadow:inset 0 -1px 0 var(--line);transition:background var(--durSlow) var(--ease)}
-.row:hover{background:var(--bg2)}
-.row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--blue);
-  scale:1 0;transform-origin:50% 0;transition:scale .28s cubic-bezier(.22,1,.36,1)}
-.row:hover::before{scale:1 1}
-.row:hover .row__t{color:var(--blue)}
-.row__y{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
-/* the name leads; the description sits under it, smaller and quieter */
-.row__t{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);max-width:none;
-  line-height:1.02;font-size:2rem;font-size:clamp(1.7rem,3.1vw,2.4rem);
-  color:var(--ink);transition:color var(--durSlow) var(--ease)}
-.row__d{font-size:var(--fsBody);line-height:1.6;color:var(--muted);margin-top:.45rem;max-width:52ch}
-.row__disc,.row__o{display:flex;align-items:center;gap:.45rem;
-  font-size:var(--fsMicro);letter-spacing:.13em;text-transform:uppercase}
-.row__disc{color:var(--muted)}
-.row__disc .ic{color:var(--blue);opacity:.7}
-.row__o{color:var(--blue);justify-content:flex-end}
-.row__o.is-back{color:var(--muted)}
-.empty{padding:2.5rem 1rem;color:var(--muted)}
+/* ══════════ sponsorship ══════════ */
+.offer{box-shadow:inset 0 1px 0 var(--line);padding-top:.5rem}
+.offer__item{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(1.5rem,4vw,3.5rem);
+  padding-top:2.25rem;padding-bottom:2.25rem;
+  padding-top:clamp(2.25rem,5vw,3.25rem);padding-bottom:clamp(2.25rem,5vw,3.25rem);
+  box-shadow:inset 0 -1px 0 var(--line)}
+.offer__item h3{display:flex;align-items:center;gap:.6rem;
+  font-size:2.25rem;font-size:clamp(1.9rem,3.6vw,2.9rem);margin-bottom:.35rem}
+.offer__item h3 .ic{color:var(--blue);width:.72em;height:.72em}
+.offer__sub{font-size:var(--fsLead);color:var(--ink);opacity:.9;margin-bottom:.85rem}
+.offer__item>div>p{color:var(--muted)}
+.offer__cta{margin-top:1.4rem}
+.offer__list{list-style:none;align-self:center}
+.offer__list li{display:flex;align-items:flex-start;gap:.7rem;padding-block:.7rem;
+  box-shadow:inset 0 1px 0 var(--line);font-size:var(--fsBody);color:var(--muted)}
+.offer__list li:first-child{box-shadow:none}
+.offer__list .ic{color:var(--blue);opacity:.75;margin-top:.3em}
 .foot__tip{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;color:var(--muted);transition:color var(--dur) var(--ease)}
 .foot__tip:hover{color:var(--blue)}
 .foot{box-shadow:inset 0 1px 0 var(--line);padding-top:2rem;padding-bottom:3rem;
@@ -189,32 +205,42 @@ p{max-width:68ch;text-wrap:pretty}
 
 :where(a,button,input,select,textarea):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 [id]{scroll-margin-top:6rem}
-@media(max-width:60rem){
-  .row{grid-template-columns:6.5rem minmax(0,1fr) 9rem}
-  .row__o{grid-column:2/-1;justify-content:flex-start;margin-top:.5rem}}
-@media(max-width:52rem){
-  .row{grid-template-columns:1fr;gap:.35rem;padding-block:1.35rem}
-  .row__disc,.row__o{grid-column:1;justify-content:flex-start;margin-top:.35rem}
-  .row__o{margin-top:.15rem}}
-@media(max-width:34rem){
-  .btn{flex:1 1 auto;justify-content:center}
-  .foot{flex-direction:column;gap:.6rem}
-    .nav__cta{padding:.7rem .85rem;letter-spacing:.04em}
-  .nav__logo-rest{display:none}}
-.mini__cta{margin-top:clamp(1.75rem,3.5vw,2.5rem);display:flex;flex-wrap:wrap;gap:.75rem}
 
 /* ══════════ sub-page header ══════════ */
 .sec--flush{padding-top:0}
+.hgroup--tight{margin-bottom:clamp(1.5rem,3vw,2rem)}
 
 .pagehead{padding-top:calc(var(--navH) + clamp(2.25rem,5vw,4rem));
   padding-bottom:clamp(1.75rem,3.5vw,2.75rem)}
 .backlink{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
   font-size:var(--fsBody);color:var(--muted);
   margin-bottom:1.1rem;transition:color var(--dur) var(--ease)}
-.backlink:hover{color:var(--blue)}</style>
+.backlink:hover{color:var(--blue)}
+.pagehead h1{max-width:16ch}
+
+/* closing call to action */
+.cta{box-shadow:inset 0 1px 0 var(--line);padding-top:clamp(2.5rem,5vw,3.5rem);
+  margin-top:clamp(3rem,6vw,4.5rem);display:flex;flex-wrap:wrap;gap:1.25rem 2rem;
+  align-items:center;justify-content:space-between}
+.cta h3{font-size:2rem;font-size:clamp(1.75rem,3.4vw,2.5rem);max-width:18ch}
+.cta p{color:var(--muted);max-width:40ch;margin-top:.5rem}
+@media(max-width:60rem){
+  .cell--lead{grid-column:span 4;grid-row:auto;min-height:12rem}}
+@media(max-width:52rem){
+  .offer__item{grid-template-columns:1fr;gap:1.5rem}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cell--lead,.cell--wide{grid-column:span 2}
+  .cell--lead{min-height:11rem}}
+@media(max-width:34rem){
+  .btn{flex:1 1 auto;justify-content:center}
+  .bento{grid-template-columns:1fr}
+  .cell,.cell--lead,.cell--wide{grid-column:span 1;min-height:0}
+  .foot{flex-direction:column;gap:.6rem}
+    .nav__cta{padding:.7rem .85rem;letter-spacing:.04em}
+  .nav__logo-rest{display:none}}
+</style>
 </head>
 <body>
-
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
   <symbol id="i-alpinism" viewBox="0 0 24 24"><path d="M2.5 19.5h19L14 5.5l-3.4 6.2-2-3.1-6.1 10.9Z"/><path d="m11.6 10.4 2.4-4.9 2.5 4.6-2.6.8-2.3-.5Z"/></symbol>
@@ -258,8 +284,8 @@ p{max-width:68ch;text-wrap:pretty}
 <header class="nav" id="nav">
   <a class="nav__logo" href="index.html"><span>Sam</span> <span class="nav__logo-mark">🌋</span> <span class="nav__logo-rest">Wild Adventures</span></a>
   <nav class="nav__links" aria-label="Primary">
-    <a href="partner.html">Partner with me</a>
-    <a href="expeditions.html" class="is-active">Expeditions</a>
+    <a href="partner.html" class="is-active">Partner with me</a>
+    <a href="expeditions.html">Expeditions</a>
     <a href="index.html#about">About</a>
   </nav>
   <div class="nav__right">
@@ -277,124 +303,100 @@ p{max-width:68ch;text-wrap:pretty}
   <a href="index.html#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
 </div>
 
-
 <main id="top">
 
 <section class="shell pagehead">
   <a class="backlink" href="index.html"><svg class="ic ic--sm"><use href="#i-back"/></svg>Back to the front page</a>
-  <h1>Sixteen expeditions, since 2013</h1>
+  <h1>Partner with me.</h1>
 </section>
 
-<section class="sec sec--flush" id="expeditions">
+<section class="sec sec--flush" id="reach">
   <div class="shell">
-    <div class="filterbar" id="filterbar" hidden>
-      <span><svg class="ic ic--sm"><use href="#i-list"/></svg>Showing <b id="filterName"></b></span>
-      <button type="button" id="clearFilter"><svg class="ic ic--sm"><use href="#i-close"/></svg>Show all</button>
+    <!-- Instagram figures supplied by Sam, Aug 2026 -->
+    <div class="hgroup hgroup--tight rise">
+      <h2>The reach I get</h2>
+      <p class="lede"><a class="iglink" href="https://www.instagram.com/hey_samtheman/" rel="me"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman</a></p>
     </div>
-    <p class="empty" id="emptyNote" hidden></p>
-
-    <div id="tl">
-      <article class="row" data-disc="trekking">
-        <div class="row__y">Jun 2013</div>
-        <div><h2 class="row__t">Camino de Santiago</h2><p class="row__d">Le Puy-en-Velay to Santiago de Compostela. Around 1,600&nbsp;km, two months on foot.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-hike"/></svg>Trekking</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
-      </article>
-      <article class="row" data-disc="motorbike">
-        <div class="row__y">Aug 2013</div>
-        <div><h2 class="row__t">Vietnam by motorbike</h2><p class="row__d">Ho Chi Minh City to Hanoi and back down. Forty days. I learned to ride the week before leaving.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-moto"/></svg>Motorbike</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
-      </article>
-      <article class="row" data-disc="trekking">
-        <div class="row__y">Jun 2014</div>
-        <div><h2 class="row__t">O'Henro, Shikoku</h2><p class="row__d">The eighty-eight temple pilgrimage, Japan.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-hike"/></svg>Trekking</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
-      </article>
-      <article class="row" data-disc="alpinism">
-        <div class="row__y">Sep 2015</div>
-        <div><h2 class="row__t">Mont Blanc, 4,808 m</h2><p class="row__d">Cosmiques arête, then the Goûter route. My first time in crampons was five days earlier.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit</div>
-      </article>
-      <article class="row" data-disc="paragliding">
-        <div class="row__y">Oct 2016</div>
-        <div><h2 class="row__t">Paragliding licence</h2></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-para"/></svg>Paragliding</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Licensed</div>
-      </article>
-      <article class="row" data-disc="kitesurfing">
-        <div class="row__y">2017</div>
-        <div><h2 class="row__t">Kitesurfing</h2></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-kite"/></svg>Kitesurfing</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Licensed</div>
-      </article>
-      <article class="row" data-disc="trekking">
-        <div class="row__y">Jul 2021</div>
-        <div><h2 class="row__t">GR20, Corsica</h2><p class="row__d">The hardest long-distance trail in Europe.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-hike"/></svg>Trekking</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
-      </article>
-      <article class="row" data-disc="ski">
-        <div class="row__y">Feb 2022</div>
-        <div><h2 class="row__t">Traversée du Jura</h2><p class="row__d">Winter crossing on nordic skis.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-ski"/></svg>Nordic ski</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
-      </article>
-      <article class="row" data-disc="trekking">
-        <div class="row__y">Aug 2023</div>
-        <div><h2 class="row__t">Daisetsuzan Traverse</h2><p class="row__d">The alpine spine of Hokkaidō.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-hike"/></svg>Trekking</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
-      </article>
-      <article class="row" data-disc="alpinism">
-        <div class="row__y">Jan 2025</div>
-        <div><h2 class="row__t">Aconcagua</h2><p class="row__d">High point reached 6,500&nbsp;m. The summit stands at 6,962&nbsp;m.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
-        <div class="row__o is-back"><svg class="ic ic--sm"><use href="#i-back"/></svg>Turned back</div>
-      </article>
-      <article class="row" data-disc="alpinism">
-        <div class="row__y">Aug 2025</div>
-        <div><h2 class="row__t">Matterhorn, Hörnli Ridge</h2><p class="row__d">Three days on the mountain, 1 to 3 August. Turned back at roughly 3,800&nbsp;m.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
-        <div class="row__o is-back"><svg class="ic ic--sm"><use href="#i-back"/></svg>Turned back</div>
-      </article>
-      <article class="row" data-disc="alpinism">
-        <div class="row__y">Jan 2026</div>
-        <div><h2 class="row__t">Kilimanjaro, 5,895 m</h2><p class="row__d">Highest summit to date.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit</div>
-      </article>
-      <article class="row" data-disc="safari">
-        <div class="row__y">Jan 2026</div>
-        <div><h2 class="row__t">Serengeti and Ngorongoro</h2><p class="row__d">Same trip, straight after Kilimanjaro.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-safari"/></svg>Safari</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
-      </article>
-      <article class="row" data-disc="ski">
-        <div class="row__y">Feb 2026</div>
-        <div><h2 class="row__t">Mt. Yotei</h2><p class="row__d">Hokkaidō. Climbed, then skied.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-ski"/></svg>Ski mountaineering</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit and ski</div>
-      </article>
-      <article class="row" data-disc="ski">
-        <div class="row__y">May 2026</div>
-        <div><h2 class="row__t">Mt. Fuji</h2><p class="row__d">Climbed and skied from the crater rim.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-ski"/></svg>Ski mountaineering</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit and ski</div>
-      </article>
-      <article class="row" data-disc="cycling">
-        <div class="row__y">May 2026</div>
-        <div><h2 class="row__t">Japan end to end by bike</h2><p class="row__d">The length of the country, May into June.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-bike"/></svg>Cycling</div>
-        <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
-      </article>
+    <div class="bento rise">
+      <div class="cell cell--lead">
+        <div class="cell__n"><span class="tick" data-to="125">125</span>K</div>
+        <div class="cell__k"><svg class="ic ic--sm"><use href="#i-eye"/></svg>Accounts reached each month</div>
+      </div>
+      <div class="cell cell--wide">
+        <div class="cell__n"><span class="tick" data-to="5392">5,392</span></div>
+        <div class="cell__k"><svg class="ic ic--sm"><use href="#i-users"/></svg>Followers</div>
+      </div>
+      <div class="cell cell--wide">
+        <div class="cell__n"><span class="tick" data-to="164">164</span></div>
+        <div class="cell__k"><svg class="ic ic--sm"><use href="#i-camera"/></svg>Posts</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="mini__cta">
-      <a class="btn btn--solid" href="partner.html">Partner with me<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
-      <a class="btn btn--ghost" href="index.html#contact">Get in touch<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
+<section class="sec sec--tall" id="sponsorship">
+  <div class="shell">
+    <div class="hgroup rise">
+      <h2>How we <span class="hl">partner</span> together</h2>
+    </div>
+    <div class="offer">
+
+      <article class="offer__item rise">
+        <div>
+          <h3><svg class="ic"><use href="#i-handshake"/></svg>Sponsorship</h3>
+          <p class="offer__sub">Back an adventure, or a whole season.</p>
+          <p>Support my gear, adventures, travels, permits, teams. In return your brand becomes the main sponsor, is named on the expedition and carried through everything I publish about it.</p>
+          <a class="btn btn--ghost offer__cta" href="index.html#contact">Get in touch<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
+        </div>
+        <ul class="offer__list">
+          <li><svg class="ic ic--sm"><use href="#i-flag"/></svg>Named support on a specific expedition or a full season</li>
+          <li><svg class="ic ic--sm"><use href="#i-insta"/></svg>Presence across pre-trip, on-route and post-trip content</li>
+          <li><svg class="ic ic--sm"><use href="#i-doc"/></svg>A written debrief when I get back, whatever the outcome</li>
+          <li><svg class="ic ic--sm"><use href="#i-check"/></svg>Scope and deliverables agreed in writing before departure</li>
+        </ul>
+      </article>
+
+      <article class="offer__item rise">
+        <div>
+          <h3><svg class="ic"><use href="#i-box"/></svg>Gear testing</h3>
+          <p class="offer__sub">Send me a kit. And your best gear to try.</p>
+          <p>Let me put your equipment to the test. I'll write up what worked, what failed. I'll praise the quality of your gear where I see it. And redirect to brand and ecommerce websites.</p>
+          <a class="btn btn--ghost offer__cta" href="index.html#contact">Get in touch<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
+        </div>
+        <ul class="offer__list">
+          <li><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism and high altitude, up to 6,500 m</li>
+          <li><svg class="ic ic--sm"><use href="#i-ski"/></svg>Ski mountaineering in Japan and the Alps</li>
+          <li><svg class="ic ic--sm"><use href="#i-hike"/></svg>Multi-week trekking and long-distance cycling</li>
+          <li><svg class="ic ic--sm"><use href="#i-doc"/></svg>Structured written report with photo evidence</li>
+        </ul>
+      </article>
+
+      <article class="offer__item rise">
+        <div>
+          <h3><svg class="ic"><use href="#i-camera"/></svg>Collaborations</h3>
+          <p class="offer__sub">Content, campaigns and talks.</p>
+          <p>I'll shoot content for you that is ready for social media. I also speak and do talks about my expeditions and how you can apply the lessons I've learned to the corporate world. My work at Google puts adventures into context.</p>
+          <a class="btn btn--ghost offer__cta" href="index.html#contact">Get in touch<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
+        </div>
+        <ul class="offer__list">
+          <li><svg class="ic ic--sm"><use href="#i-camera"/></svg>Stills and video shot on location to a brief</li>
+          <li><svg class="ic ic--sm"><use href="#i-doc"/></svg>Long-form written accounts and campaign copy</li>
+          <li><svg class="ic ic--sm"><use href="#i-mic"/></svg>Keynotes and team sessions, in English or French</li>
+          <li><svg class="ic ic--sm"><use href="#i-check"/></svg>Usage rights agreed up front</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="start">
+  <div class="shell">
+    <div class="cta rise">
+      <div>
+        <h3>Let's talk about the <span class="hl">next</span> one.</h3>
+      </div>
+      <a class="btn btn--solid" href="index.html#contact">Start a conversation<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
@@ -406,9 +408,11 @@ p{max-width:68ch;text-wrap:pretty}
   <a class="foot__tip" href="https://ko-fi.com/heysamtheman" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-coffee"/></svg>Buy me a coffee</a>
 </footer>
 
-
 <script>
 (function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* nav folds once you leave the top */
   var nav=document.getElementById('nav');
   var onScroll=function(){nav.classList.toggle('is-stuck',scrollY>40)};
   addEventListener('scroll',onScroll,{passive:true}); onScroll();
@@ -426,36 +430,25 @@ p{max-width:68ch;text-wrap:pretty}
   menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
   addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
 
-  /* discipline filter, also driven by ?d= in the URL so the links on the
-     front page can arrive here pre-filtered */
-  var LABELS={alpinism:'Alpinism',ski:'Ski touring',cycling:'Cycling',
-    paragliding:'Paragliding',trekking:'Hiking',kitesurfing:'Kitesurfing',
-    diving:'Diving',motorbike:'Motorbike',safari:'Safari'};
-  var rows=[].slice.call(document.querySelectorAll('#tl .row'));
-  var bar=document.getElementById('filterbar');
-  var fname=document.getElementById('filterName');
-  var empty=document.getElementById('emptyNote');
-
-  function applyFilter(key,label){
-    var shown=0;
-    rows.forEach(function(r){
-      var match=!key||r.dataset.disc===key;
-      r.hidden=!match; if(match) shown++;
-    });
-    bar.hidden=!key;
-    fname.textContent=label||'';
-    if(key && shown===0){
-      empty.hidden=false;
-      empty.textContent='Nothing logged under '+label+' yet. It is on the list.';
-    } else { empty.hidden=true; }
+  /* number ticker */
+  if(!reduce && 'IntersectionObserver' in window){
+    var fmt=function(n){return n.toLocaleString('en-US')};
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        io.unobserve(en.target);
+        var el=en.target, to=parseInt(el.dataset.to,10), t0=null, dur=1100;
+        var step=function(t){
+          if(!t0) t0=t;
+          var p=Math.min((t-t0)/dur,1);
+          el.textContent=fmt(Math.round(to*(1-Math.pow(1-p,4))));
+          if(p<1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    },{threshold:.4});
+    document.querySelectorAll('.tick').forEach(function(el){io.observe(el)});
   }
-  document.getElementById('clearFilter').addEventListener('click',function(){
-    applyFilter(null,'');
-    history.replaceState(null,'',location.pathname);
-  });
-
-  var d=new URLSearchParams(location.search).get('d');
-  if(d && LABELS[d]) applyFilter(d,LABELS[d]);
 })();
 </script>
 </body>
