@@ -44,6 +44,24 @@ window.SAM_METRICS = {
 
   },
 
+  /* What index.html's three tiles print. Rounded DOWN on purpose, and
+     counted across platforms — that rounding is what lets the page say
+     "All time. All platforms" without overclaiming: every figure is a
+     floor. Instagram alone over the last 90 days is 6,279,623 views /
+     449,359 interactions / 9,867 followers, so views and likes are
+     already covered by Instagram on its own.
+     ⚠️ Followers is the one that leans on figures NOT in this file:
+     Sam counts YouTube and Facebook on top of Instagram's 9,867 to
+     clear 10,000. Add those channels here when there are real numbers
+     for them; until then this line is his count, not a dashboard read.
+     Kept separate from `values` below, which stays raw and
+     Instagram-only because partner.html binds its tiles to it. */
+  headline: [
+    { v: '6M+',    k: 'Views' },
+    { v: '400K',   k: 'Likes &amp; comments' },
+    { v: '10,000', k: 'Followers' }
+  ],
+
   /* Lifetime floor. Hand-maintained — the automation does not touch it.
      Add to `additions` when a pre-window post is worth counting, and
      raise `display` only when the rounding actually changes. */
