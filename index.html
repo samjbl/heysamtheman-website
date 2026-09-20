@@ -285,6 +285,15 @@ h2 .hl{color:inherit}
 .reel__cap{position:absolute;inset:auto .8rem .8rem .8rem;z-index:3;display:block;
   font-size:.85rem;line-height:1.35;color:#fff;text-shadow:0 1px 8px rgba(4,7,12,.95)}
 .reel__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* a still post: square photo on top, caption in the space below it */
+.reel--post .reel__card{background:var(--bg3)}
+.reel__sq{position:absolute;inset:0 0 auto 0;display:block;aspect-ratio:1/1;overflow:hidden}
+.reel__sq img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.reel__body{position:absolute;inset:auto 0 0 0;display:flex;flex-direction:column;gap:.35rem;
+  padding:.9rem .85rem 1rem;height:43.75%;justify-content:flex-end}
+.reel__cap--post{position:static;inset:auto;text-shadow:none;color:var(--ink)}
+.reel__place{display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted)}
 .reel__n{margin:0;display:flex;align-items:baseline;gap:.4rem}
 .reel__n b{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
   line-height:1;font-size:1.3rem;color:var(--ink)}
@@ -1001,30 +1010,67 @@ h2 .hl{color:inherit}
      line under the card is blank but still reserves its height, so the
      cards stay aligned.
      ──────────────────────────────────────────────────────────────── */
+  /* ── The rail: Reels and stills, alternating ──────────────────────
+     kind:'reel'  → video/reel-<id>.mp4 + img/reel-<id>.jpg, autoplays
+                    muted when the card is on screen
+     kind:'post'  → img/<img>.jpg, a square still that never moves
+     Alternating is deliberate: it halves how much is moving at once
+     without giving up any Reels. Order here is the order on the page.
+     `n` is the figure printed under the card — views for a Reel, likes
+     for a post — and `unit` is the word beside it. Leave n:'' and the
+     line still reserves its height so the cards stay aligned.
+     ──────────────────────────────────────────────────────────────── */
   var REELS = [
-    {id:'Dc4YskjK6tQ', views:'3.2M',  cap:'The climb down from 4,400\u00a0m on the Matterhorn'},
-    {id:'DU0MF8hE7FJ', views:'20.4K', cap:'Mount Yotei summit, six hours up'},
-    {id:'DcwqegrKaXQ', views:'153K',  cap:'Sunrise on the 4,478\u00a0m Matterhorn'},
-    {id:'DbGLmKsKX6M', views:'13.5K', cap:'Paragliding over Lake Annecy at golden hour'}
+    {kind:'reel', id:'Dc4YskjK6tQ', n:'3.2M',  unit:'views',
+     cap:'The climb down from 4,400\u00a0m on the Matterhorn'},
+    {kind:'post', img:'post-fuji', n:'165', unit:'likes',
+     cap:'Skiing Mount Fuji in May', place:'Mount Fuji, Japan'},
+    {kind:'reel', id:'DU0MF8hE7FJ', n:'20.4K', unit:'views',
+     cap:'Mount Yotei summit, six hours up'},
+    {kind:'post', img:'post-japan-alps', n:'79', unit:'likes',
+     cap:'Five friends, five days in the Japanese Alps', place:'My\u014dk\u014d, Niigata'},
+    {kind:'reel', id:'DcwqegrKaXQ', n:'153K',  unit:'views',
+     cap:'Sunrise on the 4,478\u00a0m Matterhorn'},
+    {kind:'post', img:'post-kilimanjaro', n:'92', unit:'likes',
+     cap:'Shira Cave Camp, 3,750\u00a0m on Kilimanjaro', place:'Kilimanjaro, Tanzania'},
+    {kind:'reel', id:'DbGLmKsKX6M', n:'13.5K', unit:'views',
+     cap:'Paragliding over Lake Annecy at golden hour'}
   ];
 
   var rail  = document.getElementById('reels');
   var lblEl = document.getElementById('reelLbl');
-  if(lblEl) lblEl.textContent = 'My top ' + REELS.length + ' Reels';
+  if(lblEl) lblEl.textContent = 'My top posts';
   if(rail && REELS.length){
+    var PROFILE = 'https://www.instagram.com/hey_samtheman/';
     rail.innerHTML = REELS.map(function(r){
-      return '<article class="reel">'
-        +   '<a class="reel__card" href="https://www.instagram.com/reel/' + r.id + '/"'
-        +     ' target="_blank" rel="noopener">'
-        +     '<img src="img/reel-' + r.id + '.jpg" alt="" loading="lazy" decoding="async">'
-        +     '<video muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"'
-        +       ' data-src="video/reel-' + r.id + '.mp4"></video>'
-        +     '<span class="reel__veil"></span>'
-        +     '<span class="reel__cap">' + r.cap + '</span>'
-        +     '<span class="reel__sr">Watch this Reel on Instagram</span>'
+      var media, href;
+      if(r.kind === 'post'){
+        /* a square still sits at the top of the same 9:16 frame; the
+           caption takes the space underneath instead of covering the
+           photograph, which is the whole point of a still */
+        href  = r.href || PROFILE;
+        media = '<span class="reel__sq">'
+              +   '<img src="img/' + r.img + '.jpg" alt="" loading="lazy" decoding="async">'
+              + '</span>'
+              + '<span class="reel__body">'
+              +   '<span class="reel__cap reel__cap--post">' + r.cap + '</span>'
+              +   (r.place ? '<span class="reel__place">' + r.place + '</span>' : '')
+              + '</span>';
+      } else {
+        href  = 'https://www.instagram.com/reel/' + r.id + '/';
+        media = '<img src="img/reel-' + r.id + '.jpg" alt="" loading="lazy" decoding="async">'
+              + '<video muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"'
+              +   ' data-src="video/reel-' + r.id + '.mp4"></video>'
+              + '<span class="reel__veil"></span>'
+              + '<span class="reel__cap">' + r.cap + '</span>';
+      }
+      return '<article class="reel reel--' + r.kind + '">'
+        +   '<a class="reel__card" href="' + href + '" target="_blank" rel="noopener">'
+        +     media
+        +     '<span class="reel__sr">Open on Instagram</span>'
         +   '</a>'
-        +   (r.views
-              ? '<p class="reel__n"><b>' + r.views + '</b><span>views</span></p>'
+        +   (r.n
+              ? '<p class="reel__n"><b>' + r.n + '</b><span>' + r.unit + '</span></p>'
               : '<p class="reel__n reel__n--empty" aria-hidden="true"><b>&nbsp;</b></p>')
         + '</article>';
     }).join('');
