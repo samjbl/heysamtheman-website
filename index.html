@@ -222,7 +222,8 @@ h2 .hl{color:inherit}
 
 /* ══════════ audience: 30-day numbers + reels ══════════ */
 .kicker{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:58rem;
+.reelrail + .kicker{margin-top:clamp(2.25rem,4.5vw,3.25rem)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
 .stat__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
   line-height:1;color:var(--blueDeep);font-size:clamp(2.1rem,4.4vw,3.4rem)}
@@ -230,14 +231,6 @@ h2 .hl{color:inherit}
   letter-spacing:0;color:var(--muted);margin-left:.35rem}
 .stat__k{margin-top:.45rem;font-size:var(--fsBody);color:var(--ink);opacity:.92;line-height:1.35}
 .stat__s{margin-top:.15rem;font-size:var(--fsMicro);color:var(--muted);letter-spacing:.04em}
-.ighandle{margin-top:clamp(1.5rem,3vw,2rem);display:inline-flex;align-items:center;gap:.5rem;
-  text-decoration:none;font-size:var(--fsBody);font-weight:500;color:var(--ink);
-  border:1px solid var(--line2);padding:.6rem 1rem;
-  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
-.ighandle:hover{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 11%,transparent)}
-.ighandle .ic{color:var(--blue)}
-/* the kicker now follows the handle button, which brings its own top margin */
-.ighandle + .kicker{margin-top:clamp(2.25rem,4.5vw,3.25rem)}
 
 /* ── reels: self-hosted carousel (replaced the Instagram embed, 20 Sep 2026)
       Files are in video/ and img/, named by Instagram shortcode. Nothing
@@ -333,7 +326,7 @@ h2 .hl{color:inherit}
 @media(prefers-reduced-motion:no-preference){
   .dash__f{transition:width .9s var(--ease)}}
 @media(max-width:52rem){
-  .stats{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:2rem}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2rem}
   /* Zeely's phone sizing: a card is never taller than half the screen,
      so a thumb sees the next one waiting and the section stays short.
      Height drives width here; flex-basis follows the 9:16 from it. */
@@ -628,7 +621,7 @@ h2 .hl{color:inherit}
     <div class="hero__text">
       <h1>Join my next adventures.</h1>
       <p class="hero__lead">👋 Hi, I'm Sam. I'm a content creator. I'm always outdoors, and my day job is at Google.</p>
-      <p class="hero__note">6.5M+ views, 449K likes and comments, nearly 10,000 followers.<br>
+      <p class="hero__note"><span data-hero="views">6M+</span> views, <span data-hero="likes">400K</span> likes, <span data-hero="followers">10,000</span> followers.<br>
         I'm looking for brands to come along on my next adventures.</p>
       <div class="hero__actions">
         <a class="btn btn--solid" href="#contact">Start a conversation<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
@@ -661,7 +654,7 @@ h2 .hl{color:inherit}
 
     <div class="reelrail rise">
       <div class="reelrail__head">
-        <p class="reelrail__lbl">My top 5 Reels</p>
+        <p class="reelrail__lbl" id="reelLbl">My top Reels</p>
         <div class="reelrail__nav">
           <button class="rnav rnav--prev" type="button" aria-label="Scroll to previous reels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5v15M5.5 13 12 19.5 18.5 13"/></svg></button>
           <button class="rnav rnav--next" type="button" aria-label="Scroll to more reels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5v15M5.5 13 12 19.5 18.5 13"/></svg></button>
@@ -669,8 +662,6 @@ h2 .hl{color:inherit}
       </div>
       <div class="reels" id="reels"></div>
     </div>
-
-    <a class="ighandle rise" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
 
     <!-- The three tiles below are rounded DOWN and cross-platform, which is
          what lets this label stand: each figure is a floor, not a claim.
@@ -680,7 +671,12 @@ h2 .hl{color:inherit}
          follower line leans on Sam's own count of those. -->
     <p class="kicker rise">All time. All platforms</p>
 
-    <div class="stats rise" id="headline"></div>
+    <div class="stats rise">
+      <div class="stat"><div class="stat__n" data-metric="views">6,279,623</div><div class="stat__k">Views</div></div>
+      <div class="stat"><div class="stat__n" data-metric="interactions">449,359</div><div class="stat__k">Likes &amp; comments</div></div>
+      <div class="stat"><div class="stat__n" data-metric="followers">9,867</div><div class="stat__k">Followers</div></div>
+      <div class="stat"><div class="stat__n" data-metric="posts">181</div><div class="stat__k">Posts published</div></div>
+    </div>
 
     <div class="dash rise" id="audDash"></div>
   </div>
@@ -1006,14 +1002,15 @@ h2 .hl{color:inherit}
      cards stay aligned.
      ──────────────────────────────────────────────────────────────── */
   var REELS = [
-    {id:'Dc4YskjK6tQ', views:'3.2M', cap:'The climb down from 4,400 m on the Matterhorn'},
-    {id:'DU0MF8hE7FJ', views:'',     cap:'Mount Yotei summit, six hours up'},
-    {id:'DcwqegrKaXQ', views:'',     cap:'Sunrise on the 4,478 m Matterhorn'},
-    {id:'DbGLmKsKX6M', views:'',     cap:'Paragliding over Lake Annecy at golden hour'},
-    {id:'DX0Om9fzlcy', views:'',     cap:'“Hey Siri, what is type 2 fun?”'}
+    {id:'Dc4YskjK6tQ', views:'3.2M',  cap:'The climb down from 4,400\u00a0m on the Matterhorn'},
+    {id:'DU0MF8hE7FJ', views:'20.4K', cap:'Mount Yotei summit, six hours up'},
+    {id:'DcwqegrKaXQ', views:'153K',  cap:'Sunrise on the 4,478\u00a0m Matterhorn'},
+    {id:'DbGLmKsKX6M', views:'13.5K', cap:'Paragliding over Lake Annecy at golden hour'}
   ];
 
-  var rail = document.getElementById('reels');
+  var rail  = document.getElementById('reels');
+  var lblEl = document.getElementById('reelLbl');
+  if(lblEl) lblEl.textContent = 'My top ' + REELS.length + ' Reels';
   if(rail && REELS.length){
     rail.innerHTML = REELS.map(function(r){
       return '<article class="reel">'
@@ -1077,9 +1074,12 @@ h2 .hl{color:inherit}
       var c = rail.querySelector('.reel');
       return c ? c.getBoundingClientRect().width + 16 : rail.clientWidth * .8;
     }
+    var nav = document.querySelector('.reelrail__nav');
     function edges(){
       if(!prev || !next) return;
       var max = rail.scrollWidth - rail.clientWidth;
+      /* a 40px overflow is not worth a pair of arrows */
+      if(nav) nav.hidden = max <= 48;
       prev.disabled = rail.scrollLeft <= 4;
       next.disabled = rail.scrollLeft >= max - 4;
     }
@@ -1114,17 +1114,16 @@ h2 .hl{color:inherit}
     }, true);
   }
 
-  /* ── headline tiles ───────────────────────────────────────────────
-     Rounded, cross-platform figures from metrics.js `headline`. Kept
-     separate from `values`, which stays raw and Instagram-only because
-     partner.html still binds its tiles to it. ──────────────────────── */
-  var headEl = document.getElementById('headline');
-  var HEAD   = (window.SAM_METRICS && window.SAM_METRICS.headline) || null;
-  if(headEl && HEAD && HEAD.length){
-    headEl.innerHTML = HEAD.map(function(h){
-      return '<div class="stat"><div class="stat__n">' + h.v + '</div>'
-           + '<div class="stat__k">' + h.k + '</div></div>';
-    }).join('');
+  /* ── hero line ───────────────────────────────────────────────────
+     The rounded, cross-platform figures. They live in metrics.js like
+     every other number on the site, so there is still one place to
+     edit them. ─────────────────────────────────────────────────────── */
+  var HERO = (window.SAM_METRICS && window.SAM_METRICS.hero) || null;
+  if(HERO){
+    document.querySelectorAll('[data-hero]').forEach(function(el){
+      var v = HERO[el.getAttribute('data-hero')];
+      if(v) el.textContent = v;
+    });
   }
 
   /* ── audience: icon tabs swapping one panel of bars ───────────────
