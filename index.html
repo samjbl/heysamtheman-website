@@ -538,16 +538,18 @@ h2 .hl{color:inherit}
   .hero__media{aspect-ratio:auto;height:62svh;max-height:none}}
 
 /* ══════════ condensed expedition list (home) ══════════ */
-.mini{list-style:none;display:block;box-shadow:inset 0 1px 0 var(--line)}
-.mini li{display:grid;grid-template-columns:7.5rem minmax(0,1fr);
-  gap:.5rem 1.25rem;align-items:baseline;padding:.7rem .25rem;
+.adv{list-style:none;display:block;box-shadow:inset 0 1px 0 var(--line)}
+.adv li{display:grid;grid-template-columns:minmax(0,1fr) 11.5rem auto;
+  gap:.35rem 1.5rem;align-items:baseline;padding:1rem .25rem;
   box-shadow:inset 0 -1px 0 var(--line)}
-.mini__y{font-size:var(--fsMicro);letter-spacing:.12em;text-transform:uppercase;
-  color:var(--blue);white-space:nowrap}
-.mini__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
-  font-size:1.7rem;line-height:1.12}
-.mini__f{font-family:var(--title);font-weight:500;letter-spacing:var(--titleTrack);
-  font-size:1.7rem;color:var(--muted);white-space:nowrap}
+.adv li[hidden]{display:none}
+.adv__d{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);white-space:nowrap;text-align:right}
+.adv__t{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  font-size:1.7rem;line-height:1.12;color:var(--ink)}
+.adv__f{font-weight:500;color:var(--muted);white-space:nowrap}
+.adv__y{font-size:var(--fsMicro);letter-spacing:.1em;color:var(--muted);
+  white-space:nowrap;text-align:right}
 .morebtn{margin-top:1.1rem;display:inline-flex;align-items:center;gap:.5rem;
   background:transparent;border:0;cursor:pointer;padding:.35rem .25rem;
   font-family:var(--body);font-size:var(--fsBody);letter-spacing:.01em;
@@ -558,12 +560,14 @@ h2 .hl{color:inherit}
 .morebtn[aria-expanded="true"]:hover .ic{transform:translateY(-2px)}
 .mini__cta{margin-top:clamp(1.75rem,3.5vw,2.5rem);display:flex;gap:.75rem;flex-wrap:wrap}
 .mini li[hidden]{display:none}
-@media(max-width:52rem){
-  .mini li{grid-template-columns:6.5rem minmax(0,1fr);gap:.3rem .9rem}
-  .mini__n,.mini__f{font-size:1.25rem}}
+@media(max-width:64rem){
+  .adv li{grid-template-columns:minmax(0,1fr);gap:.15rem;padding:.95rem .25rem}
+  .adv__t{order:1;font-size:1.45rem}
+  .adv__d{order:2;text-align:left}
+  .adv__y{order:3;text-align:left}}
 @media(max-width:34rem){
-  .mini li{grid-template-columns:1fr;gap:.1rem;padding:.7rem .1rem}
-  .mini__n,.mini__f{font-size:.94rem;line-height:1.3}}</style>
+  .adv__t{font-size:1.2rem;line-height:1.25}
+  .adv__f{white-space:normal}}</style>
 </head>
 <body>
 
@@ -678,7 +682,7 @@ h2 .hl{color:inherit}
 
     <div class="reelrail rise">
       <div class="reelrail__head">
-        <p class="reelrail__lbl" id="reelLbl">My top Reels</p>
+        <p class="reelrail__lbl" id="reelLbl">Reels &amp; posts</p>
         <div class="reelrail__nav">
           <button class="rnav rnav--prev" type="button" aria-label="Scroll to previous reels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5v15M5.5 13 12 19.5 18.5 13"/></svg></button>
           <button class="rnav rnav--next" type="button" aria-label="Scroll to more reels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5v15M5.5 13 12 19.5 18.5 13"/></svg></button>
@@ -689,13 +693,8 @@ h2 .hl{color:inherit}
 
     <div class="split rise"><span>Now the audience</span></div>
 
-    <!-- The three tiles below are rounded DOWN and cross-platform, which is
-         what lets this label stand: each figure is a floor, not a claim.
-         Instagram alone, last 90 days, is 6,279,623 / 449,359 / 9,867.
-         Deliberately NOT bound to metrics.js `period` (still "Last 90 days").
-         No YouTube or Facebook figures exist in metrics.js yet — the
-         follower line leans on Sam's own count of those. -->
-    <p class="kicker rise">All time. All platforms</p>
+    <!-- Figures are rounded DOWN and cross-platform, so each is a floor.
+         Instagram alone, last 90 days: 6,279,623 / 449,359 / 9,867. -->
 
     <div class="stats rise">
       <div class="stat"><div class="stat__n" data-metric="views">6,279,623</div><div class="stat__k">Views</div></div>
@@ -711,31 +710,107 @@ h2 .hl{color:inherit}
 <section class="sec sec--tall" id="expeditions">
   <div class="shell">
     <div class="hgroup rise">
-      <h2>All my expeditions</h2>
+      <h2>Latest adventures</h2>
     </div>
-    <ol class="mini rise" id="miniList">
-      <li><span class="mini__y">24 Aug 2026</span><span class="mini__n">Matterhorn, Hörnli Ridge<span class="mini__f">&nbsp;&mdash; 4,478&nbsp;m summit</span></span></li>
-      <li><span class="mini__y">22 Aug 2026</span><span class="mini__n">Breithorn traverse<span class="mini__f">&nbsp;&mdash; 4,164&nbsp;m summit</span></span></li>
-      <li><span class="mini__y">19 Aug 2026</span><span class="mini__n">Weissmies<span class="mini__f">&nbsp;&mdash; 4,017&nbsp;m summit</span></span></li>
-      <li><span class="mini__y">17 Aug 2026</span><span class="mini__n">Üssers Barrhorn<span class="mini__f">&nbsp;&mdash; 3,610&nbsp;m summit</span></span></li>
-      <li><span class="mini__y">May 2026</span><span class="mini__n">Cycling across Japan<span class="mini__f">&nbsp;&mdash; 1,500&nbsp;km</span></span></li>
-      <li><span class="mini__y">May 2026</span><span class="mini__n">Skiing Mt. Fuji</span></li>
-      <li><span class="mini__y">Feb 2026</span><span class="mini__n">Skiing Mt. Yotei<span class="mini__f">&nbsp;&mdash; 1,898&nbsp;m summit</span></span></li>
-      <li><span class="mini__y">Jan 2026</span><span class="mini__n">Serengeti and Ngorongoro</span></li>
-      <li><span class="mini__y">Jan 2026</span><span class="mini__n">Kilimanjaro<span class="mini__f">&nbsp;&mdash; 5,895&nbsp;m summit</span></span></li>
-      <li><span class="mini__y">Jan 2025</span><span class="mini__n">Aconcagua<span class="mini__f">&nbsp;&mdash; 6,500&nbsp;m reached</span></span></li>
-      <li class="is-more" hidden><span class="mini__y">Aug 2023</span><span class="mini__n">Daisetsuzan Traverse</span></li>
-      <li class="is-more" hidden><span class="mini__y">Feb 2022</span><span class="mini__n">Traversée du Jura</span></li>
-      <li class="is-more" hidden><span class="mini__y">Jul 2021</span><span class="mini__n">GR20, Corsica</span></li>
-      <li class="is-more" hidden><span class="mini__y">2017</span><span class="mini__n">Kitesurfing in the Philippines</span></li>
-      <li class="is-more" hidden><span class="mini__y">Oct 2016</span><span class="mini__n">Paragliding licence</span></li>
-      <li class="is-more" hidden><span class="mini__y">Sep 2015</span><span class="mini__n">Mont Blanc<span class="mini__f">&nbsp;&mdash; 4,808&nbsp;m summit</span></span></li>
-      <li class="is-more" hidden><span class="mini__y">Jun 2014</span><span class="mini__n">Hiking O'Henro in Japan<span class="mini__f">&nbsp;&mdash; 88 temples</span></span></li>
-      <li class="is-more" hidden><span class="mini__y">Aug 2013</span><span class="mini__n">Motorcycle across Vietnam<span class="mini__f">&nbsp;&mdash; 40 days</span></span></li>
-      <li class="is-more" hidden><span class="mini__y">Jun 2013</span><span class="mini__n">Camino de Santiago<span class="mini__f">&nbsp;&mdash; 1,670&nbsp;km</span></span></li>
+    <ol class="adv rise" id="miniList">
+      <li>
+        <span class="adv__t">Matterhorn, Hörnli Ridge<span class="adv__f">&nbsp;&mdash; 4,478&nbsp;m summit</span></span>
+        <span class="adv__d">Alpinism</span>
+        <span class="adv__y">24 Aug 2026</span>
+      </li>
+      <li>
+        <span class="adv__t">Breithorn traverse<span class="adv__f">&nbsp;&mdash; 4,164&nbsp;m summit</span></span>
+        <span class="adv__d">Alpinism</span>
+        <span class="adv__y">22 Aug 2026</span>
+      </li>
+      <li>
+        <span class="adv__t">Weissmies<span class="adv__f">&nbsp;&mdash; 4,017&nbsp;m summit</span></span>
+        <span class="adv__d">Alpinism</span>
+        <span class="adv__y">19 Aug 2026</span>
+      </li>
+      <li>
+        <span class="adv__t">Üssers Barrhorn<span class="adv__f">&nbsp;&mdash; 3,610&nbsp;m summit</span></span>
+        <span class="adv__d">Alpinism</span>
+        <span class="adv__y">17 Aug 2026</span>
+      </li>
+      <li>
+        <span class="adv__t">Cycling across Japan<span class="adv__f">&nbsp;&mdash; 1,500&nbsp;km</span></span>
+        <span class="adv__d">Cycling</span>
+        <span class="adv__y">May – June 2026</span>
+      </li>
+      <li>
+        <span class="adv__t">Skiing Mt. Fuji</span>
+        <span class="adv__d">Backcountry skiing</span>
+        <span class="adv__y">May 2026</span>
+      </li>
+      <li>
+        <span class="adv__t">Skiing Mt. Yotei<span class="adv__f">&nbsp;&mdash; 1,898&nbsp;m summit</span></span>
+        <span class="adv__d">Backcountry skiing</span>
+        <span class="adv__y">February 2026</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Serengeti and Ngorongoro</span>
+        <span class="adv__d">Safari</span>
+        <span class="adv__y">January 2026</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Kilimanjaro<span class="adv__f">&nbsp;&mdash; 5,895&nbsp;m summit</span></span>
+        <span class="adv__d">Alpinism</span>
+        <span class="adv__y">January 2026</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Aconcagua<span class="adv__f">&nbsp;&mdash; 6,500&nbsp;m reached</span></span>
+        <span class="adv__d">Alpinism</span>
+        <span class="adv__y">January 2025</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Daisetsuzan Traverse</span>
+        <span class="adv__d">Trekking</span>
+        <span class="adv__y">August 2023</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Traversée du Jura</span>
+        <span class="adv__d">Nordic ski</span>
+        <span class="adv__y">February 2022</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">GR20, Corsica</span>
+        <span class="adv__d">Trekking</span>
+        <span class="adv__y">July 2021</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Kitesurfing in the Philippines</span>
+        <span class="adv__d">Kitesurfing</span>
+        <span class="adv__y">2017</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Paragliding licence</span>
+        <span class="adv__d">Paragliding</span>
+        <span class="adv__y">October 2016</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Mont Blanc<span class="adv__f">&nbsp;&mdash; 4,808&nbsp;m summit</span></span>
+        <span class="adv__d">Alpinism</span>
+        <span class="adv__y">September 2015</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Hiking O'Henro in Japan<span class="adv__f">&nbsp;&mdash; 88 temples</span></span>
+        <span class="adv__d">Trekking</span>
+        <span class="adv__y">June 2014</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Motorcycle across Vietnam<span class="adv__f">&nbsp;&mdash; 40 days</span></span>
+        <span class="adv__d">Motorbike</span>
+        <span class="adv__y">August 2013</span>
+      </li>
+      <li class="is-more" hidden>
+        <span class="adv__t">Camino de Santiago<span class="adv__f">&nbsp;&mdash; 1,670&nbsp;km</span></span>
+        <span class="adv__d">Trekking</span>
+        <span class="adv__y">June 2013</span>
+      </li>
     </ol>
     <button class="morebtn rise" type="button" id="moreBtn" aria-expanded="false" aria-controls="miniList">
-      <span id="moreLabel">Show earlier expeditions</span><svg class="ic ic--sm" id="moreIcon"><use href="#i-down"/></svg>
+      <span id="moreLabel">Show earlier adventures</span><svg class="ic ic--sm" id="moreIcon"><use href="#i-down"/></svg>
     </button>
 
     <div class="mini__cta rise">
@@ -776,7 +851,7 @@ h2 .hl{color:inherit}
 <section class="sec contact" id="contact">
   <div class="shell">
     <div class="hgroup rise">
-      <h2>Let's talk about how I can <span class="hl">help you</span>.</h2>
+      <h2>Contact me</h2>
     </div>
 
     <form class="form rise" id="contactForm" novalidate>
@@ -972,7 +1047,7 @@ h2 .hl{color:inherit}
       var open=moreBtn.getAttribute('aria-expanded')==='true';
       hiddenRows.forEach(function(r){ r.hidden=open; });
       moreBtn.setAttribute('aria-expanded',String(!open));
-      moreLabel.textContent=open?'Show earlier expeditions':'Show fewer';
+      moreLabel.textContent=open?'Show earlier adventures':'Show fewer';
       moreIcon.firstElementChild.setAttribute('href',open?'#i-down':'#i-up');
     });
   }
@@ -1056,7 +1131,7 @@ h2 .hl{color:inherit}
 
   var rail  = document.getElementById('reels');
   var lblEl = document.getElementById('reelLbl');
-  if(lblEl) lblEl.textContent = 'My top posts';
+  if(lblEl) lblEl.textContent = 'Reels & posts';
   if(rail && REELS.length){
     var PROFILE = 'https://www.instagram.com/hey_samtheman/';
     rail.innerHTML = REELS.map(function(r){
