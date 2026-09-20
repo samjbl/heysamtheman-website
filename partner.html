@@ -68,6 +68,7 @@ h1{font-size:3.5rem;font-size:var(--h1)}
 h2{font-size:2.75rem;font-size:var(--h2);max-width:19ch}
 p{max-width:68ch;text-wrap:pretty}
 .hl{color:var(--blue)}
+h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highlighted words */
 
 .ic{width:1.05em;height:1.05em;flex:none;fill:none;stroke:currentColor;
   stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.16em}
@@ -124,10 +125,12 @@ p{max-width:68ch;text-wrap:pretty}
   font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;
   padding:.7rem .95rem;cursor:pointer;min-height:2.75rem}
 .nav__toggle:hover{border-color:var(--blue);color:var(--blue)}
-@media(min-width:52.0625rem){
+@media(min-width:60.0625rem){
   .nav.is-stuck .nav__links{display:none}
   .nav.is-stuck .nav__toggle{display:inline-flex}}
-@media(max-width:52rem){
+/* below 960px the logo + five links + CTA no longer fit on one row,
+   so the hamburger takes over — see the 834px overflow fix */
+@media(max-width:60rem){
   .nav__links{display:none}
   .nav__toggle{display:inline-flex}}
 .menu{position:fixed;inset:0;z-index:149;background:color-mix(in srgb,var(--bg) 97%,transparent);
@@ -215,7 +218,8 @@ p{max-width:68ch;text-wrap:pretty}
 [id]{scroll-margin-top:6rem}
 
 /* ══════════ sub-page header ══════════ */
-.sec--flush{padding-top:0}
+/* the page head runs straight into this section, so it keeps a little air */
+.sec--flush{padding-top:clamp(2.5rem,5vw,4rem)}
 .hgroup--tight{margin-bottom:clamp(1.5rem,3vw,2rem)}
 
 .pagehead{padding-top:calc(var(--navH) + clamp(2.25rem,5vw,4rem));
@@ -230,6 +234,11 @@ p{max-width:68ch;text-wrap:pretty}
 .cta{box-shadow:inset 0 1px 0 var(--line);padding-top:clamp(2.5rem,5vw,3.5rem);
   margin-top:clamp(3rem,6vw,4.5rem);display:flex;flex-wrap:wrap;gap:1.25rem 2rem;
   align-items:center;justify-content:space-between}
+/* the closing CTA sits alone in its own section here, so it needs no extra
+   top margin of its own — the section padding already spaces it */
+#partner{padding-bottom:clamp(3.5rem,7vw,5.5rem)}
+#start{padding-top:clamp(2.5rem,5vw,3.5rem)}
+#start .cta{margin-top:0}
 .cta h3{font-size:2rem;font-size:clamp(1.75rem,3.4vw,2.5rem);max-width:18ch}
 .cta p{color:var(--muted);max-width:40ch;margin-top:.5rem}
 @media(max-width:60rem){
@@ -296,7 +305,7 @@ p{max-width:68ch;text-wrap:pretty}
     <a href="expeditions.html">Expeditions</a>
     <a href="blog.html">Blog</a>
     <a href="links.html">Links</a>
-    <a href="about.html">About</a>
+    <a href="about.html">My story</a>
   </nav>
   <div class="nav__right">
     <a class="nav__cta" href="index.html#contact"><svg class="ic ic--sm"><use href="#i-mail"/></svg>Contact me</a>
@@ -311,7 +320,7 @@ p{max-width:68ch;text-wrap:pretty}
   <a href="expeditions.html"><svg class="ic"><use href="#i-list"/></svg>Expeditions</a>
   <a href="blog.html"><svg class="ic"><use href="#i-doc"/></svg>Blog</a>
   <a href="links.html"><svg class="ic"><use href="#i-grid"/></svg>Links</a>
-  <a href="about.html"><svg class="ic"><use href="#i-users"/></svg>About</a>
+  <a href="about.html"><svg class="ic"><use href="#i-users"/></svg>My story</a>
   <a href="index.html#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
 </div>
 
@@ -330,12 +339,12 @@ p{max-width:68ch;text-wrap:pretty}
       <p class="lede"><a class="iglink" href="https://www.instagram.com/hey_samtheman/" rel="me"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman</a></p>
     </div>
 
-    <p class="kicker rise">Instagram · <span data-metric-period>All time</span></p>
+    <p class="kicker rise">Instagram · <span data-metric-period>Last 90 days</span></p>
 
     <div class="stats rise">
-      <div class="stat"><div class="stat__n" data-metric="views">6,024,602</div><div class="stat__k">Views</div></div>
-      <div class="stat"><div class="stat__n" data-metric="interactions">435,836</div><div class="stat__k">Likes &amp; comments</div></div>
-      <div class="stat"><div class="stat__n" data-metric="followers">9,826</div><div class="stat__k">Followers</div></div>
+      <div class="stat"><div class="stat__n" data-metric="views">6,279,623</div><div class="stat__k">Views</div></div>
+      <div class="stat"><div class="stat__n" data-metric="interactions">449,359</div><div class="stat__k">Likes &amp; comments</div></div>
+      <div class="stat"><div class="stat__n" data-metric="followers">9,867</div><div class="stat__k">Followers</div></div>
       <div class="stat"><div class="stat__n" data-metric="posts">181</div><div class="stat__k">Posts published</div></div>
     </div>
   </div>
@@ -344,7 +353,7 @@ p{max-width:68ch;text-wrap:pretty}
 <section class="sec sec--tall" id="partner">
   <div class="shell">
     <div class="hgroup rise">
-      <h2>How we <span class="hl">partner</span> together</h2>
+      <h2>How we partner together</h2>
     </div>
     <div class="offer">
 
@@ -372,7 +381,7 @@ p{max-width:68ch;text-wrap:pretty}
         </div>
         <ul class="offer__list">
           <li><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism and high altitude, up to 6,500 m</li>
-          <li><svg class="ic ic--sm"><use href="#i-ski"/></svg>Ski mountaineering in Japan and the Alps</li>
+          <li><svg class="ic ic--sm"><use href="#i-ski"/></svg>Backcountry skiing in Japan and the Alps</li>
           <li><svg class="ic ic--sm"><use href="#i-hike"/></svg>Multi-week trekking and long-distance cycling</li>
           <li><svg class="ic ic--sm"><use href="#i-doc"/></svg>Structured written report with photo evidence</li>
         </ul>
@@ -401,7 +410,7 @@ p{max-width:68ch;text-wrap:pretty}
   <div class="shell">
     <div class="cta rise">
       <div>
-        <h3>Let's talk about how I can <span class="hl">help you</span>.</h3>
+        <h3>Let&rsquo;s talk about how I can help you.</h3>
       </div>
       <a class="btn btn--solid" href="index.html#contact">Start a conversation<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
     </div>
@@ -455,7 +464,7 @@ p{max-width:68ch;text-wrap:pretty}
         requestAnimationFrame(step);
       });
     },{threshold:.4});
-    document.querySelectorAll('.tick').forEach(function(el){io.observe(el)});
+    document.querySelectorAll("[data-to]").forEach(function(el){io.observe(el)});
   }
 })();
 </script>

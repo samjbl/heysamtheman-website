@@ -53,7 +53,12 @@ p{text-wrap:pretty}
   background:var(--blueFill);color:#fff;border:1px solid var(--blueFill);
   padding:.7rem 1.1rem;white-space:nowrap;min-height:2.75rem}
 .nav__cta:hover{background:#3357dd;border-color:#3357dd}
-@media(max-width:52rem){.nav__links{display:none}}
+/* below 960px the logo + five links + CTA stop fitting on one row */
+@media(max-width:60rem){.nav__links{display:none}}
+/* phones: drop the long half of the wordmark so the CTA is not pushed off-screen */
+@media(max-width:34rem){
+  .nav__logo-rest{display:none}
+  .nav__cta{padding:.7rem .85rem;letter-spacing:.04em}}
 
 .pagehead{padding-top:calc(var(--navH) + clamp(2.5rem,7vw,5rem));
   padding-bottom:clamp(1.5rem,4vw,2.5rem)}
