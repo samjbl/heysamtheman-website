@@ -162,12 +162,13 @@ p{max-width:68ch;text-wrap:pretty}
 .hero__note{margin-top:.9rem;max-width:42ch;color:#c2c9da}
 
 /* what I'm looking for — three asks, stated plainly */
-.asks{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.asks{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.35rem 1.6rem}
 .asks a{display:inline-flex;align-items:center;text-decoration:none;
-  font-size:var(--fsBody);font-weight:500;letter-spacing:.01em;color:var(--ink);
-  border:1px solid var(--line2);padding:.6rem 1rem;
-  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease),color var(--dur) var(--ease)}
-.asks a:hover{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 11%,transparent)}
+  font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  font-size:1.5rem;line-height:1.2;color:var(--ink);padding-bottom:.12rem;
+  border-bottom:2px solid color-mix(in srgb,var(--blue) 42%,transparent);
+  transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.asks a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 
 .hero__actions{margin-top:clamp(1.6rem,3vw,2.25rem);display:flex;flex-wrap:wrap;gap:.75rem}
 .btn{position:relative;overflow:hidden;isolation:isolate;
@@ -467,12 +468,12 @@ p{max-width:68ch;text-wrap:pretty}
     <p class="kicker rise">Instagram · last 30 days to 17 September 2026</p>
 
     <div class="stats rise">
-      <div class="stat"><div class="stat__n">6,000,000</div><div class="stat__k">Views</div></div>
+      <div class="stat"><div class="stat__n">6,024,602</div><div class="stat__k">Views</div></div>
       <div class="stat"><div class="stat__n">5,900,000</div><div class="stat__k">Reel views</div></div>
       <div class="stat"><div class="stat__n">3,170,246</div><div class="stat__k">Accounts reached</div></div>
       <div class="stat"><div class="stat__n">435,836</div><div class="stat__k">Interactions</div></div>
       <div class="stat"><div class="stat__n">9,826</div><div class="stat__k">Followers</div></div>
-      <div class="stat"><div class="stat__n">122</div><div class="stat__k">Posts published</div></div>
+      <div class="stat"><div class="stat__n">181</div><div class="stat__k">Posts published</div></div>
     </div>
 
     <a class="ighandle rise" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
