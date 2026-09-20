@@ -136,10 +136,12 @@ h2 .hl{color:inherit}
   font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;
   padding:.7rem .95rem;cursor:pointer;min-height:2.75rem}
 .nav__toggle:hover{border-color:var(--blue);color:var(--blue)}
-@media(min-width:52.0625rem){
+@media(min-width:60.0625rem){
   .nav.is-stuck .nav__links{display:none}
   .nav.is-stuck .nav__toggle{display:inline-flex}}
-@media(max-width:52rem){
+/* below 960px the logo + five links + CTA no longer fit on one row,
+   so the hamburger takes over — see the 834px overflow fix */
+@media(max-width:60rem){
   .nav__links{display:none}
   .nav__toggle{display:inline-flex}}
 .menu{position:fixed;inset:0;z-index:149;background:color-mix(in srgb,var(--bg) 97%,transparent);
@@ -458,6 +460,10 @@ h2 .hl{color:inherit}
   font-size:1.6rem;font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:.35rem}
 .tip__h .ic{color:var(--blue);width:.8em;height:.8em}
 .tip p{color:var(--muted);font-size:var(--fsBody);max-width:44ch}
+.contact__mail{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.1rem;
+  text-decoration:none;color:var(--blue);font-size:var(--fsLead);
+  border-bottom:1px solid transparent;transition:border-color var(--dur) var(--ease)}
+.contact__mail:hover{border-bottom-color:var(--blue)}
 .cmeta{margin-top:clamp(2.5rem,5vw,3.25rem);display:flex;justify-content:center;flex-wrap:wrap;
   gap:.75rem clamp(1.5rem,4vw,3rem);
   font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -619,7 +625,7 @@ h2 .hl{color:inherit}
     <a href="expeditions.html">Expeditions</a>
     <a href="blog.html">Blog</a>
     <a href="links.html">Links</a>
-    <a href="about.html">About</a>
+    <a href="about.html">My story</a>
   </nav>
   <div class="nav__right">
     <a class="nav__cta" href="#contact"><svg class="ic ic--sm"><use href="#i-mail"/></svg>Contact me</a>
@@ -634,7 +640,7 @@ h2 .hl{color:inherit}
   <a href="expeditions.html"><svg class="ic"><use href="#i-list"/></svg>Expeditions</a>
   <a href="blog.html"><svg class="ic"><use href="#i-doc"/></svg>Blog</a>
   <a href="links.html"><svg class="ic"><use href="#i-grid"/></svg>Links</a>
-  <a href="about.html"><svg class="ic"><use href="#i-users"/></svg>About</a>
+  <a href="about.html"><svg class="ic"><use href="#i-users"/></svg>My story</a>
   <a href="#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
 </div>
 
@@ -852,6 +858,7 @@ h2 .hl{color:inherit}
   <div class="shell">
     <div class="hgroup rise">
       <h2>Contact me</h2>
+      <a class="contact__mail" href="mailto:hello@heysamtheman.com"><svg class="ic ic--sm"><use href="#i-mail"/></svg>hello@heysamtheman.com</a>
     </div>
 
     <form class="form rise" id="contactForm" novalidate>
@@ -904,8 +911,6 @@ h2 .hl{color:inherit}
       <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>Based in Tokyo</span>
       <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>From Annecy, French Alps</span>
       <span><svg class="ic ic--sm"><use href="#i-globe"/></svg>Available worldwide</span>
-      <span><svg class="ic ic--sm"><use href="#i-mail"/></svg><a href="mailto:hello@heysamtheman.com" style="color:inherit;text-decoration:none">hello@heysamtheman.com</a></span>
-      <span><svg class="ic ic--sm"><use href="#i-briefcase"/></svg>Media kit on request</span>
     </div>
   </div>
 </section>
@@ -1370,7 +1375,7 @@ h2 .hl{color:inherit}
         requestAnimationFrame(step);
       });
     },{threshold:.4});
-    document.querySelectorAll('.tick').forEach(function(el){io.observe(el)});
+    document.querySelectorAll("[data-to]").forEach(function(el){io.observe(el)});
   }
 
   /* nav scroll-spy */
