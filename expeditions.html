@@ -180,6 +180,10 @@ p{max-width:68ch;text-wrap:pretty}
 .row__disc .ic{color:var(--blue);opacity:.7}
 .row__o{color:var(--blue);justify-content:flex-end}
 .row__o.is-back{color:var(--muted)}
+.row__o.is-next{color:var(--blueDeep)}
+.nextlabel{margin-top:clamp(2.25rem,5vw,3rem);margin-bottom:.35rem;
+  font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.row--next{background:color-mix(in srgb,var(--blue) 6%,transparent)}
 .empty{padding:2.5rem 1rem;color:var(--muted)}
 .foot__tip{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;color:var(--muted);transition:color var(--dur) var(--ease)}
 .foot__tip:hover{color:var(--blue)}
@@ -260,6 +264,7 @@ p{max-width:68ch;text-wrap:pretty}
   <nav class="nav__links" aria-label="Primary">
     <a href="partner.html">Partner with me</a>
     <a href="expeditions.html" class="is-active">Expeditions</a>
+    <a href="links.html">Links</a>
     <a href="index.html#about">About</a>
   </nav>
   <div class="nav__right">
@@ -273,6 +278,7 @@ p{max-width:68ch;text-wrap:pretty}
 <div class="menu" id="menu" data-open="false">
   <a href="partner.html"><svg class="ic"><use href="#i-handshake"/></svg>Partner with me</a>
   <a href="expeditions.html"><svg class="ic"><use href="#i-list"/></svg>Expeditions</a>
+  <a href="links.html"><svg class="ic"><use href="#i-grid"/></svg>Links</a>
   <a href="index.html#about"><svg class="ic"><use href="#i-users"/></svg>About</a>
   <a href="index.html#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
 </div>
@@ -302,7 +308,7 @@ p{max-width:68ch;text-wrap:pretty}
       </article>
       <article class="row" data-disc="motorbike">
         <div class="row__y">Aug 2013</div>
-        <div><h2 class="row__t">Vietnam by motorbike</h2><p class="row__d">Ho Chi Minh City to Hanoi and back down. Forty days. I learned to ride the week before leaving.</p></div>
+        <div><h2 class="row__t">Vietnam by motorbike</h2><p class="row__d">Ho Chi Minh City to Hanoi and back down. Forty days. I bought the bike on Bui Vien and had learned to ride it three days earlier.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-moto"/></svg>Motorbike</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
       </article>
@@ -355,12 +361,6 @@ p{max-width:68ch;text-wrap:pretty}
         <div class="row__o is-back"><svg class="ic ic--sm"><use href="#i-back"/></svg>Turned back</div>
       </article>
       <article class="row" data-disc="alpinism">
-        <div class="row__y">Aug 2025</div>
-        <div><h2 class="row__t">Matterhorn, Hörnli Ridge</h2><p class="row__d">Three days on the mountain, 1 to 3 August. Turned back at roughly 3,800&nbsp;m.</p></div>
-        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
-        <div class="row__o is-back"><svg class="ic ic--sm"><use href="#i-back"/></svg>Turned back</div>
-      </article>
-      <article class="row" data-disc="alpinism">
         <div class="row__y">Jan 2026</div>
         <div><h2 class="row__t">Kilimanjaro, 5,895 m</h2><p class="row__d">Highest summit to date.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
@@ -374,7 +374,7 @@ p{max-width:68ch;text-wrap:pretty}
       </article>
       <article class="row" data-disc="ski">
         <div class="row__y">Feb 2026</div>
-        <div><h2 class="row__t">Mt. Yotei</h2><p class="row__d">Hokkaidō. Climbed, then skied.</p></div>
+        <div><h2 class="row__t">Mt. Yotei, 1,898 m</h2><p class="row__d">Hokkaidō, two days. Turned back above the tree line on the first; summited and skied on the second.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-ski"/></svg>Ski mountaineering</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit and ski</div>
       </article>
@@ -389,6 +389,22 @@ p{max-width:68ch;text-wrap:pretty}
         <div><h2 class="row__t">Japan end to end by bike</h2><p class="row__d">The length of the country, May into June.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-bike"/></svg>Cycling</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
+      </article>
+      <article class="row" data-disc="alpinism">
+        <div class="row__y">Aug 2026</div>
+        <div><h2 class="row__t">Matterhorn, Hörnli Ridge — 4,478&nbsp;m</h2><p class="row__d">Turned back at roughly 3,800&nbsp;m in August 2025. Came back a year later after a Valais build-up — Üssers Barrhorn 3,610&nbsp;m, Weissmies 4,017&nbsp;m, the Breithorn traverse 4,164&nbsp;m — and summited on 24 August, first party on the mountain. Three hours twenty up. Guide: Emmanuel Julien, Zermatters.</p></div>
+        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
+        <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit</div>
+      </article>
+    </div>
+
+    <p class="nextlabel">Next</p>
+    <div id="tl-next">
+      <article class="row row--next" data-disc="alpinism">
+        <div class="row__y">17–20 Oct 2026</div>
+        <div><h2 class="row__t">Siguniang Erfeng, 5,276&nbsp;m</h2><p class="row__d">Second Peak of the Siguniangshan range above Rilong, Sichuan, roughly 200&nbsp;km west of Chengdu. It would become my second-highest summit, above the Matterhorn.</p></div>
+        <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
+        <div class="row__o is-next"><svg class="ic ic--sm"><use href="#i-flag"/></svg>Upcoming</div>
       </article>
     </div>
 
@@ -431,7 +447,8 @@ p{max-width:68ch;text-wrap:pretty}
   var LABELS={alpinism:'Alpinism',ski:'Ski touring',cycling:'Cycling',
     paragliding:'Paragliding',trekking:'Hiking',kitesurfing:'Kitesurfing',
     diving:'Diving',motorbike:'Motorbike',safari:'Safari'};
-  var rows=[].slice.call(document.querySelectorAll('#tl .row'));
+  var rows=[].slice.call(document.querySelectorAll('#tl .row, #tl-next .row'));
+  var nextLabel=document.querySelector('.nextlabel');
   var bar=document.getElementById('filterbar');
   var fname=document.getElementById('filterName');
   var empty=document.getElementById('emptyNote');
@@ -444,6 +461,8 @@ p{max-width:68ch;text-wrap:pretty}
     });
     bar.hidden=!key;
     fname.textContent=label||'';
+    var nextRow=document.querySelector('#tl-next .row');
+    if(nextLabel) nextLabel.hidden=!!(nextRow&&nextRow.hidden);
     if(key && shown===0){
       empty.hidden=false;
       empty.textContent='Nothing logged under '+label+' yet. It is on the list.';
