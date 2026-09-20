@@ -1,5 +1,6 @@
 .DS_Store
 **/.DS_Store
 
-# the 47MB Instagram originals — video/ holds the web-sized encodes
-Top 5 reels/
+# the ~60MB Instagram originals (renamed from "Top 5 reels" on 20 Sep 2026).
+# video/ holds the web encodes, img/post-*.jpg the cropped stills.
+Top Posts/
