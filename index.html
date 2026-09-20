@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Sam — sixteen self-organised expeditions across four continents since 2013, most recently the Matterhorn. Looking for brands to come along on the next ones.">
+<meta name="description" content="Sam — nineteen self-organised expeditions across four continents since 2013, most recently the Matterhorn. Looking for brands to come along on the next ones.">
 <meta name="theme-color" content="#04070c">
 <title>Sam 🌋 Wild Adventures</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
   --body:'Onest',system-ui,sans-serif;
 
   --h1:clamp(3.25rem,7.5vw,6.75rem);
-  --h2:clamp(2.4rem,5.4vw,4.4rem);
+  --h2:clamp(2.7rem,6vw,5rem);
 
   /* ── blue only, another step darker ── */
   --bg:#04070c;
@@ -68,6 +68,8 @@ h1{font-size:3.5rem;font-size:var(--h1)}
 h2{font-size:2.75rem;font-size:var(--h2);max-width:19ch}
 p{max-width:68ch;text-wrap:pretty}
 .hl{color:var(--blue)}
+/* section headings stay one colour on the front page */
+h2 .hl{color:inherit}
 
 .ic{width:1.05em;height:1.05em;flex:none;fill:none;stroke:currentColor;
   stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.16em}
@@ -99,8 +101,14 @@ p{max-width:68ch;text-wrap:pretty}
   display:flex;align-items:center;justify-content:space-between;gap:.6rem;
   padding:.9rem var(--shellPad);border-bottom:1px solid transparent;
   transition:background var(--durSlow) var(--ease),border-color var(--durSlow) var(--ease)}
-.nav.is-stuck{background:color-mix(in srgb,var(--bg) 92%,transparent);
-  backdrop-filter:blur(16px);border-bottom-color:var(--line)}
+.nav.is-stuck{background:color-mix(in srgb,var(--bg) 68%,transparent);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+          backdrop-filter:blur(20px) saturate(150%);
+  border-bottom-color:var(--line)}
+/* Safari/iOS repaint the blur badly without a compositing hint */
+.nav{will-change:background}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .nav.is-stuck{background:color-mix(in srgb,var(--bg) 94%,transparent)}}
 .nav__logo{display:inline-flex;align-items:center;gap:.3rem;
   font-family:var(--title);font-weight:600;font-size:1.4rem;
   font-size:clamp(1.15rem,2.6vw,1.75rem);
@@ -162,7 +170,7 @@ p{max-width:68ch;text-wrap:pretty}
 .hero__note{margin-top:.9rem;max-width:42ch;color:#c2c9da}
 
 /* what I'm looking for — three asks, stated plainly */
-.asks{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.35rem 1.6rem}
+.asks{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.35rem 1.6rem}
 .asks a{display:inline-flex;align-items:center;text-decoration:none;
   font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
   font-size:1.5rem;line-height:1.2;color:var(--ink);padding-bottom:.12rem;
@@ -185,6 +193,31 @@ p{max-width:68ch;text-wrap:pretty}
   background:linear-gradient(100deg,transparent 34%,rgba(255,255,255,.2) 50%,transparent 66%)}
 @media(prefers-reduced-motion:no-preference){.btn--solid:hover::after{animation:sheen .7s cubic-bezier(.22,1,.36,1)}}
 @keyframes sheen{to{translate:100% 0}}
+
+/* ══════════ brands banner ══════════ */
+.marquee{position:relative;margin-top:clamp(2rem,4vw,2.75rem);overflow:hidden;
+  padding-block:.5rem;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.marquee__track{display:flex;width:max-content;align-items:center;
+  gap:clamp(2.5rem,6vw,5rem);animation:marquee 48s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee__i{flex:none;display:flex;align-items:center;justify-content:center;height:2.4rem}
+/* brightness(0) invert(1) forces any logo — black, coloured, whatever —
+   to a flat white, which is the only way a mixed set reads as one row */
+.marquee__i img{height:100%;width:auto;max-width:9.5rem;object-fit:contain;
+  filter:brightness(0) invert(1);opacity:.62;
+  transition:opacity var(--dur) var(--ease)}
+.marquee__i:hover img{opacity:1}
+.marquee__i span{font-size:var(--fsMicro);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;transition:color var(--dur) var(--ease)}
+.marquee__i:hover span{color:var(--ink)}
+@media(prefers-reduced-motion:reduce){
+  .marquee{-webkit-mask-image:none;mask-image:none}
+  .marquee__track{animation:none;flex-wrap:wrap;width:auto;justify-content:center;
+    gap:1.5rem 2.75rem}
+  .marquee__i[data-dup]{display:none}}
 
 /* ══════════ audience: 30-day numbers + reels ══════════ */
 .kicker{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
@@ -211,7 +244,21 @@ p{max-width:68ch;text-wrap:pretty}
 /* Instagram injects its own iframe with inline widths; rein it in */
 .reels .instagram-media{margin:0!important;min-width:0!important;
   max-width:100%!important;width:100%!important;border-radius:6px!important}
-.reels__note{margin-top:1rem;font-size:var(--fsMicro);letter-spacing:.04em;color:var(--muted)}
+/* headline number directly under the reels */
+.peak{margin-top:clamp(1.5rem,3vw,2rem);display:flex;align-items:baseline;
+  gap:.6rem;flex-wrap:wrap}
+.peak b{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  line-height:1;color:var(--blueDeep);font-size:clamp(2rem,4.6vw,3.2rem)}
+.peak span{font-size:var(--fsLead);color:var(--ink);opacity:.92}
+/* compact audience summary */
+.aud{margin-top:clamp(1.5rem,3vw,2rem);display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+  gap:.9rem clamp(1.5rem,3vw,2.5rem);max-width:64rem;
+  padding-top:1.25rem;box-shadow:inset 0 1px 0 var(--line)}
+.aud__i{display:flex;flex-direction:column;gap:.2rem}
+.aud__k{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.aud__v{font-size:var(--fsBody);color:var(--ink);line-height:1.35}
+.aud__i[hidden]{display:none}
 .reels__fallback{grid-column:1/-1;padding:1.25rem;border:1px solid var(--line2);
   background:var(--bg2);color:var(--muted);font-size:var(--fsBody)}
 .reels__fallback a{color:var(--blue)}
@@ -235,7 +282,7 @@ p{max-width:68ch;text-wrap:pretty}
   display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem;
   min-height:9.5rem;transition:background var(--durSlow) var(--ease)}
 .cell:hover{background:var(--bg2)}
-.cell--lead{grid-column:span 2;grid-row:span 2;min-height:18rem}
+.cell--lead{grid-column:span 2;min-height:11rem}
 .cell--wide{grid-column:span 2}
 .cell__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
   line-height:1;font-size:2.5rem;font-size:clamp(2.2rem,4vw,3.1rem)}
@@ -249,6 +296,21 @@ p{max-width:68ch;text-wrap:pretty}
 .cell--lead .cell__k{font-size:var(--fsLead);max-width:20ch}
 .cell__sub{color:var(--muted);font-size:var(--fsBody);margin-top:.1rem;padding-left:1.55rem}
 
+/* ══════════ how we can work together ══════════ */
+.work__lede{margin-top:1rem;color:var(--muted);max-width:60ch}
+.work{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));
+  gap:clamp(.9rem,1.8vw,1.25rem);margin-top:clamp(2rem,4vw,3rem)}
+.work__i{display:flex;flex-direction:column;gap:.7rem;text-decoration:none;
+  padding:clamp(1.25rem,2.4vw,1.75rem);border:1px solid var(--line2);background:var(--bg2);
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease),transform var(--durSlow) var(--ease)}
+.work__i:hover{border-color:var(--blue);background:var(--bg3)}
+@media(prefers-reduced-motion:no-preference){.work__i:hover{transform:translateY(-3px)}}
+.work__i h3{display:flex;align-items:center;gap:.6rem;font-size:1.6rem;line-height:1.1}
+.work__i h3 .ic{color:var(--blue);width:.8em;height:.8em}
+.work__i p{color:var(--muted);font-size:var(--fsBody);flex:1}
+.work__go{display:inline-flex;align-items:center;gap:.4rem;margin-top:.15rem;
+  font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+
 /* ══════════ about ══════════ */
 .about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
   gap:clamp(2rem,5vw,4.5rem);align-items:center}
@@ -261,8 +323,26 @@ p{max-width:68ch;text-wrap:pretty}
   margin-top:clamp(1.75rem,3vw,2.25rem);margin-bottom:clamp(1.75rem,3vw,2.25rem);
   padding-left:1.35rem;border-left:2px solid var(--blueFill);max-width:30ch}
 
+/* ══════════ what's next ══════════ */
+.next{margin-top:clamp(3.5rem,8vw,6rem)}
+.next__now{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:1rem 1.5rem;
+  padding:clamp(1.25rem,2.4vw,1.75rem);border:1px solid var(--line2);
+  background:color-mix(in srgb,var(--blue) 6%,transparent)}
+.next__y{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.next__now h3{font-size:1.7rem;line-height:1.1;margin-bottom:.5rem}
+.next__now p{color:var(--muted);font-size:var(--fsBody);max-width:60ch}
+.next__lede{margin-top:clamp(2rem,4vw,2.75rem);color:var(--muted);max-width:56ch}
+.dreams{list-style:none;margin-top:1.25rem;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:.1rem 2rem}
+.dreams li{position:relative;padding:.45rem 0 .45rem 1.4rem;color:var(--ink);opacity:.88;
+  box-shadow:inset 0 -1px 0 var(--line)}
+.dreams li::before{content:'';position:absolute;left:.15rem;top:1.05em;
+  width:.4rem;height:.4rem;border:1px solid var(--blue);transform:rotate(45deg)}
+@media(max-width:34rem){
+  .next__now{grid-template-columns:1fr;gap:.35rem}}
+
 /* ══════════ contact form ══════════ */
-.contact .hgroup{text-align:center;max-width:44rem;margin-inline:auto}
+.contact .hgroup{max-width:44rem}
 .form{max-width:40rem;margin:0 auto;display:grid;gap:1rem}
 .field{display:grid;gap:.4rem}
 .field--split{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -304,8 +384,16 @@ p{max-width:68ch;text-wrap:pretty}
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem;
   font-size:var(--fsMicro);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
+/* one heading style for every section on the front page */
+.sec h2{font-family:var(--title);font-weight:var(--titleW);font-size:var(--h2);
+  line-height:var(--titleLh);letter-spacing:var(--titleTrack);color:var(--ink);
+  max-width:19ch;text-align:left}
+.sec h2 .hl{color:inherit}
+
 :where(a,button,input,select,textarea):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 [id]{scroll-margin-top:6rem}
+/* the fixed navbar is 4.5rem tall; 6rem clears it with room to breathe */
+#contact{scroll-margin-top:6rem}
 
 /* ══════════════════ RESPONSIVE ══════════════════ */
 @media(max-width:72rem){
@@ -365,17 +453,33 @@ p{max-width:68ch;text-wrap:pretty}
   .hero__media{aspect-ratio:auto;height:62svh;max-height:none}}
 
 /* ══════════ condensed expedition list (home) ══════════ */
-.mini{list-style:none;display:grid;grid-template-columns:1fr 1fr;
-  column-gap:clamp(2rem,5vw,4.5rem);box-shadow:inset 0 1px 0 var(--line)}
-.mini li{display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:1rem;
-  align-items:baseline;padding:.8rem .25rem;box-shadow:inset 0 -1px 0 var(--line)}
-.mini__y{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.mini{list-style:none;display:block;box-shadow:inset 0 1px 0 var(--line)}
+.mini li{display:grid;grid-template-columns:7.5rem minmax(0,1fr);
+  gap:.5rem 1.25rem;align-items:baseline;padding:.7rem .25rem;
+  box-shadow:inset 0 -1px 0 var(--line)}
+.mini__y{font-size:var(--fsMicro);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--blue);white-space:nowrap}
 .mini__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
-  font-size:1.5rem;line-height:1.05}
-.mini__cta{margin-top:clamp(1.75rem,3.5vw,2.5rem)}
+  font-size:1.55rem;line-height:1.12}
+.mini__f{font-family:var(--title);font-weight:500;letter-spacing:var(--titleTrack);
+  font-size:1.55rem;color:var(--muted);white-space:nowrap}
+.morebtn{margin-top:1.1rem;display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;border:0;cursor:pointer;padding:.35rem .25rem;
+  font-family:var(--body);font-size:var(--fsMicro);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);
+  transition:opacity var(--dur) var(--ease)}
+.morebtn:hover{opacity:.72}
+.morebtn .ic{transition:transform var(--dur) var(--ease)}
+.morebtn:hover .ic{transform:translateY(2px)}
+.morebtn[aria-expanded="true"]:hover .ic{transform:translateY(-2px)}
+.mini__cta{margin-top:clamp(1.75rem,3.5vw,2.5rem);display:flex;gap:.75rem;flex-wrap:wrap}
+.mini li[hidden]{display:none}
 @media(max-width:52rem){
-  .mini{grid-template-columns:1fr}
-  .mini li{grid-template-columns:5.5rem minmax(0,1fr)}}</style>
+  .mini li{grid-template-columns:6.5rem minmax(0,1fr);gap:.3rem .9rem}
+  .mini__n,.mini__f{font-size:1.25rem}}
+@media(max-width:34rem){
+  .mini li{grid-template-columns:1fr;gap:.1rem;padding:.7rem .1rem}
+  .mini__n,.mini__f{font-size:1.12rem;line-height:1.25}}</style>
 </head>
 <body>
 
@@ -397,6 +501,8 @@ p{max-width:68ch;text-wrap:pretty}
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6Z"/><path d="M14 2.5V7h4.5M9 12.5h6M9 16.5h6"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m2.5 7 9.5 6.2L21.5 7"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M6.5 17.5 17.5 6.5M9 6.5h8.5V15"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4.5v15M5.5 13 12 19.5 18.5 13"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19.5v-15M5.5 11 12 4.5 18.5 11"/></symbol>
   <symbol id="i-list" viewBox="0 0 24 24"><path d="M8.5 6.5h12M8.5 12h12M8.5 17.5h12M3.5 6.5h.01M3.5 12h.01M3.5 17.5h.01"/></symbol>
   <symbol id="i-summit" viewBox="0 0 24 24"><path d="M3 20.5h18L12 6 3 20.5Z"/><path d="M12 6V2.5h5.5V6Z"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 5 3.5 10.5 9 16"/><path d="M3.5 10.5h11.5a5.5 5.5 0 0 1 5.5 5.5v3"/></symbol>
@@ -423,8 +529,9 @@ p{max-width:68ch;text-wrap:pretty}
   <nav class="nav__links" aria-label="Primary">
     <a href="partner.html">Partner with me</a>
     <a href="expeditions.html">Expeditions</a>
+    <a href="blog.html">Blog</a>
     <a href="links.html">Links</a>
-    <a href="#about">About</a>
+    <a href="about.html">About</a>
   </nav>
   <div class="nav__right">
     <a class="nav__cta" href="#contact"><svg class="ic ic--sm"><use href="#i-mail"/></svg>Contact me</a>
@@ -437,8 +544,9 @@ p{max-width:68ch;text-wrap:pretty}
 <div class="menu" id="menu" data-open="false">
   <a href="partner.html"><svg class="ic"><use href="#i-handshake"/></svg>Partner with me</a>
   <a href="expeditions.html"><svg class="ic"><use href="#i-list"/></svg>Expeditions</a>
+  <a href="blog.html"><svg class="ic"><use href="#i-doc"/></svg>Blog</a>
   <a href="links.html"><svg class="ic"><use href="#i-grid"/></svg>Links</a>
-  <a href="#about"><svg class="ic"><use href="#i-users"/></svg>About</a>
+  <a href="about.html"><svg class="ic"><use href="#i-users"/></svg>About</a>
   <a href="#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
 </div>
 
@@ -453,31 +561,42 @@ p{max-width:68ch;text-wrap:pretty}
     <div class="hero__text">
       <h1>Join my next adventures.</h1>
       <p class="hero__lead">👋 Hi, I'm Sam. I'm a content creator. I'm always outdoors, and my day job is at Google.</p>
-      <p class="hero__note">I'm looking for brands to come along on my next adventures.</p>
-      <div class="asks">
-        <a href="partner.html#sponsorship">Sponsor me</a>
-        <a href="partner.html#sponsorship">Test your gear</a>
-        <a href="partner.html#sponsorship">Let's collaborate</a>
-      </div>
+      <p class="hero__note">I reach 7M+ views, 400K likes and 10,000 engaged followers.<br>
+        I'm looking for brands to come along on my next adventures.</p>
       <div class="hero__actions">
         <a class="btn btn--solid" href="#contact">Start a conversation<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn--ghost" href="partner.html">What I offer<svg class="ic ic--sm"><use href="#i-handshake"/></svg></a>
+      </div>
+      <div class="asks">
+        <a href="partner.html#sponsorship">Sponsor me</a>
+        <a href="partner.html#gear">Test your gear</a>
+        <a href="partner.html#collaborations">Let's collaborate</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="brands">
+  <div class="shell">
+    <div class="hgroup hgroup--tight rise">
+      <h2>The brands I love</h2>
+    </div>
+  </div>
+  <div class="marquee rise" role="img" aria-label="Brands Sam uses and admires">
+    <div class="marquee__track" id="brandTrack"></div>
   </div>
 </section>
 
 <section class="sec" id="audience">
   <div class="shell">
     <div class="hgroup rise">
-      <h2><span class="hl">Engagement</span></h2>
+      <h2>My audience in numbers</h2>
     </div>
 
     <p class="kicker rise">Instagram · <span data-metric-period>All time</span></p>
 
     <div class="stats rise">
       <div class="stat"><div class="stat__n" data-metric="views">6,024,602</div><div class="stat__k">Views</div></div>
-      <div class="stat"><div class="stat__n" data-metric="interactions">435,836</div><div class="stat__k">Interactions</div></div>
+      <div class="stat"><div class="stat__n" data-metric="interactions">435,836</div><div class="stat__k">Likes &amp; comments</div></div>
       <div class="stat"><div class="stat__n" data-metric="followers">9,826</div><div class="stat__k">Followers</div></div>
       <div class="stat"><div class="stat__n" data-metric="posts">181</div><div class="stat__k">Posts published</div></div>
     </div>
@@ -488,42 +607,14 @@ p{max-width:68ch;text-wrap:pretty}
       <p class="reels__fallback">Reels load from Instagram. If nothing appears, see them on
         <a href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">@hey_samtheman</a>.</p>
     </div>
-  </div>
-</section>
 
-<section class="sec" id="record">
-  <div class="shell">
-    <div class="hgroup rise">
-      <h2>My expeditions in <span class="hl">numbers</span></h2>
-    </div>
-    <div class="bento rise">
-      <div class="cell cell--lead">
-        <div class="cell__n"><span class="tick" data-to="16">16</span></div>
-        <div class="cell__k"><svg class="ic ic--sm"><use href="#i-peak2"/></svg>Expeditions since 2013</div>
-      </div>
-      <div class="cell">
-        <div class="cell__n"><span class="tick" data-to="4">4</span></div>
-        <div class="cell__k"><svg class="ic ic--sm"><use href="#i-globe"/></svg>Continents</div>
-      </div>
-      <div class="cell">
-        <div class="cell__n"><span class="tick" data-to="7">7</span></div>
-        <div class="cell__k"><svg class="ic ic--sm"><use href="#i-grid"/></svg>Disciplines</div>
-      </div>
-      <div class="cell cell--wide">
-        <div class="cell__n"><span class="tick" data-to="5895">5,895</span><small>m</small></div>
-        <div class="cell__k"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Highest summit</div>
-        <div class="cell__sub">Kilimanjaro</div>
-      </div>
-      <div class="cell cell--wide">
-        <div class="cell__n"><span class="tick" data-to="6500">6,500</span><small>m</small></div>
-        <div class="cell__k"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Highest point reached</div>
-        <div class="cell__sub">Aconcagua</div>
-      </div>
-      <div class="cell cell--wide">
-        <div class="cell__n"><span class="tick" data-to="40">40</span><small>days</small></div>
-        <div class="cell__k"><svg class="ic ic--sm"><use href="#i-clock"/></svg>Longest single trip</div>
-        <div class="cell__sub">Vietnam</div>
-      </div>
+    <p class="peak rise"><b data-metric-top>6,024,602</b><span>views in the last 30 days</span></p>
+
+    <div class="aud rise">
+      <div class="aud__i"><span class="aud__k">Audience split</span><span class="aud__v" data-aud="split">Women 47.3% · Men 52.7%</span></div>
+      <div class="aud__i"><span class="aud__k">Discovery</span><span class="aud__v" data-aud="discovery">98.7% of views come from people who don’t follow me</span></div>
+      <div class="aud__i"><span class="aud__k">Top locations</span><span class="aud__v" data-aud="locations"></span></div>
+      <div class="aud__i"><span class="aud__k">Age range</span><span class="aud__v" data-aud="age"></span></div>
     </div>
   </div>
 </section>
@@ -531,48 +622,70 @@ p{max-width:68ch;text-wrap:pretty}
 <section class="sec sec--tall" id="expeditions">
   <div class="shell">
     <div class="hgroup rise">
-      <h2>Sixteen expeditions, since 2013</h2>
+      <h2>All my expeditions, since 2013</h2>
     </div>
-    <ol class="mini rise">
-      <li><span class="mini__y">Jun 2013</span><span class="mini__n">Camino de Santiago</span></li>
-      <li><span class="mini__y">Aug 2013</span><span class="mini__n">Vietnam by motorbike</span></li>
-      <li><span class="mini__y">Jun 2014</span><span class="mini__n">O'Henro, Shikoku</span></li>
-      <li><span class="mini__y">Sep 2015</span><span class="mini__n">Mont Blanc, 4,808 m</span></li>
-      <li><span class="mini__y">Oct 2016</span><span class="mini__n">Paragliding licence</span></li>
-      <li><span class="mini__y">2017</span><span class="mini__n">Kitesurfing</span></li>
-      <li><span class="mini__y">Jul 2021</span><span class="mini__n">GR20, Corsica</span></li>
-      <li><span class="mini__y">Feb 2022</span><span class="mini__n">Traversée du Jura</span></li>
-      <li><span class="mini__y">Aug 2023</span><span class="mini__n">Daisetsuzan Traverse</span></li>
-      <li><span class="mini__y">Jan 2025</span><span class="mini__n">Aconcagua</span></li>
-      <li><span class="mini__y">Aug 2025</span><span class="mini__n">Matterhorn, Hörnli Ridge</span></li>
-      <li><span class="mini__y">Jan 2026</span><span class="mini__n">Kilimanjaro, 5,895 m</span></li>
+    <ol class="mini rise" id="miniList">
+      <li><span class="mini__y">24 Aug 2026</span><span class="mini__n">Matterhorn, Hörnli Ridge<span class="mini__f">&nbsp;&mdash; 4,478&nbsp;m summit</span></span></li>
+      <li><span class="mini__y">22 Aug 2026</span><span class="mini__n">Breithorn traverse<span class="mini__f">&nbsp;&mdash; 4,164&nbsp;m summit</span></span></li>
+      <li><span class="mini__y">19 Aug 2026</span><span class="mini__n">Weissmies<span class="mini__f">&nbsp;&mdash; 4,017&nbsp;m summit</span></span></li>
+      <li><span class="mini__y">17 Aug 2026</span><span class="mini__n">Üssers Barrhorn<span class="mini__f">&nbsp;&mdash; 3,610&nbsp;m summit</span></span></li>
+      <li><span class="mini__y">May 2026</span><span class="mini__n">Cycling 1,500&nbsp;km across Japan</span></li>
+      <li><span class="mini__y">May 2026</span><span class="mini__n">Skiing Mt. Fuji</span></li>
+      <li><span class="mini__y">Feb 2026</span><span class="mini__n">Skiing Mt. Yotei in Hokkaidō<span class="mini__f">&nbsp;&mdash; 1,898&nbsp;m summit</span></span></li>
       <li><span class="mini__y">Jan 2026</span><span class="mini__n">Serengeti and Ngorongoro</span></li>
-      <li><span class="mini__y">Feb 2026</span><span class="mini__n">Mt. Yotei</span></li>
-      <li><span class="mini__y">May 2026</span><span class="mini__n">Mt. Fuji</span></li>
-      <li><span class="mini__y">May 2026</span><span class="mini__n">Japan end to end by bike</span></li>
+      <li><span class="mini__y">Jan 2026</span><span class="mini__n">Kilimanjaro<span class="mini__f">&nbsp;&mdash; 5,895&nbsp;m summit</span></span></li>
+      <li><span class="mini__y">Jan 2025</span><span class="mini__n">Aconcagua<span class="mini__f">&nbsp;&mdash; 6,500&nbsp;m reached</span></span></li>
+      <li class="is-more" hidden><span class="mini__y">Aug 2023</span><span class="mini__n">Daisetsuzan Traverse</span></li>
+      <li class="is-more" hidden><span class="mini__y">Feb 2022</span><span class="mini__n">Traversée du Jura</span></li>
+      <li class="is-more" hidden><span class="mini__y">Jul 2021</span><span class="mini__n">GR20, Corsica</span></li>
+      <li class="is-more" hidden><span class="mini__y">2017</span><span class="mini__n">Kitesurfing in the Philippines</span></li>
+      <li class="is-more" hidden><span class="mini__y">Oct 2016</span><span class="mini__n">Paragliding licence</span></li>
+      <li class="is-more" hidden><span class="mini__y">Sep 2015</span><span class="mini__n">Mont Blanc<span class="mini__f">&nbsp;&mdash; 4,808&nbsp;m summit</span></span></li>
+      <li class="is-more" hidden><span class="mini__y">Jun 2014</span><span class="mini__n">Hiking O'Henro in Japan<span class="mini__f">&nbsp;&mdash; 88 temples</span></span></li>
+      <li class="is-more" hidden><span class="mini__y">Aug 2013</span><span class="mini__n">Motorcycle across Vietnam<span class="mini__f">&nbsp;&mdash; 40 days</span></span></li>
+      <li class="is-more" hidden><span class="mini__y">Jun 2013</span><span class="mini__n">Camino de Santiago<span class="mini__f">&nbsp;&mdash; 1,670&nbsp;km</span></span></li>
     </ol>
+    <button class="morebtn rise" type="button" id="moreBtn" aria-expanded="false" aria-controls="miniList">
+      <span id="moreLabel">Show earlier expeditions</span><svg class="ic ic--sm" id="moreIcon"><use href="#i-down"/></svg>
+    </button>
+
     <div class="mini__cta rise">
       <a class="btn btn--ghost" href="expeditions.html">See the full record<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
 
-<section class="sec sec--tall" id="about">
-  <div class="shell about">
-    <figure class="about__fig rise">
-      <img class="about__img" src="img/frost.jpg" alt="Sam in a red down hood at altitude, frost across his eyebrows in falling snow" width="1200" height="1593" loading="lazy">
-    </figure>
-    <div class="rise">
-      <h2>A day job and a <span class="hl">thirteen-year</span> record</h2>
-      <p class="about__first">In June 2013 I walked out of Le Puy-en-Velay and kept going for two months, all the way to Santiago de Compostela. Six weeks later I was in Ho Chi Minh City, buying a motorbike I had learned to ride three days earlier, then riding it to Hanoi and back. Forty days, sleeping wherever people would have me.</p>
-      <p>Everything since has followed that shape. On Mont Blanc in 2015, the glacier training day on the Mer de Glace was the first time I had ever worn crampons. Five days later I was standing on the summit at dawn.</p>
-      <p class="pull">The record I'm proudest of includes the two times I turned around.</p>
-      <p>Aconcagua stopped me at 6,500&nbsp;m in January 2025. The Matterhorn's Hörnli Ridge stopped me at roughly 3,800&nbsp;m that August. Twelve months later I summited Kilimanjaro, then climbed and skied Yotei and Fuji.</p>
-      <p>The rest of the week I work in tech at Google, in Tokyo. That is not a footnote. It is why the planning is thorough, why deadlines get met, why a brief comes back on time and why the debrief is written rather than promised. Every one of these trips was built around a full-time job, which is also why the record is steady rather than spectacular: one objective at a time, for thirteen years.</p>
-      <p>Being based in Tokyo puts the Japanese mountains an early train away. Five of the sixteen are here.</p>
+<section class="sec sec--tall" id="work">
+  <div class="shell">
+    <div class="hgroup rise">
+      <h2>Let's work together</h2>
+    </div>
+
+    <div class="work">
+      <a class="work__i rise" href="partner.html#sponsorship">
+        <h3><svg class="ic"><use href="#i-handshake"/></svg>Sponsorship</h3>
+        <p>Back an expedition or sponsor me for a year. I'll deliver.</p>
+        <span class="work__go">Learn more<svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="work__i rise" href="partner.html#gear">
+        <h3><svg class="ic"><use href="#i-box"/></svg>Gear testing</h3>
+        <p>Send me your best gear and I will wear and promote them proudly.</p>
+        <span class="work__go">Learn more<svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="work__i rise" href="partner.html#collaborations">
+        <h3><svg class="ic"><use href="#i-camera"/></svg>Collaborations</h3>
+        <p>Reels, posts, videos. Let's build a campaign that matches your objectives.</p>
+        <span class="work__go">Learn more<svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
+      </a>
+    </div>
+
+    <div class="mini__cta rise">
+      <a class="btn btn--solid" href="partner.html">See how we partner<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--ghost" href="#contact">Tell me your idea<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
     </div>
   </div>
 </section>
+
 
 <section class="sec contact" id="contact">
   <div class="shell">
@@ -587,7 +700,7 @@ p{max-width:68ch;text-wrap:pretty}
           <input id="f-name" name="name" type="text" autocomplete="name" required>
         </div>
         <div class="field">
-          <label for="f-brand">Brand or company</label>
+          <label for="f-brand">Company or brand</label>
           <input id="f-brand" name="brand" type="text" autocomplete="organization">
         </div>
       </div>
@@ -599,9 +712,14 @@ p{max-width:68ch;text-wrap:pretty}
         <label for="f-msg">Message</label>
         <textarea id="f-msg" name="message" required></textarea>
       </div>
+      <!-- honeypot: real people never see this, bots fill it in -->
+      <div class="field" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+        <label for="f-company-url">Leave this empty</label>
+        <input id="f-company-url" name="company_url" type="text" tabindex="-1" autocomplete="off">
+      </div>
       <div class="form__actions">
         <button class="btn btn--solid" type="submit">Send message<svg class="ic ic--sm"><use href="#i-arrow"/></svg></button>
-        <p class="form__note">This opens your email app with the message ready to send.</p>
+        <p class="form__note">Goes straight to my inbox. No mail app, no attachments needed.</p>
       </div>
       <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
@@ -623,8 +741,9 @@ p{max-width:68ch;text-wrap:pretty}
 
     <div class="cmeta">
       <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>Based in Tokyo</span>
-      <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>From Annecy</span>
+      <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>From Annecy, French Alps</span>
       <span><svg class="ic ic--sm"><use href="#i-globe"/></svg>Available worldwide</span>
+      <span><svg class="ic ic--sm"><use href="#i-mail"/></svg><a href="mailto:hello@heysamtheman.com" style="color:inherit;text-decoration:none">hello@heysamtheman.com</a></span>
       <span><svg class="ic ic--sm"><use href="#i-briefcase"/></svg>Media kit on request</span>
     </div>
   </div>
@@ -644,7 +763,7 @@ p{max-width:68ch;text-wrap:pretty}
 
   /* nav folds once you leave the top */
   var nav=document.getElementById('nav');
-  var onScroll=function(){nav.classList.toggle('is-stuck',scrollY>40)};
+  var onScroll=function(){nav.classList.toggle('is-stuck',scrollY>24)};
   addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
   var btn=document.getElementById('menuBtn'), menu=document.getElementById('menu');
@@ -657,18 +776,56 @@ p{max-width:68ch;text-wrap:pretty}
     document.body.style.overflow=open?'hidden':'';
   };
   btn.addEventListener('click',function(){setMenu(menu.dataset.open!=='true')});
-  menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
-  addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+  /* ── contact form ─────────────────────────────────────────────────
+     Set ONE of the two below and the form goes live.
 
+     FORM_ENDPOINT  — a Google Apps Script web app running under Sam's
+                      own Google account. The script is in
+                      contact-form.gs next to this file; deploy steps
+                      are in its header. Nothing to sign up for, mail
+                      lands in the existing Gmail.
+     WEB3FORMS_KEY  — fallback if the Apps Script route is a hassle.
 
-  /* ── contact form → mail client. The address is assembled at runtime
-       so it never appears in the page source as a plain string.
-       For a proper inbox-side form (no mail client, spam filtering),
-       point the <form> at Formspree, Netlify Forms or similar. ── */
+     Until one is set the submit button stays disabled and the form
+     shows the address instead, so no enquiry is silently swallowed.
+     ──────────────────────────────────────────────────────────────── */
+  /* Verified 20 Sep 2026: this /exec answers {"success":true,"status":"alive"}.
+     If you ever redeploy, the URL changes — paste the new one here. */
+  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyg1KNwhjJYOzPNLHFn7In53MZbf5BzbJ8dHvGUq1TkTM-mv4ZUZjFtK_DvsSp3Kpz6aw/exec';
+  var WEB3FORMS_KEY = '';   // <-- or a Web3Forms access key
+
   var form=document.getElementById('contactForm');
   var status=document.getElementById('formStatus');
+  var submitBtn=form.querySelector('button[type="submit"]');
+  var note=form.querySelector('.form__note');
   var el=function(id){return document.getElementById(id)};
   var v=function(id){return (el(id).value||'').trim()};
+  var live=!!(FORM_ENDPOINT||WEB3FORMS_KEY);
+
+  if(!live){
+    submitBtn.setAttribute('disabled','');
+    note.innerHTML='The form is not connected yet — email '
+      +'<a href="mailto:hello@heysamtheman.com">hello@heysamtheman.com</a> in the meantime.';
+  }
+
+  /* Apps Script rejects a JSON content-type preflight, so send the body
+     as text/plain — it still arrives as a JSON string server side. */
+  function deliver(payload){
+    if(FORM_ENDPOINT){
+      return fetch(FORM_ENDPOINT,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(payload)
+      }).then(function(r){return r.json()});
+    }
+    payload.access_key=WEB3FORMS_KEY;
+    payload.subject='Website enquiry'+(payload.company?' · '+payload.company:'')+' · '+payload.name;
+    return fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload)
+    }).then(function(r){return r.json()});
+  }
 
   /* clear a field's error the moment it is being corrected */
   ['f-name','f-email','f-msg'].forEach(function(id){
@@ -680,6 +837,9 @@ p{max-width:68ch;text-wrap:pretty}
 
   form.addEventListener('submit',function(e){
     e.preventDefault();
+    if(!live) return;
+    if(el('f-company-url').value) return;   /* honeypot: bots fill hidden fields */
+
     var name=v('f-name'), email=v('f-email'), brand=v('f-brand'), msg=v('f-msg');
 
     var missing=[];
@@ -699,19 +859,77 @@ p{max-width:68ch;text-wrap:pretty}
       form.querySelector('.is-error input,.is-error textarea').focus();
       return;
     }
-    var box=['samuel','jeanblanc'].join('.');
-    var host=['gmail','com'].join('.');
-    var subject='Website enquiry'+(brand?' · '+brand:'')+' · '+name;
-    var body=
-      'Name: '+name+'\n'+
-      'Email: '+email+'\n'+
-      (brand?'Brand: '+brand+'\n':'')+'\n'+
-      msg+'\n';
-    location.href='mailto:'+box+'@'+host+
-      '?subject='+encodeURIComponent(subject)+
-      '&body='+encodeURIComponent(body);
-    status.textContent='Opening your email app with the message ready to send.';
+
+    submitBtn.setAttribute('disabled','');
+    status.textContent='Sending…';
+
+    deliver({name:name, email:email, company:brand, message:msg})
+      .then(function(d){
+        if(d && d.success){
+          form.reset();
+          status.textContent='Thanks — that reached me. I reply to every brand enquiry.';
+        } else { throw new Error('rejected'); }
+      })
+      .catch(function(){
+        submitBtn.removeAttribute('disabled');
+        status.textContent='That did not send. Email hello@heysamtheman.com instead.';
+      });
   });
+
+  /* ── earlier expeditions fold ── */
+  var moreBtn=document.getElementById('moreBtn');
+  if(moreBtn){
+    var moreLabel=document.getElementById('moreLabel');
+    var moreIcon=document.getElementById('moreIcon');
+    var hiddenRows=[].slice.call(document.querySelectorAll('#miniList .is-more'));
+    moreBtn.addEventListener('click',function(){
+      var open=moreBtn.getAttribute('aria-expanded')==='true';
+      hiddenRows.forEach(function(r){ r.hidden=open; });
+      moreBtn.setAttribute('aria-expanded',String(!open));
+      moreLabel.textContent=open?'Show earlier expeditions':'Show fewer';
+      moreIcon.firstElementChild.setAttribute('href',open?'#i-down':'#i-up');
+    });
+  }
+
+  /* ── brands banner ────────────────────────────────────────────────
+     Drop official logo files into img/brands/ using the filenames
+     below and they replace the wordmarks automatically — no code
+     change. SVG is best; a transparent PNG at 2x height also works.
+     Anything that fails to load falls back to the name in type, so a
+     missing file never leaves a hole in the row.
+     ──────────────────────────────────────────────────────────────── */
+  var BRANDS = [
+    ['Patagonia','patagonia'], ['The North Face','the-north-face'],
+    ['Simond','simond'], ['Petzl','petzl'], ['Decathlon','decathlon'],
+    ['La Sportiva','la-sportiva'], ['Scarpa','scarpa'], ['Ray-Ban','ray-ban'],
+    ['Oakley','oakley'], ['GoPro','gopro'], ['Insta360','insta360'],
+    ['Garmin','garmin'], ['Nike','nike'], ['Adidas','adidas'],
+    ['Jetboil','jetboil'], ['Black Diamond','black-diamond'],
+    ['Icebreaker','icebreaker']
+  ];
+  var track=document.getElementById('brandTrack');
+  if(track){
+    var makeItem=function(name,slug){
+      var d=document.createElement('div'); d.className='marquee__i';
+      var img=document.createElement('img');
+      img.src='img/brands/'+slug+'.svg'; img.alt=name; img.loading='lazy';
+      img.addEventListener('error',function(){
+        var t=document.createElement('span'); t.textContent=name;
+        if(img.parentNode) img.parentNode.replaceChild(t,img);
+      });
+      d.appendChild(img); return d;
+    };
+    /* the list is laid down twice so translateX(-50%) loops seamlessly.
+       the second pass is decorative: hidden from screen readers, and
+       hidden outright when the animation is off. */
+    for(var pass=0; pass<2; pass++){
+      BRANDS.forEach(function(b){
+        var it=makeItem(b[0],b[1]);
+        if(pass===1){ it.setAttribute('data-dup',''); it.setAttribute('aria-hidden','true'); }
+        track.appendChild(it);
+      });
+    }
+  }
 
   /* ── Instagram reels ──────────────────────────────────────────────
      To feature a reel: open it on Instagram, Share → Embed, and paste
@@ -780,7 +998,7 @@ p{max-width:68ch;text-wrap:pretty}
         if(a) a.classList.toggle('is-active',en.isIntersecting);
       });
     },{rootMargin:'-45% 0px -50% 0px'});
-    ['audience','record','expeditions','about'].forEach(function(id){
+    ['audience','expeditions','work'].forEach(function(id){
       var el=document.getElementById(id); if(el) spy.observe(el);
     });
   }
