@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Sam — Google in Tokyo during the week, expeditions the rest of the time. Sixteen self-organised trips across four continents since 2013.">
+<meta name="description" content="Sam — sixteen self-organised expeditions across four continents since 2013, most recently the Matterhorn. Looking for brands to come along on the next ones.">
 <meta name="theme-color" content="#04070c">
 <title>Sam 🌋 Wild Adventures</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,16 +169,6 @@ p{max-width:68ch;text-wrap:pretty}
   transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease),color var(--dur) var(--ease)}
 .asks a:hover{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 11%,transparent)}
 
-.disc{margin-top:1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.2rem}
-.disc a,.disc span{display:inline-flex;align-items:center;gap:.4rem;
-  font-size:var(--fsMicro);color:var(--muted);text-decoration:none;
-  padding:.35rem .55rem;border:1px solid transparent;
-  transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
-.disc a .ic,.disc span .ic{color:var(--blue);opacity:.7;transition:opacity var(--dur) var(--ease)}
-.disc a:hover,.disc a:focus-visible{color:var(--ink);border-color:var(--line2);
-  background:color-mix(in srgb,var(--blue) 9%,transparent)}
-.disc a:hover .ic{opacity:1}
-
 .hero__actions{margin-top:clamp(1.6rem,3vw,2.25rem);display:flex;flex-wrap:wrap;gap:.75rem}
 .btn{position:relative;overflow:hidden;isolation:isolate;
   display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
@@ -194,6 +184,54 @@ p{max-width:68ch;text-wrap:pretty}
   background:linear-gradient(100deg,transparent 34%,rgba(255,255,255,.2) 50%,transparent 66%)}
 @media(prefers-reduced-motion:no-preference){.btn--solid:hover::after{animation:sheen .7s cubic-bezier(.22,1,.36,1)}}
 @keyframes sheen{to{translate:100% 0}}
+
+/* ══════════ audience: 30-day numbers + reels ══════════ */
+.kicker{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:64rem;
+  gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
+.stat__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  line-height:1;color:var(--blueDeep);font-size:clamp(2.1rem,4.4vw,3.4rem)}
+.stat__n small{font-family:var(--body);font-size:.95rem;font-weight:400;
+  letter-spacing:0;color:var(--muted);margin-left:.35rem}
+.stat__k{margin-top:.45rem;font-size:var(--fsBody);color:var(--ink);opacity:.92;line-height:1.35}
+.stat__s{margin-top:.15rem;font-size:var(--fsMicro);color:var(--muted);letter-spacing:.04em}
+.caveat{margin-top:clamp(1.5rem,3vw,2rem);padding-left:1.35rem;
+  border-left:2px solid var(--line2);color:var(--muted);font-size:var(--fsBody);max-width:64ch}
+.ighandle{margin-top:clamp(1.5rem,3vw,2rem);display:inline-flex;align-items:center;gap:.5rem;
+  text-decoration:none;font-size:var(--fsBody);font-weight:500;color:var(--ink);
+  border:1px solid var(--line2);padding:.6rem 1rem;
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
+.ighandle:hover{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 11%,transparent)}
+.ighandle .ic{color:var(--blue)}
+
+.reels{margin-top:clamp(2rem,4vw,3rem);max-width:58rem;display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.75rem,1.6vw,1.1rem)}
+.reel{position:relative;display:block;overflow:hidden;aspect-ratio:9/16;text-decoration:none;
+  background:linear-gradient(155deg,var(--bg3) 0%,var(--bg2) 55%,var(--bg) 100%);
+  border:1px solid var(--line);
+  transition:border-color var(--dur) var(--ease),transform var(--durSlow) var(--ease)}
+.reel:hover{border-color:var(--line2)}
+@media(prefers-reduced-motion:no-preference){.reel:hover{transform:translateY(-3px)}}
+.reel__v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent}
+.reel__badge{position:absolute;top:.7rem;left:.7rem;z-index:2;
+  display:inline-flex;align-items:center;gap:.35rem;
+  font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  background:color-mix(in srgb,#000 55%,transparent);backdrop-filter:blur(6px);
+  padding:.35rem .6rem}
+.reel__cap{position:absolute;inset-inline:0;bottom:0;z-index:2;padding:2.5rem .85rem .85rem;
+  font-size:var(--fsBody);line-height:1.3;color:#fff;
+  background:linear-gradient(to top,rgba(0,0,0,.72),transparent)}
+@media(max-width:52rem){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2rem}
+  .reels{grid-auto-flow:column;grid-auto-columns:64%;grid-template-columns:none;
+    overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:none;padding-bottom:.25rem;
+    margin-inline:calc(var(--shellPad) * -1);padding-inline:var(--shellPad)}
+  .reels::-webkit-scrollbar{display:none}
+  .reel{scroll-snap-align:start}}
+@media(max-width:34rem){
+  .stats{grid-template-columns:1fr;row-gap:1.5rem}
+  .reels{grid-auto-columns:78%}}
 
 /* ══════════ bento ══════════ */
 .bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
@@ -376,6 +414,7 @@ p{max-width:68ch;text-wrap:pretty}
   <nav class="nav__links" aria-label="Primary">
     <a href="partner.html">Partner with me</a>
     <a href="expeditions.html">Expeditions</a>
+    <a href="links.html">Links</a>
     <a href="#about">About</a>
   </nav>
   <div class="nav__right">
@@ -389,6 +428,7 @@ p{max-width:68ch;text-wrap:pretty}
 <div class="menu" id="menu" data-open="false">
   <a href="partner.html"><svg class="ic"><use href="#i-handshake"/></svg>Partner with me</a>
   <a href="expeditions.html"><svg class="ic"><use href="#i-list"/></svg>Expeditions</a>
+  <a href="links.html"><svg class="ic"><use href="#i-grid"/></svg>Links</a>
   <a href="#about"><svg class="ic"><use href="#i-users"/></svg>About</a>
   <a href="#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
 </div>
@@ -403,27 +443,56 @@ p{max-width:68ch;text-wrap:pretty}
   <div class="shell hero__in">
     <div class="hero__text">
       <h1>Join my next adventures.</h1>
-      <p class="hero__lead">Welcome to my page! I'm Sam. My day job is at Google in Tokyo, and I'm outdoors the rest of the time.</p>
-      <p class="hero__note">I've been on 16 adventures. I'm looking for brands to come along on the next ones.</p>
+      <p class="hero__lead">👋 Hi, I'm Sam. I'm a content creator. I'm always outdoors, and my day job is at Google.</p>
+      <p class="hero__note">I'm looking for brands to come along on my next adventures.</p>
       <div class="asks">
         <a href="partner.html#sponsorship">Sponsor me</a>
         <a href="partner.html#sponsorship">Test your gear</a>
         <a href="partner.html#sponsorship">Let's collaborate</a>
       </div>
-      <nav class="disc" aria-label="Activities">
-        <a href="expeditions.html?d=alpinism"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</a>
-        <a href="expeditions.html?d=ski"><svg class="ic ic--sm"><use href="#i-ski"/></svg>Ski touring</a>
-        <a href="expeditions.html?d=cycling"><svg class="ic ic--sm"><use href="#i-bike"/></svg>Cycling</a>
-        <a href="expeditions.html?d=paragliding"><svg class="ic ic--sm"><use href="#i-para"/></svg>Paragliding</a>
-        <a href="expeditions.html?d=trekking"><svg class="ic ic--sm"><use href="#i-hike"/></svg>Hiking</a>
-        <a href="expeditions.html?d=kitesurfing"><svg class="ic ic--sm"><use href="#i-kite"/></svg>Kitesurfing</a>
-        <!-- not a link: nothing logged under diving yet, so it would dead-end -->
-        <span><svg class="ic ic--sm"><use href="#i-dive"/></svg>Diving</span>
-      </nav>
       <div class="hero__actions">
         <a class="btn btn--solid" href="#contact">Start a conversation<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
         <a class="btn btn--ghost" href="partner.html">What I offer<svg class="ic ic--sm"><use href="#i-handshake"/></svg></a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="audience">
+  <div class="shell">
+    <div class="hgroup rise">
+      <h2><span class="hl">Engagement</span></h2>
+    </div>
+
+    <p class="kicker rise">Instagram · last 30 days to 17 September 2026</p>
+
+    <div class="stats rise">
+      <div class="stat"><div class="stat__n">6,000,000</div><div class="stat__k">Views</div></div>
+      <div class="stat"><div class="stat__n">5,900,000</div><div class="stat__k">Reel views</div></div>
+      <div class="stat"><div class="stat__n">3,170,246</div><div class="stat__k">Accounts reached</div></div>
+      <div class="stat"><div class="stat__n">435,836</div><div class="stat__k">Interactions</div></div>
+      <div class="stat"><div class="stat__n">9,826</div><div class="stat__k">Followers</div></div>
+      <div class="stat"><div class="stat__n">122</div><div class="stat__k">Posts published</div></div>
+    </div>
+
+    <a class="ighandle rise" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
+
+    <div class="reels rise">
+      <a class="reel" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">
+        <video class="reel__v" poster="img/reel-1.jpg" data-src="video/reel-1.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="reel__badge"><svg class="ic ic--sm"><use href="#i-insta"/></svg>Reel</span>
+        <span class="reel__cap">Matterhorn — Hörnli Ridge</span>
+      </a>
+      <a class="reel" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">
+        <video class="reel__v" poster="img/reel-2.jpg" data-src="video/reel-2.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="reel__badge"><svg class="ic ic--sm"><use href="#i-insta"/></svg>Reel</span>
+        <span class="reel__cap">Breithorn traverse, 4,164&nbsp;m</span>
+      </a>
+      <a class="reel" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">
+        <video class="reel__v" poster="img/reel-3.jpg" data-src="video/reel-3.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="reel__badge"><svg class="ic ic--sm"><use href="#i-insta"/></svg>Reel</span>
+        <span class="reel__cap">Summit morning, 04:50 departure</span>
+      </a>
     </div>
   </div>
 </section>
@@ -514,7 +583,7 @@ p{max-width:68ch;text-wrap:pretty}
 <section class="sec contact" id="contact">
   <div class="shell">
     <div class="hgroup rise">
-      <h2>Let's talk about the <span class="hl">next</span> one</h2>
+      <h2>Let's talk about how I can <span class="hl">help you</span>.</h2>
     </div>
 
     <form class="form rise" id="contactForm" novalidate>
@@ -559,7 +628,8 @@ p{max-width:68ch;text-wrap:pretty}
     </aside>
 
     <div class="cmeta">
-      <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>Based in Tokyo, Japan</span>
+      <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>Based in Tokyo</span>
+      <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>From Annecy</span>
       <span><svg class="ic ic--sm"><use href="#i-globe"/></svg>Available worldwide</span>
       <span><svg class="ic ic--sm"><use href="#i-briefcase"/></svg>Media kit on request</span>
     </div>
@@ -648,6 +718,22 @@ p{max-width:68ch;text-wrap:pretty}
     status.textContent='Opening your email app with the message ready to send.';
   });
 
+  /* ── reels: load and play only while on screen ── */
+  var reels=[].slice.call(document.querySelectorAll('.reel__v'));
+  if(reels.length && !reduce && 'IntersectionObserver' in window){
+    var rio=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var v=en.target;
+        if(en.isIntersecting){
+          v.muted=true;
+          if(!v.getAttribute('src') && v.dataset.src) v.setAttribute('src',v.dataset.src);
+          var pr=v.play(); if(pr && pr.catch) pr.catch(function(){});
+        }else if(!v.paused){ v.pause(); }
+      });
+    },{threshold:.25});
+    reels.forEach(function(v){rio.observe(v)});
+  }
+
   /* number ticker */
   if(!reduce && 'IntersectionObserver' in window){
     var fmt=function(n){return n.toLocaleString('en-US')};
@@ -680,7 +766,7 @@ p{max-width:68ch;text-wrap:pretty}
         if(a) a.classList.toggle('is-active',en.isIntersecting);
       });
     },{rootMargin:'-45% 0px -50% 0px'});
-    ['record','expeditions','about'].forEach(function(id){
+    ['audience','record','expeditions','about'].forEach(function(id){
       var el=document.getElementById(id); if(el) spy.observe(el);
     });
   }

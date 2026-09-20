@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="All of Sam's links in one place — Instagram, YouTube, the website and more.">
+<meta name="theme-color" content="#04070c">
+<title>Links · Sam 🌋 Wild Adventures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;500;600;700&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --title:'Darker Grotesque',system-ui,sans-serif;
+  --titleW:500; --titleTrack:-.025em;
+  --body:'Onest',system-ui,sans-serif;
+  --bg:#04070c; --bg2:#090d16; --bg3:#0d1220;
+  --ink:#e3e7f1; --muted:#98a3ba;
+  --blue:#5f86f0; --blueDeep:#4169e1; --blueFill:#2547c8;
+  --line:rgba(150,175,240,.12); --line2:rgba(150,175,240,.26);
+  --fsMicro:.75rem; --fsBody:1rem;
+  --dur:.18s; --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--fsBody);
+  width:100%;overflow-x:hidden;
+  line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;
+  padding:clamp(2.5rem,7vw,4.5rem) 1rem clamp(2rem,5vw,3rem)}
+img{display:block;max-width:100%}
+a{color:inherit}
+.ic{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;
+  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+.grain{position:fixed;inset:0;z-index:400;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{width:100%;max-width:30rem;min-width:0;display:flex;flex-direction:column;align-items:center;flex:1}
+
+.avatar{width:7rem;height:7rem;border-radius:50%;object-fit:cover;object-position:52% 30%;
+  border:1px solid var(--line2)}
+.name{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);line-height:1.05;
+  font-size:clamp(1.8rem,6.5vw,2.6rem);margin-top:1.25rem;text-align:center;
+  max-width:100%;text-wrap:balance}
+.handle{margin-top:.5rem;font-size:var(--fsBody);color:var(--blue);text-decoration:none}
+.handle:hover{text-decoration:underline}
+.bio{margin-top:.9rem;color:var(--muted);text-align:center;max-width:26rem;width:100%;font-size:.95rem}
+
+.links{width:100%;margin-top:clamp(2rem,6vw,2.75rem);display:flex;flex-direction:column;gap:.7rem}
+.lk{display:flex;align-items:center;gap:.85rem;text-decoration:none;
+  background:var(--bg2);border:1px solid var(--line2);padding:.95rem 1.1rem;min-height:3.5rem;
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.lk:hover{border-color:var(--blue);background:var(--bg3)}
+@media(prefers-reduced-motion:no-preference){.lk:hover{transform:translateY(-2px)}}
+.lk:active{transform:translateY(1px)}
+.lk__ic{color:var(--blue);display:flex}
+.lk__t{flex:1;min-width:0}
+.lk__n{display:block;font-weight:500;line-height:1.25}
+.lk__s{display:block;font-size:var(--fsMicro);color:var(--muted);letter-spacing:.04em;margin-top:.15rem}
+.lk__go{color:var(--muted)}
+.lk:hover .lk__go{color:var(--blue)}
+
+.lk--primary{background:var(--blueFill);border-color:var(--blueFill)}
+.lk--primary:hover{background:#3357dd;border-color:#3357dd}
+.lk--primary .lk__ic,.lk--primary .lk__go{color:#fff}
+.lk--primary .lk__s{color:rgba(255,255,255,.72)}
+
+.lk--soon{opacity:.45;cursor:default;pointer-events:none}
+.soon{font-size:var(--fsMicro);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line2);padding:.2rem .45rem}
+
+.sep{width:100%;margin-top:clamp(1.75rem,5vw,2.25rem);margin-bottom:.9rem;
+  font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:.8rem}
+.sep::after{content:'';flex:1;height:1px;background:var(--line)}
+
+.foot{width:100%;max-width:30rem;min-width:0;margin-top:clamp(2.5rem,7vw,3.5rem);padding-top:1.25rem;
+  border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:var(--fsMicro);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.foot a{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;
+  transition:color var(--dur) var(--ease)}
+.foot a:hover{color:var(--blue)}
+:where(a):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.2v5.6l5-2.8-5-2.8Z"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14.5 3v10.6a3.6 3.6 0 1 1-3-3.55"/><path d="M14.5 3c.3 2.3 1.9 3.8 4.3 4"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 3.2 2.6 14.8 0 18M12 3c-2.6 3.2-2.6 14.8 0 18"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M3 8.5h13.5v6a5.5 5.5 0 0 1-5.5 5.5H8.5A5.5 5.5 0 0 1 3 14.5v-6Z"/><path d="M16.5 10.5h2.2a2.6 2.6 0 0 1 0 5.2h-2.2"/><path d="M6.5 2.5v2.6M10 2.5v2.6M13.5 2.5v2.6"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2.5 9.5 7 6h4l2.5 2.5L11 11 8.5 9"/><path d="M21.5 9.5 17 6h-3l-3.5 5 3 3 2-2 3 3"/><path d="M2.5 9.5V15l4 3.5M21.5 9.5V15l-4 3.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M6.5 17.5 17.5 6.5M9 6.5h8.5V15"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 5 3.5 10.5 9 16"/><path d="M3.5 10.5h11.5a5.5 5.5 0 0 1 5.5 5.5v3"/></symbol>
+</defs></svg>
+
+<div class="grain" aria-hidden="true"></div>
+
+<main class="wrap">
+  <img class="avatar" src="img/frost.jpg" alt="Sam in a red down hood at altitude, frost across his eyebrows" width="1200" height="1593">
+  <h1 class="name">Sam 🌋 Wild Adventures</h1>
+  <a class="handle" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">@hey_samtheman</a>
+  <p class="bio">Alpinism, ski touring and long days out. Sixteen self-organised expeditions since 2013 — most recently the Matterhorn.</p>
+
+  <nav class="links" aria-label="My links">
+
+    <a class="lk lk--primary" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">
+      <span class="lk__ic"><svg class="ic"><use href="#i-insta"/></svg></span>
+      <span class="lk__t"><span class="lk__n">Instagram</span><span class="lk__s">@hey_samtheman</span></span>
+      <span class="lk__go"><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+
+    <!-- TODO: confirm the YouTube handle before publishing -->
+    <a class="lk" href="https://www.youtube.com/@heysamtheman" target="_blank" rel="noopener">
+      <span class="lk__ic"><svg class="ic"><use href="#i-yt"/></svg></span>
+      <span class="lk__t"><span class="lk__n">YouTube</span><span class="lk__s">Films from the expeditions</span></span>
+      <span class="lk__go"><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+
+    <a class="lk" href="https://heysamtheman.com/">
+      <span class="lk__ic"><svg class="ic"><use href="#i-globe"/></svg></span>
+      <span class="lk__t"><span class="lk__n">My website</span><span class="lk__s">heysamtheman.com</span></span>
+      <span class="lk__go"><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+
+    <a class="lk" href="partner.html">
+      <span class="lk__ic"><svg class="ic"><use href="#i-handshake"/></svg></span>
+      <span class="lk__t"><span class="lk__n">Brands — partner with me</span><span class="lk__s">Sponsorship, gear testing, collaborations</span></span>
+      <span class="lk__go"><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+
+    <a class="lk" href="https://ko-fi.com/heysamtheman" target="_blank" rel="noopener">
+      <span class="lk__ic"><svg class="ic"><use href="#i-coffee"/></svg></span>
+      <span class="lk__t"><span class="lk__n">Buy me a coffee</span><span class="lk__s">It goes into the next expedition</span></span>
+      <span class="lk__go"><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+
+    <p class="sep">Coming soon</p>
+
+    <span class="lk lk--soon" aria-disabled="true">
+      <span class="lk__ic"><svg class="ic"><use href="#i-tiktok"/></svg></span>
+      <span class="lk__t"><span class="lk__n">TikTok</span></span>
+      <span class="soon">Soon</span>
+    </span>
+
+    <!-- Uncomment when the accounts are live:
+    <span class="lk lk--soon" aria-disabled="true">
+      <span class="lk__ic"><svg class="ic"><use href="#i-globe"/></svg></span>
+      <span class="lk__t"><span class="lk__n">RedNote</span></span>
+      <span class="soon">Soon</span>
+    </span>
+    <span class="lk lk--soon" aria-disabled="true">
+      <span class="lk__ic"><svg class="ic"><use href="#i-globe"/></svg></span>
+      <span class="lk__t"><span class="lk__n">Likee</span></span>
+      <span class="soon">Soon</span>
+    </span>
+    -->
+
+  </nav>
+</main>
+
+<footer class="foot">
+  <a href="index.html"><svg class="ic"><use href="#i-back"/></svg>Back to the site</a>
+  <span>© 2026 Sam 🌋 Wild Adventures</span>
+</footer>
+
+</body>
+</html>
