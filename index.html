@@ -205,23 +205,16 @@ p{max-width:68ch;text-wrap:pretty}
 .ighandle:hover{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 11%,transparent)}
 .ighandle .ic{color:var(--blue)}
 
-.reels{margin-top:clamp(2rem,4vw,3rem);max-width:58rem;display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.75rem,1.6vw,1.1rem)}
-.reel{position:relative;display:block;overflow:hidden;aspect-ratio:9/16;text-decoration:none;
-  background:linear-gradient(155deg,var(--bg3) 0%,var(--bg2) 55%,var(--bg) 100%);
-  border:1px solid var(--line);
-  transition:border-color var(--dur) var(--ease),transform var(--durSlow) var(--ease)}
-.reel:hover{border-color:var(--line2)}
-@media(prefers-reduced-motion:no-preference){.reel:hover{transform:translateY(-3px)}}
-.reel__v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent}
-.reel__badge{position:absolute;top:.7rem;left:.7rem;z-index:2;
-  display:inline-flex;align-items:center;gap:.35rem;
-  font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;color:#fff;
-  background:color-mix(in srgb,#000 55%,transparent);backdrop-filter:blur(6px);
-  padding:.35rem .6rem}
-.reel__cap{position:absolute;inset-inline:0;bottom:0;z-index:2;padding:2.5rem .85rem .85rem;
-  font-size:var(--fsBody);line-height:1.3;color:#fff;
-  background:linear-gradient(to top,rgba(0,0,0,.72),transparent)}
+.reels{margin-top:clamp(2rem,4vw,3rem);display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(20.5rem,1fr));
+  gap:clamp(.9rem,1.8vw,1.4rem);align-items:start}
+/* Instagram injects its own iframe with inline widths; rein it in */
+.reels .instagram-media{margin:0!important;min-width:0!important;
+  max-width:100%!important;width:100%!important;border-radius:6px!important}
+.reels__note{margin-top:1rem;font-size:var(--fsMicro);letter-spacing:.04em;color:var(--muted)}
+.reels__fallback{grid-column:1/-1;padding:1.25rem;border:1px solid var(--line2);
+  background:var(--bg2);color:var(--muted);font-size:var(--fsBody)}
+.reels__fallback a{color:var(--blue)}
 @media(max-width:52rem){
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2rem}
   .reels{grid-auto-flow:column;grid-auto-columns:64%;grid-template-columns:none;
@@ -259,7 +252,7 @@ p{max-width:68ch;text-wrap:pretty}
 /* ══════════ about ══════════ */
 .about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
   gap:clamp(2rem,5vw,4.5rem);align-items:center}
-.about__img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:52% 34%}
+.about__img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:52% 34%}
 .about p{color:var(--muted);margin-bottom:1.1rem;max-width:62ch}
 .about p:last-child{margin-bottom:0}
 .about__first{margin-top:1.5rem}
@@ -343,13 +336,28 @@ p{max-width:68ch;text-wrap:pretty}
   .hero__media img{object-position:50% 30%}
   .about__img{aspect-ratio:1/1;object-position:52% 28%}
   .btn{flex:1 1 auto;justify-content:center}
-  .bento{grid-template-columns:1fr}
-  .cell,.cell--lead,.cell--wide{grid-column:span 1;min-height:0}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cell{grid-column:span 1;min-height:0;padding:1.1rem}
+  .cell--lead{grid-column:span 2;min-height:0}
+  .cell--wide{grid-column:span 1}
+  .cell--wide:last-child{grid-column:span 2}
+  .cell__n{font-size:1.9rem}
+  .cell--lead .cell__n{font-size:3rem}
+  .cell__k,.cell--lead .cell__k{font-size:.95rem;line-height:1.3}
+  .cell__k .ic{margin-top:.18em}
+  .cell__sub{font-size:.85rem;padding-left:1.4rem}
   .field--split{grid-template-columns:1fr}
   .cmeta,.foot{flex-direction:column;gap:.6rem}
-  .tip{flex-direction:column;align-items:stretch;text-align:center}
-  .tip__h{justify-content:center}
-  .tip p{margin-inline:auto}
+  .tip{flex-direction:column;align-items:center;text-align:center;
+    padding:1.25rem;gap:.9rem}
+  /* flex-basis:20rem is a WIDTH on the desktop row, but becomes a 320px
+     minimum HEIGHT once the box stacks. Release it. */
+  .tip__body{flex:0 0 auto}
+  /* inline icon rather than a flex child, so it sits with the wrapped title */
+  .tip__h{display:block;font-size:1.35rem;margin-bottom:.35rem}
+  .tip__h .ic{margin-right:.35rem}
+  .tip p{margin-inline:auto;font-size:.95rem}
+  .tip .btn{flex:0 0 auto;width:auto;padding:.85rem 1.25rem}
   .cmeta span{justify-content:center}
     .nav__cta{padding:.7rem .85rem;letter-spacing:.04em}
   .nav__logo-rest{display:none}}
@@ -476,22 +484,9 @@ p{max-width:68ch;text-wrap:pretty}
 
     <a class="ighandle rise" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
 
-    <div class="reels rise">
-      <a class="reel" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">
-        <video class="reel__v" poster="img/reel-1.jpg" data-src="video/reel-1.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
-        <span class="reel__badge"><svg class="ic ic--sm"><use href="#i-insta"/></svg>Reel</span>
-        <span class="reel__cap">Matterhorn — Hörnli Ridge</span>
-      </a>
-      <a class="reel" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">
-        <video class="reel__v" poster="img/reel-2.jpg" data-src="video/reel-2.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
-        <span class="reel__badge"><svg class="ic ic--sm"><use href="#i-insta"/></svg>Reel</span>
-        <span class="reel__cap">Breithorn traverse, 4,164&nbsp;m</span>
-      </a>
-      <a class="reel" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">
-        <video class="reel__v" poster="img/reel-3.jpg" data-src="video/reel-3.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
-        <span class="reel__badge"><svg class="ic ic--sm"><use href="#i-insta"/></svg>Reel</span>
-        <span class="reel__cap">Summit morning, 04:50 departure</span>
-      </a>
+    <div class="reels rise" id="reels">
+      <p class="reels__fallback">Reels load from Instagram. If nothing appears, see them on
+        <a href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">@hey_samtheman</a>.</p>
     </div>
   </div>
 </section>
@@ -718,20 +713,39 @@ p{max-width:68ch;text-wrap:pretty}
     status.textContent='Opening your email app with the message ready to send.';
   });
 
-  /* ── reels: load and play only while on screen ── */
-  var reels=[].slice.call(document.querySelectorAll('.reel__v'));
-  if(reels.length && !reduce && 'IntersectionObserver' in window){
-    var rio=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        var v=en.target;
-        if(en.isIntersecting){
-          v.muted=true;
-          if(!v.getAttribute('src') && v.dataset.src) v.setAttribute('src',v.dataset.src);
-          var pr=v.play(); if(pr && pr.catch) pr.catch(function(){});
-        }else if(!v.paused){ v.pause(); }
-      });
-    },{threshold:.25});
-    reels.forEach(function(v){rio.observe(v)});
+  /* ── Instagram reels ──────────────────────────────────────────────
+     To feature a reel: open it on Instagram, Share → Embed, and paste
+     its permalink below. Order here is the order on the page.
+     ──────────────────────────────────────────────────────────────── */
+  var REELS = [
+    'https://www.instagram.com/reel/Dc4YskjK6tQ/'
+    // ,'https://www.instagram.com/reel/XXXXXXXXXXX/'
+    // ,'https://www.instagram.com/reel/XXXXXXXXXXX/'
+  ];
+  var reelWrap = document.getElementById('reels');
+  if(reelWrap && REELS.length){
+    reelWrap.innerHTML = REELS.map(function(url){
+      return '<blockquote class="instagram-media" data-instgrm-version="14"'
+           + ' data-instgrm-permalink="' + url + '?utm_source=ig_embed"></blockquote>';
+    }).join('');
+
+    /* Instagram is blocked on plenty of corporate networks and by most
+       tracker blockers. If embed.js never renders an iframe, say so and
+       point at the profile rather than leaving an empty hole. */
+    var fb = document.createElement('p');
+    fb.className = 'reels__fallback';
+    fb.hidden = true;
+    fb.innerHTML = 'These load from Instagram, which your browser or network seems to be '
+                 + 'blocking. Watch them on <a href="https://www.instagram.com/hey_samtheman/" '
+                 + 'target="_blank" rel="noopener">@hey_samtheman</a>.';
+    reelWrap.appendChild(fb);
+    setTimeout(function(){
+      if(!reelWrap.querySelector('iframe')) fb.hidden = false;
+    }, 5000);
+
+    var ig = document.createElement('script');
+    ig.async = true; ig.src = 'https://www.instagram.com/embed.js';
+    document.body.appendChild(ig);
   }
 
   /* number ticker */
