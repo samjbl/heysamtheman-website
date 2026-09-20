@@ -230,8 +230,6 @@ h2 .hl{color:inherit}
   letter-spacing:0;color:var(--muted);margin-left:.35rem}
 .stat__k{margin-top:.45rem;font-size:var(--fsBody);color:var(--ink);opacity:.92;line-height:1.35}
 .stat__s{margin-top:.15rem;font-size:var(--fsMicro);color:var(--muted);letter-spacing:.04em}
-.caveat{margin-top:clamp(1.5rem,3vw,2rem);padding-left:1.35rem;
-  border-left:2px solid var(--line2);color:var(--muted);font-size:var(--fsBody);max-width:64ch}
 .ighandle{margin-top:clamp(1.5rem,3vw,2rem);display:inline-flex;align-items:center;gap:.5rem;
   text-decoration:none;font-size:var(--fsBody);font-weight:500;color:var(--ink);
   border:1px solid var(--line2);padding:.6rem 1rem;
@@ -239,41 +237,93 @@ h2 .hl{color:inherit}
 .ighandle:hover{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 11%,transparent)}
 .ighandle .ic{color:var(--blue)}
 
-.reels{margin-top:clamp(2rem,4vw,3rem);display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(20.5rem,1fr));
-  gap:clamp(.9rem,1.8vw,1.4rem);align-items:start}
-/* Instagram injects its own iframe with inline widths; rein it in */
-.reels .instagram-media{margin:0!important;min-width:0!important;
-  max-width:100%!important;width:100%!important;border-radius:6px!important}
-/* headline number directly under the reels */
-.peak{margin-top:clamp(1.5rem,3vw,2rem);display:flex;align-items:baseline;
-  gap:.6rem;flex-wrap:wrap}
-.peak b{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
-  line-height:1;color:var(--blueDeep);font-size:clamp(2rem,4.6vw,3.2rem)}
-.peak span{font-size:var(--fsLead);color:var(--ink);opacity:.92}
-/* compact audience summary */
-.aud{margin-top:clamp(1.5rem,3vw,2rem);display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
-  gap:.9rem clamp(1.5rem,3vw,2.5rem);max-width:64rem;
-  padding-top:1.25rem;box-shadow:inset 0 1px 0 var(--line)}
-.aud__i{display:flex;flex-direction:column;gap:.2rem}
-.aud__k{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.aud__v{font-size:var(--fsBody);color:var(--ink);line-height:1.35}
-.aud__i[hidden]{display:none}
-.reels__fallback{grid-column:1/-1;padding:1.25rem;border:1px solid var(--line2);
-  background:var(--bg2);color:var(--muted);font-size:var(--fsBody)}
-.reels__fallback a{color:var(--blue)}
+/* ── reels: self-hosted carousel (replaced the Instagram embed, 20 Sep 2026)
+      Files are in video/ and img/, named by Instagram shortcode. Nothing
+      third-party loads here — no embed.js, no iframe, no tracker. ── */
+.reelrail{margin-top:clamp(2rem,4vw,3rem);position:relative}
+.reelrail__head{display:flex;align-items:flex-end;justify-content:space-between;
+  gap:1rem;margin-bottom:1rem}
+.reelrail__lbl{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:0}
+.reelrail__nav{display:flex;gap:.5rem;flex:0 0 auto}
+.rnav{width:2.5rem;height:2.5rem;border:1px solid var(--line2);border-radius:50%;
+  background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease),
+    opacity var(--dur) var(--ease)}
+.rnav:hover:not(:disabled){border-color:var(--blue);
+  background:color-mix(in srgb,var(--blue) 14%,transparent)}
+.rnav:disabled{opacity:.28;cursor:default}
+.rnav svg{width:1.05rem;height:1.05rem;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+.rnav--prev svg{transform:rotate(90deg)}
+.rnav--next svg{transform:rotate(-90deg)}
+
+.reels{display:flex;gap:clamp(.75rem,1.4vw,1.1rem);overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;
+  margin-inline:calc(var(--shellPad) * -1);padding-inline:var(--shellPad);
+  /* without this the first card snaps to the padding edge, so the rail
+     opens at scrollLeft 40 and the back arrow is live with nowhere to go */
+  scroll-padding-inline:var(--shellPad);
+  padding-bottom:.5rem;cursor:grab}
+.reels::-webkit-scrollbar{display:none}
+.reels.is-drag{cursor:grabbing;scroll-snap-type:none}
+@media(prefers-reduced-motion:no-preference){.reels{scroll-behavior:smooth}}
+
+.reel{flex:0 0 clamp(14rem,21vw,17.5rem);scroll-snap-align:start;position:relative;
+  aspect-ratio:9/16;overflow:hidden;border-radius:10px;background:var(--bg2);
+  border:1px solid var(--line);
+  transition:border-color var(--durSlow) var(--ease),transform var(--durSlow) var(--ease)}
+.reel:hover{border-color:var(--line2)}
+@media(prefers-reduced-motion:no-preference){.reel:hover{transform:translateY(-3px)}}
+.reel img,.reel video{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block}
+.reel img{z-index:0}
+.reel video{z-index:1;opacity:0;transition:opacity var(--durSlow) var(--ease)}
+.reel video.is-on{opacity:1}
+.reel__veil{position:absolute;inset:auto 0 0 0;height:60%;z-index:2;pointer-events:none;
+  background:linear-gradient(to top,rgba(4,7,12,.93) 6%,rgba(4,7,12,.5) 44%,transparent)}
+.reel__n{position:absolute;top:.7rem;left:.85rem;z-index:3;margin:0;
+  font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);line-height:1;
+  font-size:1.7rem;color:#fff;text-shadow:0 1px 12px rgba(4,7,12,.9)}
+.reel__n small{font-family:var(--body);font-size:.6rem;font-weight:400;letter-spacing:.14em;
+  text-transform:uppercase;display:block;margin-top:.35rem;opacity:.82}
+.reel__cap{position:absolute;inset:auto .85rem .9rem .85rem;z-index:3;margin:0;
+  font-size:.9rem;line-height:1.35;color:#fff;text-shadow:0 1px 8px rgba(4,7,12,.95)}
+.reel__lk{position:absolute;inset:0;z-index:4;border-radius:10px}
+.reel__lk:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.reel__lk span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* ── audience dashboard: one bar per row, one hue, every value printed ──
+      Bars are scaled to the largest value in their own panel, not to 100,
+      so a 34.1% band fills the row. Every row carries its own number, so
+      the bar is a shape to scan, never the only thing carrying the value. */
+.dash{margin-top:clamp(2rem,4vw,3rem);display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));
+  gap:clamp(1.75rem,3.5vw,3rem);padding-top:1.75rem;
+  box-shadow:inset 0 1px 0 var(--line)}
+.dash__p{min-width:0}
+.dash__k{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 1.15rem}
+.dash__r{margin-bottom:.95rem}
+.dash__r:last-child{margin-bottom:0}
+.dash__t{display:flex;align-items:baseline;justify-content:space-between;
+  gap:.75rem;margin-bottom:.4rem}
+.dash__l{font-size:var(--fsBody);color:var(--ink);opacity:.9;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dash__v{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  line-height:1;font-size:1.5rem;color:var(--ink);flex:0 0 auto}
+.dash__v small{font-family:var(--body);font-size:.7rem;font-weight:400;
+  letter-spacing:0;color:var(--muted);margin-left:.12rem}
+.dash__b{height:6px;border-radius:3px;background:var(--line)}
+.dash__f{display:block;height:100%;width:0;border-radius:3px;background:var(--blue)}
+@media(prefers-reduced-motion:no-preference){
+  .dash__f{transition:width .9s var(--ease)}}
 @media(max-width:52rem){
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2rem}
-  .reels{grid-auto-flow:column;grid-auto-columns:64%;grid-template-columns:none;
-    overflow-x:auto;scroll-snap-type:x mandatory;
-    scrollbar-width:none;padding-bottom:.25rem;
-    margin-inline:calc(var(--shellPad) * -1);padding-inline:var(--shellPad)}
-  .reels::-webkit-scrollbar{display:none}
-  .reel{scroll-snap-align:start}}
+  .reel{flex-basis:min(62vw,15rem)}
+  .reelrail__nav{display:none}}
 @media(max-width:34rem){
   .stats{grid-template-columns:1fr;row-gap:1.5rem}
-  .reels{grid-auto-columns:78%}}
+  .reel{flex-basis:72vw}}
 
 /* ══════════ bento ══════════ */
 .bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
@@ -560,7 +610,7 @@ h2 .hl{color:inherit}
     <div class="hero__text">
       <h1>Join my next adventures.</h1>
       <p class="hero__lead">👋 Hi, I'm Sam. I'm a content creator. I'm always outdoors, and my day job is at Google.</p>
-      <p class="hero__note">I reach 7M+ views, 400K likes and 10,000 followers.<br>
+      <p class="hero__note">6.5M+ views, 449K likes and comments, nearly 10,000 followers.<br>
         I'm looking for brands to come along on my next adventures.</p>
       <div class="hero__actions">
         <a class="btn btn--solid" href="#contact">Start a conversation<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
@@ -591,30 +641,32 @@ h2 .hl{color:inherit}
       <h2>My audience in numbers</h2>
     </div>
 
-    <p class="kicker rise">Instagram · <span data-metric-period>All time</span></p>
+    <!-- NOTE: the four tiles below are Instagram-only, 90-day figures.
+         This label was set by Sam on 20 Sep 2026 and is deliberately NOT bound to
+         metrics.js `period` (still "Last 90 days"), which is why the binding is gone. -->
+    <p class="kicker rise">All time. All platforms</p>
 
     <div class="stats rise">
-      <div class="stat"><div class="stat__n" data-metric="views">6,024,602</div><div class="stat__k">Views</div></div>
-      <div class="stat"><div class="stat__n" data-metric="interactions">435,836</div><div class="stat__k">Likes &amp; comments</div></div>
-      <div class="stat"><div class="stat__n" data-metric="followers">9,826</div><div class="stat__k">Followers</div></div>
+      <div class="stat"><div class="stat__n" data-metric="views">6,279,623</div><div class="stat__k">Views</div></div>
+      <div class="stat"><div class="stat__n" data-metric="interactions">449,359</div><div class="stat__k">Likes &amp; comments</div></div>
+      <div class="stat"><div class="stat__n" data-metric="followers">9,867</div><div class="stat__k">Followers</div></div>
       <div class="stat"><div class="stat__n" data-metric="posts">181</div><div class="stat__k">Posts published</div></div>
+    </div>
+
+    <div class="reelrail rise">
+      <div class="reelrail__head">
+        <p class="reelrail__lbl">My top 5 Reels</p>
+        <div class="reelrail__nav">
+          <button class="rnav rnav--prev" type="button" aria-label="Scroll to previous reels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5v15M5.5 13 12 19.5 18.5 13"/></svg></button>
+          <button class="rnav rnav--next" type="button" aria-label="Scroll to more reels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5v15M5.5 13 12 19.5 18.5 13"/></svg></button>
+        </div>
+      </div>
+      <div class="reels" id="reels"></div>
     </div>
 
     <a class="ighandle rise" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
 
-    <div class="reels rise" id="reels">
-      <p class="reels__fallback">Reels load from Instagram. If nothing appears, see them on
-        <a href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">@hey_samtheman</a>.</p>
-    </div>
-
-    <p class="peak rise"><b data-metric-top>6,024,602</b><span>views in the last 30 days</span></p>
-
-    <div class="aud rise">
-      <div class="aud__i"><span class="aud__k">Audience split</span><span class="aud__v" data-aud="split">Women 47.3% · Men 52.7%</span></div>
-      <div class="aud__i"><span class="aud__k">Discovery</span><span class="aud__v" data-aud="discovery">98.7% of views come from people who don’t follow me</span></div>
-      <div class="aud__i"><span class="aud__k">Top locations</span><span class="aud__v" data-aud="locations"></span></div>
-      <div class="aud__i"><span class="aud__k">Age range</span><span class="aud__v" data-aud="age"></span></div>
-    </div>
+    <div class="dash rise" id="audDash"></div>
   </div>
 </section>
 
@@ -927,39 +979,159 @@ h2 .hl{color:inherit}
     }
   }
 
-  /* ── Instagram reels ──────────────────────────────────────────────
-     To feature a reel: open it on Instagram, Share → Embed, and paste
-     its permalink below. Order here is the order on the page.
+  /* ── Reels carousel, self-hosted ──────────────────────────────────
+     Nothing loads from Instagram. Each entry maps to three things:
+       video/reel-<id>.mp4   20s, muted, 540px wide
+       img/reel-<id>.jpg     poster, shown until the clip is on screen
+       instagram.com/reel/<id>/   where the card links
+     To change the line-up, edit this array and drop the matching files
+     in. Order here is the order on the page. Leave views:'' and the
+     badge is simply not drawn.
      ──────────────────────────────────────────────────────────────── */
   var REELS = [
-    'https://www.instagram.com/reel/Dc4YskjK6tQ/'
-    // ,'https://www.instagram.com/reel/XXXXXXXXXXX/'
-    // ,'https://www.instagram.com/reel/XXXXXXXXXXX/'
+    {id:'Dc4YskjK6tQ', views:'3.2M', cap:'The climb down from 4,400 m on the Matterhorn'},
+    {id:'DcwqegrKaXQ', views:'',     cap:'Sunrise on the 4,478 m Matterhorn'},
+    {id:'DU0MF8hE7FJ', views:'',     cap:'Mount Yotei summit, six hours up'},
+    {id:'DbGLmKsKX6M', views:'',     cap:'Paragliding over Lake Annecy at golden hour'},
+    {id:'DX0Om9fzlcy', views:'',     cap:'“Hey Siri, what is type 2 fun?”'}
   ];
-  var reelWrap = document.getElementById('reels');
-  if(reelWrap && REELS.length){
-    reelWrap.innerHTML = REELS.map(function(url){
-      return '<blockquote class="instagram-media" data-instgrm-version="14"'
-           + ' data-instgrm-permalink="' + url + '?utm_source=ig_embed"></blockquote>';
+
+  var rail = document.getElementById('reels');
+  if(rail && REELS.length){
+    rail.innerHTML = REELS.map(function(r){
+      return '<article class="reel">'
+        +   '<img src="img/reel-' + r.id + '.jpg" alt="" loading="lazy" decoding="async">'
+        +   '<video muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"'
+        +     ' data-src="video/reel-' + r.id + '.mp4"></video>'
+        +   '<div class="reel__veil"></div>'
+        +   (r.views ? '<p class="reel__n">' + r.views + '<small>views</small></p>' : '')
+        +   '<p class="reel__cap">' + r.cap + '</p>'
+        +   '<a class="reel__lk" href="https://www.instagram.com/reel/' + r.id + '/"'
+        +     ' target="_blank" rel="noopener"><span>Watch this Reel on Instagram</span></a>'
+        + '</article>';
     }).join('');
 
-    /* Instagram is blocked on plenty of corporate networks and by most
-       tracker blockers. If embed.js never renders an iframe, say so and
-       point at the profile rather than leaving an empty hole. */
-    var fb = document.createElement('p');
-    fb.className = 'reels__fallback';
-    fb.hidden = true;
-    fb.innerHTML = 'These load from Instagram, which your browser or network seems to be '
-                 + 'blocking. Watch them on <a href="https://www.instagram.com/hey_samtheman/" '
-                 + 'target="_blank" rel="noopener">@hey_samtheman</a>.';
-    reelWrap.appendChild(fb);
-    setTimeout(function(){
-      if(!reelWrap.querySelector('iframe')) fb.hidden = false;
-    }, 5000);
+    var vids = [].slice.call(rail.querySelectorAll('video'));
 
-    var ig = document.createElement('script');
-    ig.async = true; ig.src = 'https://www.instagram.com/embed.js';
-    document.body.appendChild(ig);
+    /* Play only the clips that are on screen, and only once the section
+       itself is in view — otherwise five decoders run for nobody. The
+       poster carries the card until then, so a clip that never loads
+       still looks finished rather than broken. */
+    var onScreen = [], railIn = false;
+    function sync(){
+      vids.forEach(function(v){
+        var want = !reduce && railIn && onScreen.indexOf(v) > -1;
+        if(want){
+          if(!v.src) v.src = v.dataset.src;
+          var p = v.play();
+          if(p && p['catch']) p['catch'](function(){});
+          v.classList.add('is-on');
+        } else {
+          if(!v.paused) v.pause();
+          v.classList.remove('is-on');
+        }
+      });
+    }
+
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        railIn = es[0].isIntersecting; sync();
+      }, {threshold:.15}).observe(rail);
+
+      var cardIO = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          var i = onScreen.indexOf(e.target);
+          if(e.isIntersecting && i < 0) onScreen.push(e.target);
+          else if(!e.isIntersecting && i > -1) onScreen.splice(i,1);
+        });
+        sync();
+      }, {root:rail, threshold:.6});
+      vids.forEach(function(v){ cardIO.observe(v); });
+    }
+
+    /* arrows */
+    var prev = document.querySelector('.rnav--prev'),
+        next = document.querySelector('.rnav--next');
+    function step(){
+      var c = rail.querySelector('.reel');
+      return c ? c.getBoundingClientRect().width + 16 : rail.clientWidth * .8;
+    }
+    function edges(){
+      if(!prev || !next) return;
+      var max = rail.scrollWidth - rail.clientWidth;
+      prev.disabled = rail.scrollLeft <= 4;
+      next.disabled = rail.scrollLeft >= max - 4;
+    }
+    if(prev) prev.addEventListener('click', function(){ rail.scrollBy({left:-step()*2, behavior: reduce?'auto':'smooth'}); });
+    if(next) next.addEventListener('click', function(){ rail.scrollBy({left: step()*2, behavior: reduce?'auto':'smooth'}); });
+    rail.addEventListener('scroll', edges, {passive:true});
+    addEventListener('resize', edges);
+    edges();
+
+    /* drag to scroll with a mouse; touch already scrolls natively */
+    var down = false, sx = 0, sl = 0, moved = 0;
+    rail.addEventListener('pointerdown', function(e){
+      if(e.pointerType === 'touch') return;
+      down = true; moved = 0; sx = e.clientX; sl = rail.scrollLeft;
+      rail.classList.add('is-drag');
+    });
+    addEventListener('pointermove', function(e){
+      if(!down) return;
+      var d = e.clientX - sx;
+      moved = Math.max(moved, Math.abs(d));
+      rail.scrollLeft = sl - d;
+    });
+    function release(){
+      if(!down) return;
+      down = false; rail.classList.remove('is-drag'); edges();
+    }
+    addEventListener('pointerup', release);
+    addEventListener('pointercancel', release);
+    /* a drag that ends on a card must not open Instagram */
+    rail.addEventListener('click', function(e){
+      if(moved > 6){ e.preventDefault(); e.stopPropagation(); moved = 0; }
+    }, true);
+  }
+
+  /* ── audience dashboard ───────────────────────────────────────────
+     Numbers live in metrics.js. Each panel is its own single-series
+     breakdown, so one hue does for all of them and the row label plus
+     the printed value carry the meaning — nothing here is colour-only.
+     ──────────────────────────────────────────────────────────────── */
+  var dash = document.getElementById('audDash');
+  var AUD  = (window.SAM_METRICS && window.SAM_METRICS.audience) || null;
+  if(dash && AUD){
+    var PANELS = [['Gender', AUD.gender], ['Age', AUD.age], ['Top countries', AUD.countries]];
+    dash.innerHTML = PANELS.map(function(p){
+      var rows = p[1] || [];
+      if(!rows.length) return '';
+      var max = Math.max.apply(null, rows.map(function(r){ return r.v; })) || 1;
+      return '<div class="dash__p"><p class="dash__k">' + p[0] + '</p>'
+        + rows.map(function(r){
+            return '<div class="dash__r">'
+              +   '<div class="dash__t">'
+              +     '<span class="dash__l">' + r.k + '</span>'
+              +     '<span class="dash__v">' + r.v.toFixed(1) + '<small>%</small></span>'
+              +   '</div>'
+              +   '<div class="dash__b"><i class="dash__f" data-w="'
+              +     (r.v / max * 100).toFixed(1) + '"></i></div>'
+              + '</div>';
+          }).join('')
+        + '</div>';
+    }).join('');
+
+    var fills = [].slice.call(dash.querySelectorAll('.dash__f'));
+    var grow = function(){
+      fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; });
+    };
+    if(reduce || !('IntersectionObserver' in window)) grow();
+    else {
+      var dIO = new IntersectionObserver(function(es){
+        if(!es[0].isIntersecting) return;
+        dIO.disconnect(); grow();
+      }, {threshold:.25});
+      dIO.observe(dash);
+    }
   }
 
   /* number ticker */
