@@ -188,7 +188,7 @@ p{max-width:68ch;text-wrap:pretty}
 
 /* ══════════ audience: 30-day numbers + reels ══════════ */
 .kicker{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:64rem;
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
 .stat__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
   line-height:1;color:var(--blueDeep);font-size:clamp(2.1rem,4.4vw,3.4rem)}
@@ -465,15 +465,13 @@ p{max-width:68ch;text-wrap:pretty}
       <h2><span class="hl">Engagement</span></h2>
     </div>
 
-    <p class="kicker rise">Instagram · last 30 days to 17 September 2026</p>
+    <p class="kicker rise">Instagram · <span data-metric-period>All time</span></p>
 
     <div class="stats rise">
-      <div class="stat"><div class="stat__n">6,024,602</div><div class="stat__k">Views</div></div>
-      <div class="stat"><div class="stat__n">5,900,000</div><div class="stat__k">Reel views</div></div>
-      <div class="stat"><div class="stat__n">3,170,246</div><div class="stat__k">Accounts reached</div></div>
-      <div class="stat"><div class="stat__n">435,836</div><div class="stat__k">Interactions</div></div>
-      <div class="stat"><div class="stat__n">9,826</div><div class="stat__k">Followers</div></div>
-      <div class="stat"><div class="stat__n">181</div><div class="stat__k">Posts published</div></div>
+      <div class="stat"><div class="stat__n" data-metric="views">6,024,602</div><div class="stat__k">Views</div></div>
+      <div class="stat"><div class="stat__n" data-metric="interactions">435,836</div><div class="stat__k">Interactions</div></div>
+      <div class="stat"><div class="stat__n" data-metric="followers">9,826</div><div class="stat__k">Followers</div></div>
+      <div class="stat"><div class="stat__n" data-metric="posts">181</div><div class="stat__k">Posts published</div></div>
     </div>
 
     <a class="ighandle rise" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
@@ -644,6 +642,7 @@ p{max-width:68ch;text-wrap:pretty}
   <a class="foot__tip" href="https://ko-fi.com/heysamtheman" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-coffee"/></svg>Buy me a coffee</a>
 </footer>
 
+<script src="metrics.js"></script>
 <script>
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
