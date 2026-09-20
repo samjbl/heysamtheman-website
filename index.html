@@ -101,12 +101,17 @@ h2 .hl{color:inherit}
   display:flex;align-items:center;justify-content:space-between;gap:.6rem;
   padding:.9rem var(--shellPad);border-bottom:1px solid transparent;
   transition:background var(--durSlow) var(--ease),border-color var(--durSlow) var(--ease)}
-.nav.is-stuck{background:color-mix(in srgb,var(--bg) 68%,transparent);
+.nav.is-stuck{background:color-mix(in srgb,var(--bg) 78%,transparent);
   -webkit-backdrop-filter:blur(20px) saturate(150%);
           backdrop-filter:blur(20px) saturate(150%);
   border-bottom-color:var(--line)}
-/* Safari/iOS repaint the blur badly without a compositing hint */
-.nav{will-change:background}
+/* Chrome does not sample a composited <video> into the backdrop root, so
+   over the reels rail the blur quietly does nothing and the bar reads as
+   plain glass. The tint carries it on its own; the blur is a bonus where
+   it works. `will-change:background` used to live here as a Safari repaint
+   hint — it promotes the bar to its own layer, which is one of the things
+   that stops backdrop-filter sampling at all, so it is gone. */
+.nav{transform:translateZ(0)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .nav.is-stuck{background:color-mix(in srgb,var(--bg) 94%,transparent)}}
 .nav__logo{display:inline-flex;align-items:center;gap:.3rem;
@@ -222,9 +227,16 @@ h2 .hl{color:inherit}
 
 /* ══════════ audience: 30-day numbers + reels ══════════ */
 .kicker{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
-.reelrail + .kicker{margin-top:clamp(2.25rem,4.5vw,3.25rem)}
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
+/* the hand-off from the work to the numbers, so the section reads as two
+   halves rather than one long scroll. partner.html has no .split, which is
+   why .stats keeps its own hairline. */
+.split{margin-top:clamp(3.25rem,6.5vw,5rem);display:flex;align-items:center;gap:1rem}
+.split span{flex:0 0 auto;font-size:var(--fsMicro);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blue)}
+.split::after{content:"";flex:1;height:1px;background:var(--line)}
+.split + .kicker{margin-top:clamp(1.75rem,3.5vw,2.5rem)}
 .stat__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
   line-height:1;color:var(--blueDeep);font-size:clamp(2.1rem,4.4vw,3.4rem)}
 .stat__n small{font-family:var(--body);font-size:.95rem;font-weight:400;
@@ -294,10 +306,13 @@ h2 .hl{color:inherit}
 .reel__cap--post{position:static;inset:auto;text-shadow:none;color:var(--ink)}
 .reel__place{display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted)}
-.reel__n{margin:0;display:flex;align-items:baseline;gap:.4rem}
-.reel__n b{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
-  line-height:1;font-size:1.3rem;color:var(--ink)}
-.reel__n span{font-size:var(--fsBody);color:var(--muted)}
+/* Instagram sets a like count in the system UI face at ~14px, semibold,
+   number and word alike — not in a display face. Matching that is what
+   makes these read as a figure off the app rather than a stat we styled. */
+.reel__n{margin:0;display:flex;align-items:baseline;gap:.28rem;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:.875rem;font-weight:600;line-height:1.4;letter-spacing:-.01em;color:var(--ink)}
+.reel__n b,.reel__n span{font:inherit;letter-spacing:inherit;color:inherit}
 /* an unknown count still reserves its line, so every card bottom aligns */
 .reel__n--empty{visibility:hidden}
 
@@ -658,7 +673,7 @@ h2 .hl{color:inherit}
 <section class="sec" id="audience">
   <div class="shell">
     <div class="hgroup rise">
-      <h2>My channels &amp; audience</h2>
+      <h2>My content &amp; audience</h2>
     </div>
 
     <div class="reelrail rise">
@@ -671,6 +686,8 @@ h2 .hl{color:inherit}
       </div>
       <div class="reels" id="reels"></div>
     </div>
+
+    <div class="split rise"><span>Now the audience</span></div>
 
     <!-- The three tiles below are rounded DOWN and cross-platform, which is
          what lets this label stand: each figure is a floor, not a claim.
