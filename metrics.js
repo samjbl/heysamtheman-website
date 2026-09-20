@@ -27,10 +27,25 @@ window.SAM_METRICS = {
     followers   : 9826,
     posts       : 181,
 
-    /* kept for reference — not displayed on the site */
+    /* kept for reference — not displayed as a tile */
     reelViews   : 5900000,   // approximate — Insights only reports "5.9M"
     reached     : 3170246
 
+  },
+
+  /* The headline number under the reels. Set topReel if you have a single
+     reel's view count; otherwise this falls back to total views. */
+  topReel: null,
+
+  /* Audience block. Leave a field as '' and its row is hidden.
+     Instagram app -> Professional dashboard -> Insights -> Total followers:
+       locations = "Top locations" (top 3 countries)
+       age       = "Age range" (the two biggest bands) */
+  audience: {
+    split    : 'Women 47.3% \u00b7 Men 52.7%',
+    discovery: '98.7% of views come from people who don\u2019t follow me',
+    locations: '',
+    age      : ''
   }
 
 };
@@ -49,5 +64,14 @@ window.SAM_METRICS = {
   });
   document.querySelectorAll('[data-metric-period]').forEach(function(el){
     if(M.period) el.textContent = M.period;
+  });
+  document.querySelectorAll('[data-metric-top]').forEach(function(el){
+    el.textContent = fmt(M.topReel || M.values.views);
+  });
+  var A = M.audience || {};
+  document.querySelectorAll('[data-aud]').forEach(function(el){
+    var v = A[el.getAttribute('data-aud')];
+    if(v){ el.textContent = v; }
+    else { var row = el.closest('.aud__i'); if(row) row.hidden = true; }
   });
 })();
