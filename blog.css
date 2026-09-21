@@ -130,3 +130,21 @@ p{text-wrap:pretty}
 .foot a:hover{color:var(--blue)}
 :where(a,button):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 [id]{scroll-margin-top:6rem}
+
+/* table of contents, sub-headings and inline notes (added for the longer posts) */
+.toc{margin:clamp(1.75rem,3.5vw,2.5rem) 0;border:1px solid var(--line2);background:var(--bg2);
+  padding:clamp(1.1rem,2.2vw,1.5rem)}
+.toc b{display:block;font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:400;margin-bottom:.7rem}
+.toc ol{margin:0;padding-left:1.25rem;color:#c8cfdf}
+.toc li{margin-bottom:.35rem}
+.toc a{color:var(--ink);text-decoration:none;transition:color var(--dur) var(--ease)}
+.toc a:hover{color:var(--blue)}
+.article h3{font-size:clamp(1.25rem,2.4vw,1.6rem);margin-top:clamp(1.5rem,3vw,2rem);
+  margin-bottom:.55rem;color:var(--ink)}
+.article ol{margin:0 0 1.1rem 1.25rem;color:#c8cfdf}
+.article ol li{margin-bottom:.45rem}
+.article .note{margin:clamp(1.5rem,3vw,2rem) 0;padding-left:1.25rem;
+  border-left:2px solid var(--line2);color:var(--muted);font-size:.95rem}
+.article .note a{color:var(--blue)}
+.article em{font-style:italic}

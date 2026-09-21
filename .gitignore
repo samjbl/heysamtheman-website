@@ -15,3 +15,6 @@ img/_sheets/
 
 # files Claude staged for you to delete by hand
 _to_delete/
+
+# private dictation notes: names, health details, costs. Never publish.
+Adventure Notes.md
