@@ -4,3 +4,14 @@
 # the ~60MB Instagram originals (renamed from "Top 5 reels" on 20 Sep 2026).
 # video/ holds the web encodes, img/post-*.jpg the cropped stills.
 Top Posts/
+
+# Sam's photo library: full-resolution originals, HEIC included, filed by
+# expedition. Add anything here — the site never loads from it. img/web/ holds
+# the resized, web-safe copies the pages actually reference.
+img/photos/
+
+# contact sheets built to choose photos from
+img/_sheets/
+
+# files Claude staged for you to delete by hand
+_to_delete/

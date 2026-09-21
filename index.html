@@ -826,7 +826,7 @@ h2 .hl{color:inherit}
 
       <a class="hi__i rise" href="blog-mont-blanc.html">
         <span class="hi__media">
-          <img src="img/blog/gouter-hut.jpg" alt="The Go&ucirc;ter hut on the Mont Blanc route" loading="lazy" decoding="async">
+          <img src="img/web/mont-blanc/gouter-hut.jpg" alt="The Go&ucirc;ter hut on the Mont Blanc route" loading="lazy" decoding="async">
         </span>
         <span class="hi__body">
           <span class="hi__meta">Alpinism &middot; September 2015</span>
@@ -837,7 +837,7 @@ h2 .hl{color:inherit}
 
       <a class="hi__i rise" href="expeditions.html">
         <span class="hi__media">
-          <span class="hi__soon"><svg class="ic ic--sm"><use href="#i-camera"/></svg>Photo to come</span>
+          <img src="img/web/aconcagua/pxl-20250101-161417316.jpg" alt="Sam standing arms wide between ice penitentes high on Aconcagua" loading="lazy" decoding="async">
         </span>
         <span class="hi__body">
           <span class="hi__meta">Alpinism &middot; January 2025</span>
@@ -848,7 +848,7 @@ h2 .hl{color:inherit}
 
       <a class="hi__i rise" href="blog-matterhorn.html">
         <span class="hi__media">
-          <span class="hi__soon"><svg class="ic ic--sm"><use href="#i-camera"/></svg>Photo to come</span>
+          <img src="img/web/matterhorn/pxl-20260822-140556264.jpg" alt="The Matterhorn above the H&ouml;rnli approach, a climber on the walkway below the face" loading="lazy" decoding="async">
         </span>
         <span class="hi__body">
           <span class="hi__meta">Alpinism &middot; August 2026</span>
@@ -1251,7 +1251,7 @@ h2 .hl{color:inherit}
 
   /* ── Reels carousel, self-hosted ──────────────────────────────────
      Nothing loads from Instagram. Each entry maps to three things:
-       video/reel-<id>.mp4   10s, muted, 540px wide
+       img/video/reel-<id>.mp4   10s, muted, 540px wide
        img/reel-<id>.jpg     poster, shown until the clip is on screen
        instagram.com/reel/<id>/   where the card links
      To change the line-up, edit this array and drop the matching files
@@ -1260,7 +1260,7 @@ h2 .hl{color:inherit}
      cards stay aligned.
      ──────────────────────────────────────────────────────────────── */
   /* ── The rail: Reels and stills, alternating ──────────────────────
-     kind:'reel'  → video/reel-<id>.mp4 + img/reel-<id>.jpg, autoplays
+     kind:'reel'  → img/video/reel-<id>.mp4 + img/reel-<id>.jpg, autoplays
                     muted when the card is on screen
      kind:'post'  → img/<img>.jpg, a square still that never moves
      Alternating is deliberate: it halves how much is moving at once
@@ -1305,7 +1305,7 @@ h2 .hl{color:inherit}
         href  = 'https://www.instagram.com/reel/' + r.id + '/';
         media = '<img src="img/reel-' + r.id + '.jpg" alt="" loading="lazy" decoding="async">'
               + '<video muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"'
-              +   ' data-src="video/reel-' + r.id + '.mp4"></video>'
+              +   ' data-src="img/video/reel-' + r.id + '.mp4"></video>'
               + '<span class="reel__veil"></span>'
               + '<span class="reel__cap">' + r.cap + '</span>';
       }
