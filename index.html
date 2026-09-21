@@ -298,13 +298,15 @@ h2 .hl{color:inherit}
 /* ── a photograph running the width of the shell, between blocks ──
    16:9 native, so nothing is cropped and any new photo dropped in
    behaves the same without per-image tuning */
-.band{margin-top:clamp(2.5rem,5vw,3.5rem);display:block;width:100%;
-  aspect-ratio:16/9;overflow:hidden;
+.band{margin-top:clamp(2.5rem,5vw,3.5rem);display:block;width:100%}
+.band__img{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
   border:1px solid var(--line);background:var(--bg2)}
-.band img{width:100%;height:100%;object-fit:cover;display:block}
-/* for a 4:3 frame in the 16:9 band: hold the bottom of the picture so a
+.band__img img{width:100%;height:100%;object-fit:cover;display:block}
+/* for a 4:3 frame in the 16:9 box: hold the bottom of the picture so a
    standing figure keeps its feet, and give up sky at the top instead */
-.band--low img{object-position:50% 100%}
+.band--low .band__img img{object-position:50% 100%}
+.band__cap{margin-top:.85rem;font-size:var(--fsBody);line-height:1.5;
+  color:var(--muted);max-width:62ch}
 
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
@@ -653,10 +655,13 @@ h2 .hl{color:inherit}
 .mini__cta{margin-top:clamp(1.75rem,3.5vw,2.5rem);display:flex;gap:.75rem;flex-wrap:wrap}
 .mini li[hidden]{display:none}
 @media(max-width:64rem){
-  .adv li{grid-template-columns:minmax(0,1fr);gap:.15rem;padding:.95rem .25rem}
-  .adv__t{order:1;font-size:1.45rem}
-  .adv__d{order:2;text-align:left}
-  .adv__y{order:3;text-align:left}}
+  /* name on its own line, then discipline and date side by side rather than
+     stacked as two lines of the smallest type on the page */
+  .adv li{grid-template-columns:auto minmax(0,1fr);gap:.35rem 1rem;
+    padding:.95rem .25rem}
+  .adv__t{grid-column:1/-1;grid-row:1;font-size:1.45rem}
+  .adv__d{grid-column:1;grid-row:2;text-align:left;font-size:.8125rem;letter-spacing:.12em}
+  .adv__y{grid-column:2;grid-row:2;text-align:left;font-size:.8125rem}}
 @media(max-width:34rem){
   .adv__t{font-size:1.2rem;line-height:1.25}
   .adv__f{white-space:normal}}</style>
@@ -821,9 +826,12 @@ h2 .hl{color:inherit}
     <div class="dash rise" id="audDash"></div>
 
     <figure class="band rise">
-      <img src="img/web/aconcagua/pxl-20250109-115859710.jpg"
+      <span class="band__img">
+        <img src="img/web/aconcagua/pxl-20250109-115859710.jpg"
            alt="Sam and two teammates high on Aconcagua in down jackets and iced goggles, deep blue sky over rock and snow"
            loading="lazy" decoding="async">
+      </span>
+      <figcaption class="band__cap">High on Aconcagua with the team, January 2025. We reached 6,500&nbsp;m; the summit stands at 6,962&nbsp;m.</figcaption>
     </figure>
   </div>
 </section>
@@ -989,9 +997,12 @@ h2 .hl{color:inherit}
     </div>
 
     <figure class="band rise">
-      <img src="img/web/aconcagua/pxl-20241231-223009567.jpg"
+      <span class="band__img">
+        <img src="img/web/aconcagua/pxl-20241231-223009567.jpg"
            alt="Aconcagua base camp: tents on the scree under the mountain wall, Sam in a red down hood in the foreground"
            loading="lazy" decoding="async">
+      </span>
+      <figcaption class="band__cap">Aconcagua base camp, 31 December 2024. Tents on the moraine, the day before we started up.</figcaption>
     </figure>
   </div>
 </section>
@@ -1023,9 +1034,12 @@ h2 .hl{color:inherit}
     </div>
 
     <figure class="band rise">
-      <img src="img/web/kilimanjaro/pxl-20260101-104451408-ts-000.jpg"
+      <span class="band__img">
+        <img src="img/web/kilimanjaro/pxl-20260101-104451408-ts-000.jpg"
            alt="Sam and a guide at Lava Tower Camp on Kilimanjaro, 4,600&nbsp;m, the camp and route sign behind them"
            loading="lazy" decoding="async">
+      </span>
+      <figcaption class="band__cap">Lava Tower Camp, 4,600&nbsp;m on Kilimanjaro, 1 January 2026, with one of the guides.</figcaption>
     </figure>
   </div>
 </section>
@@ -1091,9 +1105,12 @@ h2 .hl{color:inherit}
     </div>
 
     <figure class="band band--low rise">
-      <img src="img/web/kinabalu/img-20260705-075825.jpg"
+      <span class="band__img">
+        <img src="img/web/kinabalu/img-20260705-075825.jpg"
            alt="Sam on the via ferrata high on Mount Kinabalu, clipped to the cable, the whole of Sabah and a sea of cloud below"
            loading="lazy" decoding="async">
+      </span>
+      <figcaption class="band__cap">Mount Kinabalu, Borneo, July 2026. On the via ferrata, with Sabah under a sea of cloud.</figcaption>
     </figure>
   </div>
 </section>
