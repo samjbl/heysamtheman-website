@@ -187,6 +187,11 @@ p{max-width:68ch;text-wrap:pretty}
 .row__o{color:var(--blue);justify-content:flex-end}
 .row__o.is-back{color:var(--muted)}
 .row__o.is-next{color:var(--blueDeep)}
+/* rows with a write-up: whole row is the link, plus a quiet arrow on the title */
+.row__go{position:absolute;inset:0;z-index:1}
+.row__go:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
+.row.is-link .row__t::after{content:'\2197';margin-left:.4rem;font-size:.62em;
+  color:var(--blue);vertical-align:.14em}
 .nextlabel{margin-top:clamp(2.25rem,5vw,3rem);margin-bottom:.35rem;
   font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
 .row--next{background:color-mix(in srgb,var(--blue) 6%,transparent)}
@@ -315,11 +320,12 @@ p{max-width:68ch;text-wrap:pretty}
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-hike"/></svg>Trekking</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
       </article>
-      <article class="row" data-disc="motorbike">
+      <article class="row is-link" data-disc="motorbike">
         <div class="row__y">Aug 2013</div>
         <div><h2 class="row__t">Vietnam by motorbike</h2><p class="row__d">Ho Chi Minh City to Hanoi and back down. Forty days. I bought the bike on Bui Vien and had learned to ride it three days earlier.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-moto"/></svg>Motorbike</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
+        <a class="row__go" href="blog-vietnam.html" aria-label="Read the write-up: Vietnam by motorbike"></a>
       </article>
       <article class="row" data-disc="trekking">
         <div class="row__y">Jun 2014</div>
@@ -327,11 +333,12 @@ p{max-width:68ch;text-wrap:pretty}
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-hike"/></svg>Trekking</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
       </article>
-      <article class="row" data-disc="alpinism">
+      <article class="row is-link" data-disc="alpinism">
         <div class="row__y">Sep 2015</div>
         <div><h2 class="row__t">Mont Blanc, 4,808 m</h2><p class="row__d">Cosmiques arête, then the Goûter route. My first time in crampons was five days earlier.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit</div>
+        <a class="row__go" href="blog-mont-blanc.html" aria-label="Read the write-up: Mont Blanc"></a>
       </article>
       <article class="row" data-disc="paragliding">
         <div class="row__y">Oct 2016</div>
@@ -345,11 +352,12 @@ p{max-width:68ch;text-wrap:pretty}
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-kite"/></svg>Kitesurfing</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Licensed</div>
       </article>
-      <article class="row" data-disc="horseback">
+      <article class="row is-link" data-disc="horseback">
         <div class="row__y">Sep 2018</div>
         <div><h2 class="row__t">Mongolia on horseback</h2><p class="row__d">Riding the steppe with Fran&ccedil;ois, staying with herder families through a local NGO. Then three days on rented motorbikes before heading home.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-horse"/></svg>Horseback</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
+        <a class="row__go" href="blog-mongolia.html" aria-label="Read the write-up: Mongolia"></a>
       </article>
       <article class="row" data-disc="trekking">
         <div class="row__y">Jul 2021</div>
@@ -375,17 +383,19 @@ p{max-width:68ch;text-wrap:pretty}
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-hike"/></svg>Trekking</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
       </article>
-      <article class="row" data-disc="alpinism">
+      <article class="row is-link" data-disc="alpinism">
         <div class="row__y">Jan 2025</div>
         <div><h2 class="row__t">Aconcagua</h2><p class="row__d">High point reached 6,500&nbsp;m. The summit stands at 6,962&nbsp;m.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
         <div class="row__o is-back"><svg class="ic ic--sm"><use href="#i-back"/></svg>Turned back</div>
+        <a class="row__go" href="blog-altitude.html#aco" aria-label="Read about Aconcagua: what four mountains taught me about altitude"></a>
       </article>
-      <article class="row" data-disc="alpinism">
+      <article class="row is-link" data-disc="alpinism">
         <div class="row__y">Jan 2026</div>
         <div><h2 class="row__t">Kilimanjaro, 5,895 m</h2><p class="row__d">Highest summit to date.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit</div>
+        <a class="row__go" href="blog-kilimanjaro.html" aria-label="Read the write-up: Kilimanjaro"></a>
       </article>
       <article class="row" data-disc="safari">
         <div class="row__y">Jan 2026</div>
@@ -393,11 +403,12 @@ p{max-width:68ch;text-wrap:pretty}
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-safari"/></svg>Safari</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
       </article>
-      <article class="row" data-disc="ski">
+      <article class="row is-link" data-disc="ski">
         <div class="row__y">Feb 2026</div>
         <div><h2 class="row__t">Mt. Yotei, 1,898 m</h2><p class="row__d">Hokkaidō, two days. Turned back above the tree line on the first; summited and skied on the second.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-ski"/></svg>Ski mountaineering</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit and ski</div>
+        <a class="row__go" href="blog-yotei.html" aria-label="Read the write-up: Mt. Yotei"></a>
       </article>
       <article class="row" data-disc="ski">
         <div class="row__y">May 2026</div>
@@ -411,29 +422,33 @@ p{max-width:68ch;text-wrap:pretty}
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-bike"/></svg>Cycling</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-check"/></svg>Completed</div>
       </article>
-      <article class="row" data-disc="alpinism">
+      <article class="row is-link" data-disc="alpinism">
         <div class="row__y">17 Aug 2026</div>
         <div><h2 class="row__t">Üssers Barrhorn, 3,610&nbsp;m</h2><p class="row__d">Valais. The highest summit in Switzerland reachable by a marked trail — first of three build-up days with Anthony Bracegirdle.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit</div>
+        <a class="row__go" href="blog-valais.html" aria-label="Read the write-up: three peaks before the Matterhorn"></a>
       </article>
-      <article class="row" data-disc="alpinism">
+      <article class="row is-link" data-disc="alpinism">
         <div class="row__y">19 Aug 2026</div>
         <div><h2 class="row__t">Weissmies, 4,017&nbsp;m</h2><p class="row__d">Valais. Second of the build-up summits, and the first four-thousander of the week.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit</div>
+        <a class="row__go" href="blog-valais.html" aria-label="Read the write-up: three peaks before the Matterhorn"></a>
       </article>
-      <article class="row" data-disc="alpinism">
+      <article class="row is-link" data-disc="alpinism">
         <div class="row__y">22 Aug 2026</div>
         <div><h2 class="row__t">Breithorn traverse, 4,164&nbsp;m</h2><p class="row__d">Valais. The test piece — the day that decided the Matterhorn was on.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit</div>
+        <a class="row__go" href="blog-valais.html" aria-label="Read the write-up: three peaks before the Matterhorn"></a>
       </article>
-      <article class="row" data-disc="alpinism">
+      <article class="row is-link" data-disc="alpinism">
         <div class="row__y">24 Aug 2026</div>
         <div><h2 class="row__t">Matterhorn, Hörnli Ridge — 4,478&nbsp;m</h2><p class="row__d">Turned back at roughly 3,800&nbsp;m in August 2025. Came back a year later, after the three Valais summits above, and reached the top on 24 August as the first party on the mountain. Three hours twenty up, against a standard guided allowance of four to five. Guide: Emmanuel Julien, Zermatters.</p></div>
         <div class="row__disc"><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism</div>
         <div class="row__o"><svg class="ic ic--sm"><use href="#i-summit"/></svg>Summit</div>
+        <a class="row__go" href="blog-matterhorn.html" aria-label="Read the write-up: the Matterhorn"></a>
       </article>
     </div>
 
