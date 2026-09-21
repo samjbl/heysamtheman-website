@@ -232,6 +232,43 @@ h2 .hl{color:inherit}
 .hgroup__sub{margin-top:1.25rem;max-width:62ch;color:var(--muted);font-size:var(--fsLead);line-height:1.6}
 .hgroup__sub--join{margin-top:.75rem;color:var(--ink)}
 .kicker{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
+/* ══════════ highlights ══════════ */
+.kicker--dot{display:flex;align-items:center;gap:.55rem}
+.kicker--dot::before{content:"";flex:none;width:.45rem;height:.45rem;
+  border-radius:50%;background:var(--blue)}
+/* the deliberate two-line break is a desktop thing; on a phone the
+   balancer does a better job than a fixed break would */
+@media(max-width:34rem){.brwide{display:none}}
+.hi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(.9rem,1.8vw,1.25rem)}
+.hi__i{display:flex;flex-direction:column;text-decoration:none;overflow:hidden;
+  border:1px solid var(--line);background:var(--bg2);
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease),
+    transform var(--durSlow) var(--ease)}
+.hi__i:hover{border-color:var(--blue);background:var(--bg3)}
+.hi__i:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media(prefers-reduced-motion:no-preference){.hi__i:hover{transform:translateY(-3px)}}
+.hi__media{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;
+  background:linear-gradient(155deg,var(--bg3) 0%,var(--bg2) 55%,var(--bg) 100%)}
+.hi__media img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform var(--durSlow) var(--ease)}
+@media(prefers-reduced-motion:no-preference){
+  .hi__i:hover .hi__media img{transform:scale(1.035)}}
+/* no photograph for this one yet — the tile keeps the card's shape and says so */
+.hi__soon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  gap:.5rem;font-size:var(--fsMicro);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted)}
+.hi__soon .ic{color:var(--blue);opacity:.55}
+.hi__body{display:flex;flex-direction:column;gap:.5rem;
+  padding:clamp(1.1rem,2.2vw,1.5rem)}
+.hi__meta{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue)}
+.hi__t{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  font-size:1.6rem;line-height:1.1;color:var(--ink)}
+.hi__d{font-size:var(--fsMicro);letter-spacing:.06em;line-height:1.55;color:var(--muted)}
+@media(max-width:56rem){
+  .hi{grid-template-columns:1fr}
+  .hi__media{aspect-ratio:16/10}}
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
 /* the hand-off from the work to the numbers, so the section reads as two
@@ -716,6 +753,52 @@ h2 .hl{color:inherit}
     </div>
 
     <div class="dash rise" id="audDash"></div>
+  </div>
+</section>
+
+<section class="sec sec--tall" id="highlights">
+  <div class="shell">
+    <div class="hgroup rise">
+      <p class="kicker kicker--dot">A few highlights</p>
+      <h2>From a walk<br class="brwide">to the mountains.</h2>
+    </div>
+
+    <div class="hi">
+
+      <a class="hi__i rise" href="blog-mont-blanc.html">
+        <span class="hi__media">
+          <img src="img/blog/gouter-hut.jpg" alt="The Go&ucirc;ter hut on the Mont Blanc route" loading="lazy" decoding="async">
+        </span>
+        <span class="hi__body">
+          <span class="hi__meta">Alpinism &middot; September 2015</span>
+          <span class="hi__t">Mont Blanc, 4,808&nbsp;m</span>
+          <span class="hi__d">France &middot; Cosmiques ar&ecirc;te, then the Go&ucirc;ter route &middot; First time in crampons five days earlier</span>
+        </span>
+      </a>
+
+      <a class="hi__i rise" href="expeditions.html">
+        <span class="hi__media">
+          <span class="hi__soon"><svg class="ic ic--sm"><use href="#i-camera"/></svg>Photo to come</span>
+        </span>
+        <span class="hi__body">
+          <span class="hi__meta">Alpinism &middot; January 2025</span>
+          <span class="hi__t">Aconcagua</span>
+          <span class="hi__d">Argentina &middot; High point 6,500&nbsp;m &middot; The summit stands at 6,962&nbsp;m</span>
+        </span>
+      </a>
+
+      <a class="hi__i rise" href="blog-matterhorn.html">
+        <span class="hi__media">
+          <span class="hi__soon"><svg class="ic ic--sm"><use href="#i-camera"/></svg>Photo to come</span>
+        </span>
+        <span class="hi__body">
+          <span class="hi__meta">Alpinism &middot; August 2026</span>
+          <span class="hi__t">Matterhorn, H&ouml;rnli Ridge</span>
+          <span class="hi__d">Switzerland &middot; 4,478&nbsp;m &middot; First party on the mountain, three hours twenty up</span>
+        </span>
+      </a>
+
+    </div>
   </div>
 </section>
 
