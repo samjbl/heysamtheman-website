@@ -297,23 +297,22 @@ h2 .hl{color:inherit}
 /* ── a photograph running the width of the shell, between blocks ──
    16:9 native, so nothing is cropped and any new photo dropped in
    behaves the same without per-image tuning */
-/* a photograph used as a divider between sections: the full width of the
-   window, hairlines above and below, and real air either side so it reads
-   as a break in the page rather than as another block of content */
-.band{display:block;width:auto;
-  margin-block:clamp(4rem,9vw,7rem);
-  margin-inline:calc(50% - 50vw)}
+/* a photograph used as a divider between sections. It is a plate, not a
+   slab: capped at 50rem and centred, so on a wide monitor it stays well
+   inside the text column instead of filling the window. The air above and
+   below is what makes it read as a break. 16:9 with no crop — every photo
+   in img/web that goes here is already 16:9. */
+.band{display:block;width:100%;max-width:50rem;
+  margin-inline:auto;
+  margin-block:clamp(3.5rem,7vw,5.5rem)}
 .band__img{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
-  background:var(--bg2);
-  box-shadow:inset 0 1px 0 var(--line),inset 0 -1px 0 var(--line)}
+  background:var(--bg2);border:1px solid var(--line)}
 .band__img img{width:100%;height:100%;object-fit:cover;display:block}
 /* for a 4:3 frame in the 16:9 box: hold the bottom of the picture so a
    standing figure keeps its feet, and give up sky at the top instead */
 .band--low .band__img img{object-position:50% 100%}
-/* the picture is full-bleed, the caption stays on the page's text column */
-.band__cap{max-width:var(--maxw);margin:.95rem auto 0;
-  padding-inline:var(--shellPad);
-  font-size:var(--fsBody);line-height:1.5;color:var(--muted)}
+.band__cap{margin:.85rem 0 0;font-size:var(--fsBody);line-height:1.5;
+  color:var(--muted)}
 
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
