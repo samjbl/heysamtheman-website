@@ -238,8 +238,9 @@ h2 .hl{color:inherit}
    halves rather than one long scroll. partner.html has no .split, which is
    why .stats keeps its own hairline. */
 .split{margin-top:clamp(3.25rem,6.5vw,5rem);display:flex;align-items:center;gap:1rem}
-.split span{flex:0 0 auto;font-size:var(--fsMicro);letter-spacing:.14em;
-  text-transform:uppercase;color:var(--blue)}
+.split span{flex:0 0 auto;font-family:var(--body);font-weight:500;
+  font-size:var(--fsMicro);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink)}
 .split::after{content:"";flex:1;height:1px;background:var(--line)}
 .split + .kicker{margin-top:clamp(1.75rem,3.5vw,2.5rem)}
 .stat__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
@@ -303,14 +304,18 @@ h2 .hl{color:inherit}
   font-size:.85rem;line-height:1.35;color:#fff;text-shadow:0 1px 8px rgba(4,7,12,.95)}
 .reel__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 /* a still post: square photo on top, caption in the space below it */
+/* A still post is square but the frame is 9:16. Cropping it to fill would
+   cut 44% of the width off a photo that was composed square, and letting it
+   sit at the top left half the card flat and empty. So the square is drawn
+   whole and centred over a blurred, darkened copy of itself that fills the
+   frame — the photo is untouched, the card is full, the caption sits on the
+   same veil the Reels use. */
 .reel--post .reel__card{background:var(--bg3)}
-.reel__sq{position:absolute;inset:0 0 auto 0;display:block;aspect-ratio:1/1;overflow:hidden}
-.reel__sq img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.reel__body{position:absolute;inset:auto 0 0 0;display:flex;flex-direction:column;gap:.35rem;
-  padding:.9rem .85rem 1rem;height:43.75%;justify-content:flex-end}
-.reel__cap--post{position:static;inset:auto;text-shadow:none;color:var(--ink)}
-.reel__place{display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted)}
+.reel__blur{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.25);filter:blur(28px) saturate(1.05) brightness(.32);z-index:0}
+.reel--post .reel__card>img:not(.reel__blur){object-fit:contain;z-index:1}
+.reel__place{display:block;margin-top:.3rem;font-size:.75rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.74)}
 /* Instagram sets a like count in the system UI face at ~14px, semibold,
    number and word alike — not in a display face. Matching that is what
    makes these read as a figure off the app rather than a stat we styled. */
@@ -1149,15 +1154,12 @@ h2 .hl{color:inherit}
     rail.innerHTML = REELS.map(function(r){
       var media, href;
       if(r.kind === 'post'){
-        /* a square still sits at the top of the same 9:16 frame; the
-           caption takes the space underneath instead of covering the
-           photograph, which is the whole point of a still */
         href  = r.href || PROFILE;
-        media = '<span class="reel__sq">'
-              +   '<img src="img/' + r.img + '.jpg" alt="" loading="lazy" decoding="async">'
-              + '</span>'
-              + '<span class="reel__body">'
-              +   '<span class="reel__cap reel__cap--post">' + r.cap + '</span>'
+        media = '<img class="reel__blur" src="img/' + r.img + '.jpg" alt=""'
+              +   ' aria-hidden="true" loading="lazy" decoding="async">'
+              + '<img src="img/' + r.img + '.jpg" alt="" loading="lazy" decoding="async">'
+              + '<span class="reel__veil"></span>'
+              + '<span class="reel__cap">' + r.cap
               +   (r.place ? '<span class="reel__place">' + r.place + '</span>' : '')
               + '</span>';
       } else {
