@@ -317,8 +317,10 @@ h2 .hl{color:inherit}
 .band--fit .band__img img:not(.band__blur){object-fit:contain;position:relative;z-index:1}
 .band__img .band__blur{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transform:scale(1.25);filter:blur(28px) saturate(1.05) brightness(.32);z-index:0}
-.band__cap{margin:.85rem 0 0;font-size:var(--fsBody);line-height:1.5;
-  color:var(--muted)}
+/* a caption, not body copy: a step down in size and a little tracking so it
+   reads as a note on the picture rather than as another paragraph */
+.band__cap{margin:.8rem 0 0;font-size:.8125rem;line-height:1.5;
+  letter-spacing:.03em;color:var(--muted)}
 
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
@@ -609,9 +611,8 @@ h2 .hl{color:inherit}
   .nextcard{gap:.7rem;padding:.6rem .65rem}
   .nextcard__ic{width:2.5rem;height:2.5rem}
   .nextcard__t{font-size:1.15rem}
-  /* on a phone the column is narrow enough that the date gets clipped,
-     and nothing is gained by holding it to one line here */
-  .nextcard__d{white-space:normal;overflow:visible}
+  /* the line is short enough now to hold to one line at every width —
+     see the rule above .nextcard: keep it to place and dates */
   .hero__media img{object-position:50% 30%}
   .about__img{aspect-ratio:1/1;object-position:52% 28%}
   .btn{flex:1 1 auto;justify-content:center}
@@ -780,6 +781,10 @@ h2 .hl{color:inherit}
            line. The href stays about.html#next either way — that block holds
            both the dated trip and the dreams list.
 
+           THE DETAIL LINE IS ONE SHORT LINE: place, then dates. Nothing else.
+           No altitude, no route, no third clause — it has to stay readable at
+           a glance on a phone.
+
            Currently: Siguniang Erfeng, 17–20 Oct 2026. After that date passes,
            this needs a new subject.
            ═════════════════════════════════════════════════════════════════ -->
@@ -788,7 +793,7 @@ h2 .hl{color:inherit}
         <span class="nextcard__b">
           <span class="nextcard__k">Next up</span>
           <span class="nextcard__t">Siguniang Erfeng</span>
-          <span class="nextcard__d">Sichuan &middot; 5,276&nbsp;m &middot; 17&ndash;20 Oct 2026</span>
+          <span class="nextcard__d">Sichuan &middot; 17&ndash;20 Oct 2026</span>
         </span>
         <span class="nextcard__go" aria-hidden="true"><svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
       </a>
@@ -852,7 +857,7 @@ h2 .hl{color:inherit}
 <section class="sec sec--tall" id="highlights">
   <div class="shell">
     <div class="hgroup rise">
-      <h2>A few highlights</h2>
+      <h2>Highlight adventures</h2>
     </div>
 
     <div class="hi">
@@ -864,7 +869,7 @@ h2 .hl{color:inherit}
         <span class="hi__body">
           <span class="hi__t">Mont Blanc, 4,808&nbsp;m</span>
           <span class="hi__meta">Alpinism &middot; September 2015</span>
-          <span class="hi__d">France &middot; Cosmiques ar&ecirc;te, then the Go&ucirc;ter route &middot; First time in crampons five days earlier</span>
+          <span class="hi__d">France &middot; Cosmiques ar&ecirc;te, then the Go&ucirc;ter route</span>
         </span>
       </a>
 
@@ -875,7 +880,7 @@ h2 .hl{color:inherit}
         <span class="hi__body">
           <span class="hi__t">Aconcagua</span>
           <span class="hi__meta">Alpinism &middot; January 2025</span>
-          <span class="hi__d">Argentina &middot; High point 6,500&nbsp;m &middot; The summit stands at 6,962&nbsp;m</span>
+          <span class="hi__d">Argentina &middot; High point 6,500&nbsp;m</span>
         </span>
       </a>
 
@@ -886,7 +891,7 @@ h2 .hl{color:inherit}
         <span class="hi__body">
           <span class="hi__t">Matterhorn, H&ouml;rnli Ridge</span>
           <span class="hi__meta">Alpinism &middot; August 2026</span>
-          <span class="hi__d">Switzerland &middot; 4,478&nbsp;m &middot; First party on the mountain, three hours twenty up</span>
+          <span class="hi__d">Switzerland &middot; 4,478&nbsp;m</span>
         </span>
       </a>
 
