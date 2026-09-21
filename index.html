@@ -303,6 +303,14 @@ h2 .hl{color:inherit}
 @media(max-width:56rem){
   .hi{grid-template-columns:1fr}
   .hi__media{aspect-ratio:16/10}}
+/* ── a photograph running the width of the shell, between blocks ──
+   16:9 native, so nothing is cropped and any new photo dropped in
+   behaves the same without per-image tuning */
+.band{margin-top:clamp(2.5rem,5vw,3.5rem);display:block;width:100%;
+  aspect-ratio:16/9;overflow:hidden;
+  border:1px solid var(--line);background:var(--bg2)}
+.band img{width:100%;height:100%;object-fit:cover;display:block}
+
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
 /* the hand-off from the work to the numbers, so the section reads as two
@@ -812,6 +820,12 @@ h2 .hl{color:inherit}
     </div>
 
     <div class="dash rise" id="audDash"></div>
+
+    <figure class="band rise">
+      <img src="img/web/aconcagua/pxl-20250109-115859710.jpg"
+           alt="Sam and two teammates high on Aconcagua in down jackets and iced goggles, deep blue sky over rock and snow"
+           loading="lazy" decoding="async">
+    </figure>
   </div>
 </section>
 
@@ -974,6 +988,12 @@ h2 .hl{color:inherit}
     <div class="mini__cta rise">
       <a class="btn btn--ghost" href="expeditions.html">See the full record<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
     </div>
+
+    <figure class="band rise">
+      <img src="img/web/aconcagua/pxl-20241231-223009567.jpg"
+           alt="Aconcagua base camp: tents on the scree under the mountain wall, Sam in a red down hood in the foreground"
+           loading="lazy" decoding="async">
+    </figure>
   </div>
 </section>
 
@@ -1002,6 +1022,12 @@ h2 .hl{color:inherit}
       <a class="btn btn--solid" href="partner.html">See how we partner<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
       <a class="btn btn--ghost" href="#contact">Tell me your idea<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
     </div>
+
+    <figure class="band rise">
+      <img src="img/web/kilimanjaro/pxl-20260101-104451408-ts-000.jpg"
+           alt="Sam and a guide at Lava Tower Camp on Kilimanjaro, 4,600&nbsp;m, the camp and route sign behind them"
+           loading="lazy" decoding="async">
+    </figure>
   </div>
 </section>
 
