@@ -105,13 +105,12 @@ h2 .hl{color:inherit}
   -webkit-backdrop-filter:blur(20px) saturate(150%);
           backdrop-filter:blur(20px) saturate(150%);
   border-bottom-color:var(--line)}
-/* Chrome does not sample a composited <video> into the backdrop root, so
-   over the reels rail the blur quietly does nothing and the bar reads as
-   plain glass. The tint carries it on its own; the blur is a bonus where
-   it works. `will-change:background` used to live here as a Safari repaint
-   hint — it promotes the bar to its own layer, which is one of the things
-   that stops backdrop-filter sampling at all, so it is gone. */
-.nav{transform:translateZ(0)}
+/* DO NOT add will-change, transform, filter, opacity or contain to .nav.
+   Every one of them promotes the bar to its own compositing layer, which
+   takes it out of the backdrop root — and then backdrop-filter has nothing
+   left to sample and the blur silently does nothing. A `transform:
+   translateZ(0)` added here as a "repaint hint" is exactly what broke it
+   before. The bar needs no hint: leave it unpromoted. */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .nav.is-stuck{background:color-mix(in srgb,var(--bg) 94%,transparent)}}
 .nav__logo{display:inline-flex;align-items:center;gap:.3rem;
@@ -298,15 +297,23 @@ h2 .hl{color:inherit}
 /* ── a photograph running the width of the shell, between blocks ──
    16:9 native, so nothing is cropped and any new photo dropped in
    behaves the same without per-image tuning */
-.band{margin-top:clamp(2.5rem,5vw,3.5rem);display:block;width:100%}
+/* a photograph used as a divider between sections: the full width of the
+   window, hairlines above and below, and real air either side so it reads
+   as a break in the page rather than as another block of content */
+.band{display:block;width:auto;
+  margin-block:clamp(4rem,9vw,7rem);
+  margin-inline:calc(50% - 50vw)}
 .band__img{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
-  border:1px solid var(--line);background:var(--bg2)}
+  background:var(--bg2);
+  box-shadow:inset 0 1px 0 var(--line),inset 0 -1px 0 var(--line)}
 .band__img img{width:100%;height:100%;object-fit:cover;display:block}
 /* for a 4:3 frame in the 16:9 box: hold the bottom of the picture so a
    standing figure keeps its feet, and give up sky at the top instead */
 .band--low .band__img img{object-position:50% 100%}
-.band__cap{margin-top:.85rem;font-size:var(--fsBody);line-height:1.5;
-  color:var(--muted);max-width:62ch}
+/* the picture is full-bleed, the caption stays on the page's text column */
+.band__cap{max-width:var(--maxw);margin:.95rem auto 0;
+  padding-inline:var(--shellPad);
+  font-size:var(--fsBody);line-height:1.5;color:var(--muted)}
 
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
@@ -828,11 +835,11 @@ h2 .hl{color:inherit}
 
     <figure class="band rise">
       <span class="band__img">
-        <img src="img/web/aconcagua/pxl-20250109-115859710.jpg"
-           alt="Sam and two teammates high on Aconcagua in down jackets and iced goggles, deep blue sky over rock and snow"
+        <img src="img/web/aconcagua/pxl-20250107-194907344.jpg"
+           alt="Sam and two teammates at high camp on Aconcagua, tents on the glacier and the Andes behind"
            loading="lazy" decoding="async">
       </span>
-      <figcaption class="band__cap">High on Aconcagua with the team, January 2025. We reached 6,500&nbsp;m; the summit stands at 6,962&nbsp;m.</figcaption>
+      <figcaption class="band__cap">High camp on Aconcagua, January 2025.</figcaption>
     </figure>
   </div>
 </section>
@@ -840,8 +847,7 @@ h2 .hl{color:inherit}
 <section class="sec sec--tall" id="highlights">
   <div class="shell">
     <div class="hgroup rise">
-      <p class="kicker kicker--dot">A few highlights</p>
-      <h2>From a walk<br class="brwide">to the mountains.</h2>
+      <h2>A few highlights</h2>
     </div>
 
     <div class="hi">
@@ -851,30 +857,30 @@ h2 .hl{color:inherit}
           <img src="img/web/mont-blanc/gouter-hut.jpg" alt="The Go&ucirc;ter hut on the Mont Blanc route" loading="lazy" decoding="async">
         </span>
         <span class="hi__body">
-          <span class="hi__meta">Alpinism &middot; September 2015</span>
           <span class="hi__t">Mont Blanc, 4,808&nbsp;m</span>
+          <span class="hi__meta">Alpinism &middot; September 2015</span>
           <span class="hi__d">France &middot; Cosmiques ar&ecirc;te, then the Go&ucirc;ter route &middot; First time in crampons five days earlier</span>
         </span>
       </a>
 
       <a class="hi__i rise" href="expeditions.html">
         <span class="hi__media">
-          <img src="img/web/aconcagua/pxl-20250101-161417316.jpg" alt="Sam standing arms wide between ice penitentes high on Aconcagua" loading="lazy" decoding="async">
+          <img src="img/web/aconcagua/pxl-20250109-115859710.jpg" alt="Sam high on Aconcagua, beard iced over, deep blue high-altitude sky behind" loading="lazy" decoding="async">
         </span>
         <span class="hi__body">
-          <span class="hi__meta">Alpinism &middot; January 2025</span>
           <span class="hi__t">Aconcagua</span>
+          <span class="hi__meta">Alpinism &middot; January 2025</span>
           <span class="hi__d">Argentina &middot; High point 6,500&nbsp;m &middot; The summit stands at 6,962&nbsp;m</span>
         </span>
       </a>
 
       <a class="hi__i rise" href="blog-matterhorn.html">
         <span class="hi__media">
-          <img src="img/web/matterhorn/pxl-20260822-140556264.jpg" alt="The Matterhorn above the H&ouml;rnli approach, a climber on the walkway below the face" loading="lazy" decoding="async">
+          <img src="img/web/matterhorn/pxl-20260824-061735811-ts-000-3.jpg" alt="Sam at the rime-covered summit cross on the Matterhorn, the summit ridge and a sea of cloud below" loading="lazy" decoding="async">
         </span>
         <span class="hi__body">
-          <span class="hi__meta">Alpinism &middot; August 2026</span>
           <span class="hi__t">Matterhorn, H&ouml;rnli Ridge</span>
+          <span class="hi__meta">Alpinism &middot; August 2026</span>
           <span class="hi__d">Switzerland &middot; 4,478&nbsp;m &middot; First party on the mountain, three hours twenty up</span>
         </span>
       </a>
@@ -1013,7 +1019,7 @@ h2 .hl{color:inherit}
            alt="Aconcagua base camp: tents on the scree under the mountain wall, Sam in a red down hood in the foreground"
            loading="lazy" decoding="async">
       </span>
-      <figcaption class="band__cap">Aconcagua base camp, 31 December 2024. Tents on the moraine, the day before we started up.</figcaption>
+      <figcaption class="band__cap">Aconcagua base camp, December 2024.</figcaption>
     </figure>
   </div>
 </section>
@@ -1050,7 +1056,7 @@ h2 .hl{color:inherit}
            alt="Sam and a guide at Lava Tower Camp on Kilimanjaro, 4,600&nbsp;m, the camp and route sign behind them"
            loading="lazy" decoding="async">
       </span>
-      <figcaption class="band__cap">Lava Tower Camp, 4,600&nbsp;m on Kilimanjaro, 1 January 2026, with one of the guides.</figcaption>
+      <figcaption class="band__cap">Lava Tower Camp, 4,600&nbsp;m on Kilimanjaro, January 2026.</figcaption>
     </figure>
   </div>
 </section>
@@ -1121,7 +1127,7 @@ h2 .hl{color:inherit}
            alt="Sam on the via ferrata high on Mount Kinabalu, clipped to the cable, the whole of Sabah and a sea of cloud below"
            loading="lazy" decoding="async">
       </span>
-      <figcaption class="band__cap">Mount Kinabalu, Borneo, July 2026. On the via ferrata, with Sabah under a sea of cloud.</figcaption>
+      <figcaption class="band__cap">The via ferrata on Mount Kinabalu, Borneo, July 2026.</figcaption>
     </figure>
   </div>
 </section>
@@ -1139,9 +1145,19 @@ h2 .hl{color:inherit}
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* nav folds once you leave the top */
-  var nav=document.getElementById('nav');
-  var onScroll=function(){nav.classList.toggle('is-stuck',scrollY>24)};
-  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  /* The bar tints and blurs once you leave the top. Read the offset
+     explicitly rather than leaning on the bare `scrollY` global, and listen
+     for resize and load too so the state is right after a lazy image
+     changes the page height. */
+  var navBar=document.getElementById('nav');
+  var onScroll=function(){
+    var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+    navBar.classList.toggle('is-stuck',y>24);
+  };
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll,{passive:true});
+  addEventListener('load',onScroll);
+  onScroll();
 
   var btn=document.getElementById('menuBtn'), menu=document.getElementById('menu');
   var mIcon=document.getElementById('menuIcon'), mLabel=document.getElementById('menuLabel');
@@ -1425,12 +1441,12 @@ h2 .hl{color:inherit}
       var c = rail.querySelector('.reel');
       return c ? c.getBoundingClientRect().width + 16 : rail.clientWidth * .8;
     }
-    var nav = document.querySelector('.reelrail__nav');
+    var railNav = document.querySelector('.reelrail__nav');
     function edges(){
       if(!prev || !next) return;
       var max = rail.scrollWidth - rail.clientWidth;
       /* a 40px overflow is not worth a pair of arrows */
-      if(nav) nav.hidden = max <= 48;
+      if(railNav) railNav.hidden = max <= 48;
       prev.disabled = rail.scrollLeft <= 4;
       next.disabled = rail.scrollLeft >= max - 4;
     }

@@ -114,7 +114,11 @@
 </footer>
 <script>
 (function(){var n=document.getElementById('nav');
-  var f=function(){n.classList.toggle('is-stuck',scrollY>24)};
+  /* read the offset explicitly; the bare scrollY global is fragile */
+  var f=function(){
+    var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+    n.classList.toggle('is-stuck',y>24);
+  };
   addEventListener('scroll',f,{passive:true});f();})();
 </script>
 </body>

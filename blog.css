@@ -29,12 +29,15 @@ p{text-wrap:pretty}
 .grain{position:fixed;inset:0;z-index:400;pointer-events:none;opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* nav — matches the rest of the site, including the translucency on scroll */
+/* nav — matches the rest of the site, including the translucency on scroll.
+   DO NOT add will-change / transform / filter / opacity / contain to .nav:
+   each one promotes it to its own layer and backdrop-filter then has nothing
+   to sample, so the blur silently stops working. */
 .nav{position:fixed;inset-inline:0;top:0;z-index:150;display:flex;align-items:center;
   justify-content:space-between;gap:.6rem;padding:.9rem var(--shellPad);
-  border-bottom:1px solid transparent;will-change:background;
+  border-bottom:1px solid transparent;
   transition:background var(--durSlow) var(--ease),border-color var(--durSlow) var(--ease)}
-.nav.is-stuck{background:color-mix(in srgb,var(--bg) 68%,transparent);
+.nav.is-stuck{background:color-mix(in srgb,var(--bg) 78%,transparent);
   -webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);
   border-bottom-color:var(--line)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
