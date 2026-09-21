@@ -286,8 +286,6 @@ h2 .hl{color:inherit}
 .hi__soon .ic{color:var(--blue);opacity:.55}
 .hi__body{display:flex;flex-direction:column;gap:.5rem;
   padding:clamp(1.1rem,2.2vw,1.5rem)}
-.hi__meta{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--blue)}
 .hi__t{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
   font-size:1.6rem;line-height:1.1;color:var(--ink)}
 .hi__d{font-size:var(--fsMicro);letter-spacing:.06em;line-height:1.55;color:var(--muted)}
@@ -404,15 +402,21 @@ h2 .hl{color:inherit}
 .reel__blur{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transform:scale(1.25);filter:blur(28px) saturate(1.05) brightness(.32);z-index:0}
 .reel--post .reel__card>img:not(.reel__blur){object-fit:contain;z-index:1}
-/* Instagram sets a like count in the system UI face at ~14px, semibold,
-   number and word alike — not in a display face. Matching that is what
-   makes these read as a figure off the app rather than a stat we styled. */
-.reel__n{margin:0;display:flex;align-items:baseline;gap:.28rem;
+/* the view count, over the clip's top left corner. Instagram sets these in
+   the system UI face at ~14px semibold, and matching that is what makes it
+   read as a figure off the app rather than a stat we styled. Stills carry
+   no badge at all. */
+.reel__v{position:absolute;top:.6rem;left:.6rem;z-index:4;
+  display:inline-flex;align-items:center;gap:.3rem;
+  padding:.28rem .5rem;border-radius:6px;
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-  font-size:.875rem;font-weight:600;line-height:1.4;letter-spacing:-.01em;color:var(--ink)}
-.reel__n b,.reel__n span{font:inherit;letter-spacing:inherit;color:inherit}
-/* an unknown count still reserves its line, so every card bottom aligns */
-.reel__n--empty{visibility:hidden}
+  font-size:.8125rem;font-weight:600;line-height:1.2;letter-spacing:-.01em;color:#fff;
+  background:rgba(4,7,12,.5);
+  backdrop-filter:blur(10px) saturate(1.3);-webkit-backdrop-filter:blur(10px) saturate(1.3);
+  text-shadow:0 1px 6px rgba(4,7,12,.7)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .reel__v{background:rgba(4,7,12,.74)}}
+.reel__v .ic{width:.95em;height:.95em;opacity:.9}
 
 /* ── audience: icon tabs, one panel of bars underneath ── */
 .dash{margin-top:clamp(2rem,4vw,3rem);padding-top:1.75rem;
@@ -868,7 +872,6 @@ h2 .hl{color:inherit}
         </span>
         <span class="hi__body">
           <span class="hi__t">Mont Blanc, 4,808&nbsp;m</span>
-          <span class="hi__meta">Alpinism &middot; September 2015</span>
           <span class="hi__d">France &middot; Cosmiques ar&ecirc;te, then the Go&ucirc;ter route</span>
         </span>
       </a>
@@ -879,7 +882,6 @@ h2 .hl{color:inherit}
         </span>
         <span class="hi__body">
           <span class="hi__t">Aconcagua</span>
-          <span class="hi__meta">Alpinism &middot; January 2025</span>
           <span class="hi__d">Argentina &middot; High point 6,500&nbsp;m</span>
         </span>
       </a>
@@ -890,7 +892,6 @@ h2 .hl{color:inherit}
         </span>
         <span class="hi__body">
           <span class="hi__t">Matterhorn, H&ouml;rnli Ridge</span>
-          <span class="hi__meta">Alpinism &middot; August 2026</span>
           <span class="hi__d">Switzerland &middot; 4,478&nbsp;m</span>
         </span>
       </a>
@@ -1397,14 +1398,19 @@ h2 .hl{color:inherit}
               + '<span class="reel__veil"></span>'
               + '<span class="reel__cap">' + r.cap + '</span>';
       }
+      /* the view count sits on the clip itself, top left, the way it does in
+         the app. Stills get nothing — their like counts are small enough
+         that printing them works against the page. */
+      var badge = (r.kind === 'reel' && r.n)
+        ? '<span class="reel__v"><svg class="ic ic--sm" aria-hidden="true"><use href="#i-eye"/></svg>'
+          + r.n + '</span>'
+        : '';
       return '<article class="reel reel--' + r.kind + '">'
         +   '<a class="reel__card" href="' + href + '" target="_blank" rel="noopener">'
         +     media
+        +     badge
         +     '<span class="reel__sr">Open on Instagram</span>'
         +   '</a>'
-        +   (r.n
-              ? '<p class="reel__n"><b>' + r.n + '</b><span>' + r.unit + '</span></p>'
-              : '<p class="reel__n reel__n--empty" aria-hidden="true"><b>&nbsp;</b></p>')
         + '</article>';
     }).join('');
 
