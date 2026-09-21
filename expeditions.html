@@ -94,7 +94,7 @@ p{max-width:68ch;text-wrap:pretty}
   display:flex;align-items:center;justify-content:space-between;gap:.6rem;
   padding:.9rem var(--shellPad);border-bottom:1px solid transparent;
   transition:background var(--durSlow) var(--ease),border-color var(--durSlow) var(--ease)}
-.nav.is-stuck{background:color-mix(in srgb,var(--bg) 92%,transparent);
+.nav.is-stuck{background:color-mix(in srgb,var(--bg) 78%,transparent);
   backdrop-filter:blur(16px);border-bottom-color:var(--line)}
 .nav__logo{display:inline-flex;align-items:center;gap:.3rem;
   font-family:var(--title);font-weight:600;font-size:1.4rem;
@@ -460,9 +460,19 @@ p{max-width:68ch;text-wrap:pretty}
 
 <script>
 (function(){
+  /* The bar tints and blurs once you leave the top. Read the offset
+     explicitly rather than leaning on the bare `scrollY` global, and listen
+     for resize and load too so the state is right after a lazy image
+     changes the page height. */
   var nav=document.getElementById('nav');
-  var onScroll=function(){nav.classList.toggle('is-stuck',scrollY>40)};
-  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  var onScroll=function(){
+    var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+    nav.classList.toggle('is-stuck',y>24);
+  };
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll,{passive:true});
+  addEventListener('load',onScroll);
+  onScroll();
 
   var btn=document.getElementById('menuBtn'), menu=document.getElementById('menu');
   var mIcon=document.getElementById('menuIcon'), mLabel=document.getElementById('menuLabel');
