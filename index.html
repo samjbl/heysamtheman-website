@@ -800,19 +800,19 @@ h2 .hl{color:inherit}
            line. The href stays about.html#next either way — that block holds
            both the dated trip and the dreams list.
 
-           THE DETAIL LINE IS ONE SHORT LINE: place, then dates. Nothing else.
-           No altitude, no route, no third clause — it has to stay readable at
-           a glance on a phone.
+           KEEP IT TO TWO WORDS AND A DATE: the title is the place (Sichuan),
+           the detail line is the dates. No peak name, no altitude, no route —
+           Sam cut all three. It has to read at a glance on a phone.
 
-           Currently: Siguniang Erfeng, 17–20 Oct 2026. After that date passes,
+           Currently: Sichuan, 17–20 Oct 2026. After that date passes,
            this needs a new subject.
            ═════════════════════════════════════════════════════════════════ -->
       <a class="nextcard" href="about.html#next">
         <span class="nextcard__ic"><svg class="ic"><use href="#i-alpinism"/></svg></span>
         <span class="nextcard__b">
           <span class="nextcard__k">Next up</span>
-          <span class="nextcard__t">Siguniang Erfeng</span>
-          <span class="nextcard__d">Sichuan &middot; 17&ndash;20 Oct 2026</span>
+          <span class="nextcard__t">Sichuan</span>
+          <span class="nextcard__d">17&ndash;20 Oct 2026</span>
         </span>
         <span class="nextcard__go" aria-hidden="true"><svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
       </a>
@@ -1033,14 +1033,17 @@ h2 .hl{color:inherit}
       <a class="btn btn--ghost" href="expeditions.html">See the full record<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
     </div>
 
-    <figure class="band rise">
+    <figure class="band band--fit rise">
       <span class="band__img">
-        <img src="img/web/aconcagua/pxl-20241231-223009567.jpg"
-           alt="Aconcagua base camp: tents on the scree under the mountain wall, Sam in a red down hood in the foreground"
+        <img class="band__blur" src="img/web/kinabalu/img-20260705-075825.jpg" alt=""
+           aria-hidden="true" loading="lazy" decoding="async">
+        <img src="img/web/kinabalu/img-20260705-075825.jpg"
+           alt="Sam on the via ferrata high on Mount Kinabalu, clipped to the cable, the whole of Sabah and a sea of cloud below"
            loading="lazy" decoding="async">
       </span>
-      <figcaption class="band__cap">Aconcagua base camp, December 2024.</figcaption>
+      <figcaption class="band__cap">The via ferrata on Mount Kinabalu, Borneo, July 2026.</figcaption>
     </figure>
+
   </div>
 </section>
 
@@ -1070,14 +1073,15 @@ h2 .hl{color:inherit}
       <a class="btn btn--ghost" href="#contact">Tell me your idea<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
     </div>
 
-    <figure class="band band--top rise">
+    <figure class="band rise">
       <span class="band__img">
-        <img src="img/web/kilimanjaro/pxl-20260101-104451408-ts-000.jpg"
-           alt="Sam and a guide at Lava Tower Camp on Kilimanjaro, 4,600&nbsp;m, the camp and route sign behind them"
+        <img src="img/web/aconcagua/pxl-20241231-223009567.jpg"
+           alt="Aconcagua base camp: tents on the scree under the mountain wall, Sam in a red down hood in the foreground"
            loading="lazy" decoding="async">
       </span>
-      <figcaption class="band__cap">Lava Tower Camp, 4,600&nbsp;m on Kilimanjaro, January 2026.</figcaption>
+      <figcaption class="band__cap">Aconcagua base camp, December 2024.</figcaption>
     </figure>
+
   </div>
 </section>
 
@@ -1120,6 +1124,15 @@ h2 .hl{color:inherit}
       <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
 
+    <figure class="band band--top rise">
+      <span class="band__img">
+        <img src="img/web/kilimanjaro/pxl-20260101-104451408-ts-000.jpg"
+           alt="Sam and a guide at Lava Tower Camp on Kilimanjaro, 4,600&nbsp;m, the camp and route sign behind them"
+           loading="lazy" decoding="async">
+      </span>
+      <figcaption class="band__cap">Lava Tower Camp, 4,600&nbsp;m on Kilimanjaro, January 2026.</figcaption>
+    </figure>
+
     <!-- ─────────────────────────────────────────────────────────────
          TIP JAR — Ko-fi. Replace the href below (both here and in the
          footer) with your real page once you have claimed the handle
@@ -1141,16 +1154,6 @@ h2 .hl{color:inherit}
       <span><svg class="ic ic--sm"><use href="#i-globe"/></svg>Available worldwide</span>
     </div>
 
-    <figure class="band band--fit rise">
-      <span class="band__img">
-        <img class="band__blur" src="img/web/kinabalu/img-20260705-075825.jpg" alt=""
-           aria-hidden="true" loading="lazy" decoding="async">
-        <img src="img/web/kinabalu/img-20260705-075825.jpg"
-           alt="Sam on the via ferrata high on Mount Kinabalu, clipped to the cable, the whole of Sabah and a sea of cloud below"
-           loading="lazy" decoding="async">
-      </span>
-      <figcaption class="band__cap">The via ferrata on Mount Kinabalu, Borneo, July 2026.</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -1528,9 +1531,11 @@ h2 .hl{color:inherit}
   var dash = document.getElementById('audDash');
   var AUD  = (window.SAM_METRICS && window.SAM_METRICS.audience) || null;
   if(dash && AUD){
+    /* age opens the panel: it is the dimension a brand actually reads first.
+       Gender in the middle, location last. */
     var DIMS = [
-      {id:'gender',    label:'Gender',   icon:'i-users', rows:AUD.gender},
       {id:'age',       label:'Age',      icon:'i-clock', rows:AUD.age},
+      {id:'gender',    label:'Gender',   icon:'i-users', rows:AUD.gender},
       {id:'countries', label:'Location', icon:'i-globe', rows:AUD.countries}
     ].filter(function(d){ return d.rows && d.rows.length; });
 
