@@ -18,3 +18,7 @@ _to_delete/
 
 # private dictation notes: names, health details, costs. Never publish.
 Adventure Notes.md
+
+# stray AVIFs from an early conversion run; the og/ cards ship as JPEG only
+# because link scrapers do not read AVIF. Safe to delete in Finder.
+img/og/*.avif
