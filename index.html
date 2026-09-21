@@ -167,6 +167,40 @@ h2 .hl{color:inherit}
   linear-gradient(to right,var(--bg) 0%,color-mix(in srgb,var(--bg) 45%,transparent) 9%,transparent 22%),
   linear-gradient(to bottom,var(--bg) 0%,color-mix(in srgb,var(--bg) 28%,transparent) 6%,transparent 15%,
     transparent 87%,color-mix(in srgb,var(--bg) 32%,transparent) 95%,var(--bg) 100%)}
+/* ── next adventure card, bottom right of the hero photo ── */
+.nextcard{position:absolute;z-index:2;
+  inset-inline-end:clamp(1rem,2.2vw,1.75rem);inset-block-end:clamp(1rem,2.2vw,1.75rem);
+  display:flex;align-items:center;gap:.85rem;
+  max-width:min(24rem,calc(100% - 2rem));padding:.7rem .8rem;
+  text-decoration:none;border-radius:10px;
+  background:color-mix(in srgb,var(--bg) 58%,transparent);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),
+    transform var(--durSlow) var(--ease)}
+/* Safari and Firefox without backdrop-filter get an opaque card rather than
+   white text over a photograph */
+@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
+  .nextcard{background:color-mix(in srgb,var(--bg) 92%,transparent)}}
+.nextcard:hover{background:color-mix(in srgb,var(--bg) 72%,transparent);
+  border-color:rgba(255,255,255,.28)}
+@media(prefers-reduced-motion:no-preference){.nextcard:hover{transform:translateY(-2px)}}
+.nextcard:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.nextcard__ic{flex:none;width:2.85rem;height:2.85rem;border-radius:8px;
+  display:grid;place-items:center;background:var(--blueFill);color:#fff}
+.nextcard__ic .ic{width:1.5rem;height:1.5rem}
+.nextcard__b{display:flex;flex-direction:column;gap:.12rem;min-width:0}
+.nextcard__k{font-size:.6875rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.nextcard__t{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  font-size:1.3rem;line-height:1.12;color:#fff;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nextcard__d{font-size:.8125rem;line-height:1.3;color:rgba(255,255,255,.74);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nextcard__go{flex:none;width:2.15rem;height:2.15rem;border-radius:50%;
+  display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);color:#fff;
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.nextcard:hover .nextcard__go{background:var(--blueFill);border-color:var(--blueFill)}
+
 .hero__in{position:relative;z-index:1;width:100%;
   padding-block:clamp(2.5rem,7vh,5rem) clamp(3rem,8vh,5.5rem)}
 /* capped so lines never run under the photo — the fade only has to soften
@@ -555,6 +589,9 @@ h2 .hl{color:inherit}
   .pull{max-width:none}}
 @media(max-width:34rem){
   .hero__media{aspect-ratio:3/4;max-height:70svh}
+  .nextcard{inset-inline:.75rem;max-width:none;gap:.7rem;padding:.6rem .65rem}
+  .nextcard__ic{width:2.5rem;height:2.5rem}
+  .nextcard__t{font-size:1.15rem}
   .hero__media img{object-position:50% 30%}
   .about__img{aspect-ratio:1/1;object-position:52% 28%}
   .btn{flex:1 1 auto;justify-content:center}
@@ -693,6 +730,15 @@ h2 .hl{color:inherit}
   <figure class="hero__media">
     <img src="img/hero.jpg" alt="Sam in a red shell with arms wide open, laughing in heavy falling snow on a ski tour" width="1600" height="2133" fetchpriority="high">
     <span class="hero__fade" aria-hidden="true"></span>
+    <a class="nextcard" href="about.html#next">
+      <span class="nextcard__ic"><svg class="ic"><use href="#i-alpinism"/></svg></span>
+      <span class="nextcard__b">
+        <span class="nextcard__k">Next up</span>
+        <span class="nextcard__t">Siguniang Erfeng</span>
+        <span class="nextcard__d">Sichuan &middot; 5,276&nbsp;m &middot; 17&ndash;20 Oct 2026</span>
+      </span>
+      <span class="nextcard__go" aria-hidden="true"><svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
+    </a>
   </figure>
   <div class="shell hero__in">
     <div class="hero__text">
