@@ -1219,7 +1219,12 @@ h2 .hl{color:inherit}
   var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyg1KNwhjJYOzPNLHFn7In53MZbf5BzbJ8dHvGUq1TkTM-mv4ZUZjFtK_DvsSp3Kpz6aw/exec';
   var WEB3FORMS_KEY = '';   // <-- or a Web3Forms access key
 
-  var form=document.getElementById('contactForm');
+    /* Stamped at page load and sent with the form. The backend drops
+     anything that comes back in under 3 seconds — a person cannot
+     type a name, an email and a message that fast, a script can. */
+  var FORM_LOADED = Date.now();
+
+var form=document.getElementById('contactForm');
   var status=document.getElementById('formStatus');
   var submitBtn=form.querySelector('button[type="submit"]');
   var note=form.querySelector('.form__note');
@@ -1288,11 +1293,15 @@ h2 .hl{color:inherit}
     submitBtn.setAttribute('disabled','');
     status.textContent='Sending…';
 
-    deliver({name:name, email:email, company:brand, message:msg})
+    deliver({name:name, email:email, company:brand, message:msg, ts:FORM_LOADED})
       .then(function(d){
         if(d && d.success){
           form.reset();
           status.textContent='Thanks — that reached me. I reply to every brand enquiry.';
+        } else if(d && d.error==='rate_limited'){
+          /* the backend's flood cap, not a failure on their side */
+          submitBtn.removeAttribute('disabled');
+          status.textContent='The form is over its limit for now. Email hey@heysamtheman.com and it reaches me just the same.';
         } else { throw new Error('rejected'); }
       })
       .catch(function(){
