@@ -297,20 +297,26 @@ h2 .hl{color:inherit}
 /* ── a photograph running the width of the shell, between blocks ──
    16:9 native, so nothing is cropped and any new photo dropped in
    behaves the same without per-image tuning */
-/* a photograph used as a divider between sections. It is a plate, not a
-   slab: capped at 50rem and centred, so on a wide monitor it stays well
-   inside the text column instead of filling the window. The air above and
-   below is what makes it read as a break. 16:9 with no crop — every photo
-   in img/web that goes here is already 16:9. */
-.band{display:block;width:100%;max-width:50rem;
-  margin-inline:auto;
+/* a photograph used as a divider between sections. It runs the full width
+   of the shell, so its edges line up with the headings and the cards, and
+   sits at 2.2:1 so that width does not make it tall — about 530px on a
+   1300px screen. Same 10px corner as the Reels cards. The air above and
+   below is what makes it read as a break. */
+.band{display:block;width:100%;
   margin-block:clamp(3.5rem,7vw,5.5rem)}
-.band__img{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
+.band__img{position:relative;display:block;width:100%;
+  aspect-ratio:2.2/1;overflow:hidden;border-radius:10px;
   background:var(--bg2);border:1px solid var(--line)}
 .band__img img{width:100%;height:100%;object-fit:cover;display:block}
-/* for a 4:3 frame in the 16:9 box: hold the bottom of the picture so a
-   standing figure keeps its feet, and give up sky at the top instead */
-.band--low .band__img img{object-position:50% 100%}
+/* the Kilimanjaro frame has heads near its top edge, so hold the top and
+   give up the bottom instead of cropping either side of centre */
+.band--top .band__img img{object-position:50% 0%}
+/* a 4:3 frame cannot be cropped to 2.2:1 without losing either the head or
+   the feet of a standing figure, so it is shown whole and centred over a
+   blurred copy of itself — the same trick the still posts in the rail use */
+.band--fit .band__img img:not(.band__blur){object-fit:contain;position:relative;z-index:1}
+.band__img .band__blur{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.25);filter:blur(28px) saturate(1.05) brightness(.32);z-index:0}
 .band__cap{margin:.85rem 0 0;font-size:var(--fsBody);line-height:1.5;
   color:var(--muted)}
 
@@ -1049,7 +1055,7 @@ h2 .hl{color:inherit}
       <a class="btn btn--ghost" href="#contact">Tell me your idea<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
     </div>
 
-    <figure class="band rise">
+    <figure class="band band--top rise">
       <span class="band__img">
         <img src="img/web/kilimanjaro/pxl-20260101-104451408-ts-000.jpg"
            alt="Sam and a guide at Lava Tower Camp on Kilimanjaro, 4,600&nbsp;m, the camp and route sign behind them"
@@ -1120,8 +1126,10 @@ h2 .hl{color:inherit}
       <span><svg class="ic ic--sm"><use href="#i-globe"/></svg>Available worldwide</span>
     </div>
 
-    <figure class="band band--low rise">
+    <figure class="band band--fit rise">
       <span class="band__img">
+        <img class="band__blur" src="img/web/kinabalu/img-20260705-075825.jpg" alt=""
+           aria-hidden="true" loading="lazy" decoding="async">
         <img src="img/web/kinabalu/img-20260705-075825.jpg"
            alt="Sam on the via ferrata high on Mount Kinabalu, clipped to the cable, the whole of Sabah and a sea of cloud below"
            loading="lazy" decoding="async">
