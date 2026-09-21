@@ -314,8 +314,6 @@ h2 .hl{color:inherit}
 .reel__blur{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transform:scale(1.25);filter:blur(28px) saturate(1.05) brightness(.32);z-index:0}
 .reel--post .reel__card>img:not(.reel__blur){object-fit:contain;z-index:1}
-.reel__place{display:block;margin-top:.3rem;font-size:.75rem;letter-spacing:.1em;
-  text-transform:uppercase;color:rgba(255,255,255,.74)}
 /* Instagram sets a like count in the system UI face at ~14px, semibold,
    number and word alike — not in a display face. Matching that is what
    makes these read as a figure off the app rather than a stat we styled. */
@@ -1129,6 +1127,7 @@ h2 .hl{color:inherit}
      for a post — and `unit` is the word beside it. Leave n:'' and the
      line still reserves its height so the cards stay aligned.
      ──────────────────────────────────────────────────────────────── */
+  /* `place` is kept for reference only — the cards print the caption alone. */
   var REELS = [
     {kind:'reel', id:'Dc4YskjK6tQ', n:'3.2M',  unit:'views',
      cap:'The climb down from 4,400\u00a0m on the Matterhorn'},
@@ -1159,9 +1158,7 @@ h2 .hl{color:inherit}
               +   ' aria-hidden="true" loading="lazy" decoding="async">'
               + '<img src="img/' + r.img + '.jpg" alt="" loading="lazy" decoding="async">'
               + '<span class="reel__veil"></span>'
-              + '<span class="reel__cap">' + r.cap
-              +   (r.place ? '<span class="reel__place">' + r.place + '</span>' : '')
-              + '</span>';
+              + '<span class="reel__cap">' + r.cap + '</span>';
       } else {
         href  = 'https://www.instagram.com/reel/' + r.id + '/';
         media = '<img src="img/reel-' + r.id + '.jpg" alt="" loading="lazy" decoding="async">'
