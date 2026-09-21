@@ -168,22 +168,14 @@ h2 .hl{color:inherit}
   linear-gradient(to bottom,var(--bg) 0%,color-mix(in srgb,var(--bg) 28%,transparent) 6%,transparent 15%,
     transparent 87%,color-mix(in srgb,var(--bg) 32%,transparent) 95%,var(--bg) 100%)}
 /* ── next adventure card, bottom right of the hero photo ── */
-.nextcard{position:absolute;z-index:2;
-  inset-inline-end:clamp(1rem,2.2vw,1.75rem);inset-block-end:clamp(1rem,2.2vw,1.75rem);
-  display:flex;align-items:center;gap:.85rem;
-  max-width:min(24rem,calc(100% - 2rem));padding:.7rem .8rem;
+.nextcard{margin-top:clamp(1.5rem,3vw,2rem);
+  display:inline-flex;align-items:center;gap:.85rem;
+  max-width:min(24rem,100%);padding:.7rem .8rem;
   text-decoration:none;border-radius:10px;
-  background:color-mix(in srgb,var(--bg) 58%,transparent);
-  border:1px solid rgba(255,255,255,.15);
-  backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);
+  background:var(--bg2);border:1px solid var(--line2);
   transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),
     transform var(--durSlow) var(--ease)}
-/* Safari and Firefox without backdrop-filter get an opaque card rather than
-   white text over a photograph */
-@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
-  .nextcard{background:color-mix(in srgb,var(--bg) 92%,transparent)}}
-.nextcard:hover{background:color-mix(in srgb,var(--bg) 72%,transparent);
-  border-color:rgba(255,255,255,.28)}
+.nextcard:hover{background:var(--bg3);border-color:var(--blue)}
 @media(prefers-reduced-motion:no-preference){.nextcard:hover{transform:translateY(-2px)}}
 .nextcard:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .nextcard__ic{flex:none;width:2.85rem;height:2.85rem;border-radius:8px;
@@ -192,12 +184,12 @@ h2 .hl{color:inherit}
 .nextcard__b{display:flex;flex-direction:column;gap:.12rem;min-width:0}
 .nextcard__k{font-size:.6875rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
 .nextcard__t{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
-  font-size:1.3rem;line-height:1.12;color:#fff;
+  font-size:1.3rem;line-height:1.12;color:var(--ink);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nextcard__d{font-size:.8125rem;line-height:1.3;color:rgba(255,255,255,.74);
+.nextcard__d{font-size:.8125rem;line-height:1.3;color:var(--muted);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nextcard__go{flex:none;width:2.15rem;height:2.15rem;border-radius:50%;
-  display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);color:#fff;
+  display:grid;place-items:center;border:1px solid var(--line2);color:var(--ink);
   transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
 .nextcard:hover .nextcard__go{background:var(--blueFill);border-color:var(--blueFill)}
 
@@ -597,9 +589,12 @@ h2 .hl{color:inherit}
   .pull{max-width:none}}
 @media(max-width:34rem){
   .hero__media{aspect-ratio:3/4;max-height:70svh}
-  .nextcard{inset-inline:.75rem;max-width:none;gap:.7rem;padding:.6rem .65rem}
+  .nextcard{gap:.7rem;padding:.6rem .65rem}
   .nextcard__ic{width:2.5rem;height:2.5rem}
   .nextcard__t{font-size:1.15rem}
+  /* on a phone the column is narrow enough that the date gets clipped,
+     and nothing is gained by holding it to one line here */
+  .nextcard__d{white-space:normal;overflow:visible}
   .hero__media img{object-position:50% 30%}
   .about__img{aspect-ratio:1/1;object-position:52% 28%}
   .btn{flex:1 1 auto;justify-content:center}
@@ -738,28 +733,6 @@ h2 .hl{color:inherit}
   <figure class="hero__media">
     <img src="img/hero.jpg" alt="Sam in a red shell with arms wide open, laughing in heavy falling snow on a ski tour" width="1600" height="2133" fetchpriority="high">
     <span class="hero__fade" aria-hidden="true"></span>
-    <!-- ═══ NEXT ADVENTURE CARD — keep this current ═══════════════════
-         RULE: this card always points at the next adventure that has dates.
-         When that trip is done and nothing else is booked, swap it for one
-         of the dreams listed in about.html (the .dreams list under
-         "What's next") and set the kicker to "One day" instead of "Next up".
-
-         Three things to change together: the kicker, the title, the detail
-         line. The href stays about.html#next either way — that block holds
-         both the dated trip and the dreams list.
-
-         Currently: Siguniang Erfeng, 17–20 Oct 2026. After that date passes,
-         this needs a new subject.
-         ═════════════════════════════════════════════════════════════════ -->
-    <a class="nextcard" href="about.html#next">
-      <span class="nextcard__ic"><svg class="ic"><use href="#i-alpinism"/></svg></span>
-      <span class="nextcard__b">
-        <span class="nextcard__k">Next up</span>
-        <span class="nextcard__t">Siguniang Erfeng</span>
-        <span class="nextcard__d">Sichuan &middot; 5,276&nbsp;m &middot; 17&ndash;20 Oct 2026</span>
-      </span>
-      <span class="nextcard__go" aria-hidden="true"><svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
-    </a>
   </figure>
   <div class="shell hero__in">
     <div class="hero__text">
@@ -775,6 +748,29 @@ h2 .hl{color:inherit}
         <a href="partner.html#gear">Test your gear</a>
         <a href="partner.html#collaborations">Let's collaborate</a>
       </div>
+
+      <!-- ═══ NEXT ADVENTURE CARD — keep this current ═══════════════════
+           RULE: this card always points at the next adventure that has dates.
+           When that trip is done and nothing else is booked, swap it for one
+           of the dreams listed in about.html (the .dreams list under
+           "What's next") and set the kicker to "One day" instead of "Next up".
+
+           Three things to change together: the kicker, the title, the detail
+           line. The href stays about.html#next either way — that block holds
+           both the dated trip and the dreams list.
+
+           Currently: Siguniang Erfeng, 17–20 Oct 2026. After that date passes,
+           this needs a new subject.
+           ═════════════════════════════════════════════════════════════════ -->
+      <a class="nextcard" href="about.html#next">
+        <span class="nextcard__ic"><svg class="ic"><use href="#i-alpinism"/></svg></span>
+        <span class="nextcard__b">
+          <span class="nextcard__k">Next up</span>
+          <span class="nextcard__t">Siguniang Erfeng</span>
+          <span class="nextcard__d">Sichuan &middot; 5,276&nbsp;m &middot; 17&ndash;20 Oct 2026</span>
+        </span>
+        <span class="nextcard__go" aria-hidden="true"><svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
