@@ -4,20 +4,23 @@
    index.html and partner.html both read from this file, so the two
    pages can never drift apart.
 
-   ⚠️ `views` and `updated` are written automatically each morning by
-   .github/workflows/instagram-views.yml. Do not hand-edit them — the
-   next run overwrites whatever you type.
+   ── How to update ───────────────────────────────────────────────────
+   Every number here is typed by hand. Nothing writes to this file.
 
-   ── Two different numbers, and why ──────────────────────────────────
-   values.views  = ROLLING 90 DAYS, straight from Instagram. Verifiable.
-                   This is what the stat tiles show.
-   lifetime      = a FLOOR, not a total. Instagram publishes no lifetime
-                   figure and retains only 90 days, so a true all-time
-                   number does not exist anywhere. See lifetime.basis.
+     Instagram app → Professional dashboard → Insights → 90 days
+     → copy the figures into `values` and `audience`
+     → commit and push; pushing to main is the deploy
 
-   The site used to print 6,024,602 under "All time". That was wrong —
-   it was itself a 90-day reading. The current 90-day number is larger,
-   which is what gave it away.
+   Keep `period` honest: if you read a different window, say so. The
+   tiles, the hero line and the audience charts all come from here, so
+   one edit updates both pages at once.
+
+   ── What these numbers are ──────────────────────────────────────────
+   `values` is a ROLLING 90-DAY reading, straight off the dashboard.
+   Instagram retains only 90 days and publishes no lifetime total, so
+   that is the only views figure it will vouch for. Do not relabel it
+   "all time" — the site did once, over a number that was itself a
+   90-day reading, and the mislabel is what made it wrong.
 
    Source: Instagram app → Professional dashboard → Insights, 90 days,
    read 20 Sep 2026.
@@ -26,12 +29,11 @@
 window.SAM_METRICS = {
 
   period : 'Last 90 days',
-  updated: '2026-09-20',
 
   values: {
 
     /* shown on index.html and partner.html */
-    views       : 6279623,   /* AUTOMATED — see data/views-log.json */
+    views       : 6279623,
     interactions: 449359,
     followers   : 9867,
     posts       : 181,
@@ -55,19 +57,6 @@ window.SAM_METRICS = {
     views    : '6M+',
     likes    : '400K',
     followers: '10,000'
-  },
-
-  /* Lifetime floor. Hand-maintained — the automation does not touch it.
-     Add to `additions` when a pre-window post is worth counting, and
-     raise `display` only when the rounding actually changes. */
-  lifetime: {
-    display  : '6.5M+',
-    floor    : 6488623,
-    additions: [
-      { what: 'Mt. Fuji + Mt. Yotei ski descents', views: 200000, when: 'May 2026 / Feb 2026', note: "Sam's estimate, not a dashboard reading" },
-      { what: 'Malapascua thresher shark',         views:   9000, when: 'pre-window',          note: "Sam's figure" }
-    ],
-    basis: '6,279,623 verified over the last 90 days, plus ~209,000 from posts that fall outside the 90-day window. A floor, not a ceiling.'
   },
 
   /* The headline number under the reels — best single Reel in the window. */
@@ -122,11 +111,5 @@ window.SAM_METRICS = {
   });
   document.querySelectorAll('[data-metric-top]').forEach(function(el){
     el.textContent = fmt(M.topReel || M.values.views);
-  });
-  /* string-valued metrics (the lifetime floor is deliberately not a
-     formatted number — rounding IS the honesty here) */
-  document.querySelectorAll('[data-metric-text]').forEach(function(el){
-    var k = el.getAttribute('data-metric-text');
-    if(k === 'lifetime' && M.lifetime && M.lifetime.display) el.textContent = M.lifetime.display;
   });
 })();
