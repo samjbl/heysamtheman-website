@@ -1,0 +1,66 @@
+/* styles the Dreams page needs on top of blog.css */
+.pagehead .lede{max-width:56ch}
+
+/* ── the four counters ── */
+.tally{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2);
+  margin-top:clamp(1.5rem,3vw,2.25rem)}
+.tally div{background:var(--bg2);padding:clamp(1rem,2.2vw,1.5rem)}
+.tally b{display:block;font-family:var(--title);font-weight:var(--titleW);
+  letter-spacing:var(--titleTrack);line-height:.95;
+  font-size:clamp(2.4rem,5vw,3.8rem);color:var(--ink)}
+.tally b small{font-size:.45em;color:var(--muted);letter-spacing:0;margin-left:.15em}
+.tally span{display:block;margin-top:.45rem;font-size:var(--fsMicro);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+.tally .is-done b{color:var(--blue)}
+.bar{height:3px;background:var(--line);margin-top:clamp(1rem,2vw,1.5rem);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--blueFill);width:0;
+  transition:width .9s var(--ease)}
+
+/* ── sections ── */
+.sec{box-shadow:inset 0 1px 0 var(--line);
+  padding-top:clamp(3rem,7vw,5rem);padding-bottom:clamp(3rem,7vw,5rem)}
+.sec h2{font-size:clamp(2.2rem,5vw,4rem);color:var(--ink)}
+.sec__head{display:flex;align-items:baseline;gap:1rem 1.5rem;flex-wrap:wrap;
+  margin-bottom:clamp(1.5rem,3vw,2.25rem)}
+.sec__n{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ── category filter, chips ── */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:clamp(1.5rem,3vw,2.25rem)}
+.chip{font-family:var(--body);font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);background:transparent;border:1px solid var(--line2);
+  padding:.55rem .9rem;cursor:pointer;min-height:2.5rem;
+  transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
+.chip:hover{color:var(--ink);border-color:var(--blue)}
+.chip.is-on{color:#fff;background:var(--blueFill);border-color:var(--blueFill)}
+
+/* ── the cards ── */
+.dreams{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(17.5rem,1fr));
+  gap:clamp(.9rem,1.8vw,1.25rem)}
+.dream{display:flex;flex-direction:column;gap:.55rem;position:relative;
+  border:1px solid var(--line2);background:var(--bg2);
+  padding:clamp(1.1rem,2.2vw,1.4rem);min-height:9rem;
+  transition:border-color var(--dur) var(--ease)}
+.dream:hover{border-color:var(--blue)}
+.dream.is-hidden{display:none}
+.dream__k{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.dream__t{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  font-size:1.55rem;line-height:1.08;color:var(--ink);text-wrap:balance}
+.dream__x{color:var(--muted);font-size:.95rem;line-height:1.55;flex:1}
+.dream__w{font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  display:inline-flex;align-items:center;gap:.4rem;margin-top:.25rem}
+.dream__w .ic{color:var(--blue)}
+/* done: the blue mark in the corner and a tint, the card stays quiet otherwise */
+.dream--done{background:color-mix(in srgb,var(--blue) 7%,var(--bg2));border-color:color-mix(in srgb,var(--blue) 35%,var(--line2))}
+.dream--done .dream__w{color:var(--ink)}
+/* in progress: a thin bar with the fraction */
+.dream__p{display:flex;align-items:center;gap:.75rem;margin-top:.25rem;
+  font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dream__p .bar{flex:1;margin:0}
+.dream__p .bar i{transition:none}
+
+.empty{display:none;color:var(--muted);padding:1.5rem 0}
+.empty.is-on{display:block}
+
+@media(max-width:44rem){
+  .tally{grid-template-columns:repeat(2,minmax(0,1fr))}}
