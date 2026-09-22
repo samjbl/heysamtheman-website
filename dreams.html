@@ -56,52 +56,59 @@
 <main>
 <section class="shell pagehead">
   <a class="backlink" href="about.html"><svg class="ic ic--sm"><use href="#i-back"/></svg>Back to my story</a>
-  <h1>My life dreams</h1>
+  <h1><span class="h1__i" aria-hidden="true">🚀</span> My life dreams</h1>
   <p class="lede">Forty-nine things I want to have done in this life. Some are the reason
-    I keep training. Some just need a free month and a bit of nerve. When one gets done
-    it moves up, and a new one usually takes its place.</p>
+    I keep training. Some just need a free month and a bit of nerve.</p>
 
   <div class="tally" id="tally" aria-label="Progress">
-    <div class="is-done"><b id="tDone">0</b><span>Done</span></div>
-    <div><b id="tLive">0</b><span>Under way</span></div>
-    <div><b id="tTodo">0</b><span>Still to come</span></div>
-    <div><b id="tPct">0<small>%</small></b><span>Of the list</span></div>
+    <div class="is-done"><i aria-hidden="true">🏆</i><b id="tDone">0</b><span>Done</span></div>
+    <div class="is-live"><i aria-hidden="true">🔥</i><b id="tLive">0</b><span>Under way</span></div>
+    <div><i aria-hidden="true">🧭</i><b id="tTodo">0</b><span>Still to come</span></div>
+    <div><i aria-hidden="true">📈</i><b id="tPct">0<small>%</small></b><span>Of the list</span></div>
   </div>
-  <div class="bar" aria-hidden="true"><i id="tBar"></i></div>
+  <div class="bar bar--big" aria-hidden="true"><i id="tBar"></i></div>
 </section>
 
 <!-- ── DONE ─────────────────────────────────────────────────────────── -->
-<section class="sec" id="done">
+<section class="sec sec--done" id="done">
   <div class="shell">
-    <div class="sec__head"><h2>Done</h2><span class="sec__n" id="nDone"></span></div>
+    <div class="sec__head"><span class="sec__i" aria-hidden="true">🏆</span><h2>Done</h2><span class="sec__n" id="nDone"></span></div>
     <ul class="dreams" data-group="done">
 
-      <li class="dream dream--done" data-cat="mountains">
-        <span class="dream__k">Mountains</span>
-        <span class="dream__t">Mont Blanc, 4,808&nbsp;m</span>
+      <li class="dream dream--done" id="d-mont-blanc" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🏔️</span>
+        <span class="dream__t">Mont Blanc, 4,808 m</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">First time in crampons on the Mer de Glace. Five days later, the summit at dawn.</span>
         <span class="dream__w"><svg class="ic ic--sm"><use href="#i-check"/></svg>September 2015</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="mont-blanc" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mont-blanc" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mont-blanc" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mont-blanc" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
-      <li class="dream dream--done" data-cat="sky">
-        <span class="dream__k">Water &amp; sky</span>
+      <li class="dream dream--done" id="d-paragliding" data-t="months">
+        <span class="dream__i" aria-hidden="true">🪂</span>
         <span class="dream__t">Paragliding licence, then solo on my own glider</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">A flight over Lake Annecy at golden hour is now a normal evening.</span>
         <span class="dream__w"><svg class="ic ic--sm"><use href="#i-check"/></svg>Done</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="paragliding" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="paragliding" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="paragliding" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="paragliding" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
-      <li class="dream dream--done" data-cat="trades">
-        <span class="dream__k">Trades &amp; skills</span>
+      <li class="dream dream--done" id="d-motorbike" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🏍️</span>
         <span class="dream__t">Motorbike licence</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Passed in Japan. The Vietnam trip in 2013 was on a bike I had learned to ride three days before.</span>
         <span class="dream__w"><svg class="ic ic--sm"><use href="#i-check"/></svg>Japan, 2023</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="motorbike" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="motorbike" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="motorbike" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="motorbike" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
-      <li class="dream dream--done" data-cat="mountains">
-        <span class="dream__k">Mountains</span>
-        <span class="dream__t">Kilimanjaro, 5,895&nbsp;m</span>
+      <li class="dream dream--done" id="d-kilimanjaro" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🌋</span>
+        <span class="dream__t">Kilimanjaro, 5,895 m</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Uhuru Peak at sunrise. First of the Seven Summits.</span>
         <span class="dream__w"><svg class="ic ic--sm"><use href="#i-check"/></svg>January 2026</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="kilimanjaro" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="kilimanjaro" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="kilimanjaro" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="kilimanjaro" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
     </ul>
@@ -111,21 +118,25 @@
 <!-- ── UNDER WAY ────────────────────────────────────────────────────── -->
 <section class="sec" id="underway">
   <div class="shell">
-    <div class="sec__head"><h2>Under way</h2><span class="sec__n" id="nLive"></span></div>
+    <div class="sec__head"><span class="sec__i" aria-hidden="true">🔥</span><h2>Under way</h2><span class="sec__n" id="nLive"></span></div>
     <ul class="dreams" data-group="live">
 
-      <li class="dream" data-cat="mountains" data-done="1" data-of="7">
-        <span class="dream__k">Mountains</span>
+      <li class="dream" id="d-seven-summits" data-t="years" data-done="1" data-of="7">
+        <span class="dream__i" aria-hidden="true">🗺️</span>
         <span class="dream__t">The Seven Summits</span>
-        <span class="dream__x">Kilimanjaro is in the bag. Aconcagua stopped me at 6,500&nbsp;m in 2025 and is owed a second go.</span>
+        <span class="dream__k">Years</span>
+        <span class="dream__x">Kilimanjaro is in the bag. Aconcagua stopped me at 6,500 m in 2025 and is owed a second go.</span>
         <span class="dream__p"><span class="bar"><i></i></span><span>1 of 7</span></span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="seven-summits" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="seven-summits" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="seven-summits" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="seven-summits" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
-      <li class="dream" data-cat="mountains" data-done="4" data-of="82">
-        <span class="dream__k">Mountains</span>
+      <li class="dream" id="d-4000ers" data-t="years" data-done="4" data-of="82">
+        <span class="dream__i" aria-hidden="true">⛰️</span>
         <span class="dream__t">All 82 Alpine four-thousanders</span>
+        <span class="dream__k">Years</span>
         <span class="dream__x">Mont Blanc, Breithorn, Weissmies and the Matterhorn so far. A lifetime project, and that is the point.</span>
         <span class="dream__p"><span class="bar"><i></i></span><span>4 of 82</span></span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="4000ers" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="4000ers" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="4000ers" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="4000ers" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
     </ul>
@@ -135,249 +146,365 @@
 <!-- ── STILL TO COME ────────────────────────────────────────────────── -->
 <section class="sec" id="todo">
   <div class="shell">
-    <div class="sec__head"><h2>Still to come</h2><span class="sec__n" id="nTodo"></span></div>
+    <div class="sec__head"><span class="sec__i" aria-hidden="true">🧭</span><h2>Still to come</h2><span class="sec__n" id="nTodo"></span></div>
 
-    <div class="chips" id="chips" role="group" aria-label="Filter by category">
+    <p class="chips__lbl">How long each one takes</p>
+    <div class="chips" id="chips" role="group" aria-label="Filter by how long it takes">
       <button class="chip is-on" type="button" data-f="all">All</button>
-      <button class="chip" type="button" data-f="mountains">Mountains</button>
-      <button class="chip" type="button" data-f="journeys">Journeys</button>
-      <button class="chip" type="button" data-f="sky">Water &amp; sky</button>
-      <button class="chip" type="button" data-f="trades">Trades &amp; skills</button>
-      <button class="chip" type="button" data-f="arts">Arts &amp; culture</button>
-      <button class="chip" type="button" data-f="nature">Nature &amp; mind</button>
+      <button class="chip" type="button" data-f="days">A few days</button>
+      <button class="chip" type="button" data-f="weeks">A few weeks</button>
+      <button class="chip" type="button" data-f="months">A few months</button>
+      <button class="chip" type="button" data-f="years">Years</button>
     </div>
 
     <ul class="dreams" data-group="todo" id="todoList">
 
-      <!-- Mountains -->
-      <li class="dream" data-cat="mountains">
-        <span class="dream__k">Mountains</span>
-        <span class="dream__t">Everest, 8,849&nbsp;m</span>
+      <li class="dream" id="d-everest" data-t="years">
+        <span class="dream__i" aria-hidden="true">🏔️</span>
+        <span class="dream__t">Everest, 8,849 m</span>
+        <span class="dream__k">Years</span>
         <span class="dream__x">The one everyone asks about. It comes after the 6,000s and 7,000s, not before.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="everest" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="everest" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="everest" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="everest" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="mountains">
-        <span class="dream__k">Mountains</span>
-        <span class="dream__t">Annapurna, 8,091&nbsp;m</span>
-        <span class="dream__x">The first 8,000&nbsp;m peak ever climbed, and still one of the hardest.</span>
+
+      <li class="dream" id="d-annapurna" data-t="years">
+        <span class="dream__i" aria-hidden="true">🏔️</span>
+        <span class="dream__t">Annapurna, 8,091 m</span>
+        <span class="dream__k">Years</span>
+        <span class="dream__x">The first 8,000 m peak ever climbed, and still one of the hardest.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="annapurna" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="annapurna" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="annapurna" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="annapurna" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="mountains">
-        <span class="dream__k">Mountains</span>
-        <span class="dream__t">Lenin Peak, 7,134&nbsp;m</span>
-        <span class="dream__x">The classic first 7,000er, on the Kyrgyz&#8211;Tajik border. Altitude with no technical excuse.</span>
+
+      <li class="dream" id="d-lenin" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🧊</span>
+        <span class="dream__t">Lenin Peak, 7,134 m</span>
+        <span class="dream__k">A few weeks</span>
+        <span class="dream__x">The classic first 7,000er, on the Kyrgyz–Tajik border. Altitude with no technical excuse.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="lenin" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="lenin" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="lenin" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="lenin" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="mountains">
-        <span class="dream__k">Mountains</span>
-        <span class="dream__t">Two months in Nepal, climbing 6,000&nbsp;m peaks</span>
+
+      <li class="dream" id="d-nepal" data-t="months">
+        <span class="dream__i" aria-hidden="true">🇳🇵</span>
+        <span class="dream__t">Two months in Nepal, climbing 6,000 m peaks</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Not a trek. Island Peak, Lobuche, Mera, one after the other, with time to acclimatise properly.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="nepal" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="nepal" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="nepal" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="nepal" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="mountains">
-        <span class="dream__k">Mountains</span>
+
+      <li class="dream" id="d-gr10" data-t="months">
+        <span class="dream__i" aria-hidden="true">🥾</span>
         <span class="dream__t">Cross the Pyrenees on the GR10</span>
-        <span class="dream__x">Atlantic to Mediterranean on foot. About 900&nbsp;km and 50,000&nbsp;m of climbing.</span>
+        <span class="dream__k">A few months</span>
+        <span class="dream__x">Atlantic to Mediterranean on foot. About 900 km and 50,000 m of climbing.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="gr10" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="gr10" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="gr10" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="gr10" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="mountains">
-        <span class="dream__k">Mountains</span>
+
+      <li class="dream" id="d-refuge" data-t="months">
+        <span class="dream__i" aria-hidden="true">🛖</span>
         <span class="dream__t">A season working in a mountain refuge</span>
-        <span class="dream__x">Carry, cook, wake the climbers at 3&nbsp;am. See the mountain from the other side of the counter.</span>
+        <span class="dream__k">A few months</span>
+        <span class="dream__x">Carry, cook, wake the climbers at 3 am. See the mountain from the other side of the counter.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="refuge" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="refuge" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="refuge" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="refuge" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
-      <!-- Journeys -->
-      <li class="dream" data-cat="journeys">
-        <span class="dream__k">Journeys</span>
+      <li class="dream" id="d-mongolia" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🐎</span>
         <span class="dream__t">Cross Mongolia on horseback</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">I have been to Mongolia. Next time, the steppe the way the nomads cross it.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="mongolia" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mongolia" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mongolia" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mongolia" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="journeys">
-        <span class="dream__k">Journeys</span>
+
+      <li class="dream" id="d-panam" data-t="months">
+        <span class="dream__i" aria-hidden="true">🚐</span>
         <span class="dream__t">The Pan-American Highway, end to end</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Alaska to Tierra del Fuego in a camper van. The Darién Gap is part of the problem to solve.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="panam" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="panam" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="panam" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="panam" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="journeys">
-        <span class="dream__k">Journeys</span>
+
+      <li class="dream" id="d-france-japan" data-t="months">
+        <span class="dream__i" aria-hidden="true">🚲</span>
         <span class="dream__t">Cycle from France to Japan</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Home to home, the long way. Both places I live, joined by one road.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="france-japan" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="france-japan" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="france-japan" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="france-japan" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="journeys">
-        <span class="dream__k">Journeys</span>
+
+      <li class="dream" id="d-cycle-france" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🚴</span>
         <span class="dream__t">Cycle across France</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Corner to corner. A warm-up for the long one, and a way to see my own country slowly.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="cycle-france" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="cycle-france" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="cycle-france" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="cycle-france" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="journeys">
-        <span class="dream__k">Journeys</span>
+
+      <li class="dream" id="d-via-alpina" data-t="months">
+        <span class="dream__i" aria-hidden="true">🥾</span>
         <span class="dream__t">Walk the Via Alpina</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Trieste to Monaco through eight countries. The whole Alpine arc under my feet.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="via-alpina" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="via-alpina" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="via-alpina" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="via-alpina" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="journeys">
-        <span class="dream__k">Journeys</span>
+
+      <li class="dream" id="d-pct" data-t="months">
+        <span class="dream__i" aria-hidden="true">🌲</span>
         <span class="dream__t">Walk the Pacific Crest Trail</span>
-        <span class="dream__x">Mexico to Canada, 4,265&nbsp;km. Five months of walking, which I know I can do.</span>
+        <span class="dream__k">A few months</span>
+        <span class="dream__x">Mexico to Canada, 4,265 km. Five months of walking, which I know I can do.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="pct" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="pct" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="pct" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="pct" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="journeys">
-        <span class="dream__k">Journeys</span>
+
+      <li class="dream" id="d-monasteries" data-t="years">
+        <span class="dream__i" aria-hidden="true">⛪</span>
         <span class="dream__t">Every monastery in France, on foot</span>
+        <span class="dream__k">Years</span>
         <span class="dream__x">The Camino in 2013 started this. A slower project, in pieces, over years.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="monasteries" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="monasteries" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="monasteries" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="monasteries" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="journeys">
-        <span class="dream__k">Journeys</span>
+
+      <li class="dream" id="d-antarctica" data-t="months">
+        <span class="dream__i" aria-hidden="true">🐧</span>
         <span class="dream__t">A season in Antarctica on a scientific mission</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Not a cruise. Join a research station for a season and live there.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="antarctica" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="antarctica" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="antarctica" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="antarctica" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
-      <!-- Water & sky -->
-      <li class="dream" data-cat="sky">
-        <span class="dream__k">Water &amp; sky</span>
+      <li class="dream" id="d-atlantic" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">⛵</span>
         <span class="dream__t">Cross the Atlantic on a sailboat</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Crew on a transat. Three weeks of ocean and no land.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="atlantic" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="atlantic" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="atlantic" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="atlantic" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="sky">
-        <span class="dream__k">Water &amp; sky</span>
+
+      <li class="dream" id="d-round-world" data-t="years">
+        <span class="dream__i" aria-hidden="true">🌍</span>
         <span class="dream__t">Sail around the world, starting in France</span>
+        <span class="dream__k">Years</span>
         <span class="dream__x">The one that needs everything else first: the licence, the miles, the years.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="round-world" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="round-world" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="round-world" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="round-world" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="sky">
-        <span class="dream__k">Water &amp; sky</span>
+
+      <li class="dream" id="d-mb-paraglide" data-t="days">
+        <span class="dream__i" aria-hidden="true">🪂</span>
         <span class="dream__t">Fly a paraglider from the summit of Mont Blanc</span>
+        <span class="dream__k">A few days</span>
         <span class="dream__x">Climb it again, this time with a wing in the pack. Land in Chamonix for lunch.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="mb-paraglide" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mb-paraglide" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mb-paraglide" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mb-paraglide" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="sky">
-        <span class="dream__k">Water &amp; sky</span>
+
+      <li class="dream" id="d-pilot" data-t="months">
+        <span class="dream__i" aria-hidden="true">✈️</span>
         <span class="dream__t">Private pilot licence, and keep flying</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Not just the licence. Fly often enough that it stays a skill and not a certificate.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="pilot" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="pilot" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="pilot" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="pilot" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="sky">
-        <span class="dream__k">Water &amp; sky</span>
+
+      <li class="dream" id="d-skydive" data-t="months">
+        <span class="dream__i" aria-hidden="true">🪖</span>
         <span class="dream__t">Skydiving licence, then 50 jumps</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Paragliding taught me the air is a place. Now the fast version.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="skydive" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="skydive" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="skydive" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="skydive" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="sky">
-        <span class="dream__k">Water &amp; sky</span>
+
+      <li class="dream" id="d-boat" data-t="days">
+        <span class="dream__i" aria-hidden="true">🚤</span>
         <span class="dream__t">Motor boat licence</span>
+        <span class="dream__k">A few days</span>
         <span class="dream__x">Lake Annecy is right there. Also the first step towards the sailing.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="boat" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="boat" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="boat" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="boat" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="sky">
-        <span class="dream__k">Water &amp; sky</span>
+
+      <li class="dream" id="d-divemaster" data-t="months">
+        <span class="dream__i" aria-hidden="true">🤿</span>
         <span class="dream__t">Become a dive master, then a dive instructor</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">From diver to the person others trust underwater.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="divemaster" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="divemaster" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="divemaster" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="divemaster" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="sky">
-        <span class="dream__k">Water &amp; sky</span>
+
+      <li class="dream" id="d-sharks" data-t="days">
+        <span class="dream__i" aria-hidden="true">🦈</span>
         <span class="dream__t">Dive with sharks</span>
+        <span class="dream__k">A few days</span>
         <span class="dream__x">Thresher sharks at Malapascua were a start. Next, the big ones, without a cage.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="sharks" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="sharks" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="sharks" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="sharks" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
-      <!-- Trades & skills -->
-      <li class="dream" data-cat="trades">
-        <span class="dream__k">Trades &amp; skills</span>
+      <li class="dream" id="d-plumbing" data-t="months">
+        <span class="dream__i" aria-hidden="true">🔧</span>
         <span class="dream__t">Learn plumbing</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Enough to fit a bathroom myself and never call anyone for a leak again.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="plumbing" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="plumbing" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="plumbing" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="plumbing" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="trades">
-        <span class="dream__k">Trades &amp; skills</span>
+
+      <li class="dream" id="d-electricity" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">⚡</span>
         <span class="dream__t">Learn the basics of electricity</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Wire a new home, safely, and understand what is behind the wall.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="electricity" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="electricity" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="electricity" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="electricity" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="trades">
-        <span class="dream__k">Trades &amp; skills</span>
+
+      <li class="dream" id="d-first-aid" data-t="days">
+        <span class="dream__i" aria-hidden="true">🩹</span>
         <span class="dream__t">Get first-aid certified</span>
+        <span class="dream__k">A few days</span>
         <span class="dream__x">Overdue for someone who spends this much time far from help.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="first-aid" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="first-aid" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="first-aid" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="first-aid" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="trades">
-        <span class="dream__k">Trades &amp; skills</span>
+
+      <li class="dream" id="d-cooking" data-t="years">
+        <span class="dream__i" aria-hidden="true">👨‍🍳</span>
         <span class="dream__t">Study cooking for a year and pass the diploma</span>
+        <span class="dream__k">Years</span>
         <span class="dream__x">A real kitchen, a real exam. The CAP, or the Japanese equivalent.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="cooking" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="cooking" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="cooking" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="cooking" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="trades">
-        <span class="dream__k">Trades &amp; skills</span>
+
+      <li class="dream" id="d-bakery" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🥐</span>
         <span class="dream__t">Learn bread and croissants in a bakery</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Early mornings with a baker, then make them at home until they are right.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="bakery" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="bakery" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="bakery" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="bakery" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="trades">
-        <span class="dream__k">Trades &amp; skills</span>
+
+      <li class="dream" id="d-flowers" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">💐</span>
         <span class="dream__t">Work in a flower shop</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Learn the craft from people who do it every day. Come out able to make a proper bouquet.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="flowers" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="flowers" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="flowers" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="flowers" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
-      <!-- Arts & culture -->
-      <li class="dream" data-cat="arts">
-        <span class="dream__k">Arts &amp; culture</span>
+      <li class="dream" id="d-podcast" data-t="months">
+        <span class="dream__i" aria-hidden="true">🎙️</span>
         <span class="dream__t">Launch a podcast</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Long conversations with the people whose experience and intelligence I value most. With a running invitation list, and a curious mind.</span>
-      </li>
-      <li class="dream" data-cat="arts">
-        <span class="dream__k">Arts &amp; culture</span>
-        <span class="dream__t">Write my family's story</span>
-        <span class="dream__x">Interview everyone while they are here to be interviewed. Write it down before it is gone.</span>
-      </li>
-      <li class="dream" data-cat="arts">
-        <span class="dream__k">Arts &amp; culture</span>
-        <span class="dream__t">Learn the guitar</span>
-        <span class="dream__x">Well enough to play for people, not just for myself.</span>
-      </li>
-      <li class="dream" data-cat="arts">
-        <span class="dream__k">Arts &amp; culture</span>
-        <span class="dream__t">Learn to sing properly</span>
-        <span class="dream__x">Lessons, technique, the works. In tune and without apologising first.</span>
-      </li>
-      <li class="dream" data-cat="arts">
-        <span class="dream__k">Arts &amp; culture</span>
-        <span class="dream__t">Act in a play again</span>
-        <span class="dream__x">I did theatre once. Get back on a stage with a real company and a real audience.</span>
-      </li>
-      <li class="dream" data-cat="arts">
-        <span class="dream__k">Arts &amp; culture</span>
-        <span class="dream__t">Become a better public speaker</span>
-        <span class="dream__x">Lessons, and the discipline to cut the filler words for good.</span>
-      </li>
-      <li class="dream" data-cat="arts">
-        <span class="dream__k">Arts &amp; culture</span>
-        <span class="dream__t">Learn the art of the Renaissance</span>
-        <span class="dream__x">Enough to walk into the Uffizi and know what I am looking at, and why it mattered.</span>
-      </li>
-      <li class="dream" data-cat="arts">
-        <span class="dream__k">Arts &amp; culture</span>
-        <span class="dream__t">A history degree at the Sorbonne</span>
-        <span class="dream__x">The proper way, with the exams. Later in life, when there is time to read everything.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="podcast" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="podcast" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="podcast" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="podcast" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
-      <!-- Nature & mind -->
-      <li class="dream" data-cat="nature">
-        <span class="dream__k">Nature &amp; mind</span>
+      <li class="dream" id="d-family" data-t="months">
+        <span class="dream__i" aria-hidden="true">📖</span>
+        <span class="dream__t">Write my family's story</span>
+        <span class="dream__k">A few months</span>
+        <span class="dream__x">Interview everyone while they are here to be interviewed. Write it down before it is gone.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="family" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="family" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="family" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="family" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
+      </li>
+
+      <li class="dream" id="d-guitar" data-t="years">
+        <span class="dream__i" aria-hidden="true">🎸</span>
+        <span class="dream__t">Learn the guitar</span>
+        <span class="dream__k">Years</span>
+        <span class="dream__x">Well enough to play for people, not just for myself.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="guitar" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="guitar" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="guitar" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="guitar" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
+      </li>
+
+      <li class="dream" id="d-sing" data-t="months">
+        <span class="dream__i" aria-hidden="true">🎤</span>
+        <span class="dream__t">Learn to sing properly</span>
+        <span class="dream__k">A few months</span>
+        <span class="dream__x">Lessons, technique, the works. In tune and without apologising first.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="sing" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="sing" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="sing" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="sing" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
+      </li>
+
+      <li class="dream" id="d-theatre" data-t="months">
+        <span class="dream__i" aria-hidden="true">🎭</span>
+        <span class="dream__t">Act in a play again</span>
+        <span class="dream__k">A few months</span>
+        <span class="dream__x">I did theatre once. Get back on a stage with a real company and a real audience.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="theatre" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="theatre" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="theatre" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="theatre" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
+      </li>
+
+      <li class="dream" id="d-speaking" data-t="months">
+        <span class="dream__i" aria-hidden="true">🗣️</span>
+        <span class="dream__t">Become a better public speaker</span>
+        <span class="dream__k">A few months</span>
+        <span class="dream__x">Lessons, and the discipline to cut the filler words for good.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="speaking" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="speaking" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="speaking" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="speaking" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
+      </li>
+
+      <li class="dream" id="d-renaissance" data-t="months">
+        <span class="dream__i" aria-hidden="true">🖼️</span>
+        <span class="dream__t">Learn the art of the Renaissance</span>
+        <span class="dream__k">A few months</span>
+        <span class="dream__x">Enough to walk into the Uffizi and know what I am looking at, and why it mattered.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="renaissance" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="renaissance" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="renaissance" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="renaissance" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
+      </li>
+
+      <li class="dream" id="d-sorbonne" data-t="years">
+        <span class="dream__i" aria-hidden="true">🎓</span>
+        <span class="dream__t">A history degree at the Sorbonne</span>
+        <span class="dream__k">Years</span>
+        <span class="dream__x">The proper way, with the exams. Later in life, when there is time to read everything.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="sorbonne" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="sorbonne" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="sorbonne" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="sorbonne" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
+      </li>
+
+      <li class="dream" id="d-plants" data-t="months">
+        <span class="dream__i" aria-hidden="true">🌿</span>
         <span class="dream__t">Know the plants and trees around home</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">Every tree and flower on the paths above Annecy, by name, in French and Latin.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="plants" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="plants" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="plants" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="plants" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="nature">
-        <span class="dream__k">Nature &amp; mind</span>
+
+      <li class="dream" id="d-mushrooms" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🍄</span>
         <span class="dream__t">Learn to find mushrooms</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Which ones, where, and when. Come home from a walk with dinner.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="mushrooms" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mushrooms" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mushrooms" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="mushrooms" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="nature">
-        <span class="dream__k">Nature &amp; mind</span>
+
+      <li class="dream" id="d-fishing" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🎣</span>
         <span class="dream__t">Get good at fly fishing</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Catch fish in the lakes and rivers of the Alps, on purpose rather than by luck.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="fishing" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="fishing" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="fishing" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="fishing" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="nature">
-        <span class="dream__k">Nature &amp; mind</span>
+
+      <li class="dream" id="d-stars" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">🔭</span>
         <span class="dream__t">Know the night sky</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">The constellations and the planets from any bivouac, without an app.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="stars" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="stars" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="stars" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="stars" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="nature">
-        <span class="dream__k">Nature &amp; mind</span>
+
+      <li class="dream" id="d-alpages" data-t="months">
+        <span class="dream__i" aria-hidden="true">🐄</span>
         <span class="dream__t">A season in the alpages</span>
+        <span class="dream__k">A few months</span>
         <span class="dream__x">A summer with the sheep and the cows and the people who move them. The Alps at walking pace.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="alpages" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="alpages" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="alpages" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="alpages" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="nature">
-        <span class="dream__k">Nature &amp; mind</span>
+
+      <li class="dream" id="d-retreat" data-t="days">
+        <span class="dream__i" aria-hidden="true">🕯️</span>
         <span class="dream__t">A silent retreat in a French monastery</span>
+        <span class="dream__k">A few days</span>
         <span class="dream__x">A Catholic place full of beauty and calm. A week of not talking, and seeing what is left.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="retreat" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="retreat" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="retreat" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="retreat" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
-      <li class="dream" data-cat="nature">
-        <span class="dream__k">Nature &amp; mind</span>
+
+      <li class="dream" id="d-no-phone" data-t="weeks">
+        <span class="dream__i" aria-hidden="true">📵</span>
         <span class="dream__t">A week without a phone, then a month</span>
+        <span class="dream__k">A few weeks</span>
         <span class="dream__x">Two stages. The week is the test; the month is the point.</span>
+        <span class="dream__rx" role="group" aria-label="React"><button type="button" class="rx" data-id="no-phone" data-r="love" aria-label="Love it"><span class="rx__e">❤️</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="no-phone" data-r="up" aria-label="Do it"><span class="rx__e">👍</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="no-phone" data-r="strong" aria-label="Respect"><span class="rx__e">💪</span><span class="rx__n" hidden></span></button><button type="button" class="rx" data-id="no-phone" data-r="wow" aria-label="Wow"><span class="rx__e">🤩</span><span class="rx__n" hidden></span></button></span>
       </li>
 
     </ul>
-    <p class="empty" id="empty">Nothing in this category yet.</p>
+    <p class="empty" id="empty">Nothing in this group yet.</p>
   </div>
 </section>
 </main>
@@ -395,8 +522,9 @@
   };
   addEventListener('scroll',f,{passive:true});f();
 
+  var q=function(s,r){return [].slice.call((r||document).querySelectorAll(s));};
+
   /* counters are counted from the cards, so adding a card updates the numbers */
-  var q=function(s){return [].slice.call(document.querySelectorAll(s));};
   var done=q('[data-group="done"] .dream').length,
       live=q('[data-group="live"] .dream').length,
       todo=q('[data-group="todo"] .dream').length,
@@ -417,17 +545,52 @@
     if(i) i.style.width=Math.max(3,Math.round(+c.dataset.done/+c.dataset.of*100))+'%';
   });
 
-  /* category filter, still-to-come section only */
+  /* filter by how long it takes, still-to-come section only */
   var chips=q('#chips .chip'), cards=q('#todoList .dream'), empty=document.getElementById('empty');
   chips.forEach(function(ch){
     ch.addEventListener('click',function(){
       var f=ch.dataset.f, shown=0;
       chips.forEach(function(c){c.classList.toggle('is-on',c===ch);});
       cards.forEach(function(c){
-        var hide=f!=='all'&&c.dataset.cat!==f;
+        var hide=f!=='all'&&c.dataset.t!==f;
         c.classList.toggle('is-hidden',hide); if(!hide) shown++;
       });
       empty.classList.toggle('is-on',shown===0);
+    });
+  });
+
+  /* ── reactions ──────────────────────────────────────────────────────
+     One tap per emoji per card per visitor (remembered in this browser).
+     Shared counts need a store: set REACT_URL to the Apps Script web app
+     from claude/reactions.gs. Until it is set, the buttons still light up
+     and record an Umami event; no numbers are shown, because there are
+     none to show. */
+  var REACT_URL='';
+  var KEY='dreams-rx', mine={};
+  try{ mine=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  var btns=q('.rx');
+  btns.forEach(function(b){ if(mine[b.dataset.id+':'+b.dataset.r]) b.classList.add('is-on'); });
+  var show=function(counts){
+    btns.forEach(function(b){
+      var c=counts[b.dataset.id+':'+b.dataset.r];
+      var s=b.querySelector('.rx__n');
+      if(c){ s.textContent=c; s.hidden=false; }
+    });
+  };
+  if(REACT_URL){
+    fetch(REACT_URL+'?all=1').then(function(r){return r.json();}).then(show).catch(function(){});
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.id+':'+b.dataset.r;
+      if(mine[k]) return;                 /* one per visitor */
+      mine[k]=1; try{ localStorage.setItem(KEY,JSON.stringify(mine)); }catch(e){}
+      b.classList.add('is-on','is-pop');
+      setTimeout(function(){b.classList.remove('is-pop');},450);
+      var s=b.querySelector('.rx__n');
+      if(!s.hidden||REACT_URL){ s.textContent=(+s.textContent||0)+1; s.hidden=false; }
+      if(window.umami) try{ umami.track('dream-react',{dream:b.dataset.id,reaction:b.dataset.r}); }catch(e){}
+      if(REACT_URL) fetch(REACT_URL,{method:'POST',body:k,keepalive:true}).catch(function(){});
     });
   });
 })();
