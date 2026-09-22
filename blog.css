@@ -48,7 +48,7 @@ p{text-wrap:pretty}
   text-decoration:none;white-space:nowrap;line-height:1}
 .nav__logo-mark{font-size:.75em}
 .nav__links{display:flex;gap:clamp(1rem,2.4vw,2.1rem);align-items:center}
-.nav__links a{text-decoration:none;font-size:var(--fsMicro);letter-spacing:.14em;
+.nav__links a{white-space:nowrap;text-decoration:none;font-size:var(--fsMicro);letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink);opacity:.6;padding-block:.5rem;
   transition:opacity var(--dur) var(--ease),color var(--dur) var(--ease)}
 .nav__links a:hover,.nav__links a.is-active{opacity:1;color:var(--blue)}
@@ -57,8 +57,8 @@ p{text-wrap:pretty}
   background:var(--blueFill);color:#fff;border:1px solid var(--blueFill);
   padding:.7rem 1.1rem;white-space:nowrap;min-height:2.75rem}
 .nav__cta:hover{background:#3357dd;border-color:#3357dd}
-/* below 960px the logo + five links + CTA stop fitting on one row */
-@media(max-width:60rem){.nav__links{display:none}}
+/* below 1216px the logo + six links + CTA stop fitting on one row */
+@media(max-width:76rem){.nav__links{display:none}}
 /* phones: drop the long half of the wordmark so the CTA is not pushed off-screen */
 @media(max-width:34rem){
   .nav__logo-rest{display:none}
