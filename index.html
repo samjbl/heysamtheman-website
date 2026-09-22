@@ -137,7 +137,7 @@ h2 .hl{color:inherit}
   letter-spacing:var(--titleTrack);text-decoration:none;white-space:nowrap;line-height:1}
 .nav__logo-mark{font-size:.75em}
 .nav__links{display:flex;gap:clamp(1rem,2.4vw,2.1rem);align-items:center}
-.nav__links a{text-decoration:none;font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
+.nav__links a{white-space:nowrap;text-decoration:none;font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
   color:var(--ink);opacity:.6;transition:opacity var(--dur) var(--ease),color var(--dur) var(--ease);padding-block:.5rem}
 .nav__links a:hover,.nav__links a.is-active{opacity:1;color:var(--blue)}
 .nav__right{display:flex;align-items:center;gap:.5rem;flex:none}
@@ -153,12 +153,12 @@ h2 .hl{color:inherit}
   font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;
   padding:.7rem .95rem;cursor:pointer;min-height:2.75rem}
 .nav__toggle:hover{border-color:var(--blue);color:var(--blue)}
-@media(min-width:60.0625rem){
+@media(min-width:76.0625rem){
   .nav.is-stuck .nav__links{display:none}
   .nav.is-stuck .nav__toggle{display:inline-flex}}
-/* below 960px the logo + five links + CTA no longer fit on one row,
+/* below 1216px the logo + six links + CTA no longer fit on one row,
    so the hamburger takes over — see the 834px overflow fix */
-@media(max-width:60rem){
+@media(max-width:76rem){
   .nav__links{display:none}
   .nav__toggle{display:inline-flex}}
 .menu{position:fixed;inset:0;z-index:149;background:color-mix(in srgb,var(--bg) 97%,transparent);
@@ -776,6 +776,7 @@ h2 .hl{color:inherit}
   <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21.5V3.5M5 4.5h13l-2.6 4L18 12.5H5"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.5V12l3.6 2.2"/></symbol>
   <symbol id="i-peak2" viewBox="0 0 24 24"><path d="M2 19.5h20"/><path d="M4 16.5 9 8l3.2 5.2L15 9l5 7.5Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 16.9l-5.3 2.8 1.1-5.9-4.3-4.1 5.9-.8Z"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.6"/><path d="M2.5 20c0-3.6 2.9-5.6 6.5-5.6s6.5 2 6.5 5.6"/><path d="M16.5 5.2a3.4 3.4 0 0 1 0 6.6M17.5 14.8c2.5.5 4 2.3 4 5.2"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.8-6.5 10-6.5S22 12 22 12s-3.8 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3.2"/></symbol>
   <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5"/><rect x="13.5" y="3" width="7.5" height="7.5"/><rect x="3" y="13.5" width="7.5" height="7.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5"/></symbol>
@@ -796,6 +797,7 @@ h2 .hl{color:inherit}
     <a href="blog.html">Blog</a>
     <a href="links.html">Links</a>
     <a href="about.html">My story</a>
+    <a href="dreams.html">My life dreams</a>
   </nav>
   <div class="nav__right">
     <a class="nav__cta" href="#contact"><svg class="ic ic--sm"><use href="#i-mail"/></svg>Contact me</a>
@@ -811,6 +813,7 @@ h2 .hl{color:inherit}
   <a href="blog.html"><svg class="ic"><use href="#i-doc"/></svg>Blog</a>
   <a href="links.html"><svg class="ic"><use href="#i-grid"/></svg>Links</a>
   <a href="about.html"><svg class="ic"><use href="#i-users"/></svg>My story</a>
+  <a href="dreams.html"><svg class="ic"><use href="#i-star"/></svg>My life dreams</a>
   <a href="#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
 </div>
 
