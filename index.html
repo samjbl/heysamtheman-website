@@ -327,12 +327,12 @@ h2 .hl{color:inherit}
 /* the Kilimanjaro frame has heads near its top edge, so hold the top and
    give up the bottom instead of cropping either side of centre */
 .band--top .band__img img{object-position:50% 0%}
-/* a 4:3 frame cannot be cropped to 2.2:1 without losing either the head or
-   the feet of a standing figure, so it is shown whole and centred over a
-   blurred copy of itself — the same trick the still posts in the rail use */
-.band--fit .band__img img:not(.band__blur){object-fit:contain;position:relative;z-index:1}
-.band__img .band__blur{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  transform:scale(1.25);filter:blur(28px) saturate(1.05) brightness(.32);z-index:0}
+/* the Kinabalu frame is 4:3 with the figure in its lower two thirds. At
+   2.2:1 you lose the head or the feet, so this band opens up to 16:9 and holds
+   the bottom edge: the whole figure stays, only sky is given up, and it is
+   drawn plain like the other bands — no blurred backdrop */
+.band--wide .band__img{aspect-ratio:16/9}
+.band--wide .band__img img{object-position:50% 100%}
 /* a caption, not body copy: a step down in size and a little tracking so it
    reads as a note on the picture rather than as another paragraph */
 .band__cap{margin:.8rem 0 0;font-size:.8125rem;line-height:1.5;
@@ -409,17 +409,12 @@ h2 .hl{color:inherit}
 .reel__cap{position:absolute;inset:auto .8rem .8rem .8rem;z-index:3;display:block;
   font-size:.85rem;line-height:1.35;color:#fff;text-shadow:0 1px 8px rgba(4,7,12,.95)}
 .reel__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-/* a still post: square photo on top, caption in the space below it */
-/* A still post is square but the frame is 9:16. Cropping it to fill would
-   cut 44% of the width off a photo that was composed square, and letting it
-   sit at the top left half the card flat and empty. So the square is drawn
-   whole and centred over a blurred, darkened copy of itself that fills the
-   frame — the photo is untouched, the card is full, the caption sits on the
-   same veil the Reels use. */
+/* a still post: a 9:16 photo (img/post-<name>.jpg, 540×960) that fills the
+   card edge to edge exactly like a Reel poster. The caption sits on the same
+   veil the Reels use. Earlier these were square Instagram crops drawn over a
+   blurred copy of themselves; that layer is gone (22 Sep 2026). */
 .reel--post .reel__card{background:var(--bg3)}
-.reel__blur{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  transform:scale(1.25);filter:blur(28px) saturate(1.05) brightness(.32);z-index:0}
-.reel--post .reel__card img:not(.reel__blur){object-fit:contain;z-index:1}
+.reel--post .reel__card img{object-fit:cover;z-index:1}
 /* the view count, over the clip's top left corner. Instagram sets these in
    the system UI face at ~14px semibold, and matching that is what makes it
    read as a figure off the app rather than a stat we styled. Stills carry
@@ -1091,10 +1086,8 @@ h2 .hl{color:inherit}
       <a class="btn btn--ghost" href="expeditions.html">See the full record<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
     </div>
 
-    <figure class="band band--fit rise">
+    <figure class="band band--wide rise">
       <span class="band__img">
-        <picture><source type="image/avif" srcset="img/web/kinabalu/img-20260705-075825.avif"><img class="band__blur" src="img/web/kinabalu/img-20260705-075825.jpg" width="1600" height="1200" alt=""
-           aria-hidden="true" loading="lazy" decoding="async"></picture>
         <picture><source type="image/avif" srcset="img/web/kinabalu/img-20260705-075825.avif"><img src="img/web/kinabalu/img-20260705-075825.jpg" width="1600" height="1200"
            alt="Sam on the via ferrata high on Mount Kinabalu, clipped to the cable, the whole of Sabah and a sea of cloud below"
            loading="lazy" decoding="async"></picture>
@@ -1465,10 +1458,7 @@ h2 .hl{color:inherit}
       if(r.kind === 'post'){
         href  = r.href || PROFILE;
         media = '<picture><source type="image/avif" srcset="img/' + r.img + '.avif">'
-              + '<img class="reel__blur" src="img/' + r.img + '.jpg" alt=""'
-              +   ' width="540" height="540" aria-hidden="true" loading="lazy" decoding="async"></picture>'
-              + '<picture><source type="image/avif" srcset="img/' + r.img + '.avif">'
-              + '<img src="img/' + r.img + '.jpg" width="540" height="540" alt="" loading="lazy" decoding="async"></picture>'
+              + '<img src="img/' + r.img + '.jpg" width="540" height="960" alt="" loading="lazy" decoding="async"></picture>'
               + '<span class="reel__veil"></span>'
               + '<span class="reel__cap">' + r.cap + '</span>';
       } else {
