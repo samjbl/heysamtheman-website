@@ -41,6 +41,14 @@ p{text-wrap:pretty}
   border-bottom-color:var(--line)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .nav.is-stuck{background:color-mix(in srgb,var(--bg) 94%,transparent)}}
+/* On phones the bar goes opaque instead of blurred. backdrop-filter on a
+   FIXED element has to re-sample the content moving beneath it on every
+   scrolled frame — the one blur configuration a browser cannot cache. In an
+   in-app WebView (LINE, 23 Sep 2026) that was a large part of the scroll
+   jank. Desktop keeps the blur; see NAV-BLUR.md. */
+@media(max-width:60rem){
+  .nav.is-stuck{-webkit-backdrop-filter:none;backdrop-filter:none;
+    background:color-mix(in srgb,var(--bg) 94%,transparent)}}
 .nav__logo{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--title);
   font-weight:600;font-size:clamp(1.15rem,2.6vw,1.75rem);letter-spacing:var(--titleTrack);
   text-decoration:none;white-space:nowrap;line-height:1}

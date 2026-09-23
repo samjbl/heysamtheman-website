@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Sam — twenty-one self-organised expeditions across four continents since 2013, most recently the Matterhorn. Looking for brands to come along on the next ones.">
 <meta name="theme-color" content="#04070c">
@@ -133,16 +134,23 @@ p{max-width:68ch;text-wrap:pretty}
 .hgroup{margin-bottom:clamp(2.5rem,5vw,4rem)}
 
 
-.progress{display:none}
-@supports (animation-timeline:scroll()){
-  .progress{display:block;position:fixed;inset-block-start:0;inset-inline-start:0;
-    height:2px;width:100%;z-index:300;transform-origin:0 50%;transform:scaleX(0);
-    background:var(--blue);animation:progress linear both;animation-timeline:scroll(root block)}
-  @keyframes progress{to{transform:scaleX(1)}}}
-@supports (animation-timeline:view()){
-  @media(prefers-reduced-motion:no-preference){
-    .rise{animation:rise linear both;animation-timeline:view();animation-range:entry 6% cover 24%}
-    @keyframes rise{from{opacity:0;transform:translateY(1.5rem)}to{opacity:1;transform:none}}}}
+/* reading-progress bar. Driven from the scroll handler (a transform only, so
+   it stays on the compositor) rather than animation-timeline:scroll(). See
+   the note on .rise below for why. */
+.progress{position:fixed;inset-block-start:0;inset-inline-start:0;
+  height:2px;width:100%;z-index:300;transform-origin:0 50%;transform:scaleX(0);
+  background:var(--blue)}
+/* .rise — reveal once, on first sight. This used to be a scroll-driven
+   animation (animation-timeline:view()). In Chrome the compositor advances
+   that timeline in step with the scroll; inside an in-app WebView whose host
+   mediates scrolling (LINE, 23 Sep 2026) the timeline updated in batches and
+   every heading and card visibly snapped between states. A one-shot class
+   from an IntersectionObserver gives the same look with no per-frame cost.
+   Gated on html.js so nothing is hidden if scripts never run. */
+@media(prefers-reduced-motion:no-preference){
+  html.js .rise{opacity:0;transform:translateY(1.5rem);
+    transition:opacity .55s var(--ease),transform .55s var(--ease)}
+  html.js .rise.is-in{opacity:1;transform:none}}
 
 /* ══════════ nav ══════════ */
 .nav{position:fixed;inset-inline:0;top:0;z-index:150;
@@ -161,6 +169,14 @@ p{max-width:68ch;text-wrap:pretty}
    before. The bar needs no hint: leave it unpromoted. */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .nav.is-stuck{background:color-mix(in srgb,var(--bg) 94%,transparent)}}
+/* On phones the bar goes opaque instead of blurred. backdrop-filter on a
+   FIXED element has to re-sample the content moving beneath it on every
+   scrolled frame — the one blur configuration a browser cannot cache. In an
+   in-app WebView (LINE, 23 Sep 2026) that was a large part of the scroll
+   jank. Desktop keeps the blur; see NAV-BLUR.md. */
+@media(max-width:60rem){
+  .nav.is-stuck{-webkit-backdrop-filter:none;backdrop-filter:none;
+    background:color-mix(in srgb,var(--bg) 94%,transparent)}}
 .nav__logo{display:inline-flex;align-items:center;gap:.3rem;
   font-family:var(--title);font-weight:600;font-size:1.4rem;
   font-size:clamp(1.15rem,2.6vw,1.75rem);
@@ -1158,15 +1174,40 @@ p{max-width:68ch;text-wrap:pretty}
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ── .rise: reveal once, on first sight ─────────────────────────────
+     Replaces the scroll-driven animation (see the CSS note). Each element
+     gets is-in the first time it is on screen and is then unobserved. */
+  var risers=[].slice.call(document.querySelectorAll('.rise'));
+  if(risers.length){
+    if(reduce||!('IntersectionObserver' in window)){
+      risers.forEach(function(el){ el.classList.add('is-in'); });
+    } else {
+      var riseIO=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(!e.isIntersecting) return;
+          e.target.classList.add('is-in');
+          riseIO.unobserve(e.target);
+        });
+      },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+      risers.forEach(function(el){ riseIO.observe(el); });
+    }
+  }
+
   /* nav folds once you leave the top */
   /* The bar tints and blurs once you leave the top. Read the offset
      explicitly rather than leaning on the bare `scrollY` global, and listen
      for resize and load too so the state is right after a lazy image
      changes the page height. */
   var navBar=document.getElementById('nav');
+  var progressBar=document.querySelector('.progress');
   var onScroll=function(){
     var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
     navBar.classList.toggle('is-stuck',y>24);
+    /* reading-progress bar: a transform only, so it stays on the compositor */
+    if(progressBar){
+      var max=document.documentElement.scrollHeight-window.innerHeight;
+      progressBar.style.transform='scaleX('+(max>0?Math.min(y/max,1):0)+')';
+    }
   };
   addEventListener('scroll',onScroll,{passive:true});
   addEventListener('resize',onScroll,{passive:true});
