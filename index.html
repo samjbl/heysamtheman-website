@@ -29,6 +29,12 @@
      THEN fetched the font files from a second origin, fonts.gstatic.com.
      Served from our own origin the connection is already warm, and these
      preloads start the download during HTML parse instead of after CSS parse. -->
+<!-- The LCP image. imagesrcset/imagesizes mirror the <picture> below, so the
+     preload picks the same file the layout will ask for; type="image/avif"
+     keeps a browser without AVIF from fetching anything here. -->
+<link rel="preload" as="image" type="image/avif"
+      imagesrcset="img/hero-800.avif 800w, img/hero-1200.avif 1200w, img/hero.avif 1600w"
+      imagesizes="(max-width:60rem) 100vw, 53vw" fetchpriority="high">
 <link rel="preload" href="/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/darker-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -114,9 +120,6 @@ h1,h2,h3{font-family:var(--title);font-weight:var(--titleW);
 h1{font-size:3.5rem;font-size:var(--h1)}
 h2{font-size:2.75rem;font-size:var(--h2);max-width:19ch}
 p{max-width:68ch;text-wrap:pretty}
-.hl{color:var(--blue)}
-/* section headings stay one colour on the front page */
-h2 .hl{color:inherit}
 
 .ic{width:1.05em;height:1.05em;flex:none;fill:none;stroke:currentColor;
   stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.16em}
@@ -303,14 +306,10 @@ h2 .hl{color:inherit}
 /* section subtitle — one or two lines under an h2 */
 .hgroup__sub{margin-top:1.25rem;max-width:62ch;color:var(--muted);font-size:var(--fsLead);line-height:1.6}
 .hgroup__sub--join{margin-top:.75rem;color:var(--ink)}
-.kicker{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
-/* ══════════ highlights ══════════ */
-.kicker--dot{display:flex;align-items:center;gap:.55rem}
-.kicker--dot::before{content:"";flex:none;width:.45rem;height:.45rem;
-  border-radius:50%;background:var(--blue)}
 /* the deliberate two-line break is a desktop thing; on a phone the
    balancer does a better job than a fixed break would */
 @media(max-width:34rem){.brwide{display:none}}
+/* ══════════ highlights ══════════ */
 .hi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:clamp(.9rem,1.8vw,1.25rem)}
 .hi__i{display:flex;flex-direction:column;text-decoration:none;overflow:hidden;
@@ -326,10 +325,6 @@ h2 .hl{color:inherit}
   transition:transform var(--durSlow) var(--ease)}
 @media(prefers-reduced-motion:no-preference){
   .hi__i:hover .hi__media img{transform:scale(1.035)}}
-/* no photograph for this one yet — the tile keeps the card's shape and says so */
-.hi__soon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  gap:.5rem;font-size:var(--fsMicro);letter-spacing:.16em;text-transform:uppercase;
-  color:var(--muted)}
 .hi__soon .ic{color:var(--blue);opacity:.55}
 .hi__body{display:flex;flex-direction:column;gap:.5rem;
   padding:clamp(1.1rem,2.2vw,1.5rem)}
@@ -377,13 +372,11 @@ h2 .hl{color:inherit}
   font-size:var(--fsMicro);letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink)}
 .split::after{content:"";flex:1;height:1px;background:var(--line)}
-.split + .kicker{margin-top:clamp(1.75rem,3.5vw,2.5rem)}
 .stat__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
   line-height:1;color:var(--blueDeep);font-size:clamp(2.1rem,4.4vw,3.4rem)}
 .stat__n small{font-family:var(--body);font-size:.95rem;font-weight:400;
   letter-spacing:0;color:var(--muted);margin-left:.35rem}
 .stat__k{margin-top:.45rem;font-size:var(--fsBody);color:var(--ink);opacity:.92;line-height:1.35}
-.stat__s{margin-top:.15rem;font-size:var(--fsMicro);color:var(--muted);letter-spacing:.04em}
 
 /* ── reels: self-hosted carousel (replaced the Instagram embed, 20 Sep 2026)
       Files are in video/ and img/, named by Instagram shortcode. Nothing
@@ -503,31 +496,7 @@ h2 .hl{color:inherit}
   .reelrail__nav{display:none}}
 @media(max-width:34rem){
   .stats{grid-template-columns:1fr;row-gap:1.5rem}}
-
-/* ══════════ bento ══════════ */
-.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  box-shadow:inset 0 1px 0 var(--line),inset 1px 0 0 var(--line)}
-.cell{background:var(--bg);padding:1.4rem;padding:clamp(1.4rem,2.6vw,2rem);
-  box-shadow:inset -1px 0 0 var(--line),inset 0 -1px 0 var(--line);
-  display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem;
-  min-height:9.5rem;transition:background var(--durSlow) var(--ease)}
-.cell:hover{background:var(--bg2)}
-.cell--lead{grid-column:span 2;min-height:11rem}
-.cell--wide{grid-column:span 2}
-.cell__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
-  line-height:1;font-size:2.5rem;font-size:clamp(2.2rem,4vw,3.1rem)}
-.cell--lead .cell__n{font-size:4.25rem;font-size:clamp(3.4rem,7.5vw,5.75rem);color:var(--blueDeep)}
-.cell__n small{font-family:var(--body);font-size:1rem;font-weight:400;
-  letter-spacing:0;color:var(--muted);margin-left:.4rem}
-/* the label is a readable line now, not a micro-caption */
-.cell__k{display:flex;align-items:flex-start;gap:.5rem;
-  font-size:var(--fsLead);line-height:1.4;color:var(--ink);opacity:.92;max-width:24ch}
-.cell__k .ic{color:var(--blue);opacity:.8;margin-top:.22em}
-.cell--lead .cell__k{font-size:var(--fsLead);max-width:20ch}
-.cell__sub{color:var(--muted);font-size:var(--fsBody);margin-top:.1rem;padding-left:1.55rem}
-
 /* ══════════ how we can work together ══════════ */
-.work__lede{margin-top:1rem;color:var(--muted);max-width:60ch}
 .work{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));
   gap:clamp(.9rem,1.8vw,1.25rem);margin-top:clamp(2rem,4vw,3rem)}
 .work__i{display:flex;flex-direction:column;gap:.7rem;text-decoration:none;
@@ -538,36 +507,6 @@ h2 .hl{color:inherit}
 .work__i h3{display:flex;align-items:center;gap:.6rem;font-size:1.6rem;line-height:1.1}
 .work__i h3 .ic{color:var(--blue);width:.8em;height:.8em}
 .work__i p{color:var(--muted);font-size:var(--fsBody);flex:1}
-
-/* ══════════ about ══════════ */
-.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
-  gap:clamp(2rem,5vw,4.5rem);align-items:center}
-.about__img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:52% 34%}
-.about p{color:var(--muted);margin-bottom:1.1rem;max-width:62ch}
-.about p:last-child{margin-bottom:0}
-.about__first{margin-top:1.5rem}
-.pull{font-family:var(--title);font-weight:var(--titleW);letter-spacing:var(--titleTrack);
-  line-height:1.3;font-size:1.9rem;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--ink);
-  margin-top:clamp(1.75rem,3vw,2.25rem);margin-bottom:clamp(1.75rem,3vw,2.25rem);
-  padding-left:1.35rem;border-left:2px solid var(--blueFill);max-width:30ch}
-
-/* ══════════ what's next ══════════ */
-.next{margin-top:clamp(3.5rem,8vw,6rem)}
-.next__now{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:1rem 1.5rem;
-  padding:clamp(1.25rem,2.4vw,1.75rem);border:1px solid var(--line2);
-  background:color-mix(in srgb,var(--blue) 6%,transparent)}
-.next__y{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
-.next__now h3{font-size:1.7rem;line-height:1.1;margin-bottom:.5rem}
-.next__now p{color:var(--muted);font-size:var(--fsBody);max-width:60ch}
-.next__lede{margin-top:clamp(2rem,4vw,2.75rem);color:var(--muted);max-width:56ch}
-.dreams{list-style:none;margin-top:1.25rem;display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:.1rem 2rem}
-.dreams li{position:relative;padding:.45rem 0 .45rem 1.4rem;color:var(--ink);opacity:.88;
-  box-shadow:inset 0 -1px 0 var(--line)}
-.dreams li::before{content:'';position:absolute;left:.15rem;top:1.05em;
-  width:.4rem;height:.4rem;border:1px solid var(--blue);transform:rotate(45deg)}
-@media(max-width:34rem){
-  .next__now{grid-template-columns:1fr;gap:.35rem}}
 
 /* ══════════ contact form ══════════ */
 .contact .hgroup{max-width:44rem}
@@ -642,16 +581,7 @@ h2 .hl{color:inherit}
     linear-gradient(to bottom,color-mix(in srgb,var(--bg) 62%,transparent) 0%,transparent 18%,
       transparent 58%,color-mix(in srgb,var(--bg) 55%,transparent) 82%,var(--bg) 100%)}
   .hero__in{padding-block:1.5rem 0}
-  .hero__text{max-width:42rem}
-  .about{grid-template-columns:1fr}
-  .about__fig{order:-1;max-width:34rem}
-  .about__img{aspect-ratio:4/3;object-position:52% 26%}
-  .cell--lead{grid-column:span 4;grid-row:auto;min-height:12rem}}
-@media(max-width:52rem){
-  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cell--lead,.cell--wide{grid-column:span 2}
-  .cell--lead{min-height:11rem}
-  .pull{max-width:none}}
+  .hero__text{max-width:42rem}}
 @media(max-width:34rem){
   .hero__media{aspect-ratio:3/4;max-height:70svh}
   .nextcard{gap:.7rem;padding:.6rem .65rem}
@@ -660,18 +590,7 @@ h2 .hl{color:inherit}
   /* the line is short enough now to hold to one line at every width —
      see the rule above .nextcard: keep it to place and dates */
   .hero__media img{object-position:50% 30%}
-  .about__img{aspect-ratio:1/1;object-position:52% 28%}
   .btn{flex:1 1 auto;justify-content:center}
-  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cell{grid-column:span 1;min-height:0;padding:1.1rem}
-  .cell--lead{grid-column:span 2;min-height:0}
-  .cell--wide{grid-column:span 1}
-  .cell--wide:last-child{grid-column:span 2}
-  .cell__n{font-size:1.9rem}
-  .cell--lead .cell__n{font-size:3rem}
-  .cell__k,.cell--lead .cell__k{font-size:.95rem;line-height:1.3}
-  .cell__k .ic{margin-top:.18em}
-  .cell__sub{font-size:.85rem;padding-left:1.4rem}
   .field--split{grid-template-columns:1fr}
   .cmeta,.foot{flex-direction:column;gap:.6rem}
   .tip{flex-direction:column;align-items:center;text-align:center;
@@ -723,7 +642,6 @@ h2 .hl{color:inherit}
 .morebtn:hover .ic{transform:translateY(2px)}
 .morebtn[aria-expanded="true"]:hover .ic{transform:translateY(-2px)}
 .mini__cta{margin-top:clamp(1.75rem,3.5vw,2.5rem);display:flex;gap:.75rem;flex-wrap:wrap}
-.mini li[hidden]{display:none}
 @media(max-width:64rem){
   /* name on its own line, then discipline and date side by side rather than
      stacked as two lines of the smallest type on the page */
@@ -777,6 +695,7 @@ h2 .hl{color:inherit}
 <!-- Analytics. Umami: cookieless, no cross-site tracking, no ad-network sharing,
      so no consent banner is required under the CNIL exemption. analytics.js adds
      the sponsorship-intent events; see the header of that file for the list. -->
+<link rel="preconnect" href="https://cloud.umami.is" crossorigin>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="18a70c76-4d64-4a2a-b915-c1a0404f36be"></script>
 <script defer src="/analytics.js"></script>
 </head>
@@ -784,18 +703,7 @@ h2 .hl{color:inherit}
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
   <symbol id="i-alpinism" viewBox="0 0 24 24"><path d="M2.5 19.5h19L14 5.5l-3.4 6.2-2-3.1-6.1 10.9Z"/><path d="m11.6 10.4 2.4-4.9 2.5 4.6-2.6.8-2.3-.5Z"/></symbol>
-  <symbol id="i-ski" viewBox="0 0 24 24"><path d="M7.5 3.5 9 17.5M14.5 3.5 16 17.5"/><path d="M3 19.5c1.6 1.1 3.2 1.1 4.8 0s3.2-1.1 4.8 0 3.2 1.1 4.8 0 2.1-.6 3.1-.4"/></symbol>
-  <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="5.5" cy="17" r="3.4"/><circle cx="18.5" cy="17" r="3.4"/><path d="M5.5 17 9.5 8h4.8l4.2 9M9.5 8h5.6M15.1 8l-2.4 9"/></symbol>
-  <symbol id="i-para" viewBox="0 0 24 24"><path d="M2 9.5a10 6.5 0 0 1 20 0"/><path d="M2 9.5 12 16M22 9.5 12 16M8.4 8.2 12 16M15.6 8.2 12 16"/><circle cx="12" cy="18.5" r="2"/></symbol>
-  <symbol id="i-hike" viewBox="0 0 24 24"><path d="M3.5 20.5c1.8-5.5 4.4-3.2 6.4-7.4 2-4.2 1.6-6.6 1.6-6.6"/><path d="M11.5 4.5h7.5l-2.2 2.8 2.2 2.9h-7.5Z"/><circle cx="11.5" cy="3.4" r="1.2"/></symbol>
-  <symbol id="i-kite" viewBox="0 0 24 24"><path d="M12 2.5 4.5 10 12 17.5 19.5 10 12 2.5Z"/><path d="M4.5 10h15M12 2.5v15M12 17.5v4"/></symbol>
-  <symbol id="i-dive" viewBox="0 0 24 24"><path d="M2 16.5c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 20.5c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><circle cx="8.5" cy="8" r="2.4"/><circle cx="14.5" cy="4.5" r="1.4"/></symbol>
-  <symbol id="i-horse" viewBox="0 0 24 24"><path d="M2.5 20.5v-3.6a5.4 5.4 0 0 1 5.4-5.4h4.2l3.3-4.2 2 .9-1 2.1h3a1.9 1.9 0 0 1 1.9 1.9v.9a1.9 1.9 0 0 1-1.4 1.8l-2.5.7-1.8 4.9"/><path d="M7.7 20.5v-3.4M12.7 20.5v-3.4"/></symbol>
-  <symbol id="i-moto" viewBox="0 0 24 24"><circle cx="5" cy="16.5" r="3.4"/><circle cx="19" cy="16.5" r="3.4"/><path d="M5 16.5h4.4l3.6-5.6h3.6M13 10.9l3 5.6M9.4 10.9h4.8M16.6 8.2h3.2"/></symbol>
-  <symbol id="i-safari" viewBox="0 0 24 24"><circle cx="6.8" cy="15" r="4"/><circle cx="17.2" cy="15" r="4"/><path d="M10.8 15h2.4M6.8 11V5.5h3.4V11M17.2 11V5.5h-3.4V11"/></symbol>
   <symbol id="i-camera" viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="19" height="14" rx="2.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 6.5 9.4 3.8h5.2L16 6.5"/></symbol>
-  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="11.5" rx="3"/><path d="M4.8 11.5a7.2 7.2 0 0 0 14.4 0M12 18.7v2.8M8.6 21.5h6.8"/></symbol>
-  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-6.4 7-11.4a7 7 0 1 0-14 0c0 5 7 11.4 7 11.4Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 3.2 2.6 14.8 0 18M12 3c-2.6 3.2-2.6 14.8 0 18"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6Z"/><path d="M14 2.5V7h4.5M9 12.5h6M9 16.5h6"/></symbol>
@@ -804,14 +712,9 @@ h2 .hl{color:inherit}
   <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4.5v15M5.5 13 12 19.5 18.5 13"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19.5v-15M5.5 11 12 4.5 18.5 11"/></symbol>
   <symbol id="i-list" viewBox="0 0 24 24"><path d="M8.5 6.5h12M8.5 12h12M8.5 17.5h12M3.5 6.5h.01M3.5 12h.01M3.5 17.5h.01"/></symbol>
-  <symbol id="i-summit" viewBox="0 0 24 24"><path d="M3 20.5h18L12 6 3 20.5Z"/><path d="M12 6V2.5h5.5V6Z"/></symbol>
-  <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 5 3.5 10.5 9 16"/><path d="M3.5 10.5h11.5a5.5 5.5 0 0 1 5.5 5.5v3"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12.5 5.5 5.5L20 6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/></symbol>
-  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21.5V3.5M5 4.5h13l-2.6 4L18 12.5H5"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.5V12l3.6 2.2"/></symbol>
-  <symbol id="i-peak2" viewBox="0 0 24 24"><path d="M2 19.5h20"/><path d="M4 16.5 9 8l3.2 5.2L15 9l5 7.5Z"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 16.9l-5.3 2.8 1.1-5.9-4.3-4.1 5.9-.8Z"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.6"/><path d="M2.5 20c0-3.6 2.9-5.6 6.5-5.6s6.5 2 6.5 5.6"/><path d="M16.5 5.2a3.4 3.4 0 0 1 0 6.6M17.5 14.8c2.5.5 4 2.3 4 5.2"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.8-6.5 10-6.5S22 12 22 12s-3.8 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3.2"/></symbol>
@@ -819,7 +722,6 @@ h2 .hl{color:inherit}
   <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2.5 21 7v10l-9 4.5L3 17V7l9-4.5Z"/><path d="M3 7l9 4.5L21 7M12 11.5v10"/></symbol>
   <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2.5 9.5 7 6h4l2.5 2.5L11 11 8.5 9"/><path d="M21.5 9.5 17 6h-3l-3.5 5 3 3 2-2 3 3"/><path d="M2.5 9.5V15l4 3.5M21.5 9.5V15l-4 3.5"/></symbol>
   <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M3 8.5h13.5v6a5.5 5.5 0 0 1-5.5 5.5H8.5A5.5 5.5 0 0 1 3 14.5v-6Z"/><path d="M16.5 10.5h2.2a2.6 2.6 0 0 1 0 5.2h-2.2"/><path d="M6.5 2.5v2.6M10 2.5v2.6M13.5 2.5v2.6"/></symbol>
-  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8.5 7V5a1.5 1.5 0 0 1 1.5-1.5h4A1.5 1.5 0 0 1 15.5 5v2M2.5 12.5h19"/></symbol>
 </defs></svg>
 
 <div class="progress" aria-hidden="true"></div>
@@ -857,7 +759,7 @@ h2 .hl{color:inherit}
 
 <section class="hero">
   <figure class="hero__media">
-    <picture><source type="image/avif" srcset="img/hero.avif"><img src="img/hero.jpg" alt="Sam in a red shell with arms wide open, laughing in heavy falling snow on a ski tour" width="1600" height="2133" fetchpriority="high"></picture>
+    <picture><source type="image/avif" srcset="img/hero-800.avif 800w, img/hero-1200.avif 1200w, img/hero.avif 1600w" sizes="(max-width:60rem) 100vw, 53vw"><img src="img/hero.jpg" srcset="img/hero-800.jpg 800w, img/hero-1200.jpg 1200w, img/hero.jpg 1600w" sizes="(max-width:60rem) 100vw, 53vw" alt="Sam in a red shell with arms wide open, laughing in heavy falling snow on a ski tour" width="1600" height="2133" fetchpriority="high"></picture>
     <span class="hero__fade" aria-hidden="true"></span>
   </figure>
   <div class="shell hero__in">
@@ -1409,11 +1311,17 @@ h2 .hl{color:inherit}
   }
 
   /* ── brands banner ────────────────────────────────────────────────
-     Drop official logo files into img/brands/ using the filenames
-     below and they replace the wordmarks automatically — no code
-     change. SVG is best; a transparent PNG at 2x height also works.
-     Anything that fails to load falls back to the name in type, so a
-     missing file never leaves a hole in the row.
+     The row is drawn as wordmarks, in type. It used to render an <img>
+     per brand from img/brands/<slug>.svg with a text fallback on error —
+     but that folder is empty, so every load fired 19 requests (38 with
+     the duplicated track) that GitHub Pages answered with a full 404
+     HTML page: ~83 KB of nothing, competing with the hero for bandwidth
+     on a phone. Removed 23 Sep 2026.
+
+     TO PUT REAL LOGOS BACK: set USE_LOGO_FILES to true below and drop
+     the files into img/brands/ using the slugs in BRANDS. Only turn it
+     on for slugs whose file actually exists — an absent file costs a
+     404 round trip before the wordmark appears.
      ──────────────────────────────────────────────────────────────── */
   var BRANDS = [
     ['Patagonia','patagonia'], ['The North Face','the-north-face'],
@@ -1427,15 +1335,21 @@ h2 .hl{color:inherit}
   ];
   var track=document.getElementById('brandTrack');
   if(track){
+    var USE_LOGO_FILES = false;
     var makeItem=function(name,slug){
       var d=document.createElement('div'); d.className='marquee__i';
-      var img=document.createElement('img');
-      img.src='img/brands/'+slug+'.svg'; img.alt=name; img.loading='lazy';
-      img.addEventListener('error',function(){
-        var t=document.createElement('span'); t.textContent=name;
-        if(img.parentNode) img.parentNode.replaceChild(t,img);
-      });
-      d.appendChild(img); return d;
+      var child;
+      if(USE_LOGO_FILES){
+        child=document.createElement('img');
+        child.src='img/brands/'+slug+'.svg'; child.alt=name; child.loading='lazy';
+        child.addEventListener('error',function(){
+          var t=document.createElement('span'); t.textContent=name;
+          if(child.parentNode) child.parentNode.replaceChild(t,child);
+        });
+      } else {
+        child=document.createElement('span'); child.textContent=name;
+      }
+      d.appendChild(child); return d;
     };
     /* the list is laid down twice so translateX(-50%) loops seamlessly.
        the second pass is decorative: hidden from screen readers, and
