@@ -27,8 +27,6 @@ p{text-wrap:pretty}
 .ic{width:1.05em;height:1.05em;flex:none;fill:none;stroke:currentColor;
   stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.16em}
 .ic--sm{width:.95em;height:.95em;stroke-width:1.9}
-.grain{position:fixed;inset:0;z-index:400;pointer-events:none;opacity:.03;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* nav — matches the rest of the site, including the translucency on scroll.
    DO NOT add will-change / transform / filter / opacity / contain to .nav:
