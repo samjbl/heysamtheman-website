@@ -134,6 +134,7 @@ a{color:inherit}
 <!-- Analytics. Umami: cookieless, no cross-site tracking, no ad-network sharing,
      so no consent banner is required under the CNIL exemption. analytics.js adds
      the sponsorship-intent events; see the header of that file for the list. -->
+<link rel="preconnect" href="https://cloud.umami.is" crossorigin>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="18a70c76-4d64-4a2a-b915-c1a0404f36be"></script>
 <script defer src="/analytics.js"></script>
 </head>
@@ -153,7 +154,7 @@ a{color:inherit}
 <div class="grain" aria-hidden="true"></div>
 
 <main class="wrap">
-  <picture><source type="image/avif" srcset="img/frost.avif"><img class="avatar" src="img/frost.jpg" alt="Sam in a red down hood at altitude, frost across his eyebrows" width="1200" height="1593"></picture>
+  <picture><source type="image/avif" srcset="img/frost-360.avif"><img class="avatar" src="img/frost-360.jpg" alt="Sam in a red down hood at altitude, frost across his eyebrows" width="360" height="478" fetchpriority="high"></picture>
   <h1 class="name">Sam 🌋 Wild Adventures</h1>
   <a class="handle" href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">@hey_samtheman</a>
   <p class="bio">Alpinism, ski touring and long days out. Sixteen self-organised expeditions since 2013 — most recently the Matterhorn.</p>
