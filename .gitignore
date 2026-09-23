@@ -23,3 +23,9 @@ Adventure Notes.md
 # because link scrapers do not read AVIF. Safe to delete in Finder.
 img/og/*.avif
 GO.sh
+
+# the 1 Aug build, kept for reference only. It was pushed by accident on
+# 23 Sep 2026 by a `cp *.html` in the worktree recipe and served publicly
+# until the next push removed it. Never ship it.
+index - old.html
+design-explore/
