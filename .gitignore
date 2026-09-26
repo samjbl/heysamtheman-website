@@ -29,3 +29,8 @@ GO.sh
 # until the next push removed it. Never ship it.
 index - old.html
 design-explore/
+
+# Apps Script sources for the contact form and the events collector.
+# Reference copies only; the deployed code lives in Google Apps Script.
+# Kept out of the repo so GitHub Pages never serves them.
+_private/
