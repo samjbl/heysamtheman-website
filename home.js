@@ -1,8 +1,7 @@
-/* home.js — the home page's own script. Was inline at the foot of
-   index.html until 24 Sep 2026; moved out so it can carry `defer` (an inline
-   script cannot). Deferred scripts run in document order after parsing, so
-   metrics.js (also deferred, declared first) has set window.SAM_METRICS by
-   the time this runs. Loaded from index.html only. */
+/* home.js — shared interactive script for index.html and partner.html.
+   Deferred scripts run in document order after parsing, so metrics.js
+   (also deferred, declared first) has set window.SAM_METRICS by the time
+   this runs. */
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -34,7 +33,7 @@
   var progressBar=document.querySelector('.progress');
   var onScroll=function(){
     var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
-    navBar.classList.toggle('is-stuck',y>24);
+    if(navBar) navBar.classList.toggle('is-stuck',y>24);
     /* reading-progress bar: a transform only, so it stays on the compositor */
     if(progressBar){
       var max=document.documentElement.scrollHeight-window.innerHeight;
@@ -48,14 +47,19 @@
 
   var btn=document.getElementById('menuBtn'), menu=document.getElementById('menu');
   var mIcon=document.getElementById('menuIcon'), mLabel=document.getElementById('menuLabel');
-  var setMenu=function(open){
-    menu.dataset.open=String(open);
-    btn.setAttribute('aria-expanded',String(open));
-    mLabel.textContent=open?'Close':'Menu';
-    mIcon.firstElementChild.setAttribute('href',open?'#i-close':'#i-menu');
-    document.body.style.overflow=open?'hidden':'';
-  };
-  btn.addEventListener('click',function(){setMenu(menu.dataset.open!=='true')});
+  if(btn && menu){
+    var setMenu=function(open){
+      menu.dataset.open=String(open);
+      btn.setAttribute('aria-expanded',String(open));
+      mLabel.textContent=open?'Close':'Menu';
+      mIcon.firstElementChild.setAttribute('href',open?'#i-close':'#i-menu');
+      document.body.style.overflow=open?'hidden':'';
+    };
+    btn.addEventListener('click',function(){setMenu(menu.dataset.open!=='true')});
+    menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+    addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+  }
+
   /* ── contact form ─────────────────────────────────────────────────
      Set ONE of the two below and the form goes live.
 
@@ -80,90 +84,132 @@
   var FORM_LOADED = Date.now();
 
   var form=document.getElementById('contactForm');
-  var status=document.getElementById('formStatus');
-  var submitBtn=form.querySelector('button[type="submit"]');
-  var note=form.querySelector('.form__note');
-  var el=function(id){return document.getElementById(id)};
-  var v=function(id){return (el(id).value||'').trim()};
-  var live=!!(FORM_ENDPOINT||WEB3FORMS_KEY);
+  if(form){
+    var status=document.getElementById('formStatus');
+    var submitBtn=form.querySelector('button[type="submit"]');
+    var note=form.querySelector('.form__note');
+    var el=function(id){return document.getElementById(id)};
+    var v=function(id){var node=el(id); return node ? (node.value||'').trim() : ''};
+    var live=!!(FORM_ENDPOINT||WEB3FORMS_KEY);
+    var activeTopic='';
 
-  if(!live){
-    submitBtn.setAttribute('disabled','');
-    note.innerHTML='The form is not connected yet — email '
-      +'<a href="mailto:hey@heysamtheman.com">hey@heysamtheman.com</a> in the meantime.';
-  }
+    /* Optional partnership track selector pills (used on partner.html) */
+    var topicPills=[].slice.call(form.querySelectorAll('[data-topic-pill]'));
+    var setTopic=function(topic){
+      activeTopic=topic||'';
+      topicPills.forEach(function(p){
+        var match=p.getAttribute('data-topic-pill')===activeTopic;
+        p.setAttribute('aria-pressed',String(match));
+        p.classList.toggle('is-on',match);
+      });
+    };
+    topicPills.forEach(function(p){
+      p.addEventListener('click',function(){
+        var val=p.getAttribute('data-topic-pill');
+        setTopic(activeTopic===val?'':val);
+      });
+    });
+    document.querySelectorAll('[data-topic-select]').forEach(function(trigger){
+      trigger.addEventListener('click',function(){
+        setTopic(trigger.getAttribute('data-topic-select'));
+        var nameInput=el('f-name');
+        if(nameInput) setTimeout(function(){ nameInput.focus({preventScroll:true}); }, 350);
+      });
+    });
 
-  /* Apps Script rejects a JSON content-type preflight, so send the body
-     as text/plain — it still arrives as a JSON string server side. */
-  function deliver(payload){
-    if(FORM_ENDPOINT){
-      return fetch(FORM_ENDPOINT,{
+    if(!live){
+      submitBtn.setAttribute('disabled','');
+      note.innerHTML='The form is not connected yet — email '
+        +'<a href="mailto:hey@heysamtheman.com">hey@heysamtheman.com</a> in the meantime.';
+    }
+
+    /* Apps Script rejects a JSON content-type preflight, so send the body
+       as text/plain — it still arrives as a JSON string server side. */
+    function deliver(payload){
+      if(FORM_ENDPOINT){
+        return fetch(FORM_ENDPOINT,{
+          method:'POST',
+          headers:{'Content-Type':'text/plain;charset=utf-8'},
+          body:JSON.stringify(payload)
+        }).then(function(r){return r.json()});
+      }
+      payload.access_key=WEB3FORMS_KEY;
+      payload.subject='Website enquiry'+(payload.company?' · '+payload.company:'')+' · '+payload.name;
+      return fetch('https://api.web3forms.com/submit',{
         method:'POST',
-        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
         body:JSON.stringify(payload)
       }).then(function(r){return r.json()});
     }
-    payload.access_key=WEB3FORMS_KEY;
-    payload.subject='Website enquiry'+(payload.company?' · '+payload.company:'')+' · '+payload.name;
-    return fetch('https://api.web3forms.com/submit',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(payload)
-    }).then(function(r){return r.json()});
-  }
 
-  /* clear a field's error the moment it is being corrected */
-  ['f-name','f-email','f-msg'].forEach(function(id){
-    el(id).addEventListener('input',function(){
-      this.closest('.field').classList.remove('is-error');
-      this.removeAttribute('aria-invalid');
-    });
-  });
-
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    if(!live) return;
-    if(el('f-company-url').value) return;   /* honeypot: bots fill hidden fields */
-
-    var name=v('f-name'), email=v('f-email'), brand=v('f-brand'), msg=v('f-msg');
-
-    var missing=[];
-    [['f-name',!name,'your name'],
-     ['f-email',!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),'a valid email'],
-     ['f-msg',!msg,'a message']].forEach(function(t){
-      var field=el(t[0]).closest('.field');
-      field.classList.toggle('is-error',t[1]);
-      if(t[1]){ el(t[0]).setAttribute('aria-invalid','true'); missing.push(t[2]); }
-      else el(t[0]).removeAttribute('aria-invalid');
-    });
-    if(missing.length){
-      status.textContent='Still needed: '+
-        (missing.length>1
-          ? missing.slice(0,-1).join(', ')+' and '+missing[missing.length-1]
-          : missing[0])+'.';
-      form.querySelector('.is-error input,.is-error textarea').focus();
-      return;
-    }
-
-    submitBtn.setAttribute('disabled','');
-    status.textContent='Sending…';
-
-    deliver({name:name, email:email, company:brand, message:msg, ts:FORM_LOADED})
-      .then(function(d){
-        if(d && d.success){
-          form.reset();
-          status.textContent='Thanks — that reached me. I reply to every brand enquiry.';
-        } else if(d && d.error==='rate_limited'){
-          /* the backend's flood cap, not a failure on their side */
-          submitBtn.removeAttribute('disabled');
-          status.textContent='The form is over its limit for now. Email hey@heysamtheman.com and it reaches me just the same.';
-        } else { throw new Error('rejected'); }
-      })
-      .catch(function(){
-        submitBtn.removeAttribute('disabled');
-        status.textContent='That did not send. Email hey@heysamtheman.com instead.';
+    /* clear a field's error the moment it is being corrected */
+    ['f-name','f-email','f-msg'].forEach(function(id){
+      var input=el(id);
+      if(!input) return;
+      input.addEventListener('input',function(){
+        this.closest('.field').classList.remove('is-error');
+        this.removeAttribute('aria-invalid');
       });
-  });
+    });
+
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!live) return;
+      if(el('f-company-url') && el('f-company-url').value) return;   /* honeypot: bots fill hidden fields */
+
+      var name=v('f-name'), email=v('f-email'), brand=v('f-brand'), msg=v('f-msg');
+
+      var missing=[];
+      [['f-name',!name,'your name'],
+       ['f-email',!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),'a valid email'],
+       ['f-msg',!msg,'a message']].forEach(function(t){
+        var field=el(t[0]).closest('.field');
+        field.classList.toggle('is-error',t[1]);
+        if(t[1]){ el(t[0]).setAttribute('aria-invalid','true'); missing.push(t[2]); }
+        else el(t[0]).removeAttribute('aria-invalid');
+      });
+      if(missing.length){
+        status.textContent='Still needed: '+
+          (missing.length>1
+            ? missing.slice(0,-1).join(', ')+' and '+missing[missing.length-1]
+            : missing[0])+'.';
+        form.querySelector('.is-error input,.is-error textarea').focus();
+        return;
+      }
+
+      var companyOut = activeTopic
+        ? (brand ? brand + ' [' + activeTopic + ']' : '[' + activeTopic + ']')
+        : brand;
+
+      submitBtn.setAttribute('disabled','');
+      status.textContent='Sending…';
+
+      deliver({name:name, email:email, company:companyOut, message:msg, topic:activeTopic, ts:FORM_LOADED})
+        .then(function(d){
+          if(d && d.success){
+            var sentTopic = activeTopic || 'general';
+            form.reset();
+            setTopic('');
+            submitBtn.removeAttribute('disabled');
+            status.textContent='Thanks — that reached me. I reply to every brand enquiry.';
+            try {
+              var curPage = (location.pathname.slice(location.pathname.lastIndexOf('/')+1)) || 'index.html';
+              document.dispatchEvent(new CustomEvent('sam:contact-sent', {
+                detail: { from: curPage, topic: sentTopic }
+              }));
+            } catch(err){}
+          } else if(d && d.error==='rate_limited'){
+            /* the backend's flood cap, not a failure on their side */
+            submitBtn.removeAttribute('disabled');
+            status.textContent='The form is over its limit for now. Email hey@heysamtheman.com and it reaches me just the same.';
+          } else { throw new Error('rejected'); }
+        })
+        .catch(function(){
+          submitBtn.removeAttribute('disabled');
+          status.textContent='That did not send. Email hey@heysamtheman.com instead.';
+        });
+    });
+  }
 
   /* ── earlier expeditions fold ── */
   var moreBtn=document.getElementById('moreBtn');

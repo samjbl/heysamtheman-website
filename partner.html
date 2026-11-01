@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Sponsorship, gear testing and collaborations with Sam — audience figures, what each partnership includes and how to start one.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloud.umami.is https://gateway.umami.is https://*.umami.is https://script.google.com https://script.googleusercontent.com https://api.web3forms.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="description" content="Sponsorship, gear testing and collaborations with Sam — verified audience demographics, deliverables, brand endorsements, downloadable media kit and direct enquiry.">
 <meta name="theme-color" content="#04070c">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -15,8 +16,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sam &#127755; Wild Adventures">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Partner with me">
-<meta property="og:description" content="Sponsorship, gear testing and collaborations &mdash; audience figures, what each partnership includes and how to start one.">
+<meta property="og:title" content="Partner with me · Sam 🌋 Wild Adventures">
+<meta property="og:description" content="Sponsorship, gear testing and collaborations &mdash; verified audience figures, deliverables, media kit and how to start one.">
 <meta property="og:url" content="https://heysamtheman.com/partner.html">
 <meta property="og:image" content="https://heysamtheman.com/img/og/partner.jpg">
 <meta property="og:image:width" content="1200">
@@ -24,42 +25,15 @@
 <meta property="og:image:alt" content="Sam at the rime-covered summit cross on the Matterhorn">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://heysamtheman.com/img/og/partner.jpg">
-<!-- Fonts, self-hosted. Replaces the Google Fonts stylesheet, which was
-     render-blocking on a third-party origin: the browser could not paint until
-     it had resolved fonts.googleapis.com, completed TLS, fetched the CSS, and
-     THEN fetched the font files from a second origin, fonts.gstatic.com.
-     Served from our own origin the connection is already warm, and these
-     preloads start the download during HTML parse instead of after CSS parse. -->
 <link rel="preload" href="/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/darker-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* Declarations copied verbatim from the Google Fonts CSS this replaces —
-   same weights, same unicode-ranges, same font-display — so rendering is
-   identical to before. Both families are variable fonts: all four weights
-   resolve to one file per subset, which is why there are 4 files, not 8.
-   Only latin and latin-ext ship: the site's content has no Vietnamese,
-   Cyrillic, Greek or math characters (checked 22 Sep 2026). */
-@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/darker-grotesque-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/darker-grotesque-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/darker-grotesque-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/darker-grotesque-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/darker-grotesque-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/darker-grotesque-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/darker-grotesque-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/darker-grotesque-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Onest';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/onest-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Onest';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Onest';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/onest-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Onest';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Onest';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/onest-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Onest';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Onest';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/onest-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Onest';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/darker-grotesque-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/darker-grotesque-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:300 600;font-display:swap;src:url(/fonts/onest-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Onest';font-style:normal;font-weight:300 600;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 </style>
 <style>
-/* ══════════════════════════════════════════════
-   Darker Grotesque (display) + Onest (body)
-   ══════════════════════════════════════════════ */
 :root{
   --title:'Darker Grotesque',system-ui,sans-serif;
   --titleW:500; --titleTrack:-.025em; --titleLh:.9;
@@ -68,25 +42,21 @@
   --h1:clamp(3.25rem,7.5vw,6.75rem);
   --h2:clamp(2.4rem,5.4vw,4.4rem);
 
-  /* ── blue only, another step darker ── */
   --bg:#04070c;
   --bg2:#090d16;
   --bg3:#0d1220;
   --ink:#e3e7f1;
   --muted:#98a3ba;
-  --blue:#5f86f0;        /* royal, small text — 5.6:1 */
-  --blueDeep:#4169e1;    /* true royal, large display text */
-  --blueFill:#2547c8;    /* royal fill, white on it at 5.9:1 */
+  --blue:#5f86f0;
+  --blueDeep:#4169e1;
+  --blueFill:#2547c8;
   --line:rgba(150,175,240,.12);
   --line2:rgba(150,175,240,.26);
 
-  /* type ramp — three static steps, 1.33 and 1.25 apart.
-     Everything larger is fluid via --h1 / --h2. */
-  --fsMicro:.75rem;   /* 12px — tracked-caps labels, nav, buttons */
-  --fsBody:1rem;      /* 16px — body and secondary copy      */
-  --fsLead:1.25rem;   /* 20px — lead-in lines above body     */
+  --fsMicro:.75rem;
+  --fsBody:1rem;
+  --fsLead:1.25rem;
 
-  /* motion — one duration and one curve for the whole site */
   --dur:.18s;
   --durSlow:.28s;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -115,7 +85,7 @@ h1{font-size:3.5rem;font-size:var(--h1)}
 h2{font-size:2.75rem;font-size:var(--h2);max-width:19ch}
 p{max-width:68ch;text-wrap:pretty}
 .hl{color:var(--blue)}
-h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highlighted words */
+h1 .hl,h2 .hl,h3 .hl{color:inherit}
 
 .ic{width:1.05em;height:1.05em;flex:none;fill:none;stroke:currentColor;
   stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.16em}
@@ -128,21 +98,11 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
   padding-top:clamp(4.5rem,11vw,8.5rem);padding-bottom:clamp(4.5rem,11vw,8.5rem)}
 .lede{color:var(--muted);max-width:56ch;margin-top:1.25rem}
 .hgroup{margin-bottom:clamp(2.5rem,5vw,4rem)}
+.hgroup__sub{margin-top:1.25rem;max-width:62ch;color:var(--muted);font-size:var(--fsLead);line-height:1.6}
 
-
-/* reading-progress bar. Driven from the scroll handler (a transform only, so
-   it stays on the compositor) rather than animation-timeline:scroll(). See
-   the note on .rise below for why. */
 .progress{position:fixed;inset-block-start:0;inset-inline-start:0;
   height:2px;width:100%;z-index:300;transform-origin:0 50%;transform:scaleX(0);
   background:var(--blue)}
-/* .rise — reveal once, on first sight. This used to be a scroll-driven
-   animation (animation-timeline:view()). In Chrome the compositor advances
-   that timeline in step with the scroll; inside an in-app WebView whose host
-   mediates scrolling (LINE, 23 Sep 2026) the timeline updated in batches and
-   every heading and card visibly snapped between states. A one-shot class
-   from an IntersectionObserver gives the same look with no per-frame cost.
-   Gated on html.js so nothing is hidden if scripts never run. */
 @media(prefers-reduced-motion:no-preference){
   html.js .rise{opacity:0;transform:translateY(1.5rem);
     transition:opacity .55s var(--ease),transform .55s var(--ease)}
@@ -155,11 +115,6 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
   transition:background var(--durSlow) var(--ease),border-color var(--durSlow) var(--ease)}
 .nav.is-stuck{background:color-mix(in srgb,var(--bg) 78%,transparent);
   backdrop-filter:blur(16px);border-bottom-color:var(--line)}
-/* On phones the bar goes opaque instead of blurred. backdrop-filter on a
-   FIXED element has to re-sample the content moving beneath it on every
-   scrolled frame — the one blur configuration a browser cannot cache. In an
-   in-app WebView (LINE, 23 Sep 2026) that was a large part of the scroll
-   jank. Desktop keeps the blur; see NAV-BLUR.md. */
 @media(max-width:60rem){
   .nav.is-stuck{-webkit-backdrop-filter:none;backdrop-filter:none;
     background:color-mix(in srgb,var(--bg) 94%,transparent)}}
@@ -188,8 +143,6 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
 @media(min-width:76.0625rem){
   .nav.is-stuck .nav__links{display:none}
   .nav.is-stuck .nav__toggle{display:inline-flex}}
-/* below 1216px the logo + six links + CTA no longer fit on one row,
-   so the hamburger takes over — see the 834px overflow fix */
 @media(max-width:76rem){
   .nav__links{display:none}
   .nav__toggle{display:inline-flex}}
@@ -203,6 +156,7 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
   padding-block:.5rem;border-bottom:1px solid var(--line)}
 .menu a:last-child{border-bottom:0}
 .menu .ic{color:var(--blue);width:.7em;height:.7em}
+
 .btn{position:relative;overflow:hidden;isolation:isolate;
   display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
   font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;
@@ -218,47 +172,71 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
 @media(prefers-reduced-motion:no-preference){.btn--solid:hover::after{animation:sheen .7s cubic-bezier(.22,1,.36,1)}}
 @keyframes sheen{to{translate:100% 0}}
 
-/* ══════════ bento ══════════ */
+/* ══════════ sub-page header ══════════ */
+.sec--flush{padding-top:clamp(2.5rem,5vw,4rem)}
+.hgroup--tight{margin-bottom:clamp(1.5rem,3vw,2rem)}
+.pagehead{padding-top:calc(var(--navH) + clamp(2.25rem,5vw,4rem));
+  padding-bottom:clamp(2rem,4vw,3rem)}
+.backlink{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
+  font-size:var(--fsBody);color:var(--muted);
+  margin-bottom:1.1rem;transition:color var(--dur) var(--ease)}
+.backlink:hover{color:var(--blue)}
+.pagehead h1{max-width:16ch}
+.head__lead{margin-top:1.25rem;max-width:58ch;font-size:var(--fsLead);line-height:1.55;color:var(--muted)}
+.head__actions{margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* ══════════ reach + audience breakdown ══════════ */
 .kicker{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;
   gap:clamp(1.25rem,3vw,2.5rem);box-shadow:inset 0 1px 0 var(--line);padding-top:1.75rem}
 .stat__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
   line-height:1;color:var(--blueDeep);font-size:clamp(2.1rem,4.4vw,3.4rem)}
 .stat__k{margin-top:.45rem;font-size:var(--fsBody);color:var(--ink);opacity:.92;line-height:1.35}
-@media(max-width:52rem){.stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2rem}}
-@media(max-width:34rem){.stats{grid-template-columns:1fr;row-gap:1.5rem}}
-.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  box-shadow:inset 0 1px 0 var(--line),inset 1px 0 0 var(--line)}
-.cell{background:var(--bg);padding:1.4rem;padding:clamp(1.4rem,2.6vw,2rem);
-  box-shadow:inset -1px 0 0 var(--line),inset 0 -1px 0 var(--line);
-  display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem;
-  min-height:9.5rem;transition:background var(--durSlow) var(--ease)}
-.cell:hover{background:var(--bg2)}
-.cell--lead{grid-column:span 2;grid-row:span 2;min-height:18rem}
-.cell--wide{grid-column:span 2}
-.cell__n{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
-  line-height:1;font-size:2.5rem;font-size:clamp(2.2rem,4vw,3.1rem)}
-.cell--lead .cell__n{font-size:4.25rem;font-size:clamp(3.4rem,7.5vw,5.75rem);color:var(--blueDeep)}
-.cell__n small{font-family:var(--body);font-size:1rem;font-weight:400;
-  letter-spacing:0;color:var(--muted);margin-left:.4rem}
-/* the label is a readable line now, not a micro-caption */
-.cell__k{display:flex;align-items:flex-start;gap:.5rem;
-  font-size:var(--fsLead);line-height:1.4;color:var(--ink);opacity:.92;max-width:24ch}
-.cell__k .ic{color:var(--blue);opacity:.8;margin-top:.22em}
-.cell--lead .cell__k{font-size:var(--fsLead);max-width:20ch}
 .iglink{display:inline-flex;align-items:center;gap:.35rem;color:var(--blue);text-decoration:none;
   border-bottom:1px solid color-mix(in srgb,var(--blue) 45%,transparent)}
 .iglink:hover{border-bottom-color:var(--blue)}
 
-/* ══════════ sponsorship ══════════ */
+.dash{margin-top:clamp(2rem,4vw,3rem);padding-top:1.75rem;
+  box-shadow:inset 0 1px 0 var(--line)}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.75rem}
+.tab{display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;font:inherit;
+  font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--line2);border-radius:999px;background:transparent;
+  color:var(--muted);padding:.6rem 1rem;
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease),
+    color var(--dur) var(--ease)}
+.tab .ic{width:1.05rem;height:1.05rem;color:var(--muted);
+  transition:color var(--dur) var(--ease)}
+.tab:hover{border-color:var(--blue);color:var(--ink)}
+.tab:hover .ic{color:var(--blue)}
+.tab[aria-selected="true"]{border-color:var(--blue);color:var(--ink);
+  background:color-mix(in srgb,var(--blue) 14%,transparent)}
+.tab[aria-selected="true"] .ic{color:var(--blue)}
+.tab:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.dash__panel{max-width:46rem}
+.dash__r{margin-bottom:1rem}
+.dash__r:last-child{margin-bottom:0}
+.dash__t{display:flex;align-items:baseline;justify-content:space-between;
+  gap:.75rem;margin-bottom:.4rem}
+.dash__l{font-size:var(--fsBody);color:var(--ink);opacity:.9;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dash__v{font-family:var(--title);font-weight:600;letter-spacing:var(--titleTrack);
+  line-height:1;font-size:1.5rem;color:var(--ink);flex:0 0 auto}
+.dash__v small{font-family:var(--body);font-size:.7rem;font-weight:400;
+  letter-spacing:0;color:var(--muted);margin-left:.12rem}
+.dash__b{height:6px;border-radius:3px;background:var(--line)}
+.dash__f{display:block;height:100%;width:0;border-radius:3px;background:var(--blue)}
+@media(prefers-reduced-motion:no-preference){
+  .dash__f{transition:width .9s var(--ease)}}
+
+/* ══════════ sponsorship tracks & deliverables ══════════ */
 .offer{box-shadow:inset 0 1px 0 var(--line);padding-top:.5rem}
 .offer__item{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:clamp(1.5rem,4vw,3.5rem);
-  padding-top:2.25rem;padding-bottom:2.25rem;
   padding-top:clamp(2.25rem,5vw,3.25rem);padding-bottom:clamp(2.25rem,5vw,3.25rem);
   box-shadow:inset 0 -1px 0 var(--line)}
 .offer__item h3{display:flex;align-items:center;gap:.6rem;
-  font-size:2.25rem;font-size:clamp(1.9rem,3.6vw,2.9rem);margin-bottom:.35rem}
+  font-size:clamp(1.9rem,3.6vw,2.9rem);margin-bottom:.35rem}
 .offer__item h3 .ic{color:var(--blue);width:.72em;height:.72em}
 .offer__sub{font-size:var(--fsLead);color:var(--ink);opacity:.9;margin-bottom:.85rem}
 .offer__item>div>p{color:var(--muted)}
@@ -268,57 +246,123 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
   box-shadow:inset 0 1px 0 var(--line);font-size:var(--fsBody);color:var(--muted)}
 .offer__list li:first-child{box-shadow:none}
 .offer__list .ic{color:var(--blue);opacity:.75;margin-top:.3em}
+
+.pack{margin-top:clamp(3rem,6vw,4.5rem)}
+.pack__head{margin-bottom:1.5rem}
+.pack__head h3{font-size:clamp(1.75rem,3.2vw,2.4rem);margin-bottom:.4rem}
+.pack__head p{color:var(--muted);font-size:var(--fsBody)}
+.pack__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(.9rem,1.8vw,1.25rem)}
+.pack__c{padding:clamp(1.2rem,2.2vw,1.5rem);border:1px solid var(--line);background:var(--bg2);
+  display:flex;flex-direction:column;gap:.5rem}
+.pack__num{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.pack__t{font-family:var(--title);font-weight:600;font-size:1.55rem;line-height:1.08;color:var(--ink)}
+.pack__d{font-size:.9375rem;line-height:1.55;color:var(--muted)}
+
+/* ══════════ what people say ══════════ */
+.say{position:relative;overflow:hidden;padding-block:.5rem 2rem;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.say__track{display:flex;width:max-content;align-items:flex-start;gap:2rem;
+  animation:say-x 120s linear infinite}
+.say:hover .say__track{animation-play-state:paused}
+@keyframes say-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.say__i{position:relative;flex:0 0 28rem;max-width:calc(100vw - 2 * var(--shellPad));
+  padding:1.5rem 2rem 1.75rem;border-radius:16px;
+  background:linear-gradient(to bottom,rgba(150,175,240,.09) 0%,rgba(150,175,240,0) 70%)}
+.say__i::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  border:1px solid var(--line2);
+  -webkit-mask-image:linear-gradient(to bottom,#000 20%,transparent 100%);
+          mask-image:linear-gradient(to bottom,#000 20%,transparent 100%)}
+.say__q{font-size:.95rem;line-height:1.6;color:var(--muted);max-width:none}
+.say__q::before{content:'\201C'}
+.say__q::after{content:'\201D'}
+.say__who{display:flex;align-items:center;gap:1rem;margin-top:1.4rem}
+.say__av{display:flex;flex:none}
+.say__av span{width:2.5rem;height:2.5rem;border-radius:50%;display:grid;place-items:center;
+  border:2px solid var(--bg);overflow:hidden;
+  font-family:var(--title);font-weight:600;font-size:1.05rem;letter-spacing:0;line-height:1}
+.say__av span+span{margin-left:-.7rem}
+.say__av img{width:100%;height:100%;object-fit:cover;display:block}
+.say__av .is-org{background:var(--bg3);color:#fff;font-size:.8rem;letter-spacing:.02em}
+.say__av .is-me{background:var(--bg3);color:var(--ink);border-color:var(--bg);
+  box-shadow:0 0 0 1px var(--line2)}
+.say__n{display:flex;flex-direction:column;gap:.1rem;min-width:0}
+.say__n b{font-weight:500;font-size:.95rem;color:var(--ink);line-height:1.3}
+.say__n span{font-size:.85rem;color:var(--muted);line-height:1.3}
+@media(prefers-reduced-motion:reduce){
+  .say{-webkit-mask-image:none;mask-image:none;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding-inline:var(--shellPad)}
+  .say__track{animation:none;width:max-content}
+  .say__i{scroll-snap-align:start}
+  .say__i[data-dup]{display:none}}
+
+/* ══════════ inline contact form + track pills ══════════ */
+.contact .hgroup{max-width:44rem}
+.contact__mail{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.1rem;
+  text-decoration:none;color:var(--blue);font-size:var(--fsLead);
+  border-bottom:1px solid transparent;transition:border-color var(--dur) var(--ease)}
+.contact__mail:hover{border-bottom-color:var(--blue)}
+.form{max-width:40rem;margin:0 auto;display:grid;gap:1.1rem}
+.field{display:grid;gap:.45rem}
+.field--split{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field label,.field__lbl{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.topics{display:flex;flex-wrap:wrap;gap:.5rem}
+.tpill{display:inline-flex;align-items:center;gap:.4rem;cursor:pointer;
+  font-family:var(--body);font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--line2);border-radius:999px;background:transparent;
+  color:var(--muted);padding:.55rem .95rem;
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease),color var(--dur) var(--ease)}
+.tpill:hover{border-color:var(--blue);color:var(--ink)}
+.tpill.is-on{border-color:var(--blue);color:var(--ink);
+  background:color-mix(in srgb,var(--blue) 16%,transparent)}
+.field input,.field textarea{
+  width:100%;background:var(--bg2);color:var(--ink);
+  border:1px solid var(--line2);padding:.85rem .9rem;
+  font-family:var(--body);font-size:1rem;line-height:1.5;min-height:3rem;
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
+.field textarea{min-height:8.5rem;resize:vertical}
+.field input:focus,.field textarea:focus{
+  outline:none;border-color:var(--blue);background:var(--bg3)}
+.form__actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.25rem}
+.form__note{font-size:var(--fsMicro);color:var(--muted);max-width:44ch}
+.form__note:empty{display:none}
+.form__status{font-size:var(--fsBody);color:var(--blue);min-height:1.5rem}
+.field.is-error input,.field.is-error textarea{border-color:var(--blue);background:var(--bg3)}
+.field.is-error label{color:var(--blue)}
+.btn[disabled]{opacity:.5;pointer-events:none}
+.cmeta{margin-top:clamp(2.5rem,5vw,3.25rem);display:flex;justify-content:center;flex-wrap:wrap;
+  gap:.75rem clamp(1.5rem,4vw,3rem);
+  font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cmeta span{display:inline-flex;align-items:center;gap:.45rem}
+.cmeta .ic{color:var(--blue);opacity:.75}
+
 .foot__tip{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;color:var(--muted);transition:color var(--dur) var(--ease)}
 .foot__tip:hover{color:var(--blue)}
 .foot{box-shadow:inset 0 1px 0 var(--line);padding-top:2rem;padding-bottom:3rem;
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem;
   font-size:var(--fsMicro);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.foot__disc{flex:1 0 100%;font-size:.75rem;letter-spacing:.02em;text-transform:none;
+  color:var(--muted);opacity:.72;margin-top:.25rem}
 
 :where(a,button,input,select,textarea):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 [id]{scroll-margin-top:6rem}
 
-/* ══════════ sub-page header ══════════ */
-/* the page head runs straight into this section, so it keeps a little air */
-.sec--flush{padding-top:clamp(2.5rem,5vw,4rem)}
-.hgroup--tight{margin-bottom:clamp(1.5rem,3vw,2rem)}
-
-.pagehead{padding-top:calc(var(--navH) + clamp(2.25rem,5vw,4rem));
-  padding-bottom:clamp(1.75rem,3.5vw,2.75rem)}
-.backlink{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
-  font-size:var(--fsBody);color:var(--muted);
-  margin-bottom:1.1rem;transition:color var(--dur) var(--ease)}
-.backlink:hover{color:var(--blue)}
-.pagehead h1{max-width:16ch}
-
-/* closing call to action */
-.cta{box-shadow:inset 0 1px 0 var(--line);padding-top:clamp(2.5rem,5vw,3.5rem);
-  margin-top:clamp(3rem,6vw,4.5rem);display:flex;flex-wrap:wrap;gap:1.25rem 2rem;
-  align-items:center;justify-content:space-between}
-/* the closing CTA sits alone in its own section here, so it needs no extra
-   top margin of its own — the section padding already spaces it */
-#partner{padding-bottom:clamp(3.5rem,7vw,5.5rem)}
-#start{padding-top:clamp(2.5rem,5vw,3.5rem)}
-#start .cta{margin-top:0}
-.cta h3{font-size:2rem;font-size:clamp(1.75rem,3.4vw,2.5rem);max-width:18ch}
-.cta p{color:var(--muted);max-width:40ch;margin-top:.5rem}
-@media(max-width:60rem){
-  .cell--lead{grid-column:span 4;grid-row:auto;min-height:12rem}}
+@media(max-width:64rem){
+  .pack__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:52rem){
   .offer__item{grid-template-columns:1fr;gap:1.5rem}
-  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cell--lead,.cell--wide{grid-column:span 2}
-  .cell--lead{min-height:11rem}}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2rem}}
 @media(max-width:34rem){
   .btn{flex:1 1 auto;justify-content:center}
-  .bento{grid-template-columns:1fr}
-  .cell,.cell--lead,.cell--wide{grid-column:span 1;min-height:0}
-  .foot{flex-direction:column;gap:.6rem}
-    .nav__cta{padding:.7rem .85rem;letter-spacing:.04em}
+  .stats,.pack__grid,.field--split{grid-template-columns:1fr;row-gap:1.25rem}
+  .say__i{flex-basis:20rem;padding:1.25rem 1.4rem 1.5rem}
+  .say__track{gap:1.25rem}
+  .cmeta,.foot{flex-direction:column;gap:.6rem}
+  .cmeta span{justify-content:center}
+  .nav__cta{padding:.7rem .85rem;letter-spacing:.04em}
   .nav__logo-rest{display:none}}
 </style>
-<!-- Analytics. Umami: cookieless, no cross-site tracking, no ad-network sharing,
-     so no consent banner is required under the CNIL exemption. analytics.js adds
-     the sponsorship-intent events; see the header of that file for the list. -->
 <link rel="preconnect" href="https://cloud.umami.is" crossorigin>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="18a70c76-4d64-4a2a-b915-c1a0404f36be"></script>
 <script defer src="/analytics.js"></script>
@@ -333,6 +377,7 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
   <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="11.5" rx="3"/><path d="M4.8 11.5a7.2 7.2 0 0 0 14.4 0M12 18.7v2.8M8.6 21.5h6.8"/></symbol>
   <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6Z"/><path d="M14 2.5V7h4.5M9 12.5h6M9 16.5h6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3.5v12M7 11l5 5 5-5"/><path d="M4 19.5h16"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m2.5 7 9.5 6.2L21.5 7"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M6.5 17.5 17.5 6.5M9 6.5h8.5V15"/></symbol>
   <symbol id="i-list" viewBox="0 0 24 24"><path d="M8.5 6.5h12M8.5 12h12M8.5 17.5h12M3.5 6.5h.01M3.5 12h.01M3.5 17.5h.01"/></symbol>
@@ -340,6 +385,9 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12.5 5.5 5.5L20 6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.5V12l3.6 2.2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-6.4 7-11.4a7 7 0 1 0-14 0c0 5 7 11.4 7 11.4Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 3.2 2.6 14.8 0 18M12 3c-2.6 3.2-2.6 14.8 0 18"/></symbol>
   <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21.5V3.5M5 4.5h13l-2.6 4L18 12.5H5"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 16.9l-5.3 2.8 1.1-5.9-4.3-4.1 5.9-.8Z"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.6"/><path d="M2.5 20c0-3.6 2.9-5.6 6.5-5.6s6.5 2 6.5 5.6"/><path d="M16.5 5.2a3.4 3.4 0 0 1 0 6.6M17.5 14.8c2.5.5 4 2.3 4 5.2"/></symbol>
@@ -362,7 +410,7 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
     <a href="dreams.html">My life dreams</a>
   </nav>
   <div class="nav__right">
-    <a class="nav__cta" href="index.html#contact"><svg class="ic ic--sm"><use href="#i-mail"/></svg>Contact me</a>
+    <a class="nav__cta" href="#contact"><svg class="ic ic--sm"><use href="#i-mail"/></svg>Contact me</a>
     <button class="nav__toggle" id="menuBtn" aria-expanded="false" aria-controls="menu">
       <svg class="ic ic--sm" id="menuIcon"><use href="#i-menu"/></svg><span id="menuLabel">Menu</span>
     </button>
@@ -376,7 +424,7 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
   <a href="links.html"><svg class="ic"><use href="#i-grid"/></svg>Links</a>
   <a href="about.html"><svg class="ic"><use href="#i-users"/></svg>My story</a>
   <a href="dreams.html"><svg class="ic"><use href="#i-star"/></svg>My life dreams</a>
-  <a href="index.html#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
+  <a href="#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
 </div>
 
 <main id="top">
@@ -384,17 +432,22 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
 <section class="shell pagehead">
   <a class="backlink" href="index.html"><svg class="ic ic--sm"><use href="#i-back"/></svg>Back to the front page</a>
   <h1>Partner with me.</h1>
+  <p class="head__lead">Twenty-one self-organised expeditions across four continents since 2013 &mdash; filmed on the mountain, written up in full, and delivered on time.</p>
+  <div class="head__actions">
+    <a class="btn btn--solid" href="#contact">Start a conversation<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
+    <a class="btn btn--ghost" href="Sam-Wild-Adventures-Media-Kit.pdf" download>Download media kit (PDF)<svg class="ic ic--sm"><use href="#i-download"/></svg></a>
+  </div>
 </section>
 
 <section class="sec sec--flush" id="reach">
   <div class="shell">
-    <!-- Numbers come from metrics.js. Do not edit them here. -->
+    <!-- Numbers and audience bars come from metrics.js. Do not edit them here. -->
     <div class="hgroup hgroup--tight rise">
-      <h2>The reach I get</h2>
-      <p class="lede"><a class="iglink" href="https://www.instagram.com/hey_samtheman/" rel="me"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman</a></p>
+      <h2>The reach &amp; audience</h2>
+      <p class="lede"><a class="iglink" href="https://www.instagram.com/hey_samtheman/" rel="me" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-insta"/></svg>@hey_samtheman</a></p>
     </div>
 
-    <p class="kicker rise">Instagram · <span data-metric-period>Last 90 days</span></p>
+    <p class="kicker rise">Instagram &middot; <span data-metric-period>Last 90 days</span></p>
 
     <div class="stats rise">
       <div class="stat"><div class="stat__n" data-metric="views">6,279,623</div><div class="stat__k">Views</div></div>
@@ -402,6 +455,8 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
       <div class="stat"><div class="stat__n" data-metric="followers">9,867</div><div class="stat__k">Followers</div></div>
       <div class="stat"><div class="stat__n" data-metric="posts">181</div><div class="stat__k">Posts published</div></div>
     </div>
+
+    <div class="dash rise" id="audDash"></div>
   </div>
 </section>
 
@@ -417,7 +472,7 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
           <h3><svg class="ic"><use href="#i-handshake"/></svg>Sponsorship</h3>
           <p class="offer__sub">Back an adventure, or a whole season.</p>
           <p>Support my gear, adventures, travels, permits, teams. In return your brand becomes the main sponsor, is named on the expedition and carried through everything I publish about it.</p>
-          <a class="btn btn--ghost offer__cta" href="index.html#contact">Get in touch<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
+          <a class="btn btn--ghost offer__cta" href="#contact" data-topic-select="Sponsorship">Sponsor an objective<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
         </div>
         <ul class="offer__list">
           <li><svg class="ic ic--sm"><use href="#i-flag"/></svg>Named support on a specific expedition or a full season</li>
@@ -432,7 +487,7 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
           <h3><svg class="ic"><use href="#i-box"/></svg>Gear testing</h3>
           <p class="offer__sub">Send me a kit. And your best gear to try.</p>
           <p>Let me put your equipment to the test. I'll write up what worked, what failed. I'll praise the quality of your gear where I see it. And redirect to brand and ecommerce websites.</p>
-          <a class="btn btn--ghost offer__cta" href="index.html#contact">Get in touch<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
+          <a class="btn btn--ghost offer__cta" href="#contact" data-topic-select="Gear testing">Send gear to test<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
         </div>
         <ul class="offer__list">
           <li><svg class="ic ic--sm"><use href="#i-alpinism"/></svg>Alpinism and high altitude, up to 6,500 m</li>
@@ -446,8 +501,8 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
         <div>
           <h3><svg class="ic"><use href="#i-camera"/></svg>Collaborations</h3>
           <p class="offer__sub">Content, campaigns and talks.</p>
-          <p>I'll shoot content for you that is ready for social media. I also speak and do talks about my expeditions and how you can apply the lessons I've learned to the corporate world. My work at Google puts adventures into context.</p>
-          <a class="btn btn--ghost offer__cta" href="index.html#contact">Get in touch<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
+          <p>I'll shoot content for you that is ready for social media. I also speak and do talks about my expeditions and how you can apply the lessons I've learned to the corporate world. My work in tech at Google puts adventures into context.</p>
+          <a class="btn btn--ghost offer__cta" href="#contact" data-topic-select="Collaborations">Plan a collaboration<svg class="ic ic--sm"><use href="#i-mail"/></svg></a>
         </div>
         <ul class="offer__list">
           <li><svg class="ic ic--sm"><use href="#i-camera"/></svg>Stills and video shot on location to a brief</li>
@@ -458,16 +513,158 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
       </article>
 
     </div>
+
+    <div class="pack rise">
+      <div class="pack__head">
+        <h3>What an expedition package delivers</h3>
+        <p>Every scope is tailored to the objective, agreed in writing before departure.</p>
+      </div>
+      <div class="pack__grid">
+        <div class="pack__c">
+          <span class="pack__num">01 &middot; Video</span>
+          <span class="pack__t">Vertical Reels</span>
+          <span class="pack__d">9:16 clips filmed on the route and edited for retention &mdash; proven up to 3.2M organic views on a single mountain Reel.</span>
+        </div>
+        <div class="pack__c">
+          <span class="pack__num">02 &middot; Photography</span>
+          <span class="pack__t">Licensed alpine stills</span>
+          <span class="pack__d">High-resolution vertical and landscape photographs of your gear in real high-altitude and winter terrain.</span>
+        </div>
+        <div class="pack__c">
+          <span class="pack__num">03 &middot; Editorial</span>
+          <span class="pack__t">Permanent field note</span>
+          <span class="pack__d">Search-indexed long-form expedition story on heysamtheman.com with honest route and equipment notes.</span>
+        </div>
+        <div class="pack__c">
+          <span class="pack__num">04 &middot; Reporting</span>
+          <span class="pack__t">Post-trip debrief</span>
+          <span class="pack__d">Audience reach figures, links and candid gear feedback delivered within two weeks of returning.</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="sec" id="start">
+<section class="sec" id="say">
   <div class="shell">
-    <div class="cta rise">
-      <div>
-        <h3>Let&rsquo;s talk about how I can help you.</h3>
+    <div class="hgroup">
+      <h2>What people say</h2>
+      <p class="hgroup__sub">Brands and mountain partners I have climbed and worked with, in their words.</p>
+    </div>
+  </div>
+  <div class="say">
+    <div class="say__track">
+      <article class="say__i">
+        <p class="say__q">Congratulations on summiting the Matterhorn. 08:10 and first on the mountain that day is indeed a nice achievement. Emmanuel Julen is a fantastic guide and we're glad to hear it was one of your best guided days in the Alps. We'd love to have you back for another objective in 2027.</p>
+        <div class="say__who">
+          <div class="say__av"><span class="is-org"><img src="img/say/zermatters.svg" alt="Zermatters" width="40" height="40"></span><span class="is-me">LS</span></div>
+          <div class="say__n"><b>Lukas Steiner</b><span>Marketing Manager at Zermatters</span></div>
+        </div>
+      </article>
+      <article class="say__i">
+        <p class="say__q">It looks like you've had some amazing experiences. Congratulations on all your success. We would like to support you with our pro-deal.</p>
+        <div class="say__who">
+          <div class="say__av"><span class="is-org"><img src="img/say/hilleberg.png" alt="Hilleberg" width="40" height="40"></span><span class="is-me">L</span></div>
+          <div class="say__n"><b>Lara</b><span>Hilleberg the Tentmaker</span></div>
+        </div>
+      </article>
+      <article class="say__i">
+        <p class="say__q">Thank you so much for your detailed response. It is impressive how experienced you are.</p>
+        <div class="say__who">
+          <div class="say__av"><span class="is-org"><img src="img/say/cobi.png" alt="COBI" width="40" height="40"></span><span class="is-me">K</span></div>
+          <div class="say__n"><b>Ksenia</b><span>COO at COBI, Tokyo &mdash; on booking me to guide their clients</span></div>
+        </div>
+      </article>
+      <article class="say__i">
+        <p class="say__q">Congratulations on your successful completion of the world's highest and Asia's first via ferrata, Low's Peak Circuit at Mount Kinabalu. You look great in the pictures.</p>
+        <div class="say__who">
+          <div class="say__av"><span class="is-org"><img src="img/say/mountaintorq.png" alt="Mountain Torq" width="40" height="40"></span><span class="is-me">C</span></div>
+          <div class="say__n"><b>Carmella</b><span>Mountain Torq, Kota Kinabalu</span></div>
+        </div>
+      </article>
+      <!-- pass 2 for seamless loop -->
+      <article class="say__i" data-dup aria-hidden="true">
+        <p class="say__q">Congratulations on summiting the Matterhorn. 08:10 and first on the mountain that day is indeed a nice achievement. Emmanuel Julen is a fantastic guide and we're glad to hear it was one of your best guided days in the Alps. We'd love to have you back for another objective in 2027.</p>
+        <div class="say__who">
+          <div class="say__av"><span class="is-org"><img src="img/say/zermatters.svg" alt="Zermatters" width="40" height="40"></span><span class="is-me">LS</span></div>
+          <div class="say__n"><b>Lukas Steiner</b><span>Marketing Manager at Zermatters</span></div>
+        </div>
+      </article>
+      <article class="say__i" data-dup aria-hidden="true">
+        <p class="say__q">It looks like you've had some amazing experiences. Congratulations on all your success. We would like to support you with our pro-deal.</p>
+        <div class="say__who">
+          <div class="say__av"><span class="is-org"><img src="img/say/hilleberg.png" alt="Hilleberg" width="40" height="40"></span><span class="is-me">L</span></div>
+          <div class="say__n"><b>Lara</b><span>Hilleberg the Tentmaker</span></div>
+        </div>
+      </article>
+      <article class="say__i" data-dup aria-hidden="true">
+        <p class="say__q">Thank you so much for your detailed response. It is impressive how experienced you are.</p>
+        <div class="say__who">
+          <div class="say__av"><span class="is-org"><img src="img/say/cobi.png" alt="COBI" width="40" height="40"></span><span class="is-me">K</span></div>
+          <div class="say__n"><b>Ksenia</b><span>COO at COBI, Tokyo &mdash; on booking me to guide their clients</span></div>
+        </div>
+      </article>
+      <article class="say__i" data-dup aria-hidden="true">
+        <p class="say__q">Congratulations on your successful completion of the world's highest and Asia's first via ferrata, Low's Peak Circuit at Mount Kinabalu. You look great in the pictures.</p>
+        <div class="say__who">
+          <div class="say__av"><span class="is-org"><img src="img/say/mountaintorq.png" alt="Mountain Torq" width="40" height="40"></span><span class="is-me">C</span></div>
+          <div class="say__n"><b>Carmella</b><span>Mountain Torq, Kota Kinabalu</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="contact">
+  <div class="shell">
+    <div class="hgroup rise">
+      <h2>Start a conversation</h2>
+      <p class="hgroup__sub">Tell me what you're planning, or download the <a class="iglink" href="Sam-Wild-Adventures-Media-Kit.pdf" download>2-page PDF media kit</a> to share internally with your team.</p>
+      <a class="contact__mail" href="mailto:hey@heysamtheman.com"><svg class="ic ic--sm"><use href="#i-mail"/></svg>hey@heysamtheman.com</a>
+    </div>
+
+    <form class="form rise" id="contactForm" novalidate>
+      <div class="field">
+        <span class="field__lbl" id="topicLbl">What are we talking about? (optional)</span>
+        <div class="topics" role="group" aria-labelledby="topicLbl">
+          <button type="button" class="tpill" data-topic-pill="Sponsorship" aria-pressed="false">Sponsorship</button>
+          <button type="button" class="tpill" data-topic-pill="Gear testing" aria-pressed="false">Gear testing</button>
+          <button type="button" class="tpill" data-topic-pill="Collaborations" aria-pressed="false">Collaborations &amp; talks</button>
+        </div>
       </div>
-      <a class="btn btn--solid" href="index.html#contact">Start a conversation<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
+      <div class="field--split">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-brand">Company or brand</label>
+          <input id="f-brand" name="brand" type="text" autocomplete="organization">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-email">Your email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-msg">Message</label>
+        <textarea id="f-msg" name="message" required></textarea>
+      </div>
+      <div class="field" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+        <label for="f-company-url">Leave this empty</label>
+        <input id="f-company-url" name="company_url" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="form__actions">
+        <button class="btn btn--solid" type="submit">Send message<svg class="ic ic--sm"><use href="#i-arrow"/></svg></button>
+        <p class="form__note">Your details are only used to reply to you. <a href="privacy.html">Privacy</a></p>
+      </div>
+      <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="cmeta">
+      <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>Based in Tokyo</span>
+      <span><svg class="ic ic--sm"><use href="#i-pin"/></svg>From Annecy, French Alps</span>
+      <span><svg class="ic ic--sm"><use href="#i-globe"/></svg>Available worldwide</span>
     </div>
   </div>
 </section>
@@ -477,86 +674,10 @@ h1 .hl,h2 .hl,h3 .hl{color:inherit}   /* section titles stay white — no highli
 <footer class="shell foot">
   <span>© 2026 Sam 🌋 Wild Adventures &middot; <a href="privacy.html">Privacy</a></span>
   <a class="foot__tip" href="https://ko-fi.com/heysamtheman" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-coffee"/></svg>Buy me a coffee</a>
+  <p class="foot__disc">Personal expedition &amp; creator site &mdash; all views, trips and partnerships are my own and independent of my employer.</p>
 </footer>
 
-<script src="metrics.js"></script>
-<script>
-(function(){
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── .rise: reveal once, on first sight ─────────────────────────────
-     Replaces the scroll-driven animation (see the CSS note). Each element
-     gets is-in the first time it is on screen and is then unobserved. */
-  var risers=[].slice.call(document.querySelectorAll('.rise'));
-  if(risers.length){
-    if(reduce||!('IntersectionObserver' in window)){
-      risers.forEach(function(el){ el.classList.add('is-in'); });
-    } else {
-      var riseIO=new IntersectionObserver(function(es){
-        es.forEach(function(e){
-          if(!e.isIntersecting) return;
-          e.target.classList.add('is-in');
-          riseIO.unobserve(e.target);
-        });
-      },{rootMargin:'0px 0px -8% 0px',threshold:.06});
-      risers.forEach(function(el){ riseIO.observe(el); });
-    }
-  }
-
-  /* nav folds once you leave the top */
-  /* The bar tints and blurs once you leave the top. Read the offset
-     explicitly rather than leaning on the bare `scrollY` global, and listen
-     for resize and load too so the state is right after a lazy image
-     changes the page height. */
-  var nav=document.getElementById('nav');
-  var progressBar=document.querySelector('.progress');
-  var onScroll=function(){
-    var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
-    nav.classList.toggle('is-stuck',y>24);
-    /* reading-progress bar: a transform only, so it stays on the compositor */
-    if(progressBar){
-      var max=document.documentElement.scrollHeight-window.innerHeight;
-      progressBar.style.transform='scaleX('+(max>0?Math.min(y/max,1):0)+')';
-    }
-  };
-  addEventListener('scroll',onScroll,{passive:true});
-  addEventListener('resize',onScroll,{passive:true});
-  addEventListener('load',onScroll);
-  onScroll();
-
-  var btn=document.getElementById('menuBtn'), menu=document.getElementById('menu');
-  var mIcon=document.getElementById('menuIcon'), mLabel=document.getElementById('menuLabel');
-  var setMenu=function(open){
-    menu.dataset.open=String(open);
-    btn.setAttribute('aria-expanded',String(open));
-    mLabel.textContent=open?'Close':'Menu';
-    mIcon.firstElementChild.setAttribute('href',open?'#i-close':'#i-menu');
-    document.body.style.overflow=open?'hidden':'';
-  };
-  btn.addEventListener('click',function(){setMenu(menu.dataset.open!=='true')});
-  menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
-  addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
-
-  /* number ticker */
-  if(!reduce && 'IntersectionObserver' in window){
-    var fmt=function(n){return n.toLocaleString('en-US')};
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(!en.isIntersecting) return;
-        io.unobserve(en.target);
-        var el=en.target, to=parseInt(el.dataset.to,10), t0=null, dur=1100;
-        var step=function(t){
-          if(!t0) t0=t;
-          var p=Math.min((t-t0)/dur,1);
-          el.textContent=fmt(Math.round(to*(1-Math.pow(1-p,4))));
-          if(p<1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      });
-    },{threshold:.4});
-    document.querySelectorAll("[data-to]").forEach(function(el){io.observe(el)});
-  }
-})();
-</script>
+<script defer src="metrics.js"></script>
+<script defer src="home.js"></script>
 </body>
 </html>

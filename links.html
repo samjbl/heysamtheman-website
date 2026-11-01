@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloud.umami.is https://gateway.umami.is https://*.umami.is https://script.google.com https://script.googleusercontent.com https://api.web3forms.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="description" content="All of Sam's links in one place — Instagram, YouTube, the website and more.">
 <meta name="theme-color" content="#04070c">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -127,6 +128,8 @@ a{color:inherit}
 .foot a{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;
   transition:color var(--dur) var(--ease)}
 .foot a:hover{color:var(--blue)}
+.foot__disc{flex:1 0 100%;font-size:.75rem;letter-spacing:.02em;text-transform:none;
+  color:var(--muted);opacity:.72;margin-top:.15rem;max-width:none}
 :where(a):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 </style>
 <!-- Analytics. Umami: cookieless, no cross-site tracking, no ad-network sharing,
@@ -229,6 +232,7 @@ a{color:inherit}
 <footer class="foot">
   <a href="index.html"><svg class="ic"><use href="#i-back"/></svg>Back to the site</a>
   <span>© 2026 Sam 🌋 Wild Adventures &middot; <a href="privacy.html">Privacy</a></span>
+  <p class="foot__disc">Personal expedition &amp; creator site &mdash; all views, trips and partnerships are my own and independent of my employer.</p>
 </footer>
 
 </body>

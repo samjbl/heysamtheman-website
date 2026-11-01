@@ -109,6 +109,11 @@
       return;
     }
 
+    if (/\.pdf(?:$|[?#])/i.test(href)) {
+      track('media-kit-pdf', { from: page });
+      return;
+    }
+
     /* Ignore in-page anchors and the SVG sprite's href="#i-..." refs. */
     if (href.charAt(0) === '#') return;
 
@@ -129,15 +134,16 @@
   }, true);
 
   /* ── Contact form ────────────────────────────────────────────────
-     The form is disabled until an endpoint is connected. Listening now
-     means the event starts arriving the day that lands, with no second
-     edit. `submit` only fires when validation passed. */
-  var form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', function () {
-      track('contact-submit', { from: page });
+     Fired from home.js only after custom validation AND backend
+     delivery succeed (`sam:contact-sent`), since the form carries
+     `novalidate` and raw DOM `submit` would count empty clicks. */
+  document.addEventListener('sam:contact-sent', function (ev) {
+    var detail = (ev && ev.detail) || {};
+    track('contact-submit', {
+      from : detail.from || page,
+      topic: detail.topic || 'general'
     });
-  }
+  });
 
   /* ── Read completion on field notes ──────────────────────────────
      Observe the footer rather than measuring scroll percentage.
