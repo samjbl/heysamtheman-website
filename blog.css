@@ -1,7 +1,7 @@
-/* shared by blog.html and the article pages */
+/* shared by blog.html, classic blog-*.html field notes, and /blog/<slug>/ guides */
 :root{
   --title:'Darker Grotesque',system-ui,sans-serif;
-  --titleW:500; --titleTrack:-.025em; --titleLh:.9;
+  --titleW:500; --titleTrack:-.025em; --titleLh:.92;
   --body:'Onest',system-ui,sans-serif;
   --bg:#04070c; --bg2:#090d16; --bg3:#0d1220;
   --ink:#e3e7f1; --muted:#98a3ba;
@@ -20,6 +20,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var
 img{display:block;max-width:100%;height:auto}
 picture{display:contents}
 a{color:inherit}
+[hidden]{display:none!important}
 .shell{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--shellPad)}
 h1,h2,h3{font-family:var(--title);font-weight:var(--titleW);
   letter-spacing:var(--titleTrack);line-height:var(--titleLh);text-wrap:balance}
@@ -41,11 +42,6 @@ p{text-wrap:pretty}
   border-bottom-color:var(--line)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .nav.is-stuck{background:color-mix(in srgb,var(--bg) 94%,transparent)}}
-/* On phones the bar goes opaque instead of blurred. backdrop-filter on a
-   FIXED element has to re-sample the content moving beneath it on every
-   scrolled frame — the one blur configuration a browser cannot cache. In an
-   in-app WebView (LINE, 23 Sep 2026) that was a large part of the scroll
-   jank. Desktop keeps the blur; see NAV-BLUR.md. */
 @media(max-width:60rem){
   .nav.is-stuck{-webkit-backdrop-filter:none;backdrop-filter:none;
     background:color-mix(in srgb,var(--bg) 94%,transparent)}}
@@ -58,58 +54,125 @@ p{text-wrap:pretty}
   text-transform:uppercase;color:var(--ink);opacity:.6;padding-block:.5rem;
   transition:opacity var(--dur) var(--ease),color var(--dur) var(--ease)}
 .nav__links a:hover,.nav__links a.is-active{opacity:1;color:var(--blue)}
+.nav__right{display:flex;align-items:center;gap:.5rem;flex:none}
 .nav__cta{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;
   font-size:var(--fsMicro);letter-spacing:.08em;text-transform:uppercase;
   background:var(--blueFill);color:#fff;border:1px solid var(--blueFill);
   padding:.7rem 1.1rem;white-space:nowrap;min-height:2.75rem}
 .nav__cta:hover{background:#3357dd;border-color:#3357dd}
-/* below 1216px the logo + six links + CTA stop fitting on one row */
-@media(max-width:76rem){.nav__links{display:none}}
-/* phones: drop the long half of the wordmark so the CTA is not pushed off-screen */
+.nav__toggle{display:none;align-items:center;gap:.45rem;background:transparent;
+  border:1px solid var(--line2);color:var(--ink);font-family:var(--body);
+  font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;
+  padding:.7rem .95rem;cursor:pointer;min-height:2.75rem}
+.nav__toggle:hover{border-color:var(--blue);color:var(--blue)}
+@media(max-width:76rem){
+  .nav__links{display:none}
+  .nav__toggle{display:inline-flex}}
 @media(max-width:34rem){
   .nav__logo-rest{display:none}
   .nav__cta{padding:.7rem .85rem;letter-spacing:.04em}}
+.menu{position:fixed;inset:0;z-index:149;background:color-mix(in srgb,var(--bg) 97%,transparent);
+  backdrop-filter:blur(20px);display:none;flex-direction:column;justify-content:center;
+  gap:.35rem;padding:var(--shellPad)}
+.menu[data-open="true"]{display:flex}
+.menu a{display:flex;align-items:center;gap:.9rem;
+  font-family:var(--title);font-weight:var(--titleW);font-size:clamp(2rem,8vw,3rem);
+  letter-spacing:var(--titleTrack);text-decoration:none;
+  padding-block:.5rem;border-bottom:1px solid var(--line)}
+.menu a:last-child{border-bottom:0}
+.menu .ic{color:var(--blue);width:.7em;height:.7em}
 
-.pagehead{padding-top:calc(var(--navH) + clamp(2.5rem,7vw,5rem));
-  padding-bottom:clamp(1.5rem,4vw,2.5rem)}
+.pagehead{padding-top:calc(var(--navH) + clamp(2.5rem,7vw,4.75rem));
+  padding-bottom:clamp(1.5rem,3.5vw,2.25rem)}
 .backlink{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;
   font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-  margin-bottom:1.25rem;transition:color var(--dur) var(--ease)}
+  margin-bottom:1.15rem;transition:color var(--dur) var(--ease)}
 .backlink:hover{color:var(--blue)}
-.pagehead h1{font-size:clamp(2.6rem,6.4vw,5rem)}
-.pagehead .lede{margin-top:1.25rem;color:var(--muted);max-width:60ch;font-size:var(--fsLead)}
+.pagehead h1{font-size:clamp(2.6rem,6.2vw,4.8rem)}
+.pagehead .lede{margin-top:1.15rem;color:var(--muted);max-width:62ch;font-size:var(--fsLead)}
+
+/* ── blog hub: featured guide + category filter pills ── */
+.feat-post{display:grid;grid-template-columns:1.18fr 1fr;border:1px solid var(--line2);
+  background:linear-gradient(155deg,var(--bg3) 0%,var(--bg2) 65%,var(--bg) 100%);
+  text-decoration:none;overflow:hidden;margin-bottom:clamp(1.75rem,3.5vw,2.5rem);
+  transition:border-color var(--dur) var(--ease),transform var(--durSlow) var(--ease)}
+.feat-post:hover{border-color:var(--blue)}
+@media(prefers-reduced-motion:no-preference){.feat-post:hover{transform:translateY(-3px)}}
+.feat-post__media{aspect-ratio:16/10;overflow:hidden;background:var(--bg3)}
+.feat-post__media img{width:100%;height:100%;object-fit:cover}
+.feat-post__body{padding:clamp(1.35rem,3vw,2.25rem);display:flex;flex-direction:column;
+  justify-content:center;gap:.75rem}
+.feat-post__kicker{display:inline-flex;align-items:center;gap:.55rem;flex-wrap:wrap;
+  font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.feat-post__pill{background:color-mix(in srgb,var(--blueFill) 32%,transparent);
+  border:1px solid var(--line2);color:#fff;padding:.2rem .55rem;letter-spacing:.12em}
+.feat-post__t{font-size:clamp(1.95rem,3.4vw,2.85rem);line-height:1.02}
+.feat-post__x{color:var(--muted);font-size:var(--fsBody);max-width:54ch}
+@media(max-width:54rem){.feat-post{grid-template-columns:1fr}}
+
+.cat-bar{display:flex;align-items:center;justify-content:space-between;gap:.85rem;
+  flex-wrap:wrap;margin-bottom:clamp(1.35rem,2.6vw,2rem);padding-bottom:1rem;
+  border-bottom:1px solid var(--line)}
+.cat-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.cat-pill{background:var(--bg2);border:1px solid var(--line2);color:var(--muted);
+  font-family:var(--body);font-size:var(--fsMicro);letter-spacing:.11em;text-transform:uppercase;
+  padding:.55rem .95rem;cursor:pointer;min-height:2.4rem;display:inline-flex;align-items:center;gap:.4rem;
+  transition:border-color var(--dur) var(--ease),color var(--dur) var(--ease),background var(--dur) var(--ease)}
+.cat-pill:hover{border-color:var(--blue);color:var(--ink)}
+.cat-pill.is-active{background:var(--blueFill);border-color:var(--blueFill);color:#fff}
+.cat-pill__n{opacity:.72;font-size:.7rem}
+.rss-link{font-size:var(--fsMicro);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:.35rem}
+.rss-link:hover{color:var(--blue)}
 
 /* ── index: card grid ── */
-.posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));
+.posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(19.5rem,1fr));
   gap:clamp(1.25rem,2.6vw,2rem);padding-bottom:clamp(3.5rem,8vw,6rem)}
 .post{display:flex;flex-direction:column;text-decoration:none;overflow:hidden;
   border:1px solid var(--line2);background:var(--bg2);
   transition:border-color var(--dur) var(--ease),transform var(--durSlow) var(--ease)}
 .post:hover{border-color:var(--blue)}
 @media(prefers-reduced-motion:no-preference){.post:hover{transform:translateY(-3px)}}
-.post__media{aspect-ratio:16/10;overflow:hidden;
+.post__media{position:relative;aspect-ratio:16/10;overflow:hidden;
   background:linear-gradient(155deg,var(--bg3) 0%,var(--bg2) 55%,var(--bg) 100%);
   display:flex;align-items:center;justify-content:center}
 .post__media img{width:100%;height:100%;object-fit:cover}
 .post__media span{font-size:var(--fsMicro);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.post__badge{position:absolute;top:.75rem;left:.75rem;z-index:2;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(8px);
+  border:1px solid var(--line2);padding:.22rem .55rem;font-size:.68rem;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink)}
+.route-card{width:100%;height:100%;padding:2.75rem 1.25rem 1.25rem;display:flex;flex-direction:column;
+  justify-content:space-between;background:radial-gradient(circle at 80% 20%,rgba(95,134,240,.22),transparent 60%),
+  linear-gradient(155deg,#0d1528 0%,#080c16 100%)}
+.route-card__top{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.route-card__main{font-family:var(--title);font-size:2rem;line-height:.95;color:var(--ink)}
+.route-card__sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .post__body{padding:clamp(1.1rem,2.2vw,1.5rem);display:flex;flex-direction:column;gap:.6rem;flex:1}
 .post__meta{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
-.post__t{font-size:1.75rem;line-height:1.08}
+.post__t{font-size:1.75rem;line-height:1.06}
 .post__x{color:var(--muted);font-size:var(--fsBody);flex:1}
 .post__go{display:inline-flex;align-items:center;gap:.4rem;font-size:var(--fsMicro);
   letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
 
-/* ── article ── */
-.article{max-width:44rem;margin-inline:auto;padding-bottom:clamp(3.5rem,8vw,6rem)}
+/* ── article header metadata ── */
+.meta-row{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem .95rem;margin-bottom:1rem;
+  font-size:var(--fsMicro);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.cat-tag{background:color-mix(in srgb,var(--blueFill) 28%,transparent);
+  border:1px solid var(--line2);color:var(--blue);padding:.22rem .6rem;text-decoration:none}
+.cat-tag:hover{border-color:var(--blue);color:#fff}
+
+/* ── article body ── */
+.article{max-width:46rem;margin-inline:auto;padding-bottom:clamp(3.5rem,8vw,6rem)}
 .article .lede{font-size:var(--fsLead);color:var(--muted);margin-top:1.25rem}
-.facts{margin:clamp(2rem,4vw,2.75rem) 0;border:1px solid var(--line2);background:var(--bg2);
+.facts{margin:clamp(1.75rem,3.5vw,2.5rem) 0;border:1px solid var(--line2);background:var(--bg2);
   padding:clamp(1.1rem,2.2vw,1.5rem);display:grid;
   grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1rem 1.5rem}
 .facts div{display:flex;flex-direction:column;gap:.15rem}
 .facts dt,.facts b{font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
   color:var(--muted);font-weight:400}
 .facts dd,.facts span{font-size:var(--fsBody);color:var(--ink)}
-.article figure{margin:clamp(2rem,4vw,2.75rem) 0}
+.article figure{margin:clamp(1.85rem,3.8vw,2.6rem) 0}
 .article figure img{width:100%;border:1px solid var(--line)}
 .article figcaption{margin-top:.6rem;font-size:var(--fsMicro);color:var(--muted);letter-spacing:.03em}
 .article h2{font-size:clamp(1.9rem,3.6vw,2.6rem);margin-top:clamp(2.25rem,4.5vw,3rem);margin-bottom:.9rem}
@@ -117,10 +180,83 @@ p{text-wrap:pretty}
 .article p strong{color:var(--ink)}
 .article blockquote{margin:clamp(1.75rem,3.5vw,2.25rem) 0;padding-left:1.35rem;
   border-left:2px solid var(--blueFill);font-family:var(--title);font-weight:var(--titleW);
-  letter-spacing:var(--titleTrack);line-height:1.3;font-size:clamp(1.5rem,2.8vw,2.1rem);color:var(--ink)}
-.article ul{margin:0 0 1.1rem 1.1rem;color:#c8cfdf}
+  letter-spacing:var(--titleTrack);line-height:1.25;font-size:clamp(1.5rem,2.8vw,2.1rem);color:var(--ink)}
+.article ul{margin:0 0 1.1rem 1.15rem;color:#c8cfdf}
 .article li{margin-bottom:.45rem}
-.artnav{margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.5rem;border-top:1px solid var(--line);
+
+/* ── at-a-glance comparison table (Featured Snippet & AI Overview target) ── */
+.quick-wrap{margin:clamp(1.75rem,3.5vw,2.5rem) 0;border:1px solid var(--line2);
+  background:var(--bg2);overflow-x:auto}
+.quick-cap{padding:.85rem 1.15rem;border-bottom:1px solid var(--line);
+  font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.quick-table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:34rem}
+.quick-table th{text-align:left;padding:.75rem 1rem;font-size:.7rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line2);font-weight:500}
+.quick-table td{padding:.8rem 1rem;border-bottom:1px solid var(--line);color:#c8cfdf;vertical-align:top}
+.quick-table tr:last-child td{border-bottom:0}
+.quick-table td strong,.quick-table td a{color:var(--ink);text-decoration:none}
+.quick-table td a:hover{color:var(--blue);text-decoration:underline}
+
+/* ── roundup / listicle item cards (TechCrunch + JAPANSHOPTOKYO structure) ── */
+.pick-card{margin:clamp(2.1rem,4.2vw,2.9rem) 0;padding:clamp(1.25rem,2.8vw,1.85rem);
+  border:1px solid var(--line2);background:var(--bg2)}
+.pick-head{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;
+  flex-wrap:wrap;margin-bottom:.5rem}
+.pick-num{font-size:var(--fsMicro);letter-spacing:.15em;text-transform:uppercase;color:var(--blue);font-weight:600}
+.pick-kicker{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line2);padding:.16rem .5rem;background:var(--bg3)}
+.pick-card h2{margin-top:.15rem;margin-bottom:.95rem;font-size:clamp(1.75rem,3.3vw,2.35rem)}
+.pick-card figure{margin:1rem 0 1.25rem}
+.pick-specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.2rem,1fr));
+  gap:.75rem 1.1rem;padding:.95rem 1.05rem;margin:1rem 0 1.2rem;
+  background:var(--bg3);border:1px solid var(--line)}
+.pick-specs div{display:flex;flex-direction:column;gap:.12rem}
+.pick-specs b{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.pick-specs span{font-size:.9rem;color:var(--ink);line-height:1.4}
+.pick-verdict{margin-top:1rem;padding:.85rem 1.05rem;border-left:2px solid var(--blue);
+  background:color-mix(in srgb,var(--blueFill) 12%,var(--bg3));font-size:.94rem;color:var(--ink)}
+.pick-verdict b{color:var(--blue);text-transform:uppercase;letter-spacing:.1em;font-size:.73rem;margin-right:.4rem}
+
+/* ── FAQ block (People Also Ask + FAQPage schema) ── */
+.faq-sec{margin-top:clamp(2.5rem,5vw,3.25rem);padding-top:clamp(1.75rem,3.5vw,2.25rem);
+  border-top:1px solid var(--line)}
+.faq-sec h2{margin-top:0;margin-bottom:1.1rem}
+.faq-item{border:1px solid var(--line2);background:var(--bg2);margin-bottom:.65rem}
+.faq-item summary{cursor:pointer;padding:1rem 1.15rem;font-weight:500;color:var(--ink);
+  list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';color:var(--blue);font-size:1.25rem;line-height:1;flex:none}
+.faq-item[open] summary::after{content:'\2212'}
+.faq-item[open] summary{border-bottom:1px solid var(--line)}
+.faq-ans{padding:1rem 1.15rem;color:#c8cfdf;font-size:.96rem}
+.faq-ans p:last-child{margin-bottom:0}
+
+/* ── Author E-E-A-T bio box ── */
+.author-card{margin-top:clamp(2.5rem,5vw,3.25rem);padding:clamp(1.15rem,2.4vw,1.5rem);
+  border:1px solid var(--line2);background:var(--bg2);
+  display:grid;grid-template-columns:4.25rem minmax(0,1fr);gap:1.1rem;align-items:center}
+.author-card__img{width:4.25rem;height:4.25rem;border-radius:50%;object-fit:cover;
+  object-position:52% 30%;border:1px solid var(--line2)}
+.author-card__k{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.author-card__n{font-family:var(--title);font-size:1.5rem;line-height:1.05;margin-top:.1rem}
+.author-card__p{font-size:.9rem;color:var(--muted);margin:.35rem 0 0!important}
+.author-card__links{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:.55rem;
+  font-size:.72rem;letter-spacing:.11em;text-transform:uppercase}
+.author-card__links a{color:var(--blue);text-decoration:none}
+.author-card__links a:hover{text-decoration:underline}
+@media(max-width:32rem){.author-card{grid-template-columns:1fr}}
+
+/* ── Related guides strip ── */
+.related-sec{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--shellPad);
+  padding-bottom:clamp(3.5rem,7vw,5rem)}
+.related-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--line);margin-bottom:1.35rem}
+.related-head h2{font-size:clamp(1.8rem,3.4vw,2.4rem)}
+.related-head a{font-size:var(--fsMicro);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--blue);text-decoration:none}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17.5rem,1fr));gap:1.25rem}
+
+.artnav{margin-top:clamp(2.25rem,4.5vw,3rem);padding-top:1.5rem;border-top:1px solid var(--line);
   display:flex;gap:.75rem;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
   font-size:var(--fsMicro);letter-spacing:.1em;text-transform:uppercase;
@@ -137,10 +273,11 @@ p{text-wrap:pretty}
 .foot a:hover{color:var(--blue)}
 .foot__disc{flex:1 0 100%;font-size:.75rem;letter-spacing:.02em;text-transform:none;
   color:var(--muted);opacity:.72;margin-top:.25rem;max-width:none}
-:where(a,button):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+:where(a,button,summary):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 [id]{scroll-margin-top:6rem}
+@media print{.nav{position:static}}
 
-/* table of contents, sub-headings and inline notes (added for the longer posts) */
+/* table of contents, sub-headings and inline notes */
 .toc{margin:clamp(1.75rem,3.5vw,2.5rem) 0;border:1px solid var(--line2);background:var(--bg2);
   padding:clamp(1.1rem,2.2vw,1.5rem)}
 .toc b{display:block;font-size:var(--fsMicro);letter-spacing:.14em;text-transform:uppercase;
