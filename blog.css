@@ -174,6 +174,7 @@ p{text-wrap:pretty}
 .facts dd,.facts span{font-size:var(--fsBody);color:var(--ink)}
 .article figure{margin:clamp(1.85rem,3.8vw,2.6rem) 0}
 .article figure img{width:100%;border:1px solid var(--line)}
+.article figure.guide-hero img{max-height:31rem;object-fit:cover;object-position:50% 58%}
 .article figcaption{margin-top:.6rem;font-size:var(--fsMicro);color:var(--muted);letter-spacing:.03em}
 .article h2{font-size:clamp(1.9rem,3.6vw,2.6rem);margin-top:clamp(2.25rem,4.5vw,3rem);margin-bottom:.9rem}
 .article p{margin-bottom:1.1rem;color:#c8cfdf}
