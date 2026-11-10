@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloud.umami.is https://gateway.umami.is https://*.umami.is https://script.google.com https://script.googleusercontent.com https://api.web3forms.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="description" content="How to keep phone, action camera and power bank batteries alive in extreme sub-zero cold down to -20°C and -40°C. Explains voltage sag vs drain, lithium plating hazards, silicone cables, low-temp cells and body-heat routing.">
+<meta name="theme-color" content="#04070c">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Sam &#127755; Wild Adventures &mdash; Guides &amp; Field Notes" href="https://heysamtheman.com/feed.xml">
+<title>How to Keep Phone &amp; Action Camera Batteries Alive in Extreme Cold (2027) &middot; Sam &#127755; Wild Adventures</title>
+<link rel="canonical" href="https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Sam &#127755; Wild Adventures">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="How to Keep Phone &amp; Action Camera Batteries Alive in Extreme Cold (2027)">
+<meta property="og:description" content="How to keep phone, action camera and power bank batteries alive in extreme sub-zero cold down to -20°C and -40°C. Explains voltage sag vs drain, lithium plating hazards, silicone cables, low-temp cells and body-heat routing.">
+<meta property="og:url" content="https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/">
+<meta property="og:image" content="https://heysamtheman.com/img/og/blog-keep-action-cameras-phones-batteries-alive-extreme-cold.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Thick rime frost and ice crystals formed on mountain gear in sub-zero alpine conditions">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://heysamtheman.com/img/og/blog-keep-action-cameras-phones-batteries-alive-extreme-cold.jpg">
+<link rel="preload" href="/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/darker-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/darker-grotesque-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/darker-grotesque-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/darker-grotesque-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/darker-grotesque-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/darker-grotesque-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/darker-grotesque-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/darker-grotesque-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Darker Grotesque';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/darker-grotesque-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/onest-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Onest';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/onest-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Onest';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/onest-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Onest';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/onest-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Onest';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+</style>
+<link rel="stylesheet" href="/blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://heysamtheman.com/#sam",
+      "name": "Sam",
+      "alternateName": "Sam Wild Adventures",
+      "url": "https://heysamtheman.com/",
+      "image": "https://heysamtheman.com/img/og/home.jpg",
+      "description": "Tokyo-based mountaineer, ski tourer and multi-sport endurance athlete. Twenty-one self-organised expeditions across four continents since 2013.",
+      "sameAs": [
+        "https://www.instagram.com/hey_samtheman/",
+        "https://www.youtube.com/@hey_samtheman"
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#article",
+      "mainEntityOfPage": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/",
+      "url": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/",
+      "headline": "How to Keep Phone & Action Camera Batteries Alive in Extreme Cold (2027)",
+      "description": "How to keep phone, action camera and power bank batteries alive in extreme sub-zero cold down to -20°C and -40°C. Explains voltage sag vs drain, lithium plating hazards, silicone cables, low-temp cells and body-heat routing.",
+      "articleSection": "Gear & Tech",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://heysamtheman.com/img/og/blog-keep-action-cameras-phones-batteries-alive-extreme-cold.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "datePublished": "2026-11-11",
+      "dateModified": "2026-11-11",
+      "author": {
+        "@id": "https://heysamtheman.com/#sam"
+      },
+      "publisher": {
+        "@id": "https://heysamtheman.com/#sam"
+      },
+      "isPartOf": {
+        "@id": "https://heysamtheman.com/#website"
+      },
+      "inLanguage": "en-GB",
+      "wordCount": 2304
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://heysamtheman.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides & Field Notes",
+          "item": "https://heysamtheman.com/blog.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to keep cameras, phones & batteries alive at -20°C on summit night",
+          "item": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#list",
+      "name": "How to keep cameras, phones & batteries alive at -20°C on summit night",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Voltage Sag vs Permanent Drain: Why 1% Does Not Mean Empty",
+          "url": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#voltage-sag-vs-drain"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Never Charge Below 0°C: The Danger of Lithium Plating",
+          "url": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#sub-zero-charging-lithium-plating"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Internal Layer Routing: Chest Pockets Over Exterior Pouches",
+          "url": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#midlayer-pocket-routing"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Cold-Rated Batteries: GoPro Enduro and DJI Extreme Battery Plus",
+          "url": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#low-temp-action-camera-cells"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Heated and Carbon-Cased Power Banks: The Nitecore Summit 10000",
+          "url": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#heated-carbon-power-banks"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Liquid Silicone USB Cords and the Altitude Hand-Warmer Trap",
+          "url": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#silicone-cables-hand-warmer-traps"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://heysamtheman.com/blog/keep-action-cameras-phones-batteries-alive-extreme-cold/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does my phone battery jump from 60% to 1% and shut down in the cold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The battery has not lost its actual charge. Extreme cold makes the liquid electrolyte inside lithium-ion cells thick and viscous, drastically increasing internal electrical resistance. When the phone demands power for a screen or camera burst, the voltage drops sharply ('voltage sag'). The phone's battery management system detects that the voltage has dropped below the minimum safety threshold (around 3.2V) and shuts down to protect the hardware. Warming the phone inside an internal jacket pocket for 10 to 15 minutes allows the voltage to rebound, and the phone will power back on with its true charge intact."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use chemical hand warmers to heat up a freezing phone or camera battery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only with extreme caution. Disposable chemical hand warmers (iron oxidation pouches) require ambient oxygen to generate heat and produce moisture as a byproduct. If you place a warmer inside an airtight ziplock bag or take it above 4,000 metres where oxygen is thin, it will quickly go cold. Furthermore, placing a hot chemical pack directly against a freezing device can create rapid condensation on cold metal and glass, causing water damage or fogging camera sensors. Body heat from an inside jacket pocket is vastly safer, drier, and more reliable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I connect a power bank to charge an action camera or phone below 0°C?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Charging any standard lithium-ion battery below freezing causes irreversible physical damage through a process called lithium plating. Because the cold graphite anode cannot absorb lithium ions quickly enough, the incoming ions accumulate on the surface and convert into pure metallic lithium. This permanently reduces the battery's storage capacity and can grow sharp microscopic crystals (dendrites) that risk puncturing internal separators and causing short circuits. Never plug in a charger until the device itself is warm to the touch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What type of charging cable should I pack for winter ski touring or mountaineering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pack cables jacketed in food-grade liquid silicone rubber rather than standard PVC or basic plastic. Standard PVC cables contain plasticisers that freeze and turn brittle below 0°C, leading to cracked outer insulation and sheared copper wires at the strain reliefs. High-quality silicone USB cables remain fully flexible, kink-resistant, and immune to cold-cracking at temperatures down to -60°C."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://cloud.umami.is" crossorigin>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="18a70c76-4d64-4a2a-b915-c1a0404f36be"></script>
+<script defer src="/analytics.js"></script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m2.5 7 9.5 6.2L21.5 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M6.5 17.5 17.5 6.5M9 6.5h8.5V15"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 5 3.5 10.5 9 16"/><path d="M3.5 10.5h11.5a5.5 5.5 0 0 1 5.5 5.5v3"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M3 8.5h13.5v6a5.5 5.5 0 0 1-5.5 5.5H8.5A5.5 5.5 0 0 1 3 14.5v-6Z"/><path d="M16.5 10.5h2.2a2.6 2.6 0 0 1 0 5.2h-2.2"/><path d="M6.5 2.5v2.6M10 2.5v2.6M13.5 2.5v2.6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2.5 9.5 7 6h4l2.5 2.5L11 11 8.5 9"/><path d="M21.5 9.5 17 6h-3l-3.5 5 3 3 2-2 3 3"/><path d="M2.5 9.5V15l4 3.5M21.5 9.5V15l-4 3.5"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8.5 6.5h12M8.5 12h12M8.5 17.5h12M3.5 6.5h.01M3.5 12h.01M3.5 17.5h.01"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6Z"/><path d="M14 2.5V7h4.5M9 12.5h6M9 16.5h6"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5"/><rect x="13.5" y="3" width="7.5" height="7.5"/><rect x="3" y="13.5" width="7.5" height="7.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.6"/><path d="M2.5 20c0-3.6 2.9-5.6 6.5-5.6s6.5 2 6.5 5.6"/><path d="M16.5 5.2a3.4 3.4 0 0 1 0 6.6M17.5 14.8c2.5.5 4 2.3 4 5.2"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 16.9l-5.3 2.8 1.1-5.9-4.3-4.1 5.9-.8Z"/></symbol>
+</defs></svg>
+
+<header class="nav" id="nav">
+  <a class="nav__logo" href="/index.html"><span>Sam</span> <span class="nav__logo-mark">&#127755;</span> <span class="nav__logo-rest">Wild Adventures</span></a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="/partner.html">Partner with me</a>
+    <a href="/expeditions.html">Expeditions</a>
+    <a href="/blog.html" class="is-active">Blog</a>
+    <a href="/links.html">Links</a>
+    <a href="/about.html">My story</a>
+    <a href="/dreams.html">My life dreams</a>
+  </nav>
+  <div class="nav__right">
+    <a class="nav__cta" href="/index.html#contact"><svg class="ic ic--sm"><use href="#i-mail"/></svg>Contact me</a>
+    <button class="nav__toggle" id="menuBtn" aria-expanded="false" aria-controls="menu">
+      <svg class="ic ic--sm" id="menuIcon"><use href="#i-menu"/></svg><span id="menuLabel">Menu</span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" data-open="false">
+  <a href="/partner.html"><svg class="ic"><use href="#i-handshake"/></svg>Partner with me</a>
+  <a href="/expeditions.html"><svg class="ic"><use href="#i-list"/></svg>Expeditions</a>
+  <a href="/blog.html"><svg class="ic"><use href="#i-doc"/></svg>Blog</a>
+  <a href="/links.html"><svg class="ic"><use href="#i-grid"/></svg>Links</a>
+  <a href="/about.html"><svg class="ic"><use href="#i-users"/></svg>My story</a>
+  <a href="/dreams.html"><svg class="ic"><use href="#i-star"/></svg>My life dreams</a>
+  <a href="/index.html#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
+</div>
+
+<main>
+<section class="shell pagehead">
+  <a class="backlink" href="/blog.html"><svg class="ic ic--sm"><use href="#i-back"/></svg>Guides &amp; field notes</a>
+  <div class="meta-row">
+    <a class="cat-tag" href="/blog.html#gear-tech">Gear &amp; Tech</a>
+    <span>Updated 11 Nov 2026</span>
+    <span>&middot;</span>
+    <span>8 min read</span>
+  </div>
+  <h1>How to keep cameras, phones &amp; batteries alive at -20°C on summit night</h1>
+  <p class="lede">Why your phone shuts down at 60% battery the moment you reach for a summit photo, how sub-zero charging permanently ruins lithium cells, and the exact pocket routing, cable materials and thermal habits that keep electronics alive at -20°C.</p>
+</section>
+
+<article class="shell article">
+  <figure class="guide-hero">
+    <picture><source type="image/avif" srcset="/img/frost.avif"><img src="/img/frost.jpg" width="1200" height="1593" alt="Thick rime frost and ice crystals formed on mountain gear in sub-zero alpine conditions" fetchpriority="high"></picture>
+    <figcaption>Rime ice formation in sub-zero alpine conditions where standard lithium batteries fail within minutes.</figcaption>
+  </figure>
+
+  <div class="facts"><div><b>Operating range</b><span>-20°C to -40°C summit environments</span></div><div><b>Core electrochemistry</b><span>Voltage sag vs permanent lithium plating</span></div><div><b>Non-negotiable rule</b><span>Never charge cold lithium cells below 0°C</span></div><div><b>Hardware upgrades</b><span>Silicone USB cords &amp; low-temp battery cells</span></div></div>
+  <div class="toc"><b>In this guide</b><ol><li><a href="#voltage-sag-vs-drain">Voltage Sag vs Permanent Drain: Why 1% Does Not Mean Empty</a></li><li><a href="#sub-zero-charging-lithium-plating">Never Charge Below 0°C: The Danger of Lithium Plating</a></li><li><a href="#midlayer-pocket-routing">Internal Layer Routing: Chest Pockets Over Exterior Pouches</a></li><li><a href="#low-temp-action-camera-cells">Cold-Rated Batteries: GoPro Enduro and DJI Extreme Battery Plus</a></li><li><a href="#heated-carbon-power-banks">Heated and Carbon-Cased Power Banks: The Nitecore Summit 10000</a></li><li><a href="#silicone-cables-hand-warmer-traps">Liquid Silicone USB Cords and the Altitude Hand-Warmer Trap</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></div>
+  <p>Every winter mountaineer and ski tourer knows the sinking feeling: you hike for six hours in the dark, step onto a freezing summit ridge at dawn, pull your smartphone out of your pocket to check an offline map or shoot a quick clip, and the screen instantly blacks out. The battery read 72% five minutes ago. Now it displays a red battery glyph, refuses to power back on, and you are left without a primary digital navigation backup in minus-twenty wind.</p>
+<p>Most outdoor tutorials offer the same generic advice: 'keep your phone in an inside pocket' or 'tuck a chemical hand warmer next to it'. In real sub-zero conditions, half-understood battery tricks do more damage than good. Chemical warmers can starve of oxygen at altitude or create damaging condensation, while plugging a freezing battery into a high-output power bank can permanently destroy its capacity through microscopic lithium plating. Keeping cameras, phones and navigation electronics alive in extreme cold requires understanding how lithium-ion chemistry behaves when the mercury plummets, and building a disciplined system for pocket layering, thermal management and charging.</p>
+  <div class="quick-wrap">
+  <div class="quick-cap">At a glance - 6 vital tactics and hardware solutions for extreme sub-zero battery survival</div>
+  <table class="quick-table"><thead><tr><th>Tactic / Solution</th><th>Failure Mode Prevented</th><th>Field Rule / Hardware</th><th>Risk / Trade-off</th><th>Best Application</th></tr></thead><tbody><tr><td><strong>1. Understanding Voltage Sag</strong></td><td>Premature blackouts at 50%+ charge</td><td>Warm cell against torso skin for 10 mins</td><td>Do not reboot repeatedly while cold</td><td>Smartphones & cameras showing false zero</td></tr><tr><td><strong>2. Strict Sub-Zero Charging Ban</strong></td><td>Lithium plating & permanent capacity death</td><td>Only charge cells warmed above +5°C</td><td>Wait until inside sleeping bag or warm hut</td><td>All lithium-ion electronics & power banks</td></tr><tr><td><strong>3. Midlayer Pocket Architecture</strong></td><td>Rapid ambient cooling in windchill</td><td>Store in chest baselayer or grid-fleece pocket</td><td>Moisture risk: use a zip vapour bag</td><td>Primary phones, avalanche GPS & spare cells</td></tr><tr><td><strong>4. Low-Temp Action Camera Cells</strong></td><td>5-minute runtime shutdowns in 4K</td><td>GoPro Enduro or DJI Extreme Battery Plus</td><td>Costs ~20% more than legacy standard cells</td><td>Action cams mounted on helmets or chest rigs</td></tr><tr><td><strong>5. Heated Carbon Power Banks</strong></td><td>External battery dying before transferring power</td><td>Nitecore Summit 10000 (-40°C rating)</td><td>Internal heater uses ~5-10% capacity</td><td>Alpine bivouacs & multi-day winter expeditions</td></tr><tr><td><strong>6. Silicone USB Cords & Warmers</strong></td><td>Snapped brittle cables & lens fogging</td><td>Liquid silicone jacket cords (-60°C rated)</td><td>Avoid chemical warmers in airtight pouches</td><td>Power routing from inner layers to devices</td></tr></tbody></table>
+</div>
+  <section class="pick-card" id="voltage-sag-vs-drain">
+  <div class="pick-head"><span class="pick-num">01</span><span class="pick-kicker">The electrochemistry trap</span></div>
+  <h2>1. Voltage Sag vs Permanent Drain: Why 1% Does Not Mean Empty</h2>
+  
+  <div class="pick-specs"><div><b>Root cause</b><span>Electrolyte viscosity spikes internal cell resistance (IR) under load</span></div><div><b>Immediate symptom</b><span>Terminal voltage drops below device cutoff threshold (approx. 3.2V)</span></div><div><b>Recovery method</b><span>10 to 15 minutes of direct torso body heat restores full voltage</span></div><div><b>Watch out for</b><span>Repeatedly power-cycling a freezing phone draws high surge currents and accelerates voltage collapse</span></div></div>
+  <p>When a smartphone or camera dies suddenly on a freezing ridge, the battery has not actually dumped its electrical charge into thin air. Inside every lithium-ion cell, lithium ions travel through a liquid electrolyte between the cathode and anode. As ambient temperatures drop below freezing, that liquid electrolyte thickens significantly, like cold syrup. This drastic reduction in ionic mobility causes the cell's internal electrical resistance (impedance) to skyrocket.</p>
+<p>The moment the device draws a burst of current (to power a bright screen, spin up an optical image stabiliser, or search for a weak cell signal), this elevated internal resistance causes a steep drop in output voltage known as 'voltage sag'. The device's battery management system (BMS) sees the voltage plunge below its hard safety cutoff (typically around 3.0V to 3.2V per cell) and shuts the system down to prevent undervoltage damage, displaying an empty battery icon even though 70% of the chemical energy remains intact. If this happens, resist the urge to turn the device back on repeatedly. Slip it flat against your base layer under your armpit or inside a zippered chest pocket for fifteen minutes. Once the core warms back above 10°C, the internal resistance drops, the voltage rebounds, and the phone will boot with its remaining charge restored.</p>
+  <div class="pick-verdict"><b>Bottom line</b>Never panic when a cold screen blacks out; warm the cell against your body heat before drawing another milliamp.</div>
+</section><section class="pick-card" id="sub-zero-charging-lithium-plating">
+  <div class="pick-head"><span class="pick-num">02</span><span class="pick-kicker">The fatal charging mistake</span></div>
+  <h2>2. Never Charge Below 0°C: The Danger of Lithium Plating</h2>
+  
+  <div class="pick-specs"><div><b>Hazard mechanism</b><span>Lithium ions cannot intercalate into cold graphite anodes fast enough</span></div><div><b>Physical result</b><span>Ions reduce on the surface into metallic lithium plating and dendrites</span></div><div><b>Long-term damage</b><span>Permanent capacity loss, separator puncture, and elevated short-circuit risk</span></div><div><b>Watch out for</b><span>Plugging a freezing phone or camera into a power bank inside your cold rucksack pocket</span></div></div>
+  <p>Discharging a cold battery causes temporary voltage sag, but charging a sub-zero battery causes irreversible, permanent hardware destruction. During normal charging at room temperature, lithium ions easily slide into the microscopic layers of the graphite anode (a process called intercalation). Below 0°C, ionic diffusion slows so drastically that incoming ions cannot squeeze into the crystal lattice fast enough. Instead, they accumulate on the outer surface of the anode and accept electrons directly, forming a solid crust of pure metallic lithium.</p>
+<p>This phenomenon, known as lithium plating, permanently consumes active lithium, shaving a permanent chunk off your battery's total capacity in a single cold-charging session. Worse still, metallic lithium often grows in sharp, microscopic needle structures called dendrites. Over subsequent charge cycles, these dendrites can pierce the delicate polymer separator between the positive and negative electrodes, triggering an internal short circuit and potential thermal runaway. High-end modern devices have thermal sensors that lock out charging below freezing, but cheaper electronics and generic power banks will happily pump current into a frozen cell until it is ruined. The rule is absolute: never connect a charger until the device itself is warm to the touch.</p>
+  <div class="pick-verdict"><b>Bottom line</b>Keep power banks disconnected on the trail; only charge electronics inside a warm sleeping bag or heated hut.</div>
+</section><section class="pick-card" id="midlayer-pocket-routing">
+  <div class="pick-head"><span class="pick-num">03</span><span class="pick-kicker">Passive thermal management</span></div>
+  <h2>3. Internal Layer Routing: Chest Pockets Over Exterior Pouches</h2>
+  
+  <div class="pick-specs"><div><b>Optimal placement</b><span>Zippered chest pocket of your baselayer or grid-fleece midlayer</span></div><div><b>Thermal advantage</b><span>Taps continuous 37°C core metabolic heat without external battery weight</span></div><div><b>Moisture protection</b><span>Ultralight breathable barrier or small ziplock pouch to block sweat</span></div><div><b>Watch out for</b><span>Exterior hardshell pockets reach ambient sub-zero temperatures within minutes in windchill</span></div></div>
+  <p>The simplest and most reliable heater on any mountain is your own core body temperature. While ambient air on summit night might sit at -18°C with a 40 km/h windchill driving effective temperatures below -30°C, your torso is constantly generating 37°C of heat. Storing phones, GPS units and spare camera batteries in the outside pockets of your Gore-Tex shell or in the top lid of your backpack exposes them to ambient freezing within minutes, because technical hardshells offer zero thermal insulation.</p>
+<p>The proper protocol is internal layer routing: place electronics in a zippered pocket on the outside of your merino baselayer or inside a close-fitting grid-fleece midlayer, sandwiched beneath your insulating down jacket. Your body heat maintains the battery at a comfortable 15°C to 25°C even in fierce storms. Because vigorous uphill movement generates perspiration, place the device inside an ultralight aquadry pouch or unzipped ziplock bag to prevent vapour from condensing into the charging port or microphone grilles. When you need to take a photo or verify a waypoint, keep your gloves on, pull the device out, complete the task in under thirty seconds, and slide it straight back into your inner layer.</p>
+  <div class="pick-verdict"><b>Bottom line</b>Your torso is an active 37°C radiator; use internal chest pockets and keep devices out of exterior shell zips.</div>
+</section><section class="pick-card" id="low-temp-action-camera-cells">
+  <div class="pick-head"><span class="pick-num">04</span><span class="pick-kicker">Specialist action camera power</span></div>
+  <h2>4. Cold-Rated Batteries: GoPro Enduro and DJI Extreme Battery Plus</h2>
+  
+  <div class="pick-specs"><div><b>Cell technology</b><span>Advanced low-viscosity electrolyte tailored for high conductivity at -20°C</span></div><div><b>Performance gain</b><span>Up to 3x longer recording duration at -10°C compared to standard cells</span></div><div><b>Standard weight</b><span>Approx. 33g to 34g per cell (identical to standard OEM dimensions)</span></div><div><b>Watch out for</b><span>Third-party budget replacement batteries rarely include low-temperature electrolyte additives</span></div></div>
+  <p>Mounting an action camera on a ski helmet, chest harness or ice axe pole exposes it directly to the freezing slipstream. Standard consumer camera batteries are formulated for room-temperature cycling; take an original standard battery into -15°C powder conditions and 4K recording typically cuts out after four to seven minutes with a low-battery alert, leaving the lens cold and uncalibrated.</p>
+<p>Both major action camera manufacturers solved this by reformulating the chemical electrolyte. The GoPro Enduro battery (compatible with HERO9 through HERO13) and DJI's Osmo Action Extreme Battery Plus (1950mAh, rated to -20°C) utilise lower-viscosity solvents and alternative lithium salts that maintain ionic mobility in deep sub-zero conditions. In head-to-head field tests at -20°C, these specialised cells deliver full continuous 4K 60fps recording runs without premature voltage collapse. If you are shooting winter footage in Hokkaidō or the Alps, retire your old standard black batteries and standardise your kit exclusively on cold-rated OEM cells.</p>
+  <div class="pick-verdict"><b>Bottom line</b>Cold-rated electrolyte batteries are essential for winter action filming; standard batteries fail within minutes on an exposed helmet.</div>
+</section><section class="pick-card" id="heated-carbon-power-banks">
+  <div class="pick-head"><span class="pick-num">05</span><span class="pick-kicker">Sub-zero portable power</span></div>
+  <h2>5. Heated and Carbon-Cased Power Banks: The Nitecore Summit 10000</h2>
+  
+  <div class="pick-specs"><div><b>Operating rating</b><span>Functional down to -40°C with integrated PI heating elements</span></div><div><b>Chassis design</b><span>Unibody carbon-fibre shell (172g) providing structural drop and thermal resistance</span></div><div><b>Power delivery</b><span>20W USB-C Power Delivery with intelligent thermal control</span></div><div><b>Watch out for</b><span>The integrated heating blanket draws roughly 5% to 10% of total cell capacity to sustain warmth</span></div></div>
+  <p>Most standard aluminium or plastic power banks fail in high-altitude cold before they can transfer meaningful energy. Their internal cells suffer the same voltage sag as smartphones, cutting off power output mid-charge, while cold aluminium casings actively draw heat out of adjacent gear. If you are bivouacking on snow or running a multi-day winter traverse where access to electricity is zero, specialised sub-zero power banks become a critical safety tool.</p>
+<p>The benchmark in this category is the Nitecore Summit 10000 (172g). Encased in an insulated unibody carbon-fibre shell that dramatically reduces thermal conduction compared to metal, it features an integrated PI heating pad. When temperatures dip below freezing, the power bank automatically routes a tiny fraction of its energy into heating its own lithium cells, maintaining them at safe operating temperatures down to -40°C while continuing to supply 20W USB-C output. Paired with its included neoprene insulation sleeve, it allows you to recharge a GPS beacon or headlamp in a freezing tent vestibule without holding the battery against your chest.</p>
+  <div class="pick-verdict"><b>Bottom line</b>The premier power bank for high-altitude bivouacs and expedition base camps where ambient temperatures sit below -15°C.</div>
+</section><section class="pick-card" id="silicone-cables-hand-warmer-traps">
+  <div class="pick-head"><span class="pick-num">06</span><span class="pick-kicker">Hardware and chemical pitfalls</span></div>
+  <h2>6. Liquid Silicone USB Cords and the Altitude Hand-Warmer Trap</h2>
+  
+  <div class="pick-specs"><div><b>Cable material</b><span>Liquid silicone rubber jacket (rated flexible down to -60°C; zero cold-cracking)</span></div><div><b>Chemical warmer flaw</b><span>Iron-oxidation hand warmers starve of oxygen at altitude and create moisture inside sealed bags</span></div><div><b>Failure mode</b><span>PVC plasticisers freeze at -10°C, snapping copper strands at the strain relief</span></div><div><b>Watch out for</b><span>Condensation from cooling warmers can short charging ports and fog camera lens elements</span></div></div>
+  <p>Two seemingly minor accessories cause an outsized number of electrical failures in the mountains: USB charging cables and disposable hand warmers. Standard consumer USB cables are jacketed in cheap PVC (polyvinyl chloride). Below freezing, the chemical plasticisers in PVC solidify, turning the cable rigid like brittle wire. Bending or coiling a freezing PVC cable causes microscopic 'cold cracking' that breaks the internal copper wiring or snaps the connector strain relief. Upgrading to liquid silicone rubber USB cables completely solves this: silicone contains no crystalline freezing points and remains completely supple and kink-free down to -60°C.</p>
+<p>Meanwhile, many climbers make the mistake of dropping an iron-powder chemical hand warmer into a sealed pouch with their phone. This creates two distinct failure modes. First, iron-oxidation hand warmers require ambient oxygen to react; inside a sealed ziplock bag or above 4,000 metres where atmospheric pressure drops significantly, the warmer starves of oxygen and goes stone cold. Second, the oxidation reaction releases moisture as a byproduct; trapped inside a cold pouch, that moisture condenses directly onto freezing glass, corroding USB ports and fogging internal camera optics. If you must use a chemical warmer, keep it in an unsealed breathable fabric pouch and keep it physically separated from naked electronics.</p>
+  <div class="pick-verdict"><b>Bottom line</b>Swap stiff PVC cables for liquid silicone cords, and never seal an air-activated chemical hand warmer inside an airtight plastic camera bag.</div>
+</section>
+  <p>Keeping your electronics operational on cold peaks comes down to an uncompromising daily routine: <strong>keep working batteries against your torso</strong>, <strong>swap cells quickly with liner gloves on</strong>, and <strong>never connect a charging cable until the equipment has warmed to room temperature</strong>.</p>
+<p>Before setting off on any winter trip, calibrate your devices at home: run a full discharge and recharge cycle at room temperature, update device firmware to ensure low-temperature battery management curves are current, and pack spare batteries in dedicated individual silicone caps to prevent terminal shorts against keys or crampon points.</p>
+  <section class="faq-sec" id="faq"><h2>Frequently asked questions</h2><details class="faq-item" open><summary>Why does my phone battery jump from 60% to 1% and shut down in the cold?</summary><div class="faq-ans"><p>The battery has not lost its actual charge. Extreme cold makes the liquid electrolyte inside lithium-ion cells thick and viscous, drastically increasing internal electrical resistance. When the phone demands power for a screen or camera burst, the voltage drops sharply (&#x27;voltage sag&#x27;). The phone&#x27;s battery management system detects that the voltage has dropped below the minimum safety threshold (around 3.2V) and shuts down to protect the hardware. Warming the phone inside an internal jacket pocket for 10 to 15 minutes allows the voltage to rebound, and the phone will power back on with its true charge intact.</p></div></details><details class="faq-item"><summary>Can I use chemical hand warmers to heat up a freezing phone or camera battery?</summary><div class="faq-ans"><p>Only with extreme caution. Disposable chemical hand warmers (iron oxidation pouches) require ambient oxygen to generate heat and produce moisture as a byproduct. If you place a warmer inside an airtight ziplock bag or take it above 4,000 metres where oxygen is thin, it will quickly go cold. Furthermore, placing a hot chemical pack directly against a freezing device can create rapid condensation on cold metal and glass, causing water damage or fogging camera sensors. Body heat from an inside jacket pocket is vastly safer, drier, and more reliable.</p></div></details><details class="faq-item"><summary>What happens if I connect a power bank to charge an action camera or phone below 0°C?</summary><div class="faq-ans"><p>Charging any standard lithium-ion battery below freezing causes irreversible physical damage through a process called lithium plating. Because the cold graphite anode cannot absorb lithium ions quickly enough, the incoming ions accumulate on the surface and convert into pure metallic lithium. This permanently reduces the battery&#x27;s storage capacity and can grow sharp microscopic crystals (dendrites) that risk puncturing internal separators and causing short circuits. Never plug in a charger until the device itself is warm to the touch.</p></div></details><details class="faq-item"><summary>What type of charging cable should I pack for winter ski touring or mountaineering?</summary><div class="faq-ans"><p>Pack cables jacketed in food-grade liquid silicone rubber rather than standard PVC or basic plastic. Standard PVC cables contain plasticisers that freeze and turn brittle below 0°C, leading to cracked outer insulation and sheared copper wires at the strain reliefs. High-quality silicone USB cables remain fully flexible, kink-resistant, and immune to cold-cracking at temperatures down to -60°C.</p></div></details></section>
+  <aside class="author-card" aria-label="About the author">
+  <picture><source type="image/avif" srcset="/img/frost-360.avif"><img class="author-card__img" src="/img/frost-360.jpg" width="360" height="478" alt="Sam in a down hood at high altitude" loading="lazy"></picture>
+  <div>
+    <div class="author-card__k">Written by</div>
+    <div class="author-card__n">Sam &middot; Wild Adventures</div>
+    <p class="author-card__p">Tokyo-based mountaineer, backcountry skier and endurance athlete. Twenty-one self-organised expeditions across four continents since 2013 &mdash; including the Matterhorn, Mont Blanc, Kilimanjaro, Aconcagua (6,500&nbsp;m) and Hokkaid&#333;.</p>
+    <div class="author-card__links">
+      <a href="/expeditions.html">All 21 expeditions &rarr;</a>
+      <a href="/partner.html">Brand partnerships &rarr;</a>
+      <a href="https://www.instagram.com/hey_samtheman/" target="_blank" rel="noopener">@hey_samtheman &rarr;</a>
+    </div>
+  </div>
+</aside>
+
+  <div class="artnav">
+    <a class="btn btn--ghost" href="/blog.html"><svg class="ic ic--sm"><use href="#i-back"/></svg>All guides &amp; field notes</a>
+    <a class="btn btn--solid" href="/partner.html">Partner with me<svg class="ic ic--sm"><use href="#i-arrow"/></svg></a>
+  </div>
+</article>
+
+<section class="related-sec" aria-label="Related guides and field notes">
+  <div class="related-head">
+    <h2>Keep reading</h2>
+    <a href="/blog.html">All guides &amp; field notes &rarr;</a>
+  </div>
+  <div class="related-grid">
+<a class="post" href="/blog/adventure-wearables-gps-gadgets-high-altitude/" data-cats="gear-tech mountain-guides">
+  <div class="post__media"><span class="post__badge">Gear &amp; Tech</span><picture><source type="image/avif" srcset="/img/web/aconcagua/pxl-20250107-194907344.avif"><img src="/img/web/aconcagua/pxl-20250107-194907344.jpg" width="1600" height="900" alt="High-altitude climbers high on Aconcagua under a deep blue sky" loading="lazy"></picture></div>
+  <div class="post__body">
+    <span class="post__meta">8 Nov 2026 &middot; 9 min read</span>
+    <h2 class="post__t">7 adventure wearables, GPS watches &amp; cold-weather gadgets that survive above 4,000m</h2>
+    <p class="post__x">From solar multi-band GPS watches and 100g satellite SOS messengers to smart rings, sub-zero action cameras and descent voice recorders — what actually works in cold, gloves-on mountain conditions.</p>
+    <span class="post__go">Read<svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
+  </div>
+</a>
+<a class="post" href="/blog/tokyo-mountaineering-backcountry-ski-gear-shops/" data-cats="japan-outdoors">
+  <div class="post__media"><span class="post__badge">Japan Outdoors</span><picture><source type="image/avif" srcset="/img/web/niseko/al-07265-2.avif"><img src="/img/web/niseko/al-07265-2.jpg" width="1600" height="1067" alt="Winter backcountry ski tracks winding through deep powder in the Hokkaido mountains near Niseko" loading="lazy"></picture></div>
+  <div class="post__body">
+    <span class="post__meta">10 Nov 2026 &middot; 9 min read</span>
+    <h2 class="post__t">Tokyo: 7 serious mountaineering, trail &amp; backcountry ski gear shops</h2>
+    <p class="post__x">Seven serious Tokyo mountaineering, backcountry ski, ultralight and trail running shops ranked — with verified stations, opening quirks, tax-free rules and Western sizing caveats.</p>
+    <span class="post__go">Read<svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
+  </div>
+</a>
+<a class="post" href="/blog/matterhorn-vs-mont-blanc-which-climb-first/" data-cats="mountain-guides">
+  <div class="post__media"><span class="post__badge">Mountain Guide</span><picture><source type="image/avif" srcset="/img/web/matterhorn/pxl-20260824-061735811-ts-000-3.avif"><img src="/img/web/matterhorn/pxl-20260824-061735811-ts-000-3.jpg" width="902" height="1600" alt="Climbers moving on the sharp upper rock ridge of the Matterhorn in the Swiss Alps at dawn" loading="lazy"></picture></div>
+  <div class="post__body">
+    <span class="post__meta">9 Nov 2026 &middot; 10 min read</span>
+    <h2 class="post__t">Matterhorn vs. Mont Blanc: which 4,000m peak should you climb first?</h2>
+    <p class="post__x">Matterhorn or Mont Blanc first? An honest alpine breakdown of technical climbing (AD III scrambling vs PD+ snow endurance), guide ratios (1:1 vs 1:2), real CHF/EUR costs, Grand Couloir rockfall and Solvay pace cut-offs.</p>
+    <span class="post__go">Read<svg class="ic ic--sm"><use href="#i-arrow"/></svg></span>
+  </div>
+</a>
+  </div>
+</section>
+</main>
+
+<footer class="shell foot">
+  <span>&copy; 2026 Sam &#127755; Wild Adventures &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/feed.xml">RSS</a></span>
+  <a href="https://ko-fi.com/heysamtheman" target="_blank" rel="noopener"><svg class="ic ic--sm"><use href="#i-coffee"/></svg>Buy me a coffee</a>
+  <p class="foot__disc">Personal expedition &amp; creator site &mdash; all views, trips and partnerships are my own and independent of my employer.</p>
+</footer>
+<script>
+(function(){
+  var n=document.getElementById('nav');
+  var f=function(){
+    var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+    n.classList.toggle('is-stuck',y>24);
+  };
+  addEventListener('scroll',f,{passive:true});f();
+  var btn=document.getElementById('menuBtn'),menu=document.getElementById('menu');
+  if(btn&&menu){
+    var ic=document.getElementById('menuIcon'),lb=document.getElementById('menuLabel');
+    var set=function(open){
+      menu.dataset.open=open?'true':'false';
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      if(ic)ic.innerHTML='<use href="'+(open?'#i-close':'#i-menu')+'"/>';
+      if(lb)lb.textContent=open?'Close':'Menu';
+      document.body.style.overflow=open?'hidden':'';
+    };
+    btn.addEventListener('click',function(){set(menu.dataset.open!=='true')});
+    menu.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
+    addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.dataset.open==='true')set(false)});
+  }
+})();
+</script>
+</body>
+</html>
