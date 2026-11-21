@@ -6,7 +6,14 @@
     <atom:link href="https://heysamtheman.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical Japan outdoor guides, cold-weather mountaineering gear roundups, mountain route guides, and expedition field notes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 20 Nov 2026 23:02:59 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 23:03:02 +0000</lastBuildDate>
+    <item>
+      <title>Cycling Japan End to End (Cape Soya to Cape Sata): Route, Rinkō &amp; Logistics (2026–2027 Guide)</title>
+      <link>https://heysamtheman.com/blog/cycling-japan-end-to-end-cape-soya-to-sata-guide/</link>
+      <guid isPermaLink="true">https://heysamtheman.com/blog/cycling-japan-end-to-end-cape-soya-to-sata-guide/</guid>
+      <pubDate>Sun, 22 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Practical guide to cycling Japan end to end (Cape Sata to Cape Soya): 2,700–3,500 km route options, May–June tsuyu rain strategy, JR Shinkansen rinkō bag rules, Kanmon Tunnel, Tsugaru ferries, Toyoko Inn bike storage and 2026 blue-ticket laws.</description>
+    </item>
     <item>
       <title>Hiking Corsica&#x27;s GR20: 7 Lessons, Huts, Costs &amp; Gear (2026–2027 Guide)</title>
       <link>https://heysamtheman.com/blog/gr20-corsica-trekking-guide-north-to-south-stages/</link>
@@ -174,13 +181,6 @@
       <guid isPermaLink="true">https://heysamtheman.com/blog-mont-blanc.html</guid>
       <pubDate>Fri, 18 Sep 2026 08:00:00 +0000</pubDate>
       <description>Climbing Mont Blanc (4,808m) via the Cosmiques Arête build-up and Goûter Route: honest lessons from going from first crampons on the Mer de Glace to summit in five days.</description>
-    </item>
-    <item>
-      <title>Climbing Kilimanjaro (5,895m): 7-Day Group Pacing, Acclimatisation &amp; Summit Night</title>
-      <link>https://heysamtheman.com/blog-kilimanjaro.html</link>
-      <guid isPermaLink="true">https://heysamtheman.com/blog-kilimanjaro.html</guid>
-      <pubDate>Tue, 15 Sep 2026 08:00:00 +0000</pubDate>
-      <description>Seven days climbing Kilimanjaro (5,895m) with a group of eight friends: pacing, hydration, why two climbers turned back, and how previous 6,500m Aconcagua lessons paid off.</description>
     </item>
   </channel>
 </rss>
