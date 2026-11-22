@@ -6,7 +6,14 @@
     <atom:link href="https://heysamtheman.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical Japan outdoor guides, cold-weather mountaineering gear roundups, mountain route guides, and expedition field notes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 21 Nov 2026 23:03:02 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 23:02:52 +0000</lastBuildDate>
+    <item>
+      <title>4-Season Mountaineering Tents: Tunnel vs. Geodesic Domes &amp; Storm Pitching (2026–2027 Guide)</title>
+      <link>https://heysamtheman.com/blog/four-season-expedition-tents-alpine-wind-condensation/</link>
+      <guid isPermaLink="true">https://heysamtheman.com/blog/four-season-expedition-tents-alpine-wind-condensation/</guid>
+      <pubDate>Mon, 23 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Compare the best 4-season mountaineering tents (Hilleberg Nammatj 2 GT, Jannu, Samaya 2.0, BD Eldorado/Firstlight, Trango 2, TNF VE 25, MSR Remote 2) plus deadman snow anchors and condensation control.</description>
+    </item>
     <item>
       <title>Cycling Japan End to End (Cape Soya to Cape Sata): Route, Rinkō &amp; Logistics (2026–2027 Guide)</title>
       <link>https://heysamtheman.com/blog/cycling-japan-end-to-end-cape-soya-to-sata-guide/</link>
@@ -174,13 +181,6 @@
       <guid isPermaLink="true">https://heysamtheman.com/blog-matterhorn.html</guid>
       <pubDate>Sun, 20 Sep 2026 08:00:00 +0000</pubDate>
       <description>What it actually takes to climb the Matterhorn via the Hörnli Ridge (4,478m): turning back at 3,800m in 2025 vs summiting in 3h20 as first party on the mountain in 2026.</description>
-    </item>
-    <item>
-      <title>Climbing Mont Blanc (Goûter Route, 4,808m): First Crampons to Summit in 5 Days</title>
-      <link>https://heysamtheman.com/blog-mont-blanc.html</link>
-      <guid isPermaLink="true">https://heysamtheman.com/blog-mont-blanc.html</guid>
-      <pubDate>Fri, 18 Sep 2026 08:00:00 +0000</pubDate>
-      <description>Climbing Mont Blanc (4,808m) via the Cosmiques Arête build-up and Goûter Route: honest lessons from going from first crampons on the Mer de Glace to summit in five days.</description>
     </item>
   </channel>
 </rss>
