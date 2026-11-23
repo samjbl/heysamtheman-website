@@ -6,7 +6,14 @@
     <atom:link href="https://heysamtheman.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical Japan outdoor guides, cold-weather mountaineering gear roundups, mountain route guides, and expedition field notes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 22 Nov 2026 23:02:52 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 23:03:07 +0000</lastBuildDate>
+    <item>
+      <title>Japanese Alps Mountain Huts (Yamagoya): Booking, Cash Rules &amp; Ridge Guide</title>
+      <link>https://heysamtheman.com/blog/japanese-alps-mountain-huts-yamagoya-booking-etiquette/</link>
+      <guid isPermaLink="true">https://heysamtheman.com/blog/japanese-alps-mountain-huts-yamagoya-booking-etiquette/</guid>
+      <pubDate>Tue, 24 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Practical guide to booking and staying in Japanese Alps mountain huts (yamagoya) around Kamikochi, Karasawa Cirque, Hotakadake and Yarigatake: yen prices, 1-month booking windows, 15:00 arrival rules, bento breakfasts and cash etiquette.</description>
+    </item>
     <item>
       <title>4-Season Mountaineering Tents: Tunnel vs. Geodesic Domes &amp; Storm Pitching (2026–2027 Guide)</title>
       <link>https://heysamtheman.com/blog/four-season-expedition-tents-alpine-wind-condensation/</link>
@@ -174,13 +181,6 @@
       <guid isPermaLink="true">https://heysamtheman.com/blog-altitude.html</guid>
       <pubDate>Mon, 21 Sep 2026 08:00:00 +0000</pubDate>
       <description>Practical altitude and acclimatisation lessons from 4,000m to 6,500m across Mont Blanc, Aconcagua, Kilimanjaro and the Matterhorn — including what caused a 6,500m turnaround.</description>
-    </item>
-    <item>
-      <title>Climbing the Matterhorn (Hörnli Ridge, 4,478m): Two Attempts &amp; What Changed</title>
-      <link>https://heysamtheman.com/blog-matterhorn.html</link>
-      <guid isPermaLink="true">https://heysamtheman.com/blog-matterhorn.html</guid>
-      <pubDate>Sun, 20 Sep 2026 08:00:00 +0000</pubDate>
-      <description>What it actually takes to climb the Matterhorn via the Hörnli Ridge (4,478m): turning back at 3,800m in 2025 vs summiting in 3h20 as first party on the mountain in 2026.</description>
     </item>
   </channel>
 </rss>
