@@ -6,7 +6,14 @@
     <atom:link href="https://heysamtheman.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical Japan outdoor guides, cold-weather mountaineering gear roundups, mountain route guides, and expedition field notes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 23 Nov 2026 23:03:07 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 23:02:58 +0000</lastBuildDate>
+    <item>
+      <title>Mount Siguniang (Sichuan): Dafeng 5,025m &amp; Erfeng 5,276m Guide (2026–2027)</title>
+      <link>https://heysamtheman.com/blog/mount-siguniang-sichuan-climbing-dafeng-erfeng-guide/</link>
+      <guid isPermaLink="true">https://heysamtheman.com/blog/mount-siguniang-sichuan-climbing-dafeng-erfeng-guide/</guid>
+      <pubDate>Wed, 25 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Independent climbing logistics for Mount Siguniang Dafeng (5,025m) and Erfeng (5,276m): Chengdu to Rilong bus fares, Sichuan Mountaineering Association permits, Haizigou base camp distances, horse fees and seasons.</description>
+    </item>
     <item>
       <title>Japanese Alps Mountain Huts (Yamagoya): Booking, Cash Rules &amp; Ridge Guide</title>
       <link>https://heysamtheman.com/blog/japanese-alps-mountain-huts-yamagoya-booking-etiquette/</link>
@@ -174,13 +181,6 @@
       <guid isPermaLink="true">https://heysamtheman.com/blog-gear-mistakes.html</guid>
       <pubDate>Mon, 21 Sep 2026 08:00:00 +0000</pubDate>
       <description>Five real kit and layering failures watched firsthand on Mt. Yotei, Kilimanjaro, Mont Blanc and the Matterhorn — and the pre-trip checklist that prevents all five for free.</description>
-    </item>
-    <item>
-      <title>High-Altitude Climbing Lessons (4,000m to 6,500m): Mont Blanc, Kilimanjaro &amp; Aconcagua</title>
-      <link>https://heysamtheman.com/blog-altitude.html</link>
-      <guid isPermaLink="true">https://heysamtheman.com/blog-altitude.html</guid>
-      <pubDate>Mon, 21 Sep 2026 08:00:00 +0000</pubDate>
-      <description>Practical altitude and acclimatisation lessons from 4,000m to 6,500m across Mont Blanc, Aconcagua, Kilimanjaro and the Matterhorn — including what caused a 6,500m turnaround.</description>
     </item>
   </channel>
 </rss>
