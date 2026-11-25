@@ -6,7 +6,14 @@
     <atom:link href="https://heysamtheman.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical Japan outdoor guides, cold-weather mountaineering gear roundups, mountain route guides, and expedition field notes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 24 Nov 2026 23:02:58 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 23:03:24 +0000</lastBuildDate>
+    <item>
+      <title>Flying with an Avalanche Airbag, Ice Axes &amp; Power Banks: IATA &amp; Japan Rules (2026–2027)</title>
+      <link>https://heysamtheman.com/blog/flying-with-ski-touring-avalanche-airbag-crampons-iata/</link>
+      <guid isPermaLink="true">https://heysamtheman.com/blog/flying-with-ski-touring-avalanche-airbag-crampons-iata/</guid>
+      <pubDate>Thu, 26 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Complete 2026–2027 guide to flying with an avalanche airbag, ice axes, crampons and power banks: IATA Table 2.3.A rules, Alpride E2 vs LiTRIC vs compressed gas in Japan (JAL/ANA/MLIT), TSA empty-cylinder rules, and the 2-unit MLIT power bank cap.</description>
+    </item>
     <item>
       <title>Mount Siguniang (Sichuan): Dafeng 5,025m &amp; Erfeng 5,276m Guide (2026–2027)</title>
       <link>https://heysamtheman.com/blog/mount-siguniang-sichuan-climbing-dafeng-erfeng-guide/</link>
@@ -174,13 +181,6 @@
       <guid isPermaLink="true">https://heysamtheman.com/blog-mongolia.html</guid>
       <pubDate>Mon, 21 Sep 2026 08:00:00 +0000</pubDate>
       <description>Riding the Mongolian steppe on horseback staying with nomadic herding families, followed by three days to Terelj on rented Soviet-era motorbikes.</description>
-    </item>
-    <item>
-      <title>5 Mountaineering &amp; Ski Touring Gear Mistakes That End Climbs (Field Lessons)</title>
-      <link>https://heysamtheman.com/blog-gear-mistakes.html</link>
-      <guid isPermaLink="true">https://heysamtheman.com/blog-gear-mistakes.html</guid>
-      <pubDate>Mon, 21 Sep 2026 08:00:00 +0000</pubDate>
-      <description>Five real kit and layering failures watched firsthand on Mt. Yotei, Kilimanjaro, Mont Blanc and the Matterhorn — and the pre-trip checklist that prevents all five for free.</description>
     </item>
   </channel>
 </rss>
