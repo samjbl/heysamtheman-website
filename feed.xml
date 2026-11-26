@@ -6,7 +6,14 @@
     <atom:link href="https://heysamtheman.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical Japan outdoor guides, cold-weather mountaineering gear roundups, mountain route guides, and expedition field notes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 25 Nov 2026 23:03:24 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 23:02:45 +0000</lastBuildDate>
+    <item>
+      <title>How to Train for 4,000m–6,000m Peaks With a Full-Time City Job (2026–2027 Guide)</title>
+      <link>https://heysamtheman.com/blog/training-for-4000m-6000m-peaks-with-full-time-city-job/</link>
+      <guid isPermaLink="true">https://heysamtheman.com/blog/training-for-4000m-6000m-peaks-with-full-time-city-job/</guid>
+      <pubDate>Fri, 27 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Practical mountaineering training plan for flat-city workers aiming at 4,000m–6,000m peaks: 80/20 Zone 2 volume, weighted box step-up pack progression, eccentric quad work, weekend vertical gain and tapering.</description>
+    </item>
     <item>
       <title>Flying with an Avalanche Airbag, Ice Axes &amp; Power Banks: IATA &amp; Japan Rules (2026–2027)</title>
       <link>https://heysamtheman.com/blog/flying-with-ski-touring-avalanche-airbag-crampons-iata/</link>
@@ -174,13 +181,6 @@
       <guid isPermaLink="true">https://heysamtheman.com/blog-valais.html</guid>
       <pubDate>Mon, 21 Sep 2026 08:00:00 +0000</pubDate>
       <description>How to structure a 4,000m Valais acclimatisation and progression week before climbing the Matterhorn: Üssers Barrhorn (3,610m), Weissmies (4,017m) and the Breithorn traverse (4,164m).</description>
-    </item>
-    <item>
-      <title>Mongolia Horseback &amp; Motorbike Trip Report: Steppe Ger Homestays to Terelj</title>
-      <link>https://heysamtheman.com/blog-mongolia.html</link>
-      <guid isPermaLink="true">https://heysamtheman.com/blog-mongolia.html</guid>
-      <pubDate>Mon, 21 Sep 2026 08:00:00 +0000</pubDate>
-      <description>Riding the Mongolian steppe on horseback staying with nomadic herding families, followed by three days to Terelj on rented Soviet-era motorbikes.</description>
     </item>
   </channel>
 </rss>
