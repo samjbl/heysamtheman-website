@@ -6,7 +6,14 @@
     <atom:link href="https://heysamtheman.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical Japan outdoor guides, cold-weather mountaineering gear roundups, mountain route guides, and expedition field notes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 26 Nov 2026 23:02:45 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 23:02:43 +0000</lastBuildDate>
+    <item>
+      <title>Walking Japan&#x27;s Shikoku 88-Temple Pilgrimage (O-Henro): Stages, Cost &amp; Gear (2026–2027 Guide)</title>
+      <link>https://heysamtheman.com/blog/shikoku-88-temple-pilgrimage-ohenro-walking-guide/</link>
+      <guid isPermaLink="true">https://heysamtheman.com/blog/shikoku-88-temple-pilgrimage-ohenro-walking-guide/</guid>
+      <pubDate>Sat, 28 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Practical walking guide to Japan&#x27;s Shikoku 88-temple pilgrimage (O-Henro): 1,200 km stages across Tokushima, Kōchi, Ehime and Kagawa, ¥500 nōkyōchō fees, shukubō and minshuku rates, pack weight and best months.</description>
+    </item>
     <item>
       <title>How to Train for 4,000m–6,000m Peaks With a Full-Time City Job (2026–2027 Guide)</title>
       <link>https://heysamtheman.com/blog/training-for-4000m-6000m-peaks-with-full-time-city-job/</link>
@@ -174,13 +181,6 @@
       <guid isPermaLink="true">https://heysamtheman.com/blog-vietnam.html</guid>
       <pubDate>Mon, 21 Sep 2026 08:00:00 +0000</pubDate>
       <description>Buying a manual Honda Win copy on Bui Vien in Ho Chi Minh City, learning clutch control the night before departure, and riding 40 days north to Hanoi and back.</description>
-    </item>
-    <item>
-      <title>Matterhorn Acclimatisation Week in Valais: Barrhorn, Weissmies &amp; Breithorn Guide</title>
-      <link>https://heysamtheman.com/blog-valais.html</link>
-      <guid isPermaLink="true">https://heysamtheman.com/blog-valais.html</guid>
-      <pubDate>Mon, 21 Sep 2026 08:00:00 +0000</pubDate>
-      <description>How to structure a 4,000m Valais acclimatisation and progression week before climbing the Matterhorn: Üssers Barrhorn (3,610m), Weissmies (4,017m) and the Breithorn traverse (4,164m).</description>
     </item>
   </channel>
 </rss>
